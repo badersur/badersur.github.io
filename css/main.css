@@ -1,0 +1,22 @@
+body {
+	font-size: 18px;
+	font-family: 'Roboto', sans-serif;
+	background: #f8f7f2;
+	color: #000;
+}
+
+h3, h4 {
+	margin-top: 40px;
+}
+
+h3:first-child {
+	margin-top: 20px; 
+}
+
+section {
+	padding-bottom: 20px;
+}
+
+section a {
+	font-weight: bold;
+}
