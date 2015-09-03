@@ -22,7 +22,6 @@ section a {
 h4 {
 	margin-top: 40px;
 	color: #337ab7;
-	/*font-weight: bold;*/
 }
 
 h4:first-child, .description, .courses, .courses> li {
@@ -32,6 +31,5 @@ h4:first-child, .description, .courses, .courses> li {
 @media (min-width: 768px) {
 	.side {
 		border-radius: 0 0 20px 20px;
-		/*padding-bottom: 15px;*/
 	}
 }

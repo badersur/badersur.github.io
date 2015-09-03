@@ -1,4 +1,6 @@
 $(function () {
+    $(".description").hide();
+    
     $('.item').click(function () {
         if (!$(this).parent().hasClass("current")) {
             $('.article').removeClass('current');
