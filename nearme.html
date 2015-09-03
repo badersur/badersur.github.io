@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	<title>NearMe</title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,600">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/leaflet.css">
+	<link rel="stylesheet" href="css/near.css">
+	<script src="js/vendors/angular.min.js"></script>
+	<script src="js/vendors/angular-route.min.js"></script>
+	<script src="js/vendors/leaflet.js"></script>
+	<script src="js/vendors/angular-leaflet-directive.min.js"></script>
+	<script src="js/vendors/helpers.js"></script>
+	<noscript>
+		<p class="attention">Please enable JavaScript.</p>
+	</noscript>
+</head>
+
+<body ng-app="NearMeApp">
+	<div class="header">
+		<div class="container-fluid">
+			<h1 class="pull-left">NearMe</h1>
+			<a class="pull-right" href="#/about">About</a>
+		</div>
+	</div>
+
+	<div ng-view></div>
+
+	<!-- Modules -->
+	<script src="js/near.js"></script>
+
+	<!-- Controllers -->
+	<script src="js/controllers/NearMeController.js"></script>
+	<script src="js/controllers/AboutController.js"></script>
+
+	<!-- Services -->
+	<script src="js/services/places.js"></script>
+
+</body>
+
+</html>
