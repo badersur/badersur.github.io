@@ -1,5 +1,5 @@
 body {
-	font-size: 18px;
+	font-size: 16px;
 	font-family: 'Roboto', sans-serif;
 	background: #f8f7f2;
 	color: #000;
@@ -16,19 +16,23 @@ section a {
 .side {
 	background: #fff;
 	border: 1px solid #ddd;
-	
 }
 
 h4 {
 	margin-top: 40px;
 	color: #337ab7;
+	/*font-size: 1.125 rem;*/
 }
 
-h4:first-child, .description, .courses, .courses> li {
+h4:first-child, .description, .courses, .courses > li {
 	margin-top: 20px;
 }
 
 @media (min-width: 768px) {
+	body {
+		font-size: 18px;
+	}
+	
 	.side {
 		border-radius: 0 0 20px 20px;
 	}
