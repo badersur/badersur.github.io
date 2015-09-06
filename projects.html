@@ -10,17 +10,35 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,200">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/main.css">
+	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </head>
 
 <body>
-	<nav class="container" role="navigation">
-		<ul class="nav nav-tabs">
-			<li role="presentation"><a href="index.html">Home</a></li>
-			<li role="presentation" class="active"><a href="projects.html">Projects</a></li>
-			<li role="presentation"><a href="show.html">Show room</a></li>
-			<li role="presentation"><a href="courses.html">Completed Courses</a></li>
-		</ul>
-	</nav>
+	<nav class="navbar navbar-default">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-menu" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">BaderSur</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="top-menu">
+                <ul class="nav navbar-nav">
+                    <li><a href="index.html">Home <span class="sr-only">(current)</span></a></li>
+                    <li class="active"><a href="projects.html">Projects</a></li>
+                    <li><a href="show.html">Show room</a></li>
+                    <li><a href="courses.html">Completed courses</a></li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
 
 	<section class="container">
 		<h4>Android Applications</h4>
