@@ -9,69 +9,73 @@
 	<title>Personal Site</title>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,200">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<!--<link rel="stylesheet" href="css/bootstrap.min.css">-->
 	<link rel="stylesheet" href="css/main.css">
 	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<!--<script src="js/vendors/jquery.min.js"></script>-->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<!--<script src="js/vendors/bootstrap.min.js"></script>-->
 </head>
 
 <body>
-	<nav class="navbar navbar-default">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-menu" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.html">BaderSur</a>
-            </div>
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-menu" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="index.html">Bader<span>Sur</span></a>
+			</div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="top-menu">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="index.html">Home <span class="sr-only">(current)</span></a></li>
-                    <li><a href="projects.html">Projects</a></li>
-                    <li><a href="show.html">Show room</a></li>
-                    <li><a href="courses.html">Completed courses</a></li>
-                </ul>
-            </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
-    </nav>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="top-menu">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="index.html">Home <span class="sr-only">(current)</span></a></li>
+					<li><a href="projects.html">Projects</a></li>
+					<li><a href="show.html">Show room</a></li>
+					<li><a href="courses.html">Completed courses</a></li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container-fluid -->
+	</nav>
 
 	<section class="container">
 		<div class="row">
 
-			<div class="col-sm-8">
-				<h4>Welcome</h4> I'm Bader Nasser Al-hashmi, from a city in Oman called Sur.
-				<br> I'm a computer engineer and a developer.
+			<section class="col-sm-8">
+				<h1>Welcome</h1>
+				<p>I'm Bader Nasser Al-hashmi, from a city in Oman called Sur.</p>
+				<p>I'm a computer engineer and a developer.</p>
 
-				<h4>Skills</h4>
+				<h1>Skills</h1>
 				<ul>
 					<li>Building websites using HTML5, CSS3, Bootstrap, JavaScript, jQuery, AngularJS and PHP.
 					</li>
 					<li>Creating RESTful APIs using PHP and Restler framework.</li>
 					<li>Building native Android Applications using Android Studio, XML and Java.</li>
 					<li>Designing databases and using relational database management systems like MySQL and MS SQL Server.</li>
-					<li>Developing WPF desktop applications using XAML and C#. (<i>beginner</i>)</li>
+					<li>Developing WPF desktop applications using XAML and C#. (<em>beginner</em>)</li>
 				</ul>
 
-				<h4>Contact</h4> Feel free to contact me any time.
+				<h1>Contact</h1> Feel free to contact me any time.
 				<ul>
-					<li>gmail & hangout: <a href="mailto:badersur@gmail.com">badersur@gmail.com</a></li>
+					<li>gmail & hangout: <a href="mailto:badersur@gmail.com?subject=gitpage-">badersur@gmail.com</a></li>
 					<li>Telegram: @BaderSur</li>
 				</ul>
-			</div>
+			</section>
 
-			<div class="col-sm-4 side">
-				<h4>Favourite quotes</h4>
-				<div id="quotes">
-					<blockquote>Check it twice, do it once.</blockquote>
-					<blockquote>Slowly.. slowly.. catch your monkey.</blockquote>
-					<blockquote>Never give up.</blockquote>
-				</div>
-			</div>
+			<aside class="col-sm-4">
+				<h1>Favourite quotes</h1>
+				<blockquote>Check it twice, do it once.</blockquote>
+				<blockquote>Slowly.. slowly.. catch your monkey.</blockquote>
+				<blockquote>Never give up.</blockquote>
+			</aside>
 
 		</div>
 	</section>
