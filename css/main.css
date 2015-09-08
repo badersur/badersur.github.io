@@ -1,64 +1,52 @@
-
 body {
 	color: #000;
 	background: #f8f7f2;
 	font-size: 16px;
 	font-family: 'Roboto', sans-serif;
 }
-
 .navbar {
 	box-shadow: 0 0 5px #888;
 }
-
 .navbar-brand:first-letter {
 	font-weight: bold;
 }
-
-.navbar-brand span {
+span {
 	color: #337ab7;
 	font-family: cursive;
 }
-
-#top-menu li a:hover {
+#top-menu a:hover {
 	color: #555;
     background-color: #e7e7e7;
 }
-
 body > section {
 	margin-top: 70px;
 }
-
 section a {
 	font-weight: bold;
 }
-
 aside {
 	background: #fff;
 	border: 1px solid #ddd;
 }
-
 h1 {
 	margin-top: 40px;
 	color: #337ab7;
 	font-size: larger;
 }
-
 h1:first-child, .description, .courses, .courses > li {
 	margin-top: 20px;
 }
-
-.courses > li li {
+.udacity > li {
 	margin-top: 10px;
 }
 
 @media (min-width: 768px) {
 	body {
 		font-size: 18px;
-	}
-	
+	}	
 	aside {
 		border-radius: 0 0 20px 20px;
-		box-shadow: 0 0 10px #ccc;
+		box-shadow: 0 0 5px #ccc;
 		margin-top: -20px;
 		padding-top: 20px;
 	}
