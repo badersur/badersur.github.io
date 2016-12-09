@@ -1,0 +1,21 @@
+{
+  "providers": [{
+    "name": "Microsoft Virtual Academy",
+    "profile": "https://mva.microsoft.com/Profile.aspx?alias=3423187",
+    "transcript": "",
+    "courses": [{
+      "name": "MongoDB and Redis Caching",
+      "link": "https://mva.microsoft.com/en-US/training-courses/mongodb-and-redis-caching-8654"
+    }]
+  }, {
+    "name": "Udacity",
+    "profile": null,
+    "courses": [{
+      "name": "Web Development",
+      "link": "https://www.udacity.com/course/web-development--cs253"
+    }, {
+      "name": "Developing Android Apps",
+      "link": "https://www.udacity.com/course/developing-android-apps--ud853"
+    }]
+  }]
+}
