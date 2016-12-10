@@ -6,16 +6,13 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	<meta name="author" content="Bader Nasser Al-Hashmi, @BaderSur">
+
 	<title>Completed Online Courses - BaderSur</title>
-	<meta name="description" content="A list of all online courses that @BaderSur has completed!">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,200">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-	<!--<link rel="stylesheet" href="css/bootstrap.min.css">-->
-	<link rel="stylesheet" href="css/main.css">
-	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-	<!--<script src="js/vendors/jquery.min.js"></script>-->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-	<!--<script src="js/vendors/bootstrap.min.js"></script>-->
+	<meta name="description" content="A list of some of the online courses that @BaderSur has completed!">
+
+	<script src="/js/vendors/HTMLImports.min.js"></script>
+	<link rel="import" href="/shared/header.html">
 </head>
 
 <body>
@@ -35,7 +32,7 @@
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="top-menu">
 				<ul class="nav navbar-nav">
-					<li><a href="index.html">Home <span class="sr-only">(current)</span></a></li>
+					<li><a href="index.html">Home<span class="sr-only">(current)</span></a></li>
 					<li><a href="projects.html">Projects</a></li>
 					<li><a href="show.html">Show room</a></li>
 					<li class="active"><a href="courses.html">Completed courses</a></li>
@@ -46,29 +43,16 @@
 		<!-- /.container-fluid -->
 	</nav>
 
-	<section class="container">
-		<ul class="courses">
-			<li>jQuery, AngularJS, PHP and others from <strong>CodeCademy</strong>. Click <a href="https://www.codecademy.com/BaderSur">here to see my profile</a>.</li>
+	<main class="container">
+		<noscript>
+			<p>Please enable JavaScript.</p>
+		</noscript>
+	</main>
 
-			<li>C#, MS SQL Server and others from <strong>Microsoft Virtual Academy</strong>. Click <a href="http://www.microsoftvirtualacademy.com/Profile.aspx?alias=3423187">here to see my profile</a>.</li>
-
-			<li>Android Bootcamp Series from <strong>NewCircle's Youtube channel</strong>. Click <a href="https://www.youtube.com/playlist?list=PLE08A97D36D5A255F">here to watch the series</a>.</li>
-
-			<li>From <strong>Udacity</strong>:
-				<ul class="udacity">
-					<li><a href="https://www.udacity.com/course/web-development--cs253">Web Development</a></li>
-					<li><a href="https://www.udacity.com/course/developing-android-apps--ud853">Developing Android Apps</a></li>
-					<li><a href="https://www.udacity.com/course/intro-to-computer-science--cs101">
-			Intro to Computer Science</a></li>
-					<li><a href="https://www.udacity.com/course/intro-to-html-and-css--ud304">Intro to HTML and CSS</a></li>
-					<li><a href="https://www.udacity.com/course/javascript-basics--ud804">JavaScript Basics</a></li>
-					<li><a href="https://www.udacity.com/course/programming-foundations-with-python--ud036">
-			Programming Foundations with Python</a></li>
-				</ul>
-			</li>
-		</ul>
-	</section>
-
+	<link rel="import" href="/shared/footer.html">
+	<script src="/js/vendors/nunjucks.min.js"></script>
+	<script src="/js/vendors/spin.min.js"></script>
+	<script src="/js/courses.js"></script>
 </body>
 
 </html>

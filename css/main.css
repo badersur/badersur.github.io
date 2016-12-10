@@ -3,6 +3,7 @@ body {
 	background: #f8f7f2;
 	font-size: 16px;
 	font-family: 'Roboto', sans-serif;
+	padding-top: 70px;
 }
 .navbar {
 	box-shadow: 0 0 5px #888;
@@ -18,32 +19,31 @@ span {
 	color: #555;
     background-color: #e7e7e7;
 }
-body > section {
-	margin-top: 70px;
-}
-section a {
-	font-weight: bold;
-}
 aside {
 	background: #fff;
 	border: 1px solid #ddd;
 }
-h1 {
-	margin-top: 40px;
-	color: #337ab7;
-	font-size: larger;
-}
-h1:first-child, .description, .courses, .courses > li {
+h1:first-child, .description {
 	margin-top: 20px;
 }
-.udacity > li {
-	margin-top: 10px;
+.card {
+  background: #FFF;
+  border-radius: 3px;
+  box-shadow: 0 3px 4px rgba(0,0,0,0.3);
+  margin: 20px 0;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  cursor: pointer;
+  padding: 20px;
+  font-weight: bold;
 }
+.inprogress{background: #f3f3f3;}
+h2.top-padding{padding-top: 60px;}
+main{padding-bottom: 60px;}
 
 @media (min-width: 768px) {
-	body {
-		font-size: 18px;
-	}	
 	aside {
 		border-radius: 0 0 20px 20px;
 		box-shadow: 0 0 5px #ccc;

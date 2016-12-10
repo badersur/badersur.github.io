@@ -4,8 +4,33 @@
     "profile": "https://mva.microsoft.com/Profile.aspx?alias=3423187",
     "transcript": "",
     "courses": [{
+      "name": "MEAN Stack Jump Start",
+      "inprogress": true,
+      "link": "https://mva.microsoft.com/en-US/training-courses/mean-stack-jump-start-8442"
+    }, {
       "name": "MongoDB and Redis Caching",
       "link": "https://mva.microsoft.com/en-US/training-courses/mongodb-and-redis-caching-8654"
+    }, {
+      "name": "Introduction to Angular 2.0",
+      "link": "https://mva.microsoft.com/en-US/training-courses/introduction-to-angular-20-16540"
+    }, {
+      "name": "Using Node.js with Visual Studio Code",
+      "link": "https://mva.microsoft.com/en-US/training-courses/using-nodejs-with-visual-studio-code-13920"
+    }, {
+      "name": "Introduction to ASP.NET Core 1.0",
+      "link": "https://mva.microsoft.com/en-US/training-courses/introduction-to-aspnet-core-10-16841"
+    }, {
+      "name": "Querying Microsoft SQL Server 2012 Databases Jump Start",
+      "link": "https://mva.microsoft.com/en-US/training-courses/querying-microsoft-sql-server-2012-databases-jump-start-8241"
+    }, {
+      "name": "Programming in C# Jump Start",
+      "link": "https://mva.microsoft.com/en-US/training-courses/programming-in-c-jump-start-14254"
+    }, {
+      "name": "Developer Productivity: What's New in C# 6",
+      "link": "https://mva.microsoft.com/en-US/training-courses/developer-productivity-whats-new-in-c-6-8733"
+    }, {
+      "name": "The Modern Web Platform Jump Start",
+      "link": "https://mva.microsoft.com/en-US/training-courses/the-modern-web-platform-jump-start-8337"
     }]
   }, {
     "name": "Udacity",
@@ -16,6 +41,29 @@
     }, {
       "name": "Developing Android Apps",
       "link": "https://www.udacity.com/course/developing-android-apps--ud853"
+    }, {
+      "name": "Intro to Computer Science",
+      "link": "https://www.udacity.com/course/intro-to-computer-science--cs101"
+    }]
+  }, {
+    "name": "Codecademy",
+    "profile": "https://www.codecademy.com/BaderSur",
+    "courses": [{
+      "name": "Make an Interactive Website",
+      "link": "https://www.codecademy.com/en/skills/make-an-interactive-website"
+    }, {
+      "name": "Learn AngularJS 1.X",
+      "link": "https://www.codecademy.com/learn/learn-angularjs"
+    }, {
+      "name": "PHP",
+      "link": "https://www.codecademy.com/learn/php"
+    }]
+  }, {
+    "name": "NewCircle Training",
+    "profile": null,
+    "courses": [{
+      "name": "Android Bootcamp Series 2012",
+      "link": "https://www.youtube.com/playlist?list=PLE08A97D36D5A255F"
     }]
   }]
 }

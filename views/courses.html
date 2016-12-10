@@ -1,0 +1,26 @@
+<h1 class="text-center">Completed online courses</h1>
+{% for provider in providers %}
+<h2 class="top-padding">{{ provider.name }}
+    {% if provider.profile %}
+    <small><a href="{{ provider.profile }}">see profile</a></small>
+    {% endif %}
+</h2>
+<div class="row">
+    {% for course in provider.courses %}
+    <div class="col-sm-6 col-md-4">
+        <a href="{{ course.link }}">
+            {% if course.inprogress %}
+            <div class="card inprogress" title="Learning in progress...">
+            {% else %}
+            <div class="card">
+            {% endif %}
+                {{ course.name }}
+                {% if course.inprogress %}
+                <span >&nwnear;</span>
+                {% endif %}
+            </div>
+        </a>
+    </div>
+    {% endfor %}
+</div>
+{% endfor %}

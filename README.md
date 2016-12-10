@@ -1,3 +1,2 @@
 # badersur.github.io
-This repository hosts the contents of my github page: http://badersur.github.io/index.html
-I'll share my projects and completed courses on it.
+This repository hosts the contents of [my GitHub pages](https://badersur.github.io/). It has links to some of my projects and completed online courses.

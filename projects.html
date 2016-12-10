@@ -6,47 +6,48 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	<meta name="author" content="Bader Nasser Al-Hashmi, @BaderSur">
+
 	<title>Projects - BaderSur</title>
-	<meta name="description" content="Provides a list of projects that @BaderSur has done so far.">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,200">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-	<!--<link rel="stylesheet" href="css/bootstrap.min.css">-->
-	<link rel="stylesheet" href="css/main.css">
-	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-	<!--<script src="js/vendors/jquery.min.js"></script>-->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-	<!--<script src="js/vendors/bootstrap.min.js"></script>-->
+	<meta name="description" content="Some projects that @BaderSur has done so far.">
+
+	<script src="/js/vendors/HTMLImports.min.js"></script>
+	<link rel="import" href="/shared/header.html">
 </head>
 
 <body>
 	<nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-menu" aria-expanded="false">
+		<div class="container">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-menu" aria-expanded="false">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Bader<span>Sur</span></a>
-            </div>
+				<a class="navbar-brand" href="index.html">Bader<span>Sur</span></a>
+			</div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="top-menu">
-                <ul class="nav navbar-nav">
-                    <li><a href="index.html">Home <span class="sr-only">(current)</span></a></li>
-                    <li class="active"><a href="projects.html">Projects</a></li>
-                    <li><a href="show.html">Show room</a></li>
-                    <li><a href="courses.html">Completed courses</a></li>
-                </ul>
-            </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
-    </nav>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="top-menu">
+				<ul class="nav navbar-nav">
+					<li><a href="index.html">Home<span class="sr-only">(current)</span></a></li>
+					<li class="active"><a href="projects.html">Projects</a></li>
+					<li><a href="show.html">Show room</a></li>
+					<li><a href="courses.html">Completed courses</a></li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container-fluid -->
+	</nav>
 
-	<section class="container">
-		<h1>Android Applications</h1>
-		<em>Published applications can be found <a href="https://play.google.com/store/apps/developer?id=BaderSur">here</a>.</em>
+	<main class="container">
+		<h1>Projects</h1>
+
+		<h2>Android Applications</h2>
+		<em>Published applications can be found in <a href="https://play.google.com/store/apps/developer?id=BaderSur">Google Play</a>.</em>
 		<ul>
 			<li><strong>Sur News</strong>: fetches local news about Sur using jsoup library.</li>
 			<li><strong>Sunshine</strong>: A modified version of Google's companion app. for udacity's course.</li>
@@ -55,7 +56,7 @@
 			<li>others like: file downloader, local APIs testers and random numbers generator!</li>
 		</ul>
 
-		<h1>Websites</h1>
+		<h2>Websites</h2>
 		<ul>
 			<li>Local website to show some downloaded courses. (Mostly from Udacity and Microsoft Virtual Academy)</li>
 			<li><strong>E-Bookshop</strong>: A website created with my colleague for the university's database course.</li>
@@ -64,13 +65,9 @@
 				<br> I <em>advise</em> you to take the course if you are interested in learning about Computer science and programming.</li>
 			<li><strong>Others</strong> are shown in <a href="show.html">show room</a> page.</li>
 		</ul>
+	</main>
 
-		<h1>WPF Desktop Applications</h1>
-		<ul>
-			<li><strong>Image viewer</strong>: lists the images in any folder and stretches their width to the maximum width of the application.</li>
-			<li><strong>Hasher</strong>: computes the hash values of the files.</li>
-	</section>
-
+	<link rel="import" href="/shared/footer.html">
 </body>
 
 </html>

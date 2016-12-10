@@ -6,16 +6,13 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-	<title>Personal page - BaderSur, About</title>
-	<meta name="description" content="Information about @BaderSur like his skills and contact info which may help him to conquer this world.">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,200">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-	<!--<link rel="stylesheet" href="css/bootstrap.min.css">-->
-	<link rel="stylesheet" href="css/main.css">
-	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-	<!--<script src="js/vendors/jquery.min.js"></script>-->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-	<!--<script src="js/vendors/bootstrap.min.js"></script>-->
+	<meta name="author" content="Bader Nasser Al-Hashmi, @BaderSur">
+
+	<title>Personal info. - BaderSur</title>
+	<meta name="description" content="Information about @BaderSur like his skills which may help him to conquer this world.">
+
+	<script src="/js/vendors/HTMLImports.min.js"></script>
+	<link rel="import" href="/shared/header.html">
 </head>
 
 <body>
@@ -35,7 +32,7 @@
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="top-menu">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="index.html">Home <span class="sr-only">(current)</span></a></li>
+					<li class="active"><a href="index.html">Home<span class="sr-only">(current)</span></a></li>
 					<li><a href="projects.html">Projects</a></li>
 					<li><a href="show.html">Show room</a></li>
 					<li><a href="courses.html">Completed courses</a></li>
@@ -46,41 +43,48 @@
 		<!-- /.container-fluid -->
 	</nav>
 
-	<section class="container">
+	<main class="container">
 		<div class="row">
 
 			<section class="col-sm-8">
-				<h1>Welcome</h1>
-				<p>I'm Bader Nasser Al-hashmi, from a city in Oman called Sur.</p>
+				<h1>About me</h1>
+				<p>I'm Bader Nasser Al-Hashmi, from a city in Oman called Sur.</p>
 				<p>I'm a computer engineer and a developer.</p>
 
-				<h1>Skills</h1>
+				<h2>Skills</h2>
 				<ul>
-					<li>Building websites using HTML5, CSS3, Bootstrap, JavaScript, jQuery, AngularJS and PHP.
+					<li>Creating RESTful APIs and responsive websites using HTML5, CSS3 (Bootstrap), JavaScript (Node, Express, Angular & jQuery),
+						Python (webapp2), C# (ASP.NET Core MVC) and PHP.
 					</li>
-					<li>Creating RESTful APIs using PHP and Restler framework.</li>
-					<li>Building native Android Applications using Android Studio, XML and Java.</li>
-					<li>Designing databases and using relational database management systems like MySQL and MS SQL Server.</li>
-					<li>Developing WPF desktop applications using XAML and C#. (<em>beginner</em>)</li>
+					<li>Building native Android applications using Android Studio, XML and Java.</li>
+					<li>Designing/creating databases (MySQL, MS SQL Server 2014, SQLite, MongoDB & Google Datastore).</li>
+					<li>Developing WPF desktop applications using XAML and C#.</li>
 				</ul>
 
-				<h1>Contact</h1> Feel free to contact me any time.
+				<h2>Contact</h2>
+				<p>Feel free to contact me any time using:</p>
 				<ul>
-					<li>gmail & hangout: <a href="mailto:badersur@gmail.com?subject=gitpage-">badersur@gmail.com</a></li>
+					<li>gmail: <a href="mailto:badersur@gmail.com?subject=gitpage-">badersur@gmail.com</a></li>
 					<li>Telegram: @BaderSur</li>
+					<li>Twitter: <a href="https://twitter.com/badersur">@BaderSur</a></li>
 				</ul>
+
+				<h2>Note</h2>
+				<p>I'm using Google cloud to host <a href="https://bader-sur.appspot.com">my new web application</a> built using Python
+					so I rarely update this website.</p>
 			</section>
 
 			<aside class="col-sm-4">
-				<h1>Favourite quotes</h1>
+				<h2>Favourite quotes</h2>
 				<blockquote>Check it twice, do it once.</blockquote>
 				<blockquote>Slowly.. slowly.. catch your monkey.</blockquote>
 				<blockquote>Never give up.</blockquote>
 			</aside>
 
 		</div>
-	</section>
+	</main>
 
+	<link rel="import" href="/shared/footer.html">
 </body>
 
 </html>
