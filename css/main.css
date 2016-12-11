@@ -40,7 +40,7 @@ h1:first-child, .description {
   font-weight: bold;
 }
 .inprogress{background: #f3f3f3;}
-h2.top-padding{padding-top: 60px;}
+h2.extra-padding{padding-top: 60px;}
 main{padding-bottom: 60px;}
 
 @media (min-width: 768px) {
