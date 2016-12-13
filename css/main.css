@@ -11,7 +11,7 @@ body {
 .navbar-brand:first-letter {
 	font-weight: bold;
 }
-span {
+.navbar span {
 	color: #337ab7;
 	font-family: cursive;
 }
@@ -39,9 +39,11 @@ h1:first-child, .description {
   padding: 20px;
   font-weight: bold;
 }
-.inprogress{background: #f3f3f3;}
-h2.extra-padding{padding-top: 60px;}
 main{padding-bottom: 60px;}
+.inprogress{background: #f3f3f3;}
+.extra-top-padding-60{padding-top: 60px;}
+.extra-top-margin-15{margin-top: 15px;}
+.extra-top-margin-20{margin-top: 20px;}
 
 @media (min-width: 768px) {
 	aside {

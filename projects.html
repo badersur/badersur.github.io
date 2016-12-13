@@ -44,27 +44,126 @@
 	</nav>
 
 	<main class="container">
-		<h1>Projects</h1>
+		<noscript>
+			<strong>Please enable JavaScript!</strong>
+		</noscript>
 
-		<h2>Android Applications</h2>
-		<em>Published applications can be found in <a href="https://play.google.com/store/apps/developer?id=BaderSur">Google Play</a>.</em>
-		<ul>
-			<li><strong>Sur News</strong>: fetches local news about Sur using jsoup library.</li>
-			<li><strong>Sunshine</strong>: A modified version of Google's companion app. for udacity's course.</li>
-			<li><strong>Yamba</strong>: A micro blogging app. created while learning from
-				<a href="https://www.youtube.com/playlist?list=PLE08A97D36D5A255F">Android Bootcamp Series</a>.</li>
-			<li>others like: file downloader, local APIs testers and random numbers generator!</li>
-		</ul>
+		<div class="row extra-top-margin-20">
 
-		<h2>Websites</h2>
-		<ul>
-			<li>Local website to show some downloaded courses. (Mostly from Udacity and Microsoft Virtual Academy)</li>
-			<li><strong>E-Bookshop</strong>: A website created with my colleague for the university's database course.</li>
-			<li><strong>Search engine</strong>: (will be done soon) I will implement the crawler created while learning from <a href="https://www.udacity.com/course/intro-to-computer-science--cs101">
-			Intro to Computer Science</a> course.
-				<br> I <em>advise</em> you to take the course if you are interested in learning about Computer science and programming.</li>
-			<li><strong>Others</strong> are shown in <a href="show.html">show room</a> page.</li>
-		</ul>
+			<div class="col-sm-6 col-md-4">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h3 class="panel-title"><a href="https://play.google.com/store/apps/details?id=om.mooniat.sunshine">Sunshine</a></h3>
+					</div>
+					<div class="panel-body">
+						<a href="https://play.google.com/store/apps/details?id=om.mooniat.sunshine">
+							<picture>
+								<source media="(max-width: 488px)" srcset="/images/sunshine.png">
+								<source media="(max-width: 767px)" srcset="/images/sunshine-767.png">
+								<source media="(min-width: 768px)" srcset="/images/sunshine.png">
+								<img src="/images/sunshine.png" alt="screenshot for sunshine application" class="img-responsive img-thumbnail">
+							</picture>
+						</a>
+						<p class="extra-top-margin-15">
+							A weather forecast app. that utilizes <a href="http://openweathermap.org/API">OpenWeatherMap's API</a> and using the
+							knowledge gained from Udacity's course: <a href="https://www.udacity.com/course/new-android-fundamentals--ud851">Developing Android Apps</a>							(and other resources!)
+						</p>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="col-sm-6 col-md-4">
+
+				<div class="panel panel-success">
+					<div class="panel-heading">
+						<h2 class="panel-title">
+							<a href="https://github.com/badersur/webcrawler">Web crawler</a></h2>
+					</div>
+					<div class="panel-body">
+						<a href="https://github.com/badersur/webcrawler">
+							<picture>
+								<source media="(max-width: 488px)" srcset="/images/page-rank.png">
+								<source media="(max-width: 767px)" srcset="/images/page-rank-767.png">
+								<source media="(min-width: 768px)" srcset="/images/page-rank.png">
+								<img src="/images/page-rank.png" alt="image for PageRank algorithm" class="img-responsive img-thumbnail">
+							</picture>
+						</a>
+						<p class="extra-top-margin-15">A script to <a href="https://github.com/badersur/webcrawler">crawl the web</a> using Google's PageRank algorithm</p>
+					</div>
+				</div>
+
+
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<h3 class="panel-title"><a href="https://bader-sur.appspot.com/?gh-projects">Python web application</a></h3>
+					</div>
+					<div class="panel-body">
+						<p>A <a href="https://bader-sur.appspot.com/?gh-projects">web application</a> hosted on Google App Engine which has a
+							blog, a registration system and RESTful APIs in JSON & XML formats. It utilizes memcache to have almost zero read
+							from Google Datastore in order to speed up data retrieval</p>
+					</div>
+				</div>
+
+			</div>
+
+			<!--<div class="clearfix"></div>-->
+
+			<div class="col-sm-12 col-md-4">
+				<div class="row">
+
+
+					<div class="col-sm-6 col-md-12">
+
+						<div class="panel panel-danger">
+							<div class="panel-heading">
+								<h3 class="panel-title"><a href="https://play.google.com/store/apps/details?id=om.mooniat.surnews">Sur News</a></h3>
+							</div>
+							<div class="panel-body">
+								<p>
+									An <a href="https://play.google.com/store/apps/details?id=om.mooniat.surnews">Android application</a> that fetches
+									local news about Sur using <a href="https://jsoup.org/">jsoup library</a></p>
+							</div>
+						</div>
+
+						<div class="panel panel-warning">
+							<div class="panel-heading">
+								<h3 class="panel-title">Yamba</h3>
+							</div>
+							<div class="panel-body">
+								<p>A micro blogging app. created while learning from
+									<a href="https://www.youtube.com/playlist?list=PLE08A97D36D5A255F">Android Bootcamp Series</a></p>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="col-sm-6 col-md-12">
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h3 class="panel-title">E-Bookshop</h3>
+							</div>
+							<div class="panel-body">
+								<p>A website created with my colleague for the university's database course</p>
+							</div>
+						</div>
+
+						<div class="panel panel-success">
+							<div class="panel-heading">
+								<h2 class="panel-title">
+									<a href="https://github.com/badersur/mimic">mimic</a></h2>
+							</div>
+							<div class="panel-body">
+								<p>A <a href="https://github.com/badersur/mimic">web framework</a> that implements the
+									<a href="http://docs.webob.org/en/latest/do-it-yourself.html" rel="nofollow">WSGI interface</a></p>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
 	</main>
 
 	<link rel="import" href="/shared/footer.html">
