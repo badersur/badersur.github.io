@@ -41,9 +41,10 @@ h1:first-child, .description {
 }
 main{padding-bottom: 60px;}
 .inprogress{background: #f3f3f3;}
-.extra-top-padding-60{padding-top: 60px;}
 .extra-top-margin-15{margin-top: 15px;}
 .extra-top-margin-20{margin-top: 20px;}
+.extra-top-margin-60{margin-top: 60px;}
+.extra-top-padding-60{padding-top: 60px;}
 
 @media (min-width: 768px) {
 	aside {
