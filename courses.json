@@ -7,7 +7,6 @@
       "courses": [
         {
           "name": "MEAN Stack Jump Start",
-          "inprogress": true,
           "link": "https://mva.microsoft.com/en-US/training-courses/mean-stack-jump-start-8442"
         },
         {
