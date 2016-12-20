@@ -1,7 +1,8 @@
 <h1 class="text-center">Completed online courses</h1>
 {% for provider in providers %}
 <div class="row extra-top-padding-60">
-    <h2 class="col-xs-12">{{ provider.name }}
+    <h2 class="col-xs-12">
+        {{ provider.name }}
         {% if provider.profile %}
         <small><a href="{{ provider.profile }}">see profile</a></small>
         {% endif %}
