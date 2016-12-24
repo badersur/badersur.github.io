@@ -39,6 +39,7 @@ h1:first-child, .description {
   padding: 20px;
   font-weight: bold;
 }
+.card:hover{box-shadow: 0 3px 4px rgba(0,0,0,0.8);}
 main{padding-bottom: 60px;}
 .inprogress{background: #f3f3f3;}
 .extra-top-margin-15{margin-top: 15px;}
