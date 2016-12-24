@@ -5,6 +5,10 @@
       "profile": "https://mva.microsoft.com/Profile.aspx?alias=3423187",
       "courses": [
         {
+          "name": "Developing Websites Using Python and Django",
+          "link": "https://mva.microsoft.com/en-US/training-courses/developing-websites-using-python-and-django-11415"
+        },
+        {
           "name": "MEAN Stack Jump Start",
           "link": "https://mva.microsoft.com/en-US/training-courses/mean-stack-jump-start-8442"
         },
