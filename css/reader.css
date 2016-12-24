@@ -1,5 +1,5 @@
 body {
-  font-size: 14px;  
+  font-size: 14px;
   background: #eee url("../images/reader.jpg") no-repeat center center fixed;
   background-size: cover;
 }
@@ -9,7 +9,8 @@ header {
   padding: 5px 0;
 }
 
-p, .row {
+p,
+.row {
   margin: 0;
 }
 
@@ -19,15 +20,15 @@ p, .row {
 
 .article {
   color: #222;
-  background: rgba(255,255,255,.9);
+  background: rgba(255, 255, 255, .9);
   border-spacing: 3px;
   border-color: gray;
-  font-family: arial,sans-serif;
+  font-family: arial, sans-serif;
   border-bottom: 1px #e5e5e5 solid;
 }
 
 .current .item {
-  background: rgba(206,220,206,.9);
+  background: rgba(206, 220, 206, .9);
 }
 
 .item {

@@ -1,6 +1,6 @@
 $(function () {
     $(".description").hide();
-    
+
     $('.item').click(function () {
         if (!$(this).parent().hasClass("current")) {
             $('.article').removeClass('current');
@@ -26,8 +26,7 @@ $(function () {
 
         if (event.which === 111) { // the key o is pressed!
             $('.current').children('.description').toggle();
-        }
-        else if (event.which === 110) { // the key is n
+        } else if (event.which === 110) { // the key is n
             nextArticle.children('.item').click();
         } else if (event.which === 112) { // the key is p
             prevArticle.children('.item').click();

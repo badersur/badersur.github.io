@@ -1,4 +1,6 @@
-html, body, #map_canvas {
+html,
+body,
+#map_canvas {
     margin: 0;
     padding: 0;
     height: 100%;
@@ -12,7 +14,7 @@ p.attention {
 }
 
 .header {
-    background-color: rgba(0,0,0,0.3);
+    background-color: rgba(0, 0, 0, 0.3);
     position: absolute;
     width: 100%;
     z-index: 10;

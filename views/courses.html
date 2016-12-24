@@ -9,7 +9,7 @@
     </h2>
     {% for course in provider.courses %}
     <div class="col-sm-6 col-md-4">
-        <a href="{{ course.link }}">
+        <a href="{{ course.link }}" class="course_link">
             {% if course.inprogress %}
             <div class="card inprogress" title="Learning in progress...">
             {% else %}

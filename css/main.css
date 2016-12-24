@@ -5,47 +5,80 @@ body {
 	font-family: 'Roboto', sans-serif;
 	padding-top: 70px;
 }
+
 .navbar {
 	box-shadow: 0 0 5px #888;
 }
+
 .navbar-brand:first-letter {
 	font-weight: bold;
 }
+
 .navbar span {
 	color: #337ab7;
 	font-family: cursive;
 }
+
 #top-menu a:hover {
 	color: #555;
-    background-color: #e7e7e7;
+	background-color: #e7e7e7;
 }
+
 aside {
 	background: #fff;
 	border: 1px solid #ddd;
 }
-h1:first-child, .description {
+
+h1:first-child,
+.description {
 	margin-top: 20px;
 }
+
 .card {
-  background: #FFF;
-  border-radius: 3px;
-  box-shadow: 0 3px 4px rgba(0,0,0,0.3);
-  margin: 20px 0;
-  height: 120px;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  cursor: pointer;
-  padding: 20px;
-  font-weight: bold;
+	background: #FFF;
+	border-radius: 3px;
+	box-shadow: 0 3px 4px rgba(0, 0, 0, 0.3);
+	margin: 20px 0;
+	height: 120px;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	cursor: pointer;
+	padding: 20px;
+	font-weight: bold;
 }
-.card:hover{box-shadow: 0 3px 4px rgba(0,0,0,0.8);}
-main{padding-bottom: 60px;}
-.inprogress{background: #f3f3f3;}
-.extra-top-margin-15{margin-top: 15px;}
-.extra-top-margin-20{margin-top: 20px;}
-.extra-top-margin-60{margin-top: 60px;}
-.extra-top-padding-60{padding-top: 60px;}
+
+.card:hover {
+	box-shadow: 0 3px 4px rgba(0, 0, 0, 0.8);
+}
+
+.course_link:hover {
+	text-decoration: none;
+}
+
+main {
+	padding-bottom: 60px;
+}
+
+.inprogress {
+	background: #f3f3f3;
+}
+
+.extra-top-margin-15 {
+	margin-top: 15px;
+}
+
+.extra-top-margin-20 {
+	margin-top: 20px;
+}
+
+.extra-top-margin-60 {
+	margin-top: 60px;
+}
+
+.extra-top-padding-60 {
+	padding-top: 60px;
+}
 
 @media (min-width: 768px) {
 	aside {
