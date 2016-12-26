@@ -5,6 +5,10 @@
       "profile": "https://mva.microsoft.com/Profile.aspx?alias=3423187",
       "courses": [
         {
+          "name": "Django in the Real World",
+          "link": "https://mva.microsoft.com/en-US/training-courses/django-in-the-real-world-14684"
+        },
+        {
           "name": "Developing Websites Using Python and Django",
           "link": "https://mva.microsoft.com/en-US/training-courses/developing-websites-using-python-and-django-11415"
         },
