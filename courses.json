@@ -33,8 +33,16 @@
           "link": "https://mva.microsoft.com/en-US/training-courses/introduction-to-aspnet-core-10-16841"
         },
         {
+          "name": "Introduction to ASP.NET MVC",
+          "link": "https://mva.microsoft.com/en-US/training-courses/introduction-to-aspnet-mvc-8322"
+        },
+        {
           "name": "Querying Microsoft SQL Server 2012 Databases Jump Start",
           "link": "https://mva.microsoft.com/en-US/training-courses/querying-microsoft-sql-server-2012-databases-jump-start-8241"
+        },
+        {
+          "name": "Database Fundamentals",
+          "link": "https://mva.microsoft.com/en-US/training-courses/database-fundamentals-8243"
         },
         {
           "name": "Programming in C# Jump Start",
