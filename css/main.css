@@ -29,11 +29,6 @@ aside {
 	border: 1px solid #ddd;
 }
 
-h1:first-child,
-.description {
-	margin-top: 20px;
-}
-
 .card {
 	background: #FFF;
 	border-radius: 3px;
@@ -56,12 +51,12 @@ h1:first-child,
 	text-decoration: none;
 }
 
-main {
-	padding-bottom: 60px;
+.inprogress {
+	background: #fff url("/images/ic_loop_black_36px.svg") no-repeat right bottom;
 }
 
-.inprogress {
-	background: #f3f3f3;
+main {
+	padding-bottom: 60px;
 }
 
 .extra-top-margin-15 {
