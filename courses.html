@@ -22,10 +22,6 @@
 	<link rel="stylesheet" href="/css/main.css">
 
     <style>
-        h2 {
-            margin-top: 60px;
-        }
-        
         .card {
             background: #f9f9f9;
             border-radius: 3px;
@@ -39,7 +35,7 @@
             padding: 20px;
             font-weight: bold;
         }
-
+        h2 {margin-top: 60px;}
         .card:hover {box-shadow: 0 3px 4px rgba(0, 0, 0, 0.8);}
         .inprogress {background: #fff url("/images/ic_loop_black_36px.svg") no-repeat right bottom;}
     </style>
@@ -68,8 +64,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="top-menu">
                 <ul class="nav navbar-nav">
-                    <li><a href="projects.html">Projects</a></li>
-                    <!--<li><a href="show.html">Show room</a></li>-->
+                    <li><a href="/projects.html">Projects</a></li>
                     <li class="active"><a href="#">Completed courses</a></li>
                 </ul>
             </div>
@@ -359,7 +354,7 @@
 	<script async src="/js/vendors/ie10-viewport-bug-workaround.js"></script>
     <script src="/js/vendors/nunjucks.min.js"></script>
     <script src="/js/vendors/spin.min.js"></script>
-    <script async src="/js/courses.js"></script>
+    <script async src="/js/get_courses.js"></script>
 </body>
 
 </html>

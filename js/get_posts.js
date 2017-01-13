@@ -1,8 +1,8 @@
 var opts = {
-    lines: 13 // The number of lines to draw
-    , length: 28 // The length of each line
-    , width: 14 // The line thickness
-    , radius: 42 // The radius of the inner circle
+    lines: 8 // The number of lines to draw
+    , length: 8 // The length of each line
+    , width: 8 // The line thickness
+    , radius: 8 // The radius of the inner circle
     , scale: 1 // Scales overall size of the spinner
     , corners: 1 // Corner roundness (0..1)
     , color: '#000' // #rgb or #rrggbb or array of colors
@@ -20,27 +20,17 @@ var opts = {
     , hwaccel: false // Whether to use hardware acceleration
     , position: 'absolute' // Element positioning
 };
-var main = document.querySelector('main');
-var spinner = new Spinner(opts).spin(main);
-
-var request = new XMLHttpRequest();
-request.onreadystatechange = function () {
-    if (request.readyState == 4 && request.status == 200) {
-        var providers = request.response.providers;
-        renderProviders(providers);
-    }
-}
-// request.open('GET', 'https://badersur.github.io/courses.json');
-request.open('GET', '/courses.json');
-request.responseType = 'json';
-request.send();
-
-function renderProviders(providers) {
-    nunjucks.configure('/views', {
-        autoescape: false
+var posts = document.querySelector('#posts');
+var spinner = new Spinner(opts).spin(posts);
+var jqxhr = $.ajax("https://bader-sur.appspot.com/blog.json")
+    .done(function (data) {
+        $('.notify').remove();
+        var env = nunjucks.configure('/views', { autoescape: true });
+        $('#posts').append(env.render('posts.html', { posts: data.posts }));
+        spinner.stop();
+    })
+    .fail(function () {
+        $('.notify').remove();
+        $('posts').append('<p>Error occured while fetching blog posts!</p>');
+        spinner.stop();
     });
-
-    main.innerHTML = nunjucks.render('courses.html', {
-        providers: providers
-    });
-}
