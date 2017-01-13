@@ -25,6 +25,9 @@
 		<script async src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 		<script async src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
+	<style>
+		.list-unstyled li+li {margin-top: 10px;}
+	</style>
 </head>
 
 <body>
@@ -44,7 +47,6 @@
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="top-menu">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Home<span class="sr-only">(current)</span></a></li>
 					<li><a href="projects.html">Projects</a></li>
 					<!--<li><a href="show.html">Show room</a></li>-->
 					<li><a href="courses.html">Completed courses</a></li>
@@ -83,20 +85,32 @@
 				<h2>Contact</h2>
 				<p>Feel free to contact me any time using:</p>
 				<ul>
-					<li>gmail: <a href="mailto:badersur@gmail.com?subject=gitpage-">badersur@gmail.com</a></li>
+					<li>gmail: <a href="mailto:badersur@gmail.com?subject=gitpage-">BaderSur@gmail.com</a></li>
 					<li>Telegram: <a href="https://telegram.me/BaderSur">@BaderSur</a></li>
 					<li>Twitter: <a href="https://twitter.com/badersur">@BaderSur</a></li>
 				</ul>
 
 				<h2>Note</h2>
-				<p>I have another Python <a href="https://bader-sur.appspot.com/?note">web app</a> hosted on Google App Engine (for free!) which has a blog.</p>
+				<p>I have another Python <a href="https://bader-sur.appspot.com/?note">web app</a> hosted on Google App Engine (for free!) which has a <a href="https://bader-sur.appspot.com/blog?note">blog</a>.</p>
 			</section>
 
-			<aside class="col-sm-4">
-				<h2>Favourite quotes</h2>
-				<blockquote>Check it twice, do it once.</blockquote>
-				<blockquote>Never give up.</blockquote>
-			</aside>
+			<section class="col-sm-4">
+				<div>
+					<h2>Favourite quotes</h2>
+					<blockquote>Check it twice, do it once.</blockquote>
+					<blockquote>Never give up.</blockquote>
+				</div>
+
+				<hr>
+
+				<div id="posts">
+					<h2><a href="https://bader-sur.appspot.com/blog">Blog posts</a></h2>
+					<noscript>
+						<p>Please enable JS to fetch blog posts!</p>
+					</noscript>
+					<p class="notify">Fetching posts...</p>
+				</div>
+			</section>
 
 		</div>
 	</main>
@@ -109,6 +123,46 @@
 	<!--<script async src="/js/vendors/bootstrap.min.js"></script>-->
 	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 	<script async src="/js/vendors/ie10-viewport-bug-workaround.js"></script>
+	<script src="/js/vendors/nunjucks.min.js"></script>
+  	<script src="/js/vendors/spin.min.js"></script>
+	<script >
+		var opts = {
+			lines: 8 // The number of lines to draw
+			, length: 8 // The length of each line
+			, width: 8 // The line thickness
+			, radius: 8 // The radius of the inner circle
+			, scale: 1 // Scales overall size of the spinner
+			, corners: 1 // Corner roundness (0..1)
+			, color: '#000' // #rgb or #rrggbb or array of colors
+			, opacity: 0.25 // Opacity of the lines
+			, rotate: 0 // The rotation offset
+			, direction: 1 // 1: clockwise, -1: counterclockwise
+			, speed: 1 // Rounds per second
+			, trail: 60 // Afterglow percentage
+			, fps: 20 // Frames per second when using setTimeout() as a fallback for CSS
+			, zIndex: 2e9 // The z-index (defaults to 2000000000)
+			, className: 'spinner' // The CSS class to assign to the spinner
+			, top: '50%' // Top position relative to parent
+			, left: '50%' // Left position relative to parent
+			, shadow: false // Whether to render a shadow
+			, hwaccel: false // Whether to use hardware acceleration
+			, position: 'absolute' // Element positioning
+		};
+		var posts = document.querySelector('#posts');
+		var spinner = new Spinner(opts).spin(posts);
+		var jqxhr = $.ajax( "https://bader-sur.appspot.com/blog.json" )
+			.done(function(data) {
+				$('.notify').remove();
+				var env = nunjucks.configure('/views', { autoescape: true });
+				$('#posts').append(env.render('posts.html', { posts: data.posts }));
+				spinner.stop();
+			})
+			.fail(function() {
+				$('.notify').remove();
+				$('posts').append('<p>Error occured while fetching blog posts!</p>');
+				spinner.stop();
+			});
+	</script>
 </body>
 
 </html>

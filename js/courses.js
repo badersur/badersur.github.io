@@ -36,7 +36,7 @@ request.responseType = 'json';
 request.send();
 
 function renderProviders(providers) {
-    nunjucks.configure('../views', {
+    nunjucks.configure('/views', {
         autoescape: false
     });
 
