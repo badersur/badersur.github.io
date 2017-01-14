@@ -1,5 +1,7 @@
+env.addFilter('year', function (dateString) {
+    return (new Date(dateString)).getUTCFullYear();
+});
 $.ajax('https://api.github.com/repos/badersur/badersur.github.io')
     .done(function (data) {
-        var push_date = new Date(data.pushed_at);
-        $('.text-muted').append(push_date.toString() + '.');
+        $('.text-muted').append(env.render('footer_text.html', { data: data }));
     });

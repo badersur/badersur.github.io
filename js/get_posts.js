@@ -22,10 +22,10 @@ var opts = {
 };
 var posts = document.querySelector('#posts');
 var spinner = new Spinner(opts).spin(posts);
+// var jqxhr = $.ajax("http://localhost:8888/blog.json")
 var jqxhr = $.ajax("https://bader-sur.appspot.com/blog.json")
     .done(function (data) {
         $('.notify').remove();
-        var env = nunjucks.configure('/views', { autoescape: true });
         $('#posts').append(env.render('posts.html', { posts: data.posts }));
         spinner.stop();
     })
