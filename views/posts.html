@@ -2,8 +2,9 @@
     {% if loop.first %}
         <ul class="list-unstyled">
     {% endif %}
-    <li><a href="{{ post.url }}">{{ post.subject }}</a>, 
-        <em title="{{ post.created | friendly_date }}">{{ post.created | pretty_date }}</em></li>
+    <li><a href="{{ post.url }}?gh">{{ post.subject }}</a>, 
+        <em title="{{ post.created | friendly_time }}">{{ post.created | relative_time }}</em>
+    </li>
     {% if loop.last %}
         </ul>
     {% endif %}
