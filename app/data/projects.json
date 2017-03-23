@@ -1,0 +1,35 @@
+[{
+    "name": "Sunshine",
+    "description": "An Android weather forecast app that utilizes <a href=\"https://openweathermap.org/API\">OpenWeatherMap's API</a> using the knowledge gained from <a href=\"https://www.udacity.com/course/new-android-fundamentals--ud851\">Udacity's course: Developing Android Apps</a>.",
+    "downloadLink": "https://play.google.com/store/apps/details?id=om.mooniat.sunshine"
+  },
+  {
+    "name": "Web crawler",
+    "description": "A script to crawl the web using Google's PageRank algorithm.",
+    "source": "https://github.com/badersur/webcrawler"
+  },
+  {
+    "name": "Personal web app",
+    "description": "A web app hosted on <a href=\"https://cloud.google.com/appengine/docs/standard/\">Google App Engine Standard Environment</a> which has a blog, a registration system and RESTful APIs in JSON & XML formats. It utilizes memcache to have almost zero read from Google Datastore in order to speed up data retrieval.",
+    "website": "https://bader-sur.appspot.com/?gh-projects"
+  },
+  {
+    "name": "Chirp",
+    "description": "A Twitter clone using the MEAN stack (MongoDB, Express, Angular & Node).",
+    "source": "https://github.com/badersur/chirp"
+  },
+  {
+    "name": "Sur News",
+    "description": "An Android app that fetches local news about Sur using <a href=\"https://jsoup.org/\">jsoup library</a>.",
+    "downloadLink": "https://play.google.com/store/apps/details?id=om.mooniat.surnews"
+  },
+  {
+    "name": "Yamba",
+    "description": "A micro blogging app created while learning from <a href=\"https://www.youtube.com/playlist?list=PLE08A97D36D5A255F\">Android Bootcamp Series</a>."
+  },
+  {
+    "name": "mimic",
+    "description": "A web framework that implements the <a href=\"http://docs.webob.org/en/latest/do-it-yourself.html\">WSGI interface</a>.",
+    "source": "https://github.com/badersur/mimic"
+  }
+]

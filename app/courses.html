@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+
+@@include('./partials/head.html', {
+  "title": "Completed online courses",
+  "description": "Most of the online courses that @BaderSur has completed!",
+  "coursesStyles": true
+})
+
+<body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
+  <!-- Always shows a header, even in smaller screens. -->
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+
+    @@include('./partials/header.html')
+
+    <main class="mdl-layout__content">
+      <div class="page-content">
+
+        <div class="mdl-grid extra-margin">
+
+          <h4 class="mdl-cell--12-col">Completed online courses</h4>
+
+          @@for(let provider of providers) {
+            <h5 class="mdl-cell--12-col">${provider.name}</h5>
+            @@loop("./partials/course.html", `+(JSON.stringify(provider.courses))+`)
+          }
+
+        </div>
+
+        @@include('./partials/footer.html')
+
+      </div>
+    </main>
+
+  </div>
+
+  @@include('./partials/scripts.html')
+
+  <!-- Built with love using Web Starter Kit -->
+</body>
+
+</html>

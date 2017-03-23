@@ -1,0 +1,101 @@
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="@@description">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="@@author">
+
+  <title>@@title - BaderSur</title>
+
+  <!-- Disable tap highlight on IE -->
+  <meta name="msapplication-tap-highlight" content="no">
+
+  <!-- Web Application Manifest -->
+  <link rel="manifest" href="manifest.json">
+
+  <!-- Add to homescreen for Chrome on Android -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="BaderSur">
+  <link rel="icon" sizes="192x192" href="images/touch/chrome-touch-icon-192x192.png">
+
+  <!-- Add to homescreen for Safari on iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="BaderSur">
+  <link rel="apple-touch-icon" href="images/touch/apple-touch-icon.png">
+
+  <!-- Tile icon for Win8 (144x144 + tile color) -->
+  <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+  <meta name="msapplication-TileColor" content="#2F3BA2">
+
+  <!-- Color the status bar on mobile devices -->
+  <meta name="theme-color" content="#2F3BA2">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://badersur.github.io">
+  <meta property="og:image" content="https://badersur.github.io/images/touch/icon-128x128.png">
+  <meta property="og:image:width" content="128">
+  <meta property="og:image:height" content="128">
+  <meta property="og:title" content="@@title">
+  <meta property="og:description" content="@@description">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@BaderSur">
+  <meta name="twitter:title" content="@@title">
+  <meta name="twitter:description" content="@@description">
+  <meta name="twitter:image" content="https://badersur.github.io/images/touch/icon-128x128.png">
+
+  <!-- Material Design icons -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+  <link rel="stylesheet" href="styles/main.css">
+
+@@if (coursesStyles) {
+  <style>
+    .mdl-grid {
+      max-width: 1124px;
+    }
+
+    .mdl-card {
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 20px;
+    }
+
+    .mdl-card:hover {
+      box-shadow: 0 6px 10px 0 rgba(0, 0, 0, .14), 0 1px 18px 0 rgba(0, 0, 0, .12), 0 3px 5px -1px rgba(0, 0, 0, .2);
+    }
+
+    a.linked-card {
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    h4,
+    h5 {
+      margin: 0;
+    }
+
+    h5 {
+      margin-top: 60px;
+      margin-bottom: 20px;
+    }
+
+  </style>
+}
+
+@@if (projectsStyles) {
+  <style>
+    .mdl-grid {
+      max-width: 1124px;
+    }
+
+    .mdl-card__media {
+      min-height: 20px;
+    }
+
+  </style>
+}
+</head>

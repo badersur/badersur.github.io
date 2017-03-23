@@ -1,0 +1,32 @@
+<div class="mdl-cell mdl-card mdl-shadow--3dp">
+  <div class="mdl-card__media">
+  </div>
+
+  <div class="mdl-card__title">
+    <h4 class="mdl-card__title-text">@@name</h4>
+  </div>
+
+  <div class="mdl-card__supporting-text">
+    <span class="mdl-typography--font-light mdl-typography--subhead">
+      @@description
+    </span>
+  </div>
+
+@@if (downloadLink) {
+  <div class="mdl-card__actions">
+    <a class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase" href="@@downloadLink">Download<i class="material-icons">chevron_right</i></a>
+  </div>
+}
+
+@@if (source) {
+  <div class="mdl-card__actions">
+    <a class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase" href="@@source">See source code<i class="material-icons">chevron_right</i></a>
+  </div>
+}
+
+@@if (website) {
+  <div class="mdl-card__actions">
+    <a class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase" href="@@website">Visit website<i class="material-icons">chevron_right</i></a>
+  </div>
+}
+</div>
