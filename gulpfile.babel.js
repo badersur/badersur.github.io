@@ -285,8 +285,7 @@ gulp.task('generate-service-worker', ['copy-sw-scripts'], () => {
 gulp.task('deploy', ['default'], () => {
   return gulp.src('dist/**/*')
     .pipe($.ghPages({
-      branch: 'master',
-      push: true
+      branch: 'master'
     }));
 });
 
