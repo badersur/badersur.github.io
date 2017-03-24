@@ -9,6 +9,12 @@
   <!-- endbuild -->
 }
 
+@@if (!mainScripts) {
+  <!-- build:js scripts/shared.min.js -->
+  <script src="scripts/shared.js"></script>
+  <!-- endbuild -->
+}
+
 <!-- Google Analytics -->
 <script>
   (function (i, s, o, g, r, a, m) {
