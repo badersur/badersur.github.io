@@ -1,7 +1,17 @@
-sudo: false
 language: node_js
 node_js:
-  - '6'
-  - '5'
-  - '4'
-  - '0.12'
+  - '7.7.4'
+before_script:
+  - npm install -g gulp
+script: gulp
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
+  on:
+    branch: dev
+  target_branch: master
+  local_dir: dist
+  email: badersur@gmail.com
+  name: Bader Nasser
