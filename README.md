@@ -1,6 +1,4 @@
-# [badersur.github.io][1]
-
-[![Build Status](https://travis-ci.org/badersur/badersur.github.io.svg?branch=dev)](https://travis-ci.org/badersur/badersur.github.io)
+# [badersur.github.io][1] [![Build Status](https://travis-ci.org/badersur/badersur.github.io.svg?branch=dev)](https://travis-ci.org/badersur/badersur.github.io)
 
 The source code for [my github pages][1].
 
