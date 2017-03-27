@@ -1,5 +1,7 @@
 # [badersur.github.io][1]
 
+[![Build Status](https://travis-ci.org/badersur/badersur.github.io.svg?branch=dev)](https://travis-ci.org/badersur/badersur.github.io)
+
 The source code for [my github pages][1].
 
 
@@ -34,6 +36,8 @@ Once you have verified that your system can run WSK, check out the [commands](do
 
 - [Ryan Christiani][12]
 
+- [Google's lighthouse Chrome extension][13]
+
 - All awesome open source projects :)
 
 
@@ -49,3 +53,4 @@ Once you have verified that your system can run WSK, check out the [commands](do
 [10]: https://github.com/coderhaoxin/gulp-file-include/issues/119#issuecomment-286994044
 [11]: https://laracasts.com/series/es6-cliffsnotes
 [12]: https://www.youtube.com/playlist?list=PL57atfCFqj2h5fpdZD-doGEIs0NZxeJTX
+[13]: https://github.com/GoogleChrome/lighthouse
