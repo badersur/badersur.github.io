@@ -1,17 +1,19 @@
-# [badersur.github.io][1] [![Build Status](https://travis-ci.org/badersur/badersur.github.io.svg?branch=dev)](https://travis-ci.org/badersur/badersur.github.io)
+# [badersur.github.io][1] && [badersur-push.appspot.com][2] [![Build Status](https://travis-ci.org/badersur/badersur.github.io.svg?branch=dev)](https://travis-ci.org/badersur/badersur.github.io)
 
-The source code for [my github pages][1].
+The source code for [my github pages][1] and the [Google App Engine application][2].
 
 
 ## Features
 
-- Responsive website - using [Material Design Lite][2].
+- Responsive website - using [Material Design Lite][3].
 
-- Performance optimization - Images, JavaScript, HTML and CSS are minifed and concatenated using [gulp][3].
+- Performance optimization - Images, JavaScript, HTML and CSS are minifed and concatenated using [gulp][4].
 
-- ES2015 support using [Babel][4].
+- ES2015 support using [Babel][5].
 
-- Offline support - Thanks to [Service Worker][5] [pre-caching][6]. This is made possible by [sw-precache][7].
+- Offline support - Thanks to [Service Worker][6] [pre-caching][7]. This is made possible by [sw-precache][8].
+
+- The features of [Google's Web Starter Kit][9] :)
 
 
 ## Quickstart
@@ -24,31 +26,35 @@ Once you have verified that your system can run WSK, check out the [commands](do
 
 ## Credits
 
-- [Google's Web Starter Kit][8]
+- [Google's Web Starter Kit][9]
 
-- [Kamil Wojtczyk][9]
+- [Kamil Wojtczyk][10]
 
-- [MSMcBain][10]
+- [MSMcBain][11]
   
-- [Jeffrey Way][11]
+- [Jeffrey Way][12]
 
-- [Ryan Christiani][12]
+- [Ryan Christiani][13]
 
-- [Google's lighthouse Chrome extension][13]
+- [Google's lighthouse Chrome extension][14]
+
+- [Travis CI][15]
 
 - All awesome open source projects :)
 
 
 [1]: https://badersur.github.io
-[2]: https://getmdl.io
-[3]: https://github.com/gulpjs/gulp
-[4]: https://babeljs.io
-[5]: https://developers.google.com/web/fundamentals/getting-started/primers/service-workers
-[6]: https://github.com/google/web-starter-kit/blob/master/gulpfile.babel.js#L226
-[7]: https://github.com/GoogleChrome/sw-precache
-[8]: https://github.com/google/web-starter-kit
-[9]: https://github.com/google/web-starter-kit/pull/890
-[10]: https://github.com/coderhaoxin/gulp-file-include/issues/119#issuecomment-286994044
-[11]: https://laracasts.com/series/es6-cliffsnotes
-[12]: https://www.youtube.com/playlist?list=PL57atfCFqj2h5fpdZD-doGEIs0NZxeJTX
-[13]: https://github.com/GoogleChrome/lighthouse
+[2]: https://badersur-push.appspot.com
+[3]: https://getmdl.io
+[4]: https://github.com/gulpjs/gulp
+[5]: https://babeljs.io
+[6]: https://developers.google.com/web/fundamentals/getting-started/primers/service-workers
+[7]: https://github.com/google/web-starter-kit/blob/master/gulpfile.babel.js#L226
+[8]: https://github.com/GoogleChrome/sw-precache
+[9]: https://github.com/google/web-starter-kit
+[10]: https://github.com/google/web-starter-kit/pull/890
+[11]: https://github.com/coderhaoxin/gulp-file-include/issues/119#issuecomment-286994044
+[12]: https://laracasts.com/series/es6-cliffsnotes
+[13]: https://www.youtube.com/playlist?list=PL57atfCFqj2h5fpdZD-doGEIs0NZxeJTX
+[14]: https://github.com/GoogleChrome/lighthouse
+[15]: https://travis-ci.org
