@@ -31,7 +31,6 @@ import runSequence from 'run-sequence';
 import browserSync from 'browser-sync';
 import swPrecache from 'sw-precache';
 import gulpLoadPlugins from 'gulp-load-plugins';
-import {output as pagespeed} from 'psi';
 import pkg from './package.json';
 
 import courses from './app/data/courses.json';
@@ -63,6 +62,7 @@ gulp.task('copy', () => {
   gulp.src([
     'app/*',
     '!app/*.html',
+    '!app/partials',
     'node_modules/apache-server-configs/dist/.htaccess'
   ], {
     dot: true
@@ -72,8 +72,7 @@ gulp.task('copy', () => {
   gulp.src(['app/data/*'])
     .pipe(gulp.dest('dist/data'))
     .pipe($.size({title: 'copy data'}));
-}
-);
+});
 
 // Compile and automatically prefix stylesheets
 gulp.task('styles', () => {
@@ -228,20 +227,12 @@ gulp.task('default', ['clean'], cb =>
   )
 );
 
-// Run PageSpeed Insights
-gulp.task('pagespeed', cb =>
-  // Update the below URL to the public URL of your site
-  pagespeed('badersur.github.io', {
-    strategy: 'mobile'
-    // By default we use the PageSpeed Insights free (no API key) tier.
-    // Use a Google Developer API key if you have one: http://goo.gl/RkN0vE
-    // key: 'YOUR_API_KEY'
-  }, cb)
-);
-
 // Copy over the scripts that are used in importScripts as part of the generate-service-worker task.
 gulp.task('copy-sw-scripts', () => {
-  return gulp.src(['node_modules/sw-toolbox/sw-toolbox.js', 'app/scripts/sw/runtime-caching.js'])
+  return gulp.src([
+    'node_modules/sw-toolbox/sw-toolbox.js',
+    'app/scripts/sw/runtime-caching.js'
+  ])
     .pipe(gulp.dest('dist/scripts/sw'));
 });
 
@@ -267,8 +258,6 @@ gulp.task('generate-service-worker', ['copy-sw-scripts'], () => {
       `${rootDir}/images/**/*`,
       `${rootDir}/scripts/**/*.js`,
       `${rootDir}/styles/**/*.css`,
-      `${rootDir}/templates/*.html`,
-      `${rootDir}/data/*.json`,
       `${rootDir}/*.{html,json}`
     ],
     // Translates a static file path to the relative URL that it's served from.
@@ -276,13 +265,6 @@ gulp.task('generate-service-worker', ['copy-sw-scripts'], () => {
     // glob always use '/'.
     stripPrefix: rootDir + '/'
   });
-});
-
-gulp.task('deploy', ['default'], () => {
-  return gulp.src('dist/**/*')
-    .pipe($.ghPages({
-      branch: 'master'
-    }));
 });
 
 // Load custom tasks from the `tasks` directory

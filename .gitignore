@@ -1,5 +1,10 @@
 node_modules
 dist/
 .tmp
-app.yaml
 .publish
+
+*.py[cod]
+
+*.log
+
+client-secret.json

@@ -28,7 +28,7 @@ const addPosts = () => {
   });
 
   $.ajax('https://bader-sur.appspot.com/blog.json', {
-    timeout: 5000
+    timeout: 10000
   })
     .done(data => {
       $('.section--footer').append(env.render('posts.html', {
