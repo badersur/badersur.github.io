@@ -41,9 +41,9 @@ handlers:
 
 # CSS, Javascript, text and other file types
 
-- url: /(.+\.(css|js|xml|txt|json))
+- url: /(.+\.(css|js|xml|txt|json|map))
   static_files: dist/\1
-  upload: dist/(.+\.(css|js|xml|txt|json))
+  upload: dist/(.+\.(css|js|xml|txt|json|map))
   expiration: "10m"
   secure: always
 
