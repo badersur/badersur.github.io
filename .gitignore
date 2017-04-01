@@ -4,7 +4,8 @@ dist/
 .publish
 
 *.py[cod]
-
 *.log
+*.pem
 
 client-secret.json
+todos
