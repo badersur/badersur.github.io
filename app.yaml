@@ -73,8 +73,6 @@ handlers:
   secure: always
 
 skip_files:
-- ^(.*/)?app\.yaml
-- ^(.*/)?app\.yml
 - ^(.*/)?index\.yaml
 - ^(.*/)?index\.yml
 - ^(.*/)?bower\.json

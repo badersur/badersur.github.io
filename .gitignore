@@ -1,11 +1,9 @@
 node_modules
-dist/
+dist
 .tmp
-.publish
 
 *.py[cod]
 *.log
-*.pem
 
 client-secret.json
 todos

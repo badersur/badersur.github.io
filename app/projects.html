@@ -3,11 +3,10 @@
 
 @@include('./partials/head.html', {
   "title": "Projects",
-  "description": "Some projects that @BaderSur has done so far.",
-  "projectsStyles": true
+  "description": "Some projects that @BaderSur has done so far."
 })
 
-<body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
+<body class="mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
   <!-- Always shows a header, even in smaller screens. -->
   <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
 
@@ -16,7 +15,7 @@
     <main class="mdl-layout__content">
       <div class="page-content">
 
-        <div class="mdl-grid extra-margin">
+        <div class="mdl-grid projects">
 
             @@loop('./partials/project.html', './data/projects.json')
 

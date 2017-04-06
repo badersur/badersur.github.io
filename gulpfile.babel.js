@@ -31,8 +31,9 @@ import runSequence from 'run-sequence';
 import browserSync from 'browser-sync';
 import swPrecache from 'sw-precache';
 import gulpLoadPlugins from 'gulp-load-plugins';
-import pkg from './package.json';
+import moduleImporter from 'sass-module-importer';
 
+import pkg from './package.json';
 import courses from './app/data/courses.json';
 
 const $ = gulpLoadPlugins();
@@ -90,15 +91,20 @@ gulp.task('styles', () => {
 
   // For best performance, don't add Sass partials to `gulp.src`
   return gulp.src([
-    'app/styles/**/*.scss',
-    'app/styles/**/*.css'
+    'app/styles/main.scss'
   ])
     .pipe($.newer('.tmp/styles'))
     .pipe($.sourcemaps.init())
     .pipe($.sass({
-      precision: 10
+      precision: 10,
+      importer: moduleImporter()
     }).on('error', $.sass.logError))
     .pipe($.autoprefixer(AUTOPREFIXER_BROWSERS))
+    // Remove unused css!
+    // .pipe($.uncss({
+    //   ignore: ['.mdl-js-layout'],
+    //   html: ['dist/**/*.html']
+    // }))
     .pipe(gulp.dest('.tmp/styles'))
     // Concatenate and minify styles
     .pipe($.if('*.css', $.cssnano()))
@@ -111,36 +117,54 @@ gulp.task('styles', () => {
 // Concatenate and minify JavaScript. Optionally transpiles ES2015 code to ES5.
 // to enable ES2015 support remove the line `"only": "gulpfile.babel.js",` in the
 // `.babelrc` file.
-gulp.task('scripts', () =>
-    gulp.src([
-      './app/scripts/*.js'
-    ])
-      .pipe($.newer('.tmp/scripts'))
-      .pipe($.sourcemaps.init())
-      .pipe($.babel())
-      .pipe($.sourcemaps.write())
-      .pipe(gulp.dest('.tmp/scripts'))
-      .pipe($.uglify({preserveComments: 'some'}))
-      .pipe($.rename({suffix: '.min'}))
-      // Output files
-      .pipe($.size({title: 'scripts'}))
-      .pipe($.sourcemaps.write('.'))
-      .pipe(gulp.dest('dist/scripts'))
-      .pipe(gulp.dest('.tmp/scripts'))
-);
+gulp.task('scripts', () => {
+  gulp.src([
+    './node_modules/material-design-lite/src/mdlComponentHandler.js',
+    './node_modules/material-design-lite/src/layout/layout.js',
+    './app/scripts/main.js'
+  ])
+    .pipe($.newer('.tmp/scripts'))
+    .pipe($.sourcemaps.init())
+    .pipe($.babel())
+    .pipe($.sourcemaps.write())
+    .pipe(gulp.dest('.tmp/scripts'))
+    .pipe($.concat('main.min.js'))
+    .pipe($.uglify())
+    // Output files
+    .pipe($.size({title: 'scripts - main'}))
+    .pipe($.sourcemaps.write('.'))
+    .pipe(gulp.dest('dist/scripts'))
+    .pipe(gulp.dest('.tmp/scripts'));
+
+  gulp.src([
+    './node_modules/material-design-lite/src/mdlComponentHandler.js',
+    './node_modules/material-design-lite/src/layout/layout.js',
+    './app/scripts/shared.js'
+  ])
+    .pipe($.newer('.tmp/scripts'))
+    .pipe($.sourcemaps.init())
+    .pipe($.babel())
+    .pipe($.sourcemaps.write())
+    .pipe(gulp.dest('.tmp/scripts'))
+    .pipe($.concat('shared.min.js'))
+    .pipe($.uglify())
+    // Output files
+    .pipe($.size({title: 'scripts - shared'}))
+    .pipe($.sourcemaps.write('.'))
+    .pipe(gulp.dest('dist/scripts'))
+    .pipe(gulp.dest('.tmp/scripts'));
+});
 
 // Scan your HTML for assets & optimize them
 gulp.task('html', () => {
   const providers = courses.providers;
 
-  return gulp.src(['app/**/*.html', '!app/partials/*.html'])
+  return gulp.src(['app/**/*.html', '!app/partials/*', '!app/styles/**/*.html'])
     .pipe($.fileInclude({
       prefix: '@@',
       basepath: '@file',
       context: {
         mainScripts: false,
-        projectsStyles: false,
-        coursesStyles: false,
         downloadLink: '',
         source: '',
         website: '',

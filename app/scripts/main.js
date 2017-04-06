@@ -31,15 +31,11 @@ const addPosts = () => {
     timeout: 10000
   })
     .done(data => {
-      $('.section--footer').append(env.render('posts.html', {
+      $('.section--center').last().after(env.render('posts.html', {
         posts: data.posts.slice(0, 2)
       }));
     })
-    .fail(() => {
-      $('.section--footer').append(env.render('error.html', {
-        error: 1
-      }));
-    });
+    .fail(() => $('.section--center').last().after(env.render('error.html')));
 };
 
 (function() {

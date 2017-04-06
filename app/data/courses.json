@@ -115,6 +115,14 @@
         {
           "name": "Laravel 5.4 From Scratch",
           "link": "https://laracasts.com/series/laravel-from-scratch-2017"
+        },
+        {
+          "name": "Webpack for Everyone",
+          "link": "https://laracasts.com/series/webpack-for-everyone"
+        },
+        {
+          "name": "ES2015 Crash Course",
+          "link": "https://laracasts.com/series/es6-cliffsnotes"
         }
       ]
     },
