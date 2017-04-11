@@ -3,12 +3,10 @@ node_js: '7'
 cache:
   yarn: true
   directories:
-    - node_modules # NPM packages
-
+  - node_modules
 before_script:
 - yarn global add gulp
 script: gulp
-
 deploy:
 - provider: pages
   skip_cleanup: true
@@ -19,14 +17,12 @@ deploy:
   name: Bader Nasser
   on:
     branch: dev
-
 - provider: gae
   skip_cleanup: true
   keyfile: client-secret.json
   project: badersur-push
   default: true
   on: dev
-
 before_install:
 - openssl aes-256-cbc -K $encrypted_1e2bbe134f98_key -iv $encrypted_1e2bbe134f98_iv
   -in client-secret.json.enc -out client-secret.json -d
