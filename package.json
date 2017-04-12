@@ -1,7 +1,7 @@
 {
   "name": "badersur.github.io",
-  "version": "2.6.1",
-  "description": "Source code for my github pages",
+  "version": "2.6.2",
+  "description": "Source code for my github pages and GAE application",
   "author": "Bader Nasser Al-Hashmi (@BaderSur)",
   "devDependencies": {
     "apache-server-configs": "^2.14.0",

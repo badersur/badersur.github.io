@@ -159,7 +159,7 @@ gulp.task('scripts', () => {
 gulp.task('html', () => {
   const providers = courses.providers;
 
-  return gulp.src(['app/**/*.html', '!app/partials/*', '!app/styles/**/*.html'])
+  return gulp.src(['app/**/*.html', '!app/partials/*'])
     .pipe($.fileInclude({
       prefix: '@@',
       basepath: '@file',
