@@ -78,7 +78,19 @@ handlers:
     X-UA-Compatible: "IE=edge"
     # Content-Security-Policy: "script-src 'self'; object-src 'self'"
 
-# Homepage, 404 & 500
+# Homepage
+
+- url: /
+  static_files: gae/index.html
+  upload: gae/index\.html
+  application_readable: true
+  expiration: "10m"
+  secure: always
+  http_headers:
+    X-UA-Compatible: "IE=edge"
+    # Content-Security-Policy: "script-src 'self'; object-src 'self'"
+
+# 404 & 500
 
 - url: /.*
   script: main.app

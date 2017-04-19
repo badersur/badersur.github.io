@@ -74,7 +74,10 @@
   }
 
   // Your custom JavaScript goes here
-  let env = global.nunjucks.configure('/templates', {autoescape: true});
+  let $postsSection = $('.section--center').last();
+  let $postsTemplate = $('#posts-template').html();
+  let $errorTemplate = $('#error-template').html();
+  let env = global.nunjucks.configure({autoescape: true});
 
   env.addFilter('localeDate', function(dateString) {
     return new Date(dateString).toLocaleDateString();
@@ -82,9 +85,9 @@
 
   global.$.ajax('https://bader-sur.appspot.com/blog.json', {timeout: 10000})
     .done(data => {
-      $('.section--center').last().after(env.render('posts.html', {
+      $postsSection.after(env.renderString($postsTemplate, {
         posts: data.posts.slice(0, 2)
       }));
     })
-    .fail(() => $('.section--center').last().after(env.render('error.html')));
+    .fail(() => $postsSection.after(env.renderString($errorTemplate)));
 })(self);
