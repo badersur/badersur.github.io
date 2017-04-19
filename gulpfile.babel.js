@@ -170,7 +170,9 @@ gulp.task('html', () => {
         author: pkg.author,
         providers: providers,
         isGAE: isGAE,
-        trackingID: isGAE ? 'UA-93913692-2' : 'UA-93913692-1'
+        trackingID: isGAE ? 'UA-93913692-2' : 'UA-93913692-1',
+        gVerification: isGAE ? 'fTtuUjCAIr7vbziRCNs4uj96W0Jpvi3G2SHnqxlxkak' :
+                               'seiRN85-ibizbmmj7kCpIiomwuiS1xzVBZXMO6DdKFg'
       }
     }))
     .pipe($.fileInclude({
