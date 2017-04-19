@@ -15,15 +15,15 @@ handlers:
 # Manifest files
 
 - url: /(.+\.(appcache))
-  static_files: dist/\1
-  upload: dist/(.+\.(appcache))
+  static_files: gae/\1
+  upload: gae/(.+\.(appcache))
   mime_type: text/cache-manifest
   expiration: "0s"
   secure: always
 
 - url: /(.+\.webapp)
-  static_files: dist/\1
-  upload: dist/(.+\.webapp)
+  static_files: gae/\1
+  upload: gae/(.+\.webapp)
   mime_type: application/x-web-app-manifest+json
   expiration: "0s"
   secure: always
@@ -31,8 +31,8 @@ handlers:
 # Fonts and images
 
 - url: /(.+\.(eot|otf|tt[cf]|woff2?|cur|gif|ico|jpe?g|png|svgz?|webp))
-  static_files: dist/\1
-  upload: dist/(.+\.(eot|otf|tt[cf]|woff2?|cur|gif|ico|jpe?g|png|svgz?|webp))
+  static_files: gae/\1
+  upload: gae/(.+\.(eot|otf|tt[cf]|woff2?|cur|gif|ico|jpe?g|png|svgz?|webp))
   secure: always
   http_headers:
     # Allow cross-origin access to web fonts and images
@@ -42,16 +42,16 @@ handlers:
 # CSS, Javascript, text and other file types
 
 - url: /(.+\.(css|js|xml|txt|json|map))
-  static_files: dist/\1
-  upload: dist/(.+\.(css|js|xml|txt|json|map))
+  static_files: gae/\1
+  upload: gae/(.+\.(css|js|xml|txt|json|map))
   expiration: "10m"
   secure: always
 
 # HTML pages
 
 - url: /(.+\.html)
-  static_files: dist/\1
-  upload: dist/(.+\.html)
+  static_files: gae/\1
+  upload: gae/(.+\.html)
   application_readable: true
   expiration: "10m"
   secure: always
@@ -66,6 +66,18 @@ handlers:
     # you can use an online CSP header generator such as: http://cspisawesome.com/.
     # Content-Security-Policy: "script-src 'self'; object-src 'self'"
 
+# Pretty links for courses & projects
+
+- url: /(courses|projects)
+  static_files: gae/\1.html
+  upload: gae/(.+)\.html
+  application_readable: true
+  expiration: "10m"
+  secure: always
+  http_headers:
+    X-UA-Compatible: "IE=edge"
+    # Content-Security-Policy: "script-src 'self'; object-src 'self'"
+
 # Homepage, 404 & 500
 
 - url: /.*
@@ -73,15 +85,12 @@ handlers:
   secure: always
 
 skip_files:
-- ^(.*/)?index\.yaml
-- ^(.*/)?index\.yml
-- ^(.*/)?bower\.json
 - ^(.*/)?#.*#
 - ^(.*/)?.*~
 - ^(.*/)?.*\.py[co]
 - ^(.*/)?.*/RCS/.*
-- ^(.*/)?\..*
 - ^(.*/)?.*\.bak$
 - ^(.*/)?node_modules/.*
-- ^(.*/)?tests/.*
-- ^.*.md|markdown
+- ^pages/.*
+- ^\.tmp/.*
+- ^\.publish/.*

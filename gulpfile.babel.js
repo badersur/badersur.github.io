@@ -39,6 +39,9 @@ import courses from './app/data/courses.json';
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
 
+const finalDestination = process.env.ENV_DEST || 'pages';
+const isGAE = finalDestination === 'gae';
+
 // Lint JavaScript
 gulp.task('lint', () =>
   gulp.src(['app/scripts/**/*.js', '!node_modules/**'])
@@ -54,7 +57,7 @@ gulp.task('images', () =>
       progressive: true,
       interlaced: true
     })))
-    .pipe(gulp.dest('dist/images'))
+    .pipe(gulp.dest(`${finalDestination}/images`))
     .pipe($.size({title: 'images'}))
 );
 
@@ -67,11 +70,11 @@ gulp.task('copy', () => {
     'node_modules/apache-server-configs/dist/.htaccess'
   ], {
     dot: true
-  }).pipe(gulp.dest('dist'))
+  }).pipe(gulp.dest(finalDestination))
     .pipe($.size({title: 'copy'}));
 
   gulp.src(['app/data/*'])
-    .pipe(gulp.dest('dist/data'))
+    .pipe(gulp.dest(`${finalDestination}/data`))
     .pipe($.size({title: 'copy data'}));
 });
 
@@ -100,17 +103,12 @@ gulp.task('styles', () => {
       importer: moduleImporter()
     }).on('error', $.sass.logError))
     .pipe($.autoprefixer(AUTOPREFIXER_BROWSERS))
-    // Remove unused css!
-    // .pipe($.uncss({
-    //   ignore: ['.mdl-js-layout'],
-    //   html: ['dist/**/*.html']
-    // }))
     .pipe(gulp.dest('.tmp/styles'))
     // Concatenate and minify styles
     .pipe($.if('*.css', $.cssnano()))
     .pipe($.size({title: 'styles'}))
     .pipe($.sourcemaps.write('./'))
-    .pipe(gulp.dest('dist/styles'))
+    .pipe(gulp.dest(`${finalDestination}/styles`))
     .pipe(gulp.dest('.tmp/styles'));
 });
 
@@ -133,7 +131,7 @@ gulp.task('scripts', () => {
     // Output files
     .pipe($.size({title: 'scripts - main'}))
     .pipe($.sourcemaps.write('.'))
-    .pipe(gulp.dest('dist/scripts'))
+    .pipe(gulp.dest(`${finalDestination}/scripts`))
     .pipe(gulp.dest('.tmp/scripts'));
 
   gulp.src([
@@ -151,7 +149,7 @@ gulp.task('scripts', () => {
     // Output files
     .pipe($.size({title: 'scripts - shared'}))
     .pipe($.sourcemaps.write('.'))
-    .pipe(gulp.dest('dist/scripts'))
+    .pipe(gulp.dest(`${finalDestination}/scripts`))
     .pipe(gulp.dest('.tmp/scripts'));
 });
 
@@ -170,7 +168,9 @@ gulp.task('html', () => {
         website: '',
         currentYear: (new Date()).getFullYear(),
         author: pkg.author,
-        providers: providers
+        providers: providers,
+        isGAE: isGAE,
+        trackingID: isGAE ? 'UA-93913692-2' : 'UA-93913692-1'
       }
     }))
     .pipe($.fileInclude({
@@ -197,11 +197,14 @@ gulp.task('html', () => {
     })))
     // Output files
     .pipe($.if('*.html', $.size({title: 'html', showFiles: true})))
-    .pipe(gulp.dest('dist'));
+    .pipe(gulp.dest(finalDestination));
 });
 
 // Clean output directory
-gulp.task('clean', () => del(['.tmp', 'dist/*', '!dist/.git'], {dot: true}));
+gulp.task('clean', () => del(
+  ['.tmp', `${finalDestination}/*`, `!${finalDestination}/.git`],
+  {dot: true}
+));
 
 // Watch files for changes & reload
 gulp.task('serve', ['html', 'scripts', 'styles'], () => {
@@ -236,7 +239,7 @@ gulp.task('serve:dist', ['default'], () =>
     // Note: this uses an unsigned certificate which on first access
     //       will present a certificate warning in the browser.
     // https: true,
-    server: 'dist',
+    server: finalDestination,
     port: 3001
   })
 );
@@ -257,7 +260,7 @@ gulp.task('copy-sw-scripts', () => {
     'node_modules/sw-toolbox/sw-toolbox.js',
     'app/scripts/sw/runtime-caching.js'
   ])
-    .pipe(gulp.dest('dist/scripts/sw'));
+    .pipe(gulp.dest(`${finalDestination}/scripts/sw`));
 });
 
 // See http://www.html5rocks.com/en/tutorials/service-worker/introduction/ for
@@ -266,7 +269,7 @@ gulp.task('copy-sw-scripts', () => {
 // local resources. This should only be done for the 'dist' directory, to allow
 // live reload to work as expected when serving from the 'app' directory.
 gulp.task('generate-service-worker', ['copy-sw-scripts'], () => {
-  const rootDir = 'dist';
+  const rootDir = finalDestination;
   const filepath = path.join(rootDir, 'service-worker.js');
 
   return swPrecache.write(filepath, {
@@ -287,8 +290,19 @@ gulp.task('generate-service-worker', ['copy-sw-scripts'], () => {
     // Translates a static file path to the relative URL that it's served from.
     // This is '/' rather than path.sep because the paths returned from
     // glob always use '/'.
-    stripPrefix: rootDir + '/'
+    stripPrefix: rootDir + '/',
+    dynamicUrlToDependencies: {
+      '/courses': [`${rootDir}/courses.html`],
+      '/projects': [`${rootDir}/projects.html`]
+    }
   });
+});
+
+gulp.task('deploy', ['default'], () => {
+  return gulp.src(`${finalDestination}/**/*`)
+    .pipe($.ghPages({
+      branch: 'master'
+    }));
 });
 
 // Load custom tasks from the `tasks` directory

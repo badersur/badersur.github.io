@@ -18,34 +18,14 @@
  */
 /* eslint-env browser */
 
-const addPosts = () => {
-  let env = nunjucks.configure('/templates', {
-    autoescape: true
-  });
-
-  env.addFilter('localeDate', function(dateStr) {
-    return new Date(dateStr).toLocaleDateString();
-  });
-
-  $.ajax('https://bader-sur.appspot.com/blog.json', {
-    timeout: 10000
-  })
-    .done(data => {
-      $('.section--center').last().after(env.render('posts.html', {
-        posts: data.posts.slice(0, 2)
-      }));
-    })
-    .fail(() => $('.section--center').last().after(env.render('error.html')));
-};
-
-(function() {
+(function(global) {
   'use strict';
 
   // Check to make sure service workers are supported in the current browser,
   // and that the current page is accessed from a secure origin. Using a
   // service worker from an insecure origin will trigger JS console errors. See
   // http://www.chromium.org/Home/chromium-security/prefer-secure-origins-for-powerful-new-features
-  var isLocalhost = Boolean(window.location.hostname === 'localhost' ||
+  const isLocalhost = Boolean(window.location.hostname === 'localhost' ||
     // [::1] is the IPv6 localhost address.
     window.location.hostname === '[::1]' ||
     // 127.0.0.1/8 is considered localhost for IPv4.
@@ -67,7 +47,7 @@ const addPosts = () => {
           if (navigator.serviceWorker.controller) {
             // The updatefound event implies that registration.installing is set:
             // https://slightlyoff.github.io/ServiceWorker/spec/service_worker/index.html#service-worker-container-updatefound-event
-            var installingWorker = registration.installing;
+            let installingWorker = registration.installing;
 
             installingWorker.onstatechange = () => {
               switch (installingWorker.state) {
@@ -94,5 +74,17 @@ const addPosts = () => {
   }
 
   // Your custom JavaScript goes here
-  addPosts();
-})();
+  let env = global.nunjucks.configure('/templates', {autoescape: true});
+
+  env.addFilter('localeDate', function(dateString) {
+    return new Date(dateString).toLocaleDateString();
+  });
+
+  global.$.ajax('https://bader-sur.appspot.com/blog.json', {timeout: 10000})
+    .done(data => {
+      $('.section--center').last().after(env.render('posts.html', {
+        posts: data.posts.slice(0, 2)
+      }));
+    })
+    .fail(() => $('.section--center').last().after(env.render('error.html')));
+})(self);

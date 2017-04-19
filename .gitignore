@@ -1,6 +1,8 @@
 node_modules
-dist
+pages
+gae
 .tmp
+.publish
 
 *.py[cod]
 *.log

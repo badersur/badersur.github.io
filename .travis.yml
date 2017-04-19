@@ -5,14 +5,14 @@ cache:
   directories:
   - node_modules
 before_script:
-- yarn global add gulp
-script: gulp
+- yarn global add gulp-cli
+script: yarn run build
 deploy:
 - provider: pages
   skip_cleanup: true
   github_token: "$GITHUB_TOKEN"
   target_branch: master
-  local_dir: dist
+  local_dir: pages
   email: badersur@gmail.com
   name: Bader Nasser
   on:
