@@ -170,9 +170,7 @@ gulp.task('html', () => {
         author: pkg.author,
         providers: providers,
         isGAE: isGAE,
-        trackingID: isGAE ? 'UA-93913692-2' : 'UA-93913692-1',
-        gVerification: isGAE ? 'fTtuUjCAIr7vbziRCNs4uj96W0Jpvi3G2SHnqxlxkak' :
-                               'seiRN85-ibizbmmj7kCpIiomwuiS1xzVBZXMO6DdKFg'
+        trackingID: isGAE ? 'UA-93913692-2' : 'UA-93913692-1'
       }
     }))
     .pipe($.fileInclude({
@@ -190,7 +188,7 @@ gulp.task('html', () => {
       removeComments: true,
       collapseWhitespace: true,
       collapseBooleanAttributes: true,
-      removeAttributeQuotes: false,
+      removeAttributeQuotes: true,
       removeRedundantAttributes: true,
       removeEmptyAttributes: true,
       removeScriptTypeAttributes: true,
