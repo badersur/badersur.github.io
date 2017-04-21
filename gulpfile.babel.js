@@ -126,7 +126,7 @@ gulp.task('scripts', () => {
     .pipe($.babel())
     .pipe($.sourcemaps.write())
     .pipe(gulp.dest('.tmp/scripts'))
-    .pipe($.concat('main.min.js'))
+    .pipe($.concat('main.js'))
     .pipe($.uglify())
     // Output files
     .pipe($.size({title: 'scripts - main'}))
@@ -144,7 +144,7 @@ gulp.task('scripts', () => {
     .pipe($.babel())
     .pipe($.sourcemaps.write())
     .pipe(gulp.dest('.tmp/scripts'))
-    .pipe($.concat('shared.min.js'))
+    .pipe($.concat('shared.js'))
     .pipe($.uglify())
     // Output files
     .pipe($.size({title: 'scripts - shared'}))
@@ -244,15 +244,44 @@ gulp.task('serve:dist', ['default'], () =>
   })
 );
 
-// Build production files, the default task
-gulp.task('default', ['clean'], cb =>
+// Append content hash to filenames
+gulp.task('revision', () => {
+  return gulp.src([
+    `${finalDestination}/**/*.css`,
+    `${finalDestination}/**/*.js`,
+    `${finalDestination}/**/*.png`,
+    `${finalDestination}/**/*.svg`,
+    `${finalDestination}/**/*.ico`
+  ])
+    .pipe($.rev())
+    .pipe($.revDeleteOriginal())
+    .pipe(gulp.dest(finalDestination))
+    .pipe($.rev.manifest())
+    .pipe(gulp.dest(finalDestination));
+});
+
+// Build production files
+gulp.task('build', ['clean'], cb =>
   runSequence(
     'styles',
     ['lint', 'html', 'scripts', 'images', 'copy'],
+    'revision',
     'generate-service-worker',
     cb
   )
 );
+
+// Rewrite occurences of filenames which have been renamed by gulp-rev
+gulp.task('default', ['build'], () => {
+  const manifest = gulp.src(`./${finalDestination}/rev-manifest.json`);
+
+  return gulp.src([
+    `${finalDestination}/*.html`,
+    `!${finalDestination}/google334d7caabe96fad5.html`
+  ])
+    .pipe($.revReplace({manifest: manifest}))
+    .pipe(gulp.dest(finalDestination));
+});
 
 // Copy over the scripts that are used in importScripts as part of the generate-service-worker task.
 gulp.task('copy-sw-scripts', () => {

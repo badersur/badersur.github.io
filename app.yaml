@@ -30,9 +30,19 @@ handlers:
 
 # Fonts and images
 
-- url: /(.+\.(eot|otf|tt[cf]|woff2?|cur|gif|ico|jpe?g|png|svgz?|webp))
+- url: /(.+\.(gif|ico|jpe?g|png|svgz?|webp))
   static_files: gae/\1
-  upload: gae/(.+\.(eot|otf|tt[cf]|woff2?|cur|gif|ico|jpe?g|png|svgz?|webp))
+  upload: gae/(.+\.(gif|ico|jpe?g|png|svgz?|webp))
+  expiration: "365d"
+  secure: always
+  http_headers:
+    # Allow cross-origin access to web fonts and images
+    # You can also replace "*" with a specific host, e.g. https://example.org
+    Access-Control-Allow-Origin: "*"
+
+- url: /(.+\.(eot|otf|tt[cf]|woff2?|cur))
+  static_files: gae/\1
+  upload: gae/(.+\.(eot|otf|tt[cf]|woff2?|cur))
   secure: always
   http_headers:
     # Allow cross-origin access to web fonts and images
@@ -41,9 +51,15 @@ handlers:
 
 # CSS, Javascript, text and other file types
 
-- url: /(.+\.(css|js|xml|txt|json|map))
+- url: /(.+\.(css|js))
   static_files: gae/\1
-  upload: gae/(.+\.(css|js|xml|txt|json|map))
+  upload: gae/(.+\.(css|js))
+  expiration: "365d"
+  secure: always
+
+- url: /(.+\.(xml|txt|json|map))
+  static_files: gae/\1
+  upload: gae/(.+\.(xml|txt|json|map))
   expiration: "10m"
   secure: always
 
