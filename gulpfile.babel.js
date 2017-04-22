@@ -245,7 +245,7 @@ gulp.task('serve:dist', ['default'], () =>
 );
 
 // Append content hash to filenames
-gulp.task('revision', () => {
+gulp.task('revision', ['copy-sw-scripts'], () => {
   return gulp.src([
     `${finalDestination}/**/*.css`,
     `${finalDestination}/**/*.js`,
@@ -277,6 +277,7 @@ gulp.task('default', ['build'], () => {
 
   return gulp.src([
     `${finalDestination}/*.html`,
+    `${finalDestination}/**/*.js`,
     `!${finalDestination}/google334d7caabe96fad5.html`
   ])
     .pipe($.revReplace({manifest: manifest}))
@@ -297,17 +298,18 @@ gulp.task('copy-sw-scripts', () => {
 // Generate a service worker file that will provide offline functionality for
 // local resources. This should only be done for the 'dist' directory, to allow
 // live reload to work as expected when serving from the 'app' directory.
-gulp.task('generate-service-worker', ['copy-sw-scripts'], () => {
+gulp.task('generate-service-worker', () => {
+  const manifest = require(`./${finalDestination}/rev-manifest.json`);
   const rootDir = finalDestination;
-  const filepath = path.join(rootDir, 'service-worker.js');
+  const filepath = path.join(rootDir, manifest['sw.js']);
 
   return swPrecache.write(filepath, {
     // Used to avoid cache conflicts when serving on localhost.
     cacheId: pkg.name || 'web-starter-kit',
     // sw-toolbox.js needs to be listed first. It sets up methods used in runtime-caching.js.
     importScripts: [
-      'scripts/sw/sw-toolbox.js',
-      'scripts/sw/runtime-caching.js'
+      manifest['scripts/sw/sw-toolbox.js'],
+      manifest['scripts/sw/runtime-caching.js']
     ],
     staticFileGlobs: [
       // Add/remove glob patterns to match your directory setup.

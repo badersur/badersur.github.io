@@ -36,7 +36,7 @@
 
   if ('serviceWorker' in navigator &&
     (window.location.protocol === 'https:' || isLocalhost)) {
-    navigator.serviceWorker.register('/service-worker.js')
+    navigator.serviceWorker.register('/sw.js')
       .then(registration => {
         // updatefound is fired if service-worker.js changes.
         registration.onupdatefound = () => {
