@@ -74,20 +74,24 @@
   }
 
   // Your custom JavaScript goes here
-  let $postsSection = $('.section--center').last();
-  let $postsTemplate = $('#posts-template').html();
-  let $errorTemplate = $('#error-template').html();
-  let env = global.nunjucks.configure({autoescape: true});
+  const mainPageUrls = ['/', '/index.html'];
+  let pathname = window.location.pathname;
+  if (mainPageUrls.indexOf(pathname) !== -1) {
+    let $postsSection = $('.section--center').last();
+    let $postsTemplate = $('#posts-template').html();
+    let $errorTemplate = $('#error-template').html();
+    let env = global.nunjucks.configure({autoescape: true});
 
-  env.addFilter('localeDate', function(dateString) {
-    return new Date(dateString).toLocaleDateString();
-  });
+    env.addFilter('localeDate', function(dateString) {
+      return new Date(dateString).toLocaleDateString();
+    });
 
-  global.$.ajax('https://bader-sur.appspot.com/blog.json', {timeout: 10000})
-    .done(data => {
-      $postsSection.after(env.renderString($postsTemplate, {
-        posts: data.posts.slice(0, 2)
-      }));
-    })
-    .fail(() => $postsSection.after(env.renderString($errorTemplate)));
+    global.$.ajax('https://bader-sur.appspot.com/blog.json', {timeout: 10000})
+      .done(data => {
+        $postsSection.after(env.renderString($postsTemplate, {
+          posts: data.posts.slice(0, 2)
+        }));
+      })
+      .fail(() => $postsSection.after(env.renderString($errorTemplate)));
+  }
 })(self);

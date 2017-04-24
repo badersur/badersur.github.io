@@ -1,10 +1,12 @@
 # Credits: https://github.com/h5bp/server-configs-gae/blob/master/app.yaml
 
+# see: https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching
+# and https://jakearchibald.com/2016/caching-best-practices/
+# for more info about caching
+
 runtime: python27
 api_version: 1
 threadsafe: true
-
-default_expiration: "1d"
 
 libraries:
 - name: webapp2
@@ -14,13 +16,6 @@ handlers:
 
 # Manifest files
 
-- url: /(.+\.(appcache))
-  static_files: gae/\1
-  upload: gae/(.+\.(appcache))
-  mime_type: text/cache-manifest
-  expiration: "0s"
-  secure: always
-
 - url: /(.+\.webapp)
   static_files: gae/\1
   upload: gae/(.+\.webapp)
@@ -28,7 +23,7 @@ handlers:
   expiration: "0s"
   secure: always
 
-# Fonts and images
+# Images (cached for a year since URLs contain hashes)
 
 - url: /(.+\.(gif|ico|jpe?g|png|svgz?|webp))
   static_files: gae/\1
@@ -40,16 +35,13 @@ handlers:
     # You can also replace "*" with a specific host, e.g. https://example.org
     Access-Control-Allow-Origin: "*"
 
-- url: /(.+\.(eot|otf|tt[cf]|woff2?|cur))
-  static_files: gae/\1
-  upload: gae/(.+\.(eot|otf|tt[cf]|woff2?|cur))
-  secure: always
-  http_headers:
-    # Allow cross-origin access to web fonts and images
-    # You can also replace "*" with a specific host, e.g. https://example.org
-    Access-Control-Allow-Origin: "*"
-
 # CSS, Javascript, text and other file types
+
+- url: /sw\.js
+  static_files: gae/sw.js
+  upload: gae/sw\.js
+  expiration: "0s"
+  secure: always
 
 - url: /(.+\.(css|js))
   static_files: gae/\1
@@ -69,7 +61,7 @@ handlers:
   static_files: gae/\1
   upload: gae/(.+\.html)
   application_readable: true
-  expiration: "10m"
+  expiration: "5m"
   secure: always
   http_headers:
     # Force Internet Explorer to render pages in the highest available
@@ -88,7 +80,7 @@ handlers:
   static_files: gae/\1.html
   upload: gae/(.+)\.html
   application_readable: true
-  expiration: "10m"
+  expiration: "5m"
   secure: always
   http_headers:
     X-UA-Compatible: "IE=edge"
@@ -100,7 +92,7 @@ handlers:
   static_files: gae/index.html
   upload: gae/index\.html
   application_readable: true
-  expiration: "10m"
+  expiration: "5m"
   secure: always
   http_headers:
     X-UA-Compatible: "IE=edge"

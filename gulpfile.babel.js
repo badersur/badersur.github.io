@@ -116,7 +116,7 @@ gulp.task('styles', () => {
 // to enable ES2015 support remove the line `"only": "gulpfile.babel.js",` in the
 // `.babelrc` file.
 gulp.task('scripts', () => {
-  gulp.src([
+  return gulp.src([
     './node_modules/material-design-lite/src/mdlComponentHandler.js',
     './node_modules/material-design-lite/src/layout/layout.js',
     './app/scripts/main.js'
@@ -130,24 +130,6 @@ gulp.task('scripts', () => {
     .pipe($.uglify())
     // Output files
     .pipe($.size({title: 'scripts - main'}))
-    .pipe($.sourcemaps.write('.'))
-    .pipe(gulp.dest(`${finalDestination}/scripts`))
-    .pipe(gulp.dest('.tmp/scripts'));
-
-  gulp.src([
-    './node_modules/material-design-lite/src/mdlComponentHandler.js',
-    './node_modules/material-design-lite/src/layout/layout.js',
-    './app/scripts/shared.js'
-  ])
-    .pipe($.newer('.tmp/scripts'))
-    .pipe($.sourcemaps.init())
-    .pipe($.babel())
-    .pipe($.sourcemaps.write())
-    .pipe(gulp.dest('.tmp/scripts'))
-    .pipe($.concat('shared.js'))
-    .pipe($.uglify())
-    // Output files
-    .pipe($.size({title: 'scripts - shared'}))
     .pipe($.sourcemaps.write('.'))
     .pipe(gulp.dest(`${finalDestination}/scripts`))
     .pipe(gulp.dest('.tmp/scripts'));
@@ -200,12 +182,6 @@ gulp.task('html', () => {
     .pipe(gulp.dest(finalDestination));
 });
 
-// Clean output directory
-gulp.task('clean', () => del(
-  ['.tmp', `${finalDestination}/*`, `!${finalDestination}/.git`],
-  {dot: true}
-));
-
 // Watch files for changes & reload
 gulp.task('serve', ['html', 'scripts', 'styles'], () => {
   browserSync({
@@ -228,27 +204,21 @@ gulp.task('serve', ['html', 'scripts', 'styles'], () => {
   gulp.watch(['app/images/**/*'], reload);
 });
 
-// Build and serve the output from the dist build
-gulp.task('serve:dist', ['default'], () =>
-  browserSync({
-    notify: false,
-    logPrefix: 'WSK',
-    // Allow scroll syncing across breakpoints
-    scrollElementMapping: ['main', '.mdl-layout'],
-    // Run as an https by uncommenting 'https: true'
-    // Note: this uses an unsigned certificate which on first access
-    //       will present a certificate warning in the browser.
-    // https: true,
-    server: finalDestination,
-    port: 3001
-  })
-);
+// Copy over the scripts that are used in importScripts as part of the generate-service-worker task.
+gulp.task('copy-sw-scripts', () => {
+  return gulp.src([
+    'node_modules/sw-toolbox/sw-toolbox.js',
+    'app/scripts/sw/runtime-caching.js'
+  ])
+    .pipe(gulp.dest(`${finalDestination}/scripts/sw`));
+});
 
 // Append content hash to filenames
 gulp.task('revision', ['copy-sw-scripts'], () => {
   return gulp.src([
     `${finalDestination}/**/*.css`,
     `${finalDestination}/**/*.js`,
+    `!${finalDestination}/sw.js`,
     `${finalDestination}/**/*.png`,
     `${finalDestination}/**/*.svg`,
     `${finalDestination}/**/*.ico`
@@ -260,39 +230,6 @@ gulp.task('revision', ['copy-sw-scripts'], () => {
     .pipe(gulp.dest(finalDestination));
 });
 
-// Build production files
-gulp.task('build', ['clean'], cb =>
-  runSequence(
-    'styles',
-    ['lint', 'html', 'scripts', 'images', 'copy'],
-    'revision',
-    'generate-service-worker',
-    cb
-  )
-);
-
-// Rewrite occurences of filenames which have been renamed by gulp-rev
-gulp.task('default', ['build'], () => {
-  const manifest = gulp.src(`./${finalDestination}/rev-manifest.json`);
-
-  return gulp.src([
-    `${finalDestination}/*.html`,
-    `${finalDestination}/**/*.js`,
-    `!${finalDestination}/google334d7caabe96fad5.html`
-  ])
-    .pipe($.revReplace({manifest: manifest}))
-    .pipe(gulp.dest(finalDestination));
-});
-
-// Copy over the scripts that are used in importScripts as part of the generate-service-worker task.
-gulp.task('copy-sw-scripts', () => {
-  return gulp.src([
-    'node_modules/sw-toolbox/sw-toolbox.js',
-    'app/scripts/sw/runtime-caching.js'
-  ])
-    .pipe(gulp.dest(`${finalDestination}/scripts/sw`));
-});
-
 // See http://www.html5rocks.com/en/tutorials/service-worker/introduction/ for
 // an in-depth explanation of what service workers are and why you should care.
 // Generate a service worker file that will provide offline functionality for
@@ -301,7 +238,7 @@ gulp.task('copy-sw-scripts', () => {
 gulp.task('generate-service-worker', () => {
   const manifest = require(`./${finalDestination}/rev-manifest.json`);
   const rootDir = finalDestination;
-  const filepath = path.join(rootDir, manifest['sw.js']);
+  const filepath = path.join(rootDir, 'sw.js');
 
   return swPrecache.write(filepath, {
     // Used to avoid cache conflicts when serving on localhost.
@@ -329,6 +266,56 @@ gulp.task('generate-service-worker', () => {
   });
 });
 
+// Clean output directory
+gulp.task('clean', () => del([
+  '.tmp',
+  `${finalDestination}/*`,
+  `!${finalDestination}/.git`
+], {dot: true}));
+
+// Build production files
+gulp.task('build', ['clean'], cb =>
+  runSequence(
+    'styles',
+    ['lint', 'html', 'scripts', 'images', 'copy'],
+    'revision',
+    'generate-service-worker',
+    cb
+  )
+);
+
+// Rewrite occurences of filenames which have been renamed by gulp-rev
+gulp.task('default', ['build'], () => {
+  const manifest = gulp.src(`./${finalDestination}/rev-manifest.json`);
+
+  return gulp.src([
+    `${finalDestination}/*.html`,
+    `${finalDestination}/manifest.*`
+  ])
+    .pipe($.revReplace({
+      manifest: manifest,
+      replaceInExtensions: ['.html', '.json', '.webapp']
+    }))
+    .pipe(gulp.dest(finalDestination));
+});
+
+// Build and serve the output from the dist build
+gulp.task('serve:dist', ['default'], () =>
+  browserSync({
+    notify: false,
+    logPrefix: 'WSK',
+    // Allow scroll syncing across breakpoints
+    scrollElementMapping: ['main', '.mdl-layout'],
+    // Run as an https by uncommenting 'https: true'
+    // Note: this uses an unsigned certificate which on first access
+    //       will present a certificate warning in the browser.
+    // https: true,
+    server: finalDestination,
+    port: 3001
+  })
+);
+
+// Deploy to the master branch
 gulp.task('deploy', ['default'], () => {
   return gulp.src(`${finalDestination}/**/*`)
     .pipe($.ghPages({
