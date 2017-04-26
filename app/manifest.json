@@ -1,6 +1,6 @@
 {
-  "name": "BaderSur",
-  "short_name": "BS",
+  "name": "Bader's personal web app",
+  "short_name": "BaderSur",
   "icons": [{
         "src": "images/touch/icon-128x128.png",
         "sizes": "128x128",

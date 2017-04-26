@@ -74,9 +74,9 @@
   }
 
   // Your custom JavaScript goes here
-  const mainPageUrls = ['/', '/index.html'];
+  const mainPagePaths = ['/', '/index.html'];
   let pathname = window.location.pathname;
-  if (mainPageUrls.indexOf(pathname) !== -1) {
+  if (mainPagePaths.includes(pathname)) {
     let $postsSection = $('.section--center').last();
     let $postsTemplate = $('#posts-template').html();
     let $errorTemplate = $('#error-template').html();

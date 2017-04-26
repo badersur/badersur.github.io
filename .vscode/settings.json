@@ -2,6 +2,9 @@
 {
   "files.exclude": {
     "**/.publish": true,
-    "**/.tmp": true
+    "**/.tmp": true,
+    "**/.gitattributes": true,
+    "**/docs": true,
+    "**/yarn.lock": true
   }
 }

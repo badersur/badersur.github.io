@@ -1,14 +1,14 @@
 {
-  "version": "1.0.0",
+  "version": "1.0.1",
   "name": "BaderSur",
   "launch_path": "/index.html",
-  "description": "@BaderSur's personal website.",
+  "description": "Bader's personal web app.",
   "icons": {
     "128": "/images/touch/icon-128x128.png"
   },
   "developer": {
     "name": "Bader Nasser Al-Hashmi",
-    "url": "https://badersur.github.io"
+    "url": "https://github.com/BaderSur"
   },
   "installs_allowed_from": [
     "*"
@@ -19,7 +19,7 @@
   "locales": {
     "en": {
       "name": "BaderSur",
-      "description": "@BaderSur's personal website."
+      "description": "Bader's personal web app."
     }
   }
 }
