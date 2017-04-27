@@ -207,6 +207,7 @@ gulp.task('serve', ['html', 'scripts', 'styles'], () => {
 // Copy over the scripts that are used in importScripts as part of the generate-service-worker task.
 gulp.task('copy-sw-scripts', () => {
   return gulp.src([
+    'node_modules/sw-offline-google-analytics/build/offline-google-analytics-import.js',
     'node_modules/sw-toolbox/sw-toolbox.js',
     'app/scripts/sw/runtime-caching.js'
   ])
@@ -245,6 +246,7 @@ gulp.task('generate-service-worker', () => {
     cacheId: pkg.name || 'web-starter-kit',
     // sw-toolbox.js needs to be listed first. It sets up methods used in runtime-caching.js.
     importScripts: [
+      manifest['scripts/sw/offline-google-analytics-import.js'],
       manifest['scripts/sw/sw-toolbox.js'],
       manifest['scripts/sw/runtime-caching.js']
     ],

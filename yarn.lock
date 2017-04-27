@@ -5607,6 +5607,10 @@ svgo@^0.7.0:
     sax "~1.2.1"
     whet.extend "~0.9.9"
 
+sw-offline-google-analytics@^0.0.19:
+  version "0.0.19"
+  resolved "https://registry.yarnpkg.com/sw-offline-google-analytics/-/sw-offline-google-analytics-0.0.19.tgz#e3dcdafa98f15f74fc6ec86d9237d946eb000e05"
+
 sw-precache@^3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/sw-precache/-/sw-precache-3.2.0.tgz#52f4077a6a160b4b50c23652a138124ca24e5477"
