@@ -66,8 +66,7 @@ gulp.task('copy', () => {
   gulp.src([
     'app/*',
     '!app/*.html',
-    '!app/partials',
-    'node_modules/apache-server-configs/dist/.htaccess'
+    '!app/partials'
   ], {
     dot: true
   }).pipe(gulp.dest(finalDestination))

@@ -100,10 +100,6 @@ anymatch@^1.3.0:
     arrify "^1.0.0"
     micromatch "^2.1.5"
 
-apache-server-configs@^2.14.0:
-  version "2.14.0"
-  resolved "https://registry.yarnpkg.com/apache-server-configs/-/apache-server-configs-2.14.0.tgz#c68363fb7532b19934a87855a93ca442710eb7a5"
-
 aproba@^1.0.3:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/aproba/-/aproba-1.1.1.tgz#95d3600f07710aa0e9298c726ad5ecf2eacbabab"
