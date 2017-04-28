@@ -33,6 +33,8 @@ import swPrecache from 'sw-precache';
 import gulpLoadPlugins from 'gulp-load-plugins';
 import moduleImporter from 'sass-module-importer';
 
+import {stream as critical} from 'critical';
+
 import pkg from './package.json';
 import courses from './app/data/courses.json';
 
@@ -109,6 +111,19 @@ gulp.task('styles', () => {
     .pipe($.sourcemaps.write('./'))
     .pipe(gulp.dest(`${finalDestination}/styles`))
     .pipe(gulp.dest('.tmp/styles'));
+});
+
+// Generate & Inline Critical-path CSS
+gulp.task('critical', () => {
+  return gulp.src(`${finalDestination}/*.html`)
+    .pipe(critical({
+      base: `${finalDestination}/`,
+      inline: true,
+      minify: true,
+      css: [`${finalDestination}/styles/main.css`]
+    }))
+    .on('error', err => console.log(err.message))
+    .pipe(gulp.dest(finalDestination));
 });
 
 // Concatenate and minify JavaScript. Optionally transpiles ES2015 code to ES5.
@@ -242,7 +257,7 @@ gulp.task('generate-service-worker', () => {
 
   return swPrecache.write(filepath, {
     // Used to avoid cache conflicts when serving on localhost.
-    cacheId: pkg.name || 'web-starter-kit',
+    cacheId: `${finalDestination}-${pkg.name}` || 'web-starter-kit',
     // sw-toolbox.js needs to be listed first. It sets up methods used in runtime-caching.js.
     importScripts: [
       manifest['scripts/sw/offline-google-analytics-import.js'],
@@ -279,6 +294,7 @@ gulp.task('build', ['clean'], cb =>
   runSequence(
     'styles',
     ['lint', 'html', 'scripts', 'images', 'copy'],
+    'critical',
     'revision',
     'generate-service-worker',
     cb
@@ -286,7 +302,7 @@ gulp.task('build', ['clean'], cb =>
 );
 
 // Rewrite occurences of filenames which have been renamed by gulp-rev
-gulp.task('default', ['build'], () => {
+gulp.task('replace', ['build'], () => {
   const manifest = gulp.src(`./${finalDestination}/rev-manifest.json`);
 
   return gulp.src([
@@ -299,6 +315,8 @@ gulp.task('default', ['build'], () => {
     }))
     .pipe(gulp.dest(finalDestination));
 });
+
+gulp.task('default', ['replace']);
 
 // Build and serve the output from the dist build
 gulp.task('serve:dist', ['default'], () =>

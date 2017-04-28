@@ -1,6 +1,6 @@
 {
   "name": "badersur.github.io",
-  "version": "2.9.1",
+  "version": "2.10.0",
   "description": "Source code for my github pages and GAE application",
   "author": "Bader Nasser Al-Hashmi (@BaderSur)",
   "devDependencies": {
@@ -8,6 +8,7 @@
     "babel-preset-env": "^1.4.0",
     "babel-preset-es2015": "^6.24.1",
     "browser-sync": "^2.18.8",
+    "critical": "^0.8.4",
     "del": "^2.2.2",
     "eslint-config-google": "^0.3.0",
     "gulp": "^3.9.1",
