@@ -1,17 +1,21 @@
-# [badersur.github.io][1] && [badersur-push.appspot.com][2] [![Build Status](https://travis-ci.org/badersur/badersur.github.io.svg?branch=dev)](https://travis-ci.org/badersur/badersur.github.io)
+# [badersur.github.io][1] [![Build Status](https://travis-ci.org/badersur/badersur.github.io.svg?branch=dev)](https://travis-ci.org/badersur/badersur.github.io)
 
-The source code for [my github pages][1] and the [Google App Engine application][2].
+This is the source code for [my github pages][1] and the
+[Google App Engine application][2]. It's a Progressive Web Application (PWA)
+showing my skills, completed courses, projects and blog posts.
 
 
 ## Features
 
 - Responsive website - using [Material Design Lite][3].
 
-- Performance optimization - Images, JavaScript, HTML and CSS are minifed and concatenated using [gulp][4].
+- Performance optimization - Images, JavaScript, HTML and CSS are minifed and
+ concatenated using [gulp][4].
 
 - ES2015 support using [Babel][5].
 
-- Offline support - Thanks to [Service Worker][6] [pre-caching][7]. This is made possible by [sw-precache][8].
+- Offline support - Thanks to [Service Worker][6] [pre-caching][7]. This is made
+ possible by [sw-precache][8].
 
 - The features of [Google's Web Starter Kit][9] :)
 
@@ -20,11 +24,14 @@ The source code for [my github pages][1] and the [Google App Engine application]
 
 Download or clone this repository and build on what is included in the `app` directory.
 
-Be sure to look over the [installation docs](docs/install.md) to verify your environment is prepared to run WSK.
-Once you have verified that your system can run WSK, check out the [commands](docs/commands.md) available to get started.
+Be sure to look over the [installation docs](docs/install.md) to verify your
+environment is prepared to run WSK.
+
+Once you have verified that your system can run WSK, check out the
+[commands](docs/commands.md) available to get started.
 
 
-## Credits
+## Thanks
 
 - [Google's Web Starter Kit][9]
 
