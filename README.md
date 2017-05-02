@@ -35,33 +35,30 @@ Once you have verified that your system can run WSK, check out the
 
 - [Google's Web Starter Kit][9]
 
-- [Kamil Wojtczyk][10]
+- [gulp-nunjucks-render plugin][10]
 
-- [MSMcBain][11]
-  
-- [Jeffrey Way][12]
+- [Jeffrey Way][11]
 
-- [Ryan Christiani][13]
+- [Ryan Christiani][12]
 
-- [Google's lighthouse Chrome extension][14]
+- [Google's lighthouse Chrome extension][13]
 
-- [Travis CI][15]
+- [Travis CI][14]
 
 - All awesome open source projects :)
 
 
 [1]: https://badersur.github.io
 [2]: https://badersur-push.appspot.com
-[3]: https://getmdl.io
+[3]: https://github.com/google/material-design-lite
 [4]: https://github.com/gulpjs/gulp
-[5]: https://babeljs.io
+[5]: https://github.com/babel/babel
 [6]: https://developers.google.com/web/fundamentals/getting-started/primers/service-workers
 [7]: https://github.com/google/web-starter-kit/blob/master/gulpfile.babel.js#L226
 [8]: https://github.com/GoogleChrome/sw-precache
 [9]: https://github.com/google/web-starter-kit
-[10]: https://github.com/google/web-starter-kit/pull/890
-[11]: https://github.com/coderhaoxin/gulp-file-include/issues/119#issuecomment-286994044
-[12]: https://laracasts.com/series/es6-cliffsnotes
-[13]: https://www.youtube.com/playlist?list=PL57atfCFqj2h5fpdZD-doGEIs0NZxeJTX
-[14]: https://github.com/GoogleChrome/lighthouse
-[15]: https://travis-ci.org
+[10]: https://github.com/carlosl/gulp-nunjucks-render
+[11]: https://laracasts.com/series/es6-cliffsnotes
+[12]: https://www.youtube.com/playlist?list=PL57atfCFqj2h5fpdZD-doGEIs0NZxeJTX
+[13]: https://github.com/GoogleChrome/lighthouse
+[14]: https://travis-ci.org
