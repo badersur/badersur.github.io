@@ -1,6 +1,6 @@
 {
   "name": "badersur.github.io",
-  "version": "2.12.2",
+  "version": "2.12.3",
   "description": "Source code for my github pages and GAE application",
   "author": "Bader Nasser Al-Hashmi (@BaderSur)",
   "devDependencies": {
