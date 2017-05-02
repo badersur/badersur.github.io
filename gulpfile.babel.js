@@ -32,6 +32,7 @@ import browserSync from 'browser-sync';
 import swPrecache from 'sw-precache';
 import gulpLoadPlugins from 'gulp-load-plugins';
 import moduleImporter from 'sass-module-importer';
+import MarkdownIt from 'markdown-it';
 
 import {stream as critical} from 'critical';
 
@@ -42,6 +43,7 @@ import projects from './app/data/projects.json';
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
 const providers = courses.providers;
+const md = new MarkdownIt('commonmark');
 
 const finalDestination = process.env.ENV_DEST || 'pages';
 const isGAE = finalDestination === 'gae';
@@ -153,11 +155,16 @@ gulp.task('scripts', () => {
 
 // Scan your HTML for assets & optimize them
 gulp.task('html', () => {
+  const manageEnvironment = environment => {
+    environment.addFilter('markdown', str => md.render(str));
+  };
+
   return gulp.src('app/*.html')
     .pipe($.nunjucksRender({
       envOptions: {
         autoescape: false
       },
+      manageEnv: manageEnvironment,
       path: 'app/',
       data: {
         currentYear: (new Date()).getFullYear(),
