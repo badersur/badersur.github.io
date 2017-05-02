@@ -1,6 +1,11 @@
 <span class="mdl-layout-title"><a class="mdl-navigation__link" href="/">BS</a></span>
 <nav class="mdl-navigation">
-  <a class="mdl-navigation__link" href="/projects@@if (!isGAE) {.html}">Projects</a>
-  <a class="mdl-navigation__link" href="/courses@@if (!isGAE) {.html}">Courses</a>
+  {% if isGAE %}
+    <a class="mdl-navigation__link" href="/projects">Projects</a>
+    <a class="mdl-navigation__link" href="/courses">Courses</a>
+  {% else %}
+    <a class="mdl-navigation__link" href="/projects.html">Projects</a>
+    <a class="mdl-navigation__link" href="/courses.html">Courses</a>
+  {% endif %}
   <a class="mdl-navigation__link" href="https://bader-sur.appspot.com/blog">Blog</a>
 </nav>

@@ -3,30 +3,37 @@
   </div>
 
   <div class="mdl-card__title">
-    <h4 class="mdl-card__title-text">@@name</h4>
+    <h4 class="mdl-card__title-text">{{ project.name }}</h4>
   </div>
 
   <div class="mdl-card__supporting-text">
     <span class="mdl-typography--font-light mdl-typography--subhead">
-      @@description
+      {{ project.description }}
     </span>
   </div>
 
-@@if (downloadLink) {
+{% if project.downloadLink %}
   <div class="mdl-card__actions">
-    <a class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase" href="@@downloadLink">Download<i class="material-icons">chevron_right</i></a>
+    <a class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase"
+     href="{{ project.downloadLink }}">Download<i
+     class="material-icons">chevron_right</i></a>
   </div>
-}
+{% endif %}
 
-@@if (source) {
+{% if project.source %}
   <div class="mdl-card__actions">
-    <a class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase" href="@@source">View source<i class="material-icons">chevron_right</i></a>
+    <a class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase"
+     href="{{ project.source }}">View source<i
+     class="material-icons">chevron_right</i></a>
   </div>
-}
+{% endif %}
 
-@@if (website) {
+{% if project.website %}
   <div class="mdl-card__actions">
-    <a class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase" href="@@website">Visit website<i class="material-icons">chevron_right</i></a>
+    <a class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase"
+     href="{{ project.website }}">Visit website<i
+     class="material-icons">chevron_right</i></a>
   </div>
-}
+{% endif %}
+
 </div>

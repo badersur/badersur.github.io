@@ -1,41 +1,29 @@
-<!doctype html>
-<html lang="en">
+{% set title = "Completed online courses" %}
+{% set description = "Most of the online courses that @BaderSur has completed!" %}
 
-@@include('./partials/head.html', {
-  "title": "Completed online courses",
-  "description": "Most of the online courses that @BaderSur has completed!"
-})
+{% extends "./partials/base.html" %}
 
-<body class="mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
-  <!-- Always shows a header, even in smaller screens. -->
-  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+{% block content %}
 
-    @@include('./partials/header.html')
+  <div class="mdl-grid courses">
 
-    <main class="mdl-layout__content">
-      <div class="page-content">
+    <h4 class="mdl-cell--12-col">{{ title }}</h4>
 
-        <div class="mdl-grid courses">
+    {% for provider in providers %}
 
-          <h4 class="mdl-cell--12-col">Completed online courses</h4>
+      <h5 class="mdl-cell--12-col">{{ provider.name }}</h5>
 
-          @@for(let provider of providers) {
-            <h5 class="mdl-cell--12-col">${provider.name}</h5>
-            @@loop("./partials/course.html", `+(JSON.stringify(provider.courses))+`)
-          }
+      {% for course in provider.courses %}
 
-        </div>
+        <a class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone
+         mdl-card mdl-shadow--3dp linked-card" href="{{ course.link }}">
+            {{ course.name }}
+        </a>
 
-        @@include('./partials/footer.html')
+      {% endfor %}
 
-      </div>
-    </main>
+    {% endfor %}
 
   </div>
 
-  @@include('./partials/scripts.html')
-
-  <!-- Built with love using Web Starter Kit -->
-</body>
-
-</html>
+{% endblock %}

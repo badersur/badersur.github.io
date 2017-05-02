@@ -1,36 +1,18 @@
-<!doctype html>
-<html lang="en">
+{% set title = "Projects" %}
+{% set description = "Some projects that @BaderSur has done so far." %}
 
-@@include('./partials/head.html', {
-  "title": "Projects",
-  "description": "Some projects that @BaderSur has done so far."
-})
+{% extends "./partials/base.html" %}
 
-<body class="mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
-  <!-- Always shows a header, even in smaller screens. -->
-  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+{% block content %}
 
-    @@include('./partials/header.html')
+  <div class="mdl-grid projects">
 
-    <main class="mdl-layout__content">
-      <div class="page-content">
+    {% for project in projects %}
 
-        <div class="mdl-grid projects">
+      {% include "./partials/project.html" %}
 
-            @@loop('./partials/project.html', './data/projects.json')
-
-        </div>
-
-        @@include('./partials/footer.html')
-
-      </div>
-    </main>
+    {% endfor %}
 
   </div>
 
-  @@include('./partials/scripts.html')
-
-  <!-- Built with love using Web Starter Kit -->
-</body>
-
-</html>
+{% endblock %}

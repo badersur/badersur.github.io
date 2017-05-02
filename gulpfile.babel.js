@@ -37,9 +37,11 @@ import {stream as critical} from 'critical';
 
 import pkg from './package.json';
 import courses from './app/data/courses.json';
+import projects from './app/data/projects.json';
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
+const providers = courses.providers;
 
 const finalDestination = process.env.ENV_DEST || 'pages';
 const isGAE = finalDestination === 'gae';
@@ -151,27 +153,20 @@ gulp.task('scripts', () => {
 
 // Scan your HTML for assets & optimize them
 gulp.task('html', () => {
-  const providers = courses.providers;
-
-  return gulp.src(['app/**/*.html', '!app/partials/*'])
-    .pipe($.fileInclude({
-      prefix: '@@',
-      basepath: '@file',
-      context: {
-        mainScripts: false,
-        downloadLink: '',
-        source: '',
-        website: '',
+  return gulp.src('app/*.html')
+    .pipe($.nunjucksRender({
+      envOptions: {
+        autoescape: false
+      },
+      path: 'app/',
+      data: {
         currentYear: (new Date()).getFullYear(),
+        trackingID: isGAE ? 'UA-93913692-2' : 'UA-93913692-1',
         author: pkg.author,
-        providers: providers,
-        isGAE: isGAE,
-        trackingID: isGAE ? 'UA-93913692-2' : 'UA-93913692-1'
+        providers,
+        projects,
+        isGAE
       }
-    }))
-    .pipe($.fileInclude({
-      prefix: '@@',
-      basepath: '@file'
     }))
     .pipe($.useref({
       searchPath: '{.tmp,app}',
@@ -333,14 +328,6 @@ gulp.task('serve:dist', ['default'], () =>
     port: 3001
   })
 );
-
-// Deploy to the master branch
-gulp.task('deploy', ['default'], () => {
-  return gulp.src(`${finalDestination}/**/*`)
-    .pipe($.ghPages({
-      branch: 'master'
-    }));
-});
 
 // Load custom tasks from the `tasks` directory
 // Run: `npm install --save-dev require-dir` from the command-line

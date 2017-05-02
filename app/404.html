@@ -1,42 +1,23 @@
-<!doctype html>
-<html lang="en">
+{% set title = "Page Not Found" %}
+{% set description = "This page does NOT exist!" %}
 
-@@include('./partials/head.html', {
-  "title": "Page Not Found",
-  "description": "This page does NOT exist!"
-})
+{% extends "./partials/base.html" %}
 
-<body class="mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
-  <!-- Always shows a header, even in smaller screens. -->
-  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+{% block content %}
 
-    @@include('./partials/header.html')
+  <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+    <header class="section__play-btn mdl-cell mdl-cell--3-col-desktop
+     mdl-cell--2-col-tablet mdl-cell--hide-phone mdl-color--teal-100
+     mdl-color-text--white">
+    </header>
 
-    <main class="mdl-layout__content">
-      <div class="page-content">
-
-        <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
-          <header class="section__play-btn mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--hide-phone mdl-color--teal-100 mdl-color-text--white">
-          </header>
-
-          <div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
-            <div class="mdl-card__supporting-text">
-              <h4>Sorry!</h4>
-              The page you are looking for does not exist!
-            </div>
-          </div>
-        </section>
-
-        @@include('./partials/footer.html')
-
+    <div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet
+     mdl-cell--4-col-phone">
+      <div class="mdl-card__supporting-text">
+        <h4>Sorry!</h4>
+        The page you are looking for does not exist!
       </div>
-    </main>
+    </div>
+  </section>
 
-  </div>
-
-  @@include('./partials/scripts.html')
-
-  <!-- Built with love using Web Starter Kit -->
-</body>
-
-</html>
+{% endblock %}
