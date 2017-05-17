@@ -1,8 +1,10 @@
 {
-  "providers": [{
+  "providers": [
+    {
       "name": "Microsoft Virtual Academy",
       "profile": "https://mva.microsoft.com/Profile.aspx?alias=3423187",
-      "courses": [{
+      "courses": [
+        {
           "name": "Django in the Real World",
           "link": "https://mva.microsoft.com/en-US/training-courses/django-in-the-real-world-14684"
         },
@@ -67,7 +69,8 @@
     {
       "name": "Udacity",
       "profile": "https://discussions.udacity.com/users/badersur",
-      "courses": [{
+      "courses": [
+        {
           "name": "Web Development",
           "link": "https://www.udacity.com/course/web-development--cs253"
         },
@@ -92,7 +95,8 @@
     {
       "name": "Codecademy",
       "profile": "https://www.codecademy.com/BaderSur",
-      "courses": [{
+      "courses": [
+        {
           "name": "Make an Interactive Website",
           "link": "https://www.codecademy.com/en/skills/make-an-interactive-website"
         },
@@ -108,7 +112,8 @@
     },
     {
       "name": "Laracasts",
-      "courses": [{
+      "courses": [
+        {
           "name": "The PHP Practitioner",
           "link": "https://laracasts.com/series/php-for-beginners"
         },
@@ -128,10 +133,12 @@
     },
     {
       "name": "NewCircle Training",
-      "courses": [{
-        "name": "Android Bootcamp Series 2012",
-        "link": "https://www.youtube.com/playlist?list=PLE08A97D36D5A255F"
-      }]
+      "courses": [
+        {
+          "name": "Android Bootcamp Series 2012",
+          "link": "https://www.youtube.com/playlist?list=PLE08A97D36D5A255F"
+        }
+      ]
     }
   ]
 }

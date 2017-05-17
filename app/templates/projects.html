@@ -1,0 +1,79 @@
+<div class="mdl-grid projects">
+
+  {% for project in projects %}
+
+    {% set downloadText = "جرِّب البرنامج" if lang == "ar" else "Download" %}
+    {% set viewSourceText = "اقرأ ملفات المشروع" if lang == "ar" else "View Source" %}
+    {% set visitWebsiteText = "زُر الموقع" if lang == "ar" else "Visit website" %}
+
+    <div class="mdl-cell mdl-card mdl-shadow--3dp" dir="{{ dir }}">
+      <div class="mdl-card__media"></div>
+
+      <div class="mdl-card__title">
+        <h4 class="mdl-card__title-text" dir="{{ dir }}">
+          {{ project.name[ lang ] }}
+        </h4>
+      </div>
+
+      <div class="mdl-card__supporting-text" dir="{{ dir }}">
+        <span class="mdl-typography--font-light mdl-typography--subhead">
+          {{ project.description[ lang ] | markdown }}
+        </span>
+      </div>
+
+      {% if project.downloadLink %}
+
+        <div class="mdl-card__actions" dir="{{ dir }}">
+          <a class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase"
+          href="{{ project.downloadLink }}">{{ downloadText }}
+
+          {% if lang == "ar" %}
+            <i class="material-icons">chevron_left</i>
+          {% else %}
+            <i class="material-icons">chevron_right</i>
+          {% endif %}
+
+          </a>
+        </div>
+
+      {% endif %}
+
+      {% if project.source %}
+
+        <div class="mdl-card__actions" dir="{{ dir }}">
+          <a class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase"
+          href="{{ project.source }}">{{ viewSourceText }}
+
+          {% if lang == "ar" %}
+            <i class="material-icons">chevron_left</i>
+          {% else %}
+            <i class="material-icons">chevron_right</i>
+          {% endif %}
+
+          </a>
+        </div>
+
+      {% endif %}
+
+      {% if project.website %}
+
+        <div class="mdl-card__actions" dir="{{ dir }}">
+          <a class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase"
+          href="{{ project.website }}">{{ visitWebsiteText }}
+
+          {% if lang == "ar" %}
+            <i class="material-icons">chevron_left</i>
+          {% else %}
+            <i class="material-icons">chevron_right</i>
+          {% endif %}
+
+          </a>
+        </div>
+
+      {% endif %}
+
+    </div>
+
+  {% endfor %}
+
+</div>

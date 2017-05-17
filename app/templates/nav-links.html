@@ -1,0 +1,30 @@
+{% set alternateLangNavTitle = "اقرأ باللغة العربية" if lang == "en" else "Read in English" %}
+
+{% set mainNavText = "النبذة" if lang == "ar" else "BS" %}
+{% set projectsNavText = "المشاريع" if lang == "ar" else "Projects" %}
+{% set coursesNavText = "الدورات" if lang == "ar" else "Courses" %}
+{% set blogNavText = "المدونة" if lang == "ar" else "Blog" %}
+{% set alternateLangNavText = "ع" if lang == "en" else "EN" %}
+
+{% set mainNavLink = "/" +  lang + "/" %}
+{% set projectsNavLink = mainNavLink + "projects" + ("" if isGAE else ".html") %}
+{% set coursesNavLink = mainNavLink + "courses" + ("" if isGAE else ".html") %}
+{% set blogNavLink = "https://bader-sur.appspot.com/blog" %}
+{% set alternateLangNavLink = alternateLink %}
+
+<span class="mdl-layout-title">
+  <a class="mdl-navigation__link" href="{{ mainNavLink }}">{{ mainNavText }}</a>
+</span>
+
+<nav class="mdl-navigation">
+  <a class="mdl-navigation__link" href="{{ projectsNavLink }}">{{ projectsNavText }}</a>
+  <a class="mdl-navigation__link" href="{{ coursesNavLink }}">{{ coursesNavText }}</a>
+  <a class="mdl-navigation__link" href="{{ blogNavLink }}">{{ blogNavText}}</a>
+</nav>
+
+<div class="mdl-layout-spacer"></div>
+
+<nav class="mdl-navigation">
+  <a class="mdl-navigation__link" href="{{ alternateLangNavLink }}"
+   title="{{ alternateLangNavTitle }}">{{ alternateLangNavText }}</a>
+</nav>

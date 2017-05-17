@@ -5,7 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="{{ author }}">
 
-  <title>{{ title }} - BaderSur</title>
+  {% if redirectUrl %}
+    <script>window.location.href = "{{ redirectUrl }}"</script>
+    <noscript><meta http-equiv="refresh" content="0; url={{ redirectUrl }}"></noscript>
+  {% endif %}
+
+  <title>{{ fullTitle }}</title>
+
+  {% if robots %}
+    <meta name="robots" content="{{ robots }}">
+  {% endif %}
+
+  <link rel="canonical" href="{{ currentLink }}">
+  <link rel="alternate" hreflang="{{ alternateLang }}" href="{{ alternateLink }}">
 
   <!-- Disable tap highlight on IE -->
   <meta name="msapplication-tap-highlight" content="no">
@@ -15,13 +27,13 @@
 
   <!-- Add to homescreen for Chrome on Android -->
   <meta name="mobile-web-app-capable" content="yes">
-  <meta name="application-name" content="BaderSur">
+  <meta name="application-name" content="{{ appName }}">
   <link rel="icon" sizes="192x192" href="/images/touch/chrome-touch-icon-192x192.png">
 
   <!-- Add to homescreen for Safari on iOS -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="BaderSur">
+  <meta name="apple-mobile-web-app-title" content="{{ appName }}">
   <link rel="apple-touch-icon" href="/images/touch/apple-touch-icon.png">
 
   <!-- Tile icon for Win8 (144x144 + tile color) -->
@@ -33,9 +45,8 @@
   <meta name="theme-color" content="#2F3BA2">
 
   <meta property="og:type" content="website">
-  <meta property="og:url" content="/">
-  <meta property="og:image"
-   content="/images/touch/icon-128x128.png">
+  <meta property="og:url" content="{{ currentLink }}">
+  <meta property="og:image" content="/images/touch/icon-128x128.png">
   <meta property="og:image:width" content="128">
   <meta property="og:image:height" content="128">
   <meta property="og:title" content="{{ title }}">
@@ -43,10 +54,11 @@
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="@BaderSur">
+  <meta name="twitter:creator" content="@BaderSur">
   <meta name="twitter:title" content="{{ title }}">
   <meta name="twitter:description" content="{{ description }}">
-  <meta name="twitter:image"
-   content="/images/touch/icon-128x128.png">
+  <meta name="twitter:image" content="/images/touch/icon-128x128.png">
+  <meta name="twitter:url" content="{{ currentLink }}">
 
   <!-- Material Design icons -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">

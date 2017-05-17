@@ -1,0 +1,11 @@
+{% set title = "المشاريع" %}
+{% set description = "بعض المشاريع التقنية التي أنهيتها." %}
+{% set link = "/projects" + ("" if isGAE else ".html") %}
+
+{% extends "base.html" %}
+
+{% block content %}
+
+  {% include "projects.html" %}
+
+{% endblock %}

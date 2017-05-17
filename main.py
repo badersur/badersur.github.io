@@ -4,8 +4,13 @@ import logging
 import webapp2
 from google.appengine.ext.webapp.template import render
 
-
 DEVENV = os.environ['SERVER_SOFTWARE'].startswith('Dev')
+
+
+class HomePage(webapp2.RequestHandler):
+
+  def get(self):
+    self.redirect('/ar/', permanent=True)
 
 
 def handle_404(request, response, exception):
@@ -22,7 +27,7 @@ def handle_500(request, response, exception):
 
 
 app = webapp2.WSGIApplication([
-
+  ('/', HomePage),
 ], debug=DEVENV)
 
 app.error_handlers[404] = handle_404

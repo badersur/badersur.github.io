@@ -52,7 +52,6 @@ handlers:
 - url: /(.+\.(xml|txt|json|map))
   static_files: gae/\1
   upload: gae/(.+\.(xml|txt|json|map))
-  expiration: "10m"
   secure: always
 
 # HTML pages
@@ -61,7 +60,6 @@ handlers:
   static_files: gae/\1
   upload: gae/(.+\.html)
   application_readable: true
-  expiration: "5m"
   secure: always
   http_headers:
     # Force Internet Explorer to render pages in the highest available
@@ -76,41 +74,40 @@ handlers:
 
 # Pretty links for courses & projects
 
-- url: /(courses|projects)
+- url: /((ar|en)/(courses|projects))/?
   static_files: gae/\1.html
   upload: gae/(.+)\.html
   application_readable: true
-  expiration: "5m"
   secure: always
   http_headers:
     X-UA-Compatible: "IE=edge"
     # Content-Security-Policy: "script-src 'self'; object-src 'self'"
 
-# Homepage
+# Homepages for /ar/ & /en/
 
-- url: /
-  static_files: gae/index.html
-  upload: gae/index\.html
+- url: /(ar|en)/?
+  static_files: gae/\1/index.html
+  upload: gae/(.+)/index\.html
   application_readable: true
-  expiration: "5m"
   secure: always
   http_headers:
     X-UA-Compatible: "IE=edge"
     # Content-Security-Policy: "script-src 'self'; object-src 'self'"
 
-# 404 & 500
+# Redirect to /ar/ & handle errors: 404 & 500
 
 - url: /.*
   script: main.app
   secure: always
 
 skip_files:
-- ^(.*/)?#.*#
-- ^(.*/)?.*~
-- ^(.*/)?.*\.py[co]
-- ^(.*/)?.*/RCS/.*
+- ^(.*/)?#.*#$
+- ^(.*/)?.*~$
+- ^(.*/)?.*\.py[co]$
+- ^(.*/)?.*/RCS/.*$
+- ^(.*/)?\..*$
 - ^(.*/)?.*\.bak$
-- ^(.*/)?node_modules/.*
+- ^node_modules/.*
 - ^pages/.*
 - ^\.tmp/.*
-- ^\.publish/.*
+- ^\.vscode/.*

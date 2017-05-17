@@ -1,0 +1,11 @@
+{% set title = "الدورات الإلكترونية التي أكملتها" %}
+{% set description = "معظم الدورات الإلكترونية التي أكملتها" %}
+{% set link = "/courses" + ("" if isGAE else ".html") %}
+
+{% extends "base.html" %}
+
+{% block content %}
+
+  {% include "courses.html" %}
+
+{% endblock %}
