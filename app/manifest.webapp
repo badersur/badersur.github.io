@@ -1,7 +1,7 @@
 {
   "version": "1.0.1",
   "name": "BaderSur",
-  "launch_path": "/index.html",
+  "launch_path": "/ar/index.html",
   "description": "Bader's personal web app.",
   "icons": {
     "128": "/images/touch/icon-128x128.png"
@@ -13,13 +13,17 @@
   "installs_allowed_from": [
     "*"
   ],
-  "default_locale": "en",
+  "default_locale": "ar",
   "permissions": {
   },
   "locales": {
     "en": {
       "name": "BaderSur",
       "description": "Bader's personal web app."
+    },
+    "ar": {
+      "name": "بدر الهاشمي",
+      "description": "موقع بدر الشخصي."
     }
   }
 }

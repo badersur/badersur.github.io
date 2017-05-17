@@ -1,0 +1,38 @@
+{
+  "extends": [
+    "google",
+    "eslint:recommended"
+  ],
+  "env": {
+    "es6": true,
+    "node": true,
+    "browser": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2015,
+    "sourceType": "module"
+  },
+  "globals": {
+    "$": true,
+    "nunjucks": true
+  },
+  "rules": {
+    "arrow-parens": "off",
+    "comma-dangle": "off",
+    "no-console": "warn",
+    "spaced-comment": "warn",
+    "object-curly-spacing": "warn",
+    "indent": [
+      "warn",
+      2
+    ],
+    "max-len": [
+      "error",
+      {
+        "code": 88,
+        "tabWidth": 2,
+        "ignoreUrls": true
+      }
+    ]
+  }
+}

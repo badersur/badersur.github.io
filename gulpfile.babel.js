@@ -33,24 +33,25 @@ import swPrecache from 'sw-precache';
 import gulpLoadPlugins from 'gulp-load-plugins';
 import moduleImporter from 'sass-module-importer';
 import MarkdownIt from 'markdown-it';
+import { readFileSync as fsRead } from 'fs';
+import { safeLoad as yamlSafeLoad } from 'js-yaml';
 
-import {stream as critical} from 'critical';
+import { stream as critical } from 'critical';
 
 import pkg from './package.json';
-import courses from './app/data/courses.json';
-import projects from './app/data/projects.json';
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
-const providers = courses.providers;
 const md = new MarkdownIt('commonmark');
 
 const finalDestination = process.env.ENV_DEST || 'pages';
 const isGAE = finalDestination === 'gae';
 
+const isTravis = process.env.TRAVIS || false;
+
 // Lint JavaScript
 gulp.task('lint', () =>
-  gulp.src(['app/scripts/**/*.js', '!node_modules/**'])
+  gulp.src(['app/scripts/**/*.js', '!app/scripts/vendors/*', '!node_modules/**'])
     .pipe($.eslint())
     .pipe($.eslint.format())
     .pipe($.if(!browserSync.active, $.eslint.failAfterError()))
@@ -64,23 +65,30 @@ gulp.task('images', () =>
       interlaced: true
     })))
     .pipe(gulp.dest(`${finalDestination}/images`))
-    .pipe($.size({title: 'images'}))
+    .pipe($.size({ title: 'images' }))
 );
 
-// Copy all files at the root level (app)
+// Copy files
 gulp.task('copy', () => {
   gulp.src([
     'app/*',
     '!app/*.html',
-    '!app/partials'
-  ], {
-    dot: true
-  }).pipe(gulp.dest(finalDestination))
-    .pipe($.size({title: 'copy'}));
+    '!app/templates'
+  ])
+    .pipe(gulp.dest(finalDestination))
+    .pipe($.size({ title: 'copy root' }));
 
   gulp.src(['app/data/*'])
     .pipe(gulp.dest(`${finalDestination}/data`))
-    .pipe($.size({title: 'copy data'}));
+    .pipe($.size({ title: 'copy data' }));
+
+  gulp.src([
+    'node_modules/nunjucks/browser/nunjucks.min.js',
+    'node_modules/jquery/dist/jquery.min.js'
+  ])
+    .pipe(gulp.dest(`${finalDestination}/scripts/vendors`))
+    .pipe(gulp.dest('.tmp/scripts/vendors'))
+    .pipe($.size({ title: 'copy scripts' }));
 });
 
 // Compile and automatically prefix stylesheets
@@ -111,7 +119,7 @@ gulp.task('styles', () => {
     .pipe(gulp.dest('.tmp/styles'))
     // Concatenate and minify styles
     .pipe($.if('*.css', $.cssnano()))
-    .pipe($.size({title: 'styles'}))
+    .pipe($.size({ title: 'styles' }))
     .pipe($.sourcemaps.write('./'))
     .pipe(gulp.dest(`${finalDestination}/styles`))
     .pipe(gulp.dest('.tmp/styles'));
@@ -119,20 +127,23 @@ gulp.task('styles', () => {
 
 // Generate & Inline Critical-path CSS
 gulp.task('critical', () => {
-  return gulp.src(`${finalDestination}/*.html`)
+  return gulp.src([
+    `${finalDestination}/**/*.html`,
+    `!${finalDestination}/index.html`
+  ])
     .pipe(critical({
       base: `${finalDestination}/`,
       inline: true,
       minify: true,
-      css: [`${finalDestination}/styles/main.css`]
+      css: [`${finalDestination}/styles/main.css`],
+      // 5 minutes
+      timeout: 5 * 60 * 1000
     }))
     .on('error', err => console.log(err.message))
     .pipe(gulp.dest(finalDestination));
 });
 
-// Concatenate and minify JavaScript. Optionally transpiles ES2015 code to ES5.
-// to enable ES2015 support remove the line `"only": "gulpfile.babel.js",` in the
-// `.babelrc` file.
+// Concatenate and minify JavaScript. Also, transpile ES2015 code to ES5.
 gulp.task('scripts', () => {
   return gulp.src([
     './node_modules/material-design-lite/src/mdlComponentHandler.js',
@@ -147,7 +158,7 @@ gulp.task('scripts', () => {
     .pipe($.concat('main.js'))
     .pipe($.uglify())
     // Output files
-    .pipe($.size({title: 'scripts - main'}))
+    .pipe($.size({ title: 'bundles' }))
     .pipe($.sourcemaps.write('.'))
     .pipe(gulp.dest(`${finalDestination}/scripts`))
     .pipe(gulp.dest('.tmp/scripts'));
@@ -155,24 +166,35 @@ gulp.task('scripts', () => {
 
 // Scan your HTML for assets & optimize them
 gulp.task('html', () => {
+  let projects, courses, aboutMe;
+
+  try {
+    aboutMe = yamlSafeLoad(fsRead('./app/data/about-me.yaml', 'utf8'));
+    projects = yamlSafeLoad(fsRead('./app/data/projects.yaml', 'utf8'));
+    courses = JSON.parse(fsRead('./app/data/courses.json'));
+  } catch (e) {
+    console.log(e);
+  }
+
   const manageEnvironment = environment => {
     environment.addFilter('markdown', str => md.render(str));
   };
 
-  return gulp.src('app/*.html')
+  return gulp.src(['app/**/*.html', '!app/templates/*'])
     .pipe($.nunjucksRender({
       envOptions: {
         autoescape: false
       },
       manageEnv: manageEnvironment,
-      path: 'app/',
+      path: 'app/templates/',
       data: {
+        isGAE,
+        isTravis,
+        me: aboutMe,
+        projects: projects.projects,
+        providers: courses.providers,
         currentYear: (new Date()).getFullYear(),
-        trackingID: isGAE ? 'UA-93913692-2' : 'UA-93913692-1',
-        author: pkg.author,
-        providers,
-        projects,
-        isGAE
+        trackingID: isGAE ? 'UA-93913692-2' : 'UA-93913692-1'
       }
     }))
     .pipe($.useref({
@@ -194,12 +216,12 @@ gulp.task('html', () => {
       removeOptionalTags: true
     })))
     // Output files
-    .pipe($.if('*.html', $.size({title: 'html', showFiles: true})))
+    .pipe($.if('*.html', $.size({ title: 'html', showFiles: true })))
     .pipe(gulp.dest(finalDestination));
 });
 
 // Watch files for changes & reload
-gulp.task('serve', ['html', 'scripts', 'styles'], () => {
+gulp.task('serve', ['html', 'scripts', 'styles', 'copy'], () => {
   browserSync({
     notify: false,
     // Customize the Browsersync console logging prefix
@@ -211,19 +233,24 @@ gulp.task('serve', ['html', 'scripts', 'styles'], () => {
     //       will present a certificate warning in the browser.
     // https: true,
     server: ['.tmp', 'app'],
-    port: 3000
+    port: 3000,
+    // don't open any URL automatically
+    open: false
   });
 
-  gulp.watch(['app/**/*.html'], ['html', reload]);
+  gulp.watch([
+    'app/**/*.{html,yaml,json}',
+    '!app/manifest.json'
+  ], ['html', reload]);
   gulp.watch(['app/styles/**/*.{scss,css}'], ['styles', reload]);
   gulp.watch(['app/scripts/**/*.js'], ['lint', 'scripts', reload]);
   gulp.watch(['app/images/**/*'], reload);
 });
 
-// Copy over the scripts that are used in importScripts as part of the generate-service-worker task.
+// Copy over the scripts that are used in importScripts as part of the
+// generate-service-worker task.
 gulp.task('copy-sw-scripts', () => {
   return gulp.src([
-    'node_modules/sw-offline-google-analytics/build/offline-google-analytics-import.js',
     'node_modules/sw-toolbox/sw-toolbox.js',
     'app/scripts/sw/runtime-caching.js'
   ])
@@ -257,12 +284,12 @@ gulp.task('generate-service-worker', () => {
   const rootDir = finalDestination;
   const filepath = path.join(rootDir, 'sw.js');
 
-  return swPrecache.write(filepath, {
+  let swOptions = {
     // Used to avoid cache conflicts when serving on localhost.
-    cacheId: `${finalDestination}-${pkg.name}` || 'web-starter-kit',
-    // sw-toolbox.js needs to be listed first. It sets up methods used in runtime-caching.js.
+    cacheId: `${rootDir}-${pkg.name}` || 'web-starter-kit',
+    // sw-toolbox.js needs to be listed first. It sets up methods used in
+    // runtime-caching.js.
     importScripts: [
-      manifest['scripts/sw/offline-google-analytics-import.js'],
       manifest['scripts/sw/sw-toolbox.js'],
       manifest['scripts/sw/runtime-caching.js']
     ],
@@ -271,17 +298,26 @@ gulp.task('generate-service-worker', () => {
       `${rootDir}/images/**/*`,
       `${rootDir}/scripts/**/*.js`,
       `${rootDir}/styles/**/*.css`,
-      `${rootDir}/*.{html,json}`
+      `${rootDir}/**/*.html`,
+      `${rootDir}/*.json`
     ],
     // Translates a static file path to the relative URL that it's served from.
     // This is '/' rather than path.sep because the paths returned from
     // glob always use '/'.
     stripPrefix: rootDir + '/',
-    dynamicUrlToDependencies: {
-      '/courses': [`${rootDir}/courses.html`],
-      '/projects': [`${rootDir}/projects.html`]
-    }
-  });
+    verbose: false
+  };
+
+  if (isGAE) {
+    swOptions.dynamicUrlToDependencies = {
+      '/ar/courses': [`${rootDir}/ar/courses.html`],
+      '/ar/projects': [`${rootDir}/ar/projects.html`],
+      '/en/courses': [`${rootDir}/en/courses.html`],
+      '/en/projects': [`${rootDir}/en/projects.html`]
+    };
+  }
+
+  return swPrecache.write(filepath, swOptions);
 });
 
 // Clean output directory
@@ -289,7 +325,7 @@ gulp.task('clean', () => del([
   '.tmp',
   `${finalDestination}/*`,
   `!${finalDestination}/.git`
-], {dot: true}));
+], { dot: true }));
 
 // Build production files
 gulp.task('build', ['clean'], cb =>
@@ -308,7 +344,7 @@ gulp.task('replace', ['build'], () => {
   const manifest = gulp.src(`./${finalDestination}/rev-manifest.json`);
 
   return gulp.src([
-    `${finalDestination}/*.html`,
+    `${finalDestination}/**/*.html`,
     `${finalDestination}/manifest.*`
   ])
     .pipe($.revReplace({
@@ -332,7 +368,9 @@ gulp.task('serve:dist', ['default'], () =>
     //       will present a certificate warning in the browser.
     // https: true,
     server: finalDestination,
-    port: 3001
+    port: 3001,
+    // don't open any URL automatically
+    open: false
   })
 );
 

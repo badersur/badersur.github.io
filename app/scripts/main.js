@@ -63,7 +63,7 @@
                     'service worker became redundant.');
 
                 default:
-                  // Ignore
+                // Ignore
               }
             };
           }
@@ -74,24 +74,36 @@
   }
 
   // Your custom JavaScript goes here
-  const mainPagePaths = ['/', '/index.html'];
+  const mainPagePaths = ['/ar/', '/ar/index.html', '/en/', '/en/index.html'];
   let pathname = window.location.pathname;
+  let lang = pathname.includes('/ar') ? 'ar' : 'en';
+
   if (mainPagePaths.includes(pathname)) {
     let $postsSection = $('.section--center').last();
     let $postsTemplate = $('#posts-template').html();
     let $errorTemplate = $('#error-template').html();
-    let env = global.nunjucks.configure({autoescape: true});
+    let env = global.nunjucks.configure({ autoescape: true });
 
-    env.addFilter('localeDate', function(dateString) {
-      return new Date(dateString).toLocaleDateString();
+    env.addFilter('localeDate', dateString => {
+      let date = new Date(dateString);
+      let dateFormatterOptions = { day: 'numeric', month: 'long', year: 'numeric' };
+      let dateLocales = (lang === 'ar') ? 'ar-EG-u-nu-arabext-ca-islamicc' : 'en-GB';
+      let shortDate = new Intl.DateTimeFormat(
+        dateLocales, dateFormatterOptions).format(date);
+
+      return shortDate;
     });
 
-    global.$.ajax('https://bader-sur.appspot.com/blog.json', {timeout: 10000})
+    let blogUrl = isLocalhost ?
+      '/data/blog.json' : 'https://bader-sur.appspot.com/blog.json';
+
+    global.$.ajax(blogUrl, { timeout: 10000 })
       .done(data => {
         $postsSection.after(env.renderString($postsTemplate, {
-          posts: data.posts.slice(0, 2)
+          posts: data.posts.slice(0, 2),
+          lang
         }));
       })
-      .fail(() => $postsSection.after(env.renderString($errorTemplate)));
+      .fail(() => $postsSection.after(env.renderString($errorTemplate, { lang })));
   }
 })(self);

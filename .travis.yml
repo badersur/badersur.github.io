@@ -1,13 +1,11 @@
 dist: trusty
 sudo: false
 language: node_js
-node_js: '7'
+node_js: 7
 cache:
   yarn: true
-  directories:
-  - node_modules
-before_script:
-- yarn global add gulp-cli
+  directories: node_modules
+before_script: yarn global add gulp-cli
 script: yarn run build
 deploy:
 - provider: pages
@@ -17,8 +15,7 @@ deploy:
   local_dir: pages
   email: badersur@gmail.com
   name: Bader Nasser
-  on:
-    branch: dev
+  on: dev
 - provider: gae
   skip_cleanup: true
   keyfile: client-secret.json
@@ -30,7 +27,6 @@ before_install:
   -in client-secret.json.enc -out client-secret.json -d
 notifications:
   email:
-    recipients:
-      - badersur@gmail.com
+    recipients: badersur@gmail.com
     on_success: never # default: change
     on_failure: always # default: always

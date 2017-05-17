@@ -1,0 +1,51 @@
+{% if not lang %}
+  {% set lang = "ar" %}
+{% endif %}
+
+{% if not link %}
+  {% set link = "/" %}
+{% endif %}
+
+{% set dir = "rtl" if lang == "ar" else "ltr" %}
+{% set alternateLang = "ar" if lang == "en" else "en" %}
+
+{% set author = "بدر بن ناصر الهاشمي (@BaderSur)" if lang == "ar" else "Bader Nasser Al-Hashmi (@BaderSur)" %}
+{% set appName = "موقع بدر" if lang == "ar" else "BaderSur" %}
+
+{% set currentLink = "/" + lang + link %}
+{% set alternateLink = "/" + alternateLang + link %}
+
+{% set _title = "بدر الهاشمي" if lang == "ar" else "BaderSur" %}
+{% set fullTitle = title + " - " + _title %}
+
+
+<!doctype html>
+<html lang="{{ lang }}" dir="{{ dir }}">
+
+{% include "head.html" %}
+
+<body class="mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
+
+  <!-- Always shows a header, even in smaller screens. -->
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+
+    {% include "header.html" %}
+
+    <main class="mdl-layout__content">
+      <div class="page-content">
+
+        {% block content %}{% endblock %}
+
+        {% include "footer.html" %}
+
+      </div>
+    </main>
+
+  </div>
+
+  {% include "scripts.html" %}
+
+  <!-- Built with love using Web Starter Kit -->
+</body>
+
+</html>
