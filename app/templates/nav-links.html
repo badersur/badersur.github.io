@@ -12,14 +12,19 @@
 {% set blogNavLink = "https://bader-sur.appspot.com/blog" %}
 {% set alternateLangNavLink = alternateLink %}
 
-<span class="mdl-layout-title">
-  <a class="mdl-navigation__link" href="{{ mainNavLink }}">{{ mainNavText }}</a>
-</span>
+{% if not isDrawer %}
+  <span class="mdl-layout-title">
+    <a class="mdl-navigation__link" href="{{ mainNavLink }}">{{ mainNavText }}</a>
+  </span>
+{% endif %}
 
 <nav class="mdl-navigation">
+  <a class="mdl-navigation__link mdl-layout--small-screen-only"
+   href="{{ mainNavLink }}">{{ mainNavText }}</a>
   <a class="mdl-navigation__link" href="{{ projectsNavLink }}">{{ projectsNavText }}</a>
   <a class="mdl-navigation__link" href="{{ coursesNavLink }}">{{ coursesNavText }}</a>
-  <a class="mdl-navigation__link" href="{{ blogNavLink }}">{{ blogNavText}}</a>
+  <a class="mdl-navigation__link mdl-layout--large-screen-only"
+   href="{{ blogNavLink }}">{{ blogNavText}}</a>
 </nav>
 
 <div class="mdl-layout-spacer"></div>
