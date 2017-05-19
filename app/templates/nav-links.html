@@ -19,8 +19,11 @@
 {% endif %}
 
 <nav class="mdl-navigation">
-  <a class="mdl-navigation__link mdl-layout--small-screen-only"
-   href="{{ mainNavLink }}">{{ mainNavText }}</a>
+  {% if isDrawer %}
+    <a class="mdl-navigation__link mdl-layout--small-screen-only"
+    href="{{ mainNavLink }}">{{ mainNavText }}</a>
+  {% endif %}
+
   <a class="mdl-navigation__link" href="{{ projectsNavLink }}">{{ projectsNavText }}</a>
   <a class="mdl-navigation__link" href="{{ coursesNavLink }}">{{ coursesNavText }}</a>
   <a class="mdl-navigation__link mdl-layout--large-screen-only"
