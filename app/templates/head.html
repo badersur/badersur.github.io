@@ -16,8 +16,14 @@
     <meta name="robots" content="{{ robots }}">
   {% endif %}
 
-  <link rel="canonical" href="{{ currentLink }}">
-  <link rel="alternate" hreflang="{{ alternateLang }}" href="{{ alternateLink }}">
+  {% if not redirectUrl %}
+    <link rel="canonical" href="{{ baseUrl + currentLink }}">
+
+    <link rel="alternate" href="{{ baseUrl + currentLink }}"
+     hreflang="{{ lang }}">
+    <link rel="alternate" href="{{ baseUrl + alternateLink }}"
+     hreflang="{{ alternateLang }}">
+  {% endif %}
 
   <!-- Disable tap highlight on IE -->
   <meta name="msapplication-tap-highlight" content="no">

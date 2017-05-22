@@ -13,6 +13,12 @@ class HomePage(webapp2.RequestHandler):
     self.redirect('/ar/', permanent=True)
 
 
+class Redirector(webapp2.RequestHandler):
+
+  def get(self, path):
+    self.redirect('/ar/' + path, permanent=True)
+
+
 def handle_404(request, response, exception):
   logging.exception(exception)
   path = os.path.join(os.path.dirname(__file__), 'gae/404.html')
@@ -28,6 +34,7 @@ def handle_500(request, response, exception):
 
 app = webapp2.WSGIApplication([
   ('/', HomePage),
+  ('/(courses|projects)/?', Redirector),
 ], debug=DEVENV)
 
 app.error_handlers[404] = handle_404

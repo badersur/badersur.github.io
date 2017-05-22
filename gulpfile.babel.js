@@ -129,7 +129,9 @@ gulp.task('styles', () => {
 gulp.task('critical', () => {
   return gulp.src([
     `${finalDestination}/**/*.html`,
-    `!${finalDestination}/index.html`
+    `!${finalDestination}/index.html`,
+    `!${finalDestination}/courses.html`,
+    `!${finalDestination}/projects.html`
   ])
     .pipe(critical({
       base: `${finalDestination}/`,
@@ -194,7 +196,9 @@ gulp.task('html', () => {
         projects: projects.projects,
         providers: courses.providers,
         currentYear: (new Date()).getFullYear(),
-        trackingID: isGAE ? 'UA-93913692-2' : 'UA-93913692-1'
+        trackingID: isGAE ? 'UA-93913692-2' : 'UA-93913692-1',
+        baseUrl: isGAE ?
+          'https://badersur-push.appspot.com' : 'https://badersur.github.io'
       }
     }))
     .pipe($.useref({
@@ -212,8 +216,7 @@ gulp.task('html', () => {
       removeRedundantAttributes: true,
       removeEmptyAttributes: true,
       removeScriptTypeAttributes: true,
-      removeStyleLinkTypeAttributes: true,
-      removeOptionalTags: true
+      removeStyleLinkTypeAttributes: true
     })))
     // Output files
     .pipe($.if('*.html', $.size({ title: 'html', showFiles: true })))

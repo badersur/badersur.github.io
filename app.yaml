@@ -94,7 +94,7 @@ handlers:
     X-UA-Compatible: "IE=edge"
     # Content-Security-Policy: "script-src 'self'; object-src 'self'"
 
-# Redirect to /ar/ & handle errors: 404 & 500
+# Redirecting & handling errors: 404 & 500
 
 - url: /.*
   script: main.app
