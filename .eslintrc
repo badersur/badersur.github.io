@@ -19,11 +19,11 @@
   "rules": {
     "arrow-parens": "off",
     "comma-dangle": "off",
-    "no-console": "warn",
-    "spaced-comment": "warn",
-    "object-curly-spacing": "warn",
+    "no-console": "off",
+    "spaced-comment": "off",
+    "object-curly-spacing": "off",
     "indent": [
-      "warn",
+      "off",
       2
     ],
     "max-len": [
