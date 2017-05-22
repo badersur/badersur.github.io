@@ -49,6 +49,8 @@ const isGAE = finalDestination === 'gae';
 
 const isTravis = process.env.TRAVIS || false;
 
+console.log(`\nBuilding for ${finalDestination}...\n`);
+
 // Lint JavaScript
 gulp.task('lint', () =>
   gulp.src(['app/scripts/**/*.js', '!app/scripts/vendors/*', '!node_modules/**'])
