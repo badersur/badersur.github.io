@@ -273,6 +273,9 @@ gulp.task('revision', ['copy-sw-scripts'], () => {
     `${finalDestination}/**/*.ico`
   ])
     .pipe($.rev())
+    .pipe($.revFormat({
+      prefix: '.'
+    }))
     .pipe($.revDeleteOriginal())
     .pipe(gulp.dest(finalDestination))
     .pipe($.rev.manifest())
