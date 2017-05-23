@@ -325,6 +325,15 @@ gulp.task('generate-service-worker', () => {
   return swPrecache.write(filepath, swOptions);
 });
 
+// Minify service worker.
+gulp.task('minify-service-worker', () => {
+  return gulp.src([
+    `./${finalDestination}/sw.js`
+  ])
+    .pipe($.uglify())
+    .pipe(gulp.dest(finalDestination));
+});
+
 // Clean output directory
 gulp.task('clean', () => del([
   '.tmp',
@@ -340,6 +349,7 @@ gulp.task('build', ['clean'], cb =>
     'critical',
     'revision',
     'generate-service-worker',
+    'minify-service-worker',
     cb
   )
 );
