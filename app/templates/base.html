@@ -15,6 +15,9 @@
 {% set currentLink = "/" + lang + link %}
 {% set alternateLink = "/" + alternateLang + link %}
 
+{% set fullUrl = baseUrl + currentLink %}
+{% set fullAlternateUrl = baseUrl + alternateLink %}
+
 {% set _title = "بدر الهاشمي" if lang == "ar" else "BaderSur" %}
 {% set fullTitle = title + " | " + _title %}
 

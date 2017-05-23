@@ -1,4 +1,4 @@
-<head>
+<head prefix="og: http://ogp.me/ns#">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="description" content="{{ description }}">
@@ -17,11 +17,11 @@
   {% endif %}
 
   {% if not redirectUrl %}
-    <link rel="canonical" href="{{ baseUrl + currentLink }}">
+    <link rel="canonical" href="{{ fullUrl }}">
 
-    <link rel="alternate" href="{{ baseUrl + currentLink }}"
+    <link rel="alternate" href="{{ fullUrl }}"
      hreflang="{{ lang }}">
-    <link rel="alternate" href="{{ baseUrl + alternateLink }}"
+    <link rel="alternate" href="{{ fullAlternateUrl }}"
      hreflang="{{ alternateLang }}">
   {% endif %}
 
@@ -51,11 +51,12 @@
   <meta name="theme-color" content="#2F3BA2">
 
   <meta property="og:type" content="website">
-  <meta property="og:url" content="{{ currentLink }}">
-  <meta property="og:image" content="/images/touch/icon-128x128.png">
+  <meta property="og:title" content="{{ title }}">
+  <meta property="og:url" content="{{ fullUrl }}">
+  <meta property="og:image" content="{{ baseUrl + '/images/touch/icon-128x128.png' }}">
+
   <meta property="og:image:width" content="128">
   <meta property="og:image:height" content="128">
-  <meta property="og:title" content="{{ title }}">
   <meta property="og:description" content="{{ description }}">
 
   <meta name="twitter:card" content="summary">
@@ -63,8 +64,8 @@
   <meta name="twitter:creator" content="@BaderSur">
   <meta name="twitter:title" content="{{ title }}">
   <meta name="twitter:description" content="{{ description }}">
-  <meta name="twitter:image" content="/images/touch/icon-128x128.png">
-  <meta name="twitter:url" content="{{ currentLink }}">
+  <meta name="twitter:image" content="{{ baseUrl + '/images/touch/icon-128x128.png' }}">
+  <meta name="twitter:url" content="{{ fullUrl }}">
 
   <!-- Material Design icons -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
