@@ -1,7 +1,7 @@
 {
   "name": "badersur.github.io",
-  "version": "3.2.1",
-  "description": "Source code for my github pages and GAE application",
+  "version": "3.2.2",
+  "description": "A PWA that shows my skills, projects, blog posts and completed online courses",
   "author": "Bader Nasser Al-Hashmi (@BaderSur)",
   "repository": {
     "type": "git",
@@ -40,7 +40,7 @@
     "js-yaml": "^3.8.4",
     "markdown-it": "^8.3.1",
     "material-design-lite": "^1.3.0",
-    "nunjucks": "^3.0.0",
+    "nunjucks": "^3.0.1",
     "run-sequence": "^1.2.2",
     "sass-module-importer": "^1.4.0",
     "sw-precache": "^5.1.1",

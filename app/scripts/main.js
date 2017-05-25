@@ -87,7 +87,7 @@
     env.addFilter('localeDate', dateString => {
       let date = new Date(dateString);
       let dateFormatterOptions = { day: 'numeric', month: 'long', year: 'numeric' };
-      let dateLocales = (lang === 'ar') ? 'ar-EG-u-nu-arabext-ca-islamicc' : 'en-GB';
+      let dateLocales = (lang === 'ar') ? 'ar-EG-u-nu-arab-ca-islamic' : 'en-GB';
       let shortDate = new Intl.DateTimeFormat(
         dateLocales, dateFormatterOptions).format(date);
 
