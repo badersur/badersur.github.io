@@ -68,21 +68,16 @@
             };
           }
         };
-      }).catch(e => {
-        console.error('Error during service worker registration:', e);
-      });
+      }).catch(e => console.error('Error during service worker registration:', e));
   }
 
-  // Your custom JavaScript goes here
-  const mainPagePaths = ['/ar/', '/ar/index.html', '/en/', '/en/index.html'];
-  let pathname = window.location.pathname;
-  let lang = pathname.includes('/ar') ? 'ar' : 'en';
+  let lang = window.location.pathname.includes('/ar') ? 'ar' : 'en';
+  let $postsTemplate = $('#posts-template').html();
 
-  if (mainPagePaths.includes(pathname)) {
+  if ($postsTemplate.length) {
     let $postsSection = $('.section--center').last();
-    let $postsTemplate = $('#posts-template').html();
     let $errorTemplate = $('#error-template').html();
-    let env = global.nunjucks.configure({ autoescape: true });
+    let env = nunjucks.configure({ autoescape: true });
 
     env.addFilter('localeDate', dateString => {
       let date = new Date(dateString);
@@ -97,7 +92,7 @@
     let blogUrl = isLocalhost ?
       '/data/blog.json' : 'https://bader-sur.appspot.com/blog.json';
 
-    global.$.ajax(blogUrl, { timeout: 10000 })
+    $.ajax(blogUrl, { timeout: 10000 })
       .done(data => {
         $postsSection.after(env.renderString($postsTemplate, {
           posts: data.posts.slice(0, 2),
@@ -106,4 +101,4 @@
       })
       .fail(() => $postsSection.after(env.renderString($errorTemplate, { lang })));
   }
-})(self);
+})();

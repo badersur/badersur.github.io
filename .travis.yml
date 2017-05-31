@@ -1,13 +1,12 @@
 dist: trusty
 sudo: false
 language: node_js
-node_js: 7
+node_js: 7.10
 cache:
-  yarn: true
   directories:
   - node_modules
-before_script: yarn global add gulp-cli
-script: yarn run build
+before_script: npm install --global gulp-cli
+script: npm run build
 deploy:
 - provider: pages
   skip_cleanup: true
@@ -15,7 +14,7 @@ deploy:
   target_branch: master
   local_dir: pages
   email: badersur@gmail.com
-  name: Bader Nasser
+  name: "Bader Nasser"
   on: dev
 - provider: gae
   skip_cleanup: true
