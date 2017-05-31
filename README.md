@@ -17,7 +17,12 @@ showing my skills, completed courses, projects and blog posts.
 - Offline support - Thanks to [Service Worker][6] [pre-caching][7]. This is made
  possible by [sw-precache][8].
 
-- The features of [Google's Web Starter Kit][9] :)
+- Inlined Critical-path CSS using [critical][9].
+
+- Static asset revisioning by appending content hash to filenames using
+ [gulp-rev][10] and [its brothers](package.json#L31-L33) :)
+
+- The features of [Google's Web Starter Kit][11] :)
 
 
 ## Quickstart
@@ -33,17 +38,19 @@ Once you have verified that your system can run WSK, check out the
 
 ## Thanks
 
-- [Google's Web Starter Kit][9]
+- [Google's Web Starter Kit][11]
 
-- [gulp-nunjucks-render plugin][10]
+- [gulp-nunjucks-render plugin][12]
 
-- [Jeffrey Way][11]
+- [Jeffrey Way][13]
 
-- [Ryan Christiani][12]
+- [Ryan Christiani][14]
 
-- [Google's lighthouse Chrome extension][13]
+- [Google's lighthouse Chrome extension][15]
 
-- [Travis CI][14]
+- [Google's PageSpeed Insights][16]
+
+- [Travis CI][17]
 
 - All awesome open source projects :)
 
@@ -56,9 +63,12 @@ Once you have verified that your system can run WSK, check out the
 [6]: https://developers.google.com/web/fundamentals/getting-started/primers/service-workers
 [7]: https://github.com/google/web-starter-kit/blob/master/gulpfile.babel.js#L226
 [8]: https://github.com/GoogleChrome/sw-precache
-[9]: https://github.com/google/web-starter-kit
-[10]: https://github.com/carlosl/gulp-nunjucks-render
-[11]: https://laracasts.com/series/es6-cliffsnotes
-[12]: https://www.youtube.com/playlist?list=PL57atfCFqj2h5fpdZD-doGEIs0NZxeJTX
-[13]: https://github.com/GoogleChrome/lighthouse
-[14]: https://travis-ci.org
+[9]: https://github.com/addyosmani/critical
+[10]: https://github.com/sindresorhus/gulp-rev
+[11]: https://github.com/google/web-starter-kit
+[12]: https://github.com/carlosl/gulp-nunjucks-render
+[13]: https://laracasts.com/series/es6-cliffsnotes
+[14]: https://www.youtube.com/playlist?list=PL57atfCFqj2h5fpdZD-doGEIs0NZxeJTX
+[15]: https://github.com/GoogleChrome/lighthouse
+[16]: https://developers.google.com/speed/pagespeed/insights/
+[17]: https://travis-ci.org
