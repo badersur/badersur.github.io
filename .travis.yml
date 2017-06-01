@@ -13,7 +13,6 @@ before_install:
   -in client-secret.json.enc -out client-secret.json -d
 - npm i -g npm@latest
 - npm i -g gulp-cli
-- echo 'npm -v' && npm -v
 
 script: npm run build
 
