@@ -1,6 +1,6 @@
 {
   "name": "badersur.github.io",
-  "version": "3.3.0",
+  "version": "3.3.1",
   "description": "A PWA that shows my skills, projects, blog posts and completed online courses",
   "author": "Bader Nasser Al-Hashmi (@BaderSur)",
   "repository": {
@@ -47,7 +47,7 @@
     "sw-toolbox": "^3.6.0"
   },
   "engines": {
-    "node": ">=4"
+    "node": ">=6"
   },
   "scripts": {
     "serve": "ENV_DEST=gae gulp && dev_appserver.py . --port 5555",
