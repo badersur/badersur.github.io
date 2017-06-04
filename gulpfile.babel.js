@@ -47,6 +47,27 @@ const md = new MarkdownIt('commonmark');
 const finalDestination = process.env.ENV_DEST || 'pages';
 const isGAE = finalDestination === 'gae';
 
+const extension = isGAE ? '' : '.html';
+const baseUrl = isGAE ?
+  'https://badersur-push.appspot.com' : 'https://badersur.github.io'
+
+const sitemapUrls = [
+  '/ar/',
+  '/ar/courses',
+  '/ar/projects',
+  '/en/',
+  '/en/courses',
+  '/en/projects'
+];
+
+const fullSitemapUrls = sitemapUrls.map(url => {
+
+  if (['/ar/', '/en/'].includes(url)) {
+    return `${baseUrl}${url}`;
+  }
+  return `${baseUrl}${url}${extension}`;
+});
+
 const isTravis = process.env.TRAVIS || false;
 
 console.log(`\nBuilding for ${finalDestination}...\n`);
@@ -75,6 +96,8 @@ gulp.task('copy', () => {
   gulp.src([
     'app/*',
     '!app/*.html',
+    '!app/robots.txt',
+    '!app/sitemap.xml',
     '!app/templates'
   ])
     .pipe(gulp.dest(finalDestination))
@@ -193,14 +216,14 @@ gulp.task('html', () => {
       path: 'app/templates/',
       data: {
         isGAE,
+        baseUrl,
         isTravis,
+
         me: aboutMe,
         projects: projects.projects,
         providers: courses.providers,
         currentYear: (new Date()).getFullYear(),
         trackingID: isGAE ? 'UA-93913692-2' : 'UA-93913692-1',
-        baseUrl: isGAE ?
-          'https://badersur-push.appspot.com' : 'https://badersur.github.io'
       }
     }))
     .pipe($.useref({
@@ -222,6 +245,23 @@ gulp.task('html', () => {
     })))
     // Output files
     .pipe($.if('*.html', $.size({ title: 'html', showFiles: true })))
+    .pipe(gulp.dest(finalDestination));
+});
+
+// Build the sitemap & update robots.txt
+gulp.task('sitemap', () => {
+
+  return gulp.src(['app/sitemap.xml', 'app/robots.txt'])
+    .pipe($.nunjucksRender({
+      inheritExtension: true,
+      envOptions: {
+        autoescape: false
+      },
+      data: {
+        baseUrl,
+        fullSitemapUrls
+      }
+    }))
     .pipe(gulp.dest(finalDestination));
 });
 
@@ -306,14 +346,15 @@ gulp.task('generate-service-worker', () => {
       `${rootDir}/images/**/*`,
       `${rootDir}/scripts/**/*.js`,
       `${rootDir}/styles/**/*.css`,
-      `${rootDir}/**/*.html`,
-      `${rootDir}/*.json`
+      `${rootDir}/{ar,en}/*.html`,
+      `${rootDir}/index.html`,
+      `${rootDir}/manifest.json`
     ],
     // Translates a static file path to the relative URL that it's served from.
     // This is '/' rather than path.sep because the paths returned from
     // glob always use '/'.
     stripPrefix: rootDir + '/',
-    verbose: false
+    verbose: true
   };
 
   if (isGAE) {
@@ -348,7 +389,7 @@ gulp.task('clean', () => del([
 gulp.task('build', ['clean'], cb =>
   runSequence(
     'styles',
-    ['lint', 'html', 'scripts', 'images', 'copy'],
+    ['lint', 'html', 'scripts', 'images', 'copy', 'sitemap'],
     'critical',
     'revision',
     'generate-service-worker',

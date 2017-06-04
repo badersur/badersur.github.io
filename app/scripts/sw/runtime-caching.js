@@ -27,13 +27,13 @@
 (global => {
   'use strict';
 
-  global.toolbox.router.get('/(.*)', global.toolbox.fastest, {
+  global.toolbox.router.get('/(.*)', global.toolbox.cacheFirst, {
     origin: /\.(?:googleapis|gstatic)\.com$/
   });
 
   global.toolbox.router.get('/blog.json', global.toolbox.networkFirst, {
     origin: 'https://bader-sur.appspot.com',
-    networkTimeoutSeconds: 2
+    networkTimeoutSeconds: 5
   });
 
   global.toolbox.router.default = global.toolbox.cacheFirst;
