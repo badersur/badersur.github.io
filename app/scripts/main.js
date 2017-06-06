@@ -90,7 +90,7 @@
     });
 
     let blogUrl = isLocalhost ?
-      '/data/blog.json' : 'https://bader-sur.appspot.com/blog.json';
+      '/data/blog.json' : 'https://badersur-v2.appspot.com/blog.json';
 
     $.ajax(blogUrl, { timeout: 10000 })
       .done(data => {

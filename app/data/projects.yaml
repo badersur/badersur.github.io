@@ -51,7 +51,7 @@ projects:
       It utilizes memcache to have almost zero read from Google Datastore
       in order to speed up data retrieval.
 
-  website: https://bader-sur.appspot.com/?gh-projects
+  website: https://badersur-v2.appspot.com/?gh-projects
 
 
 - name:

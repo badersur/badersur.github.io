@@ -32,8 +32,8 @@
   });
 
   global.toolbox.router.get('/blog.json', global.toolbox.networkFirst, {
-    origin: 'https://bader-sur.appspot.com',
-    networkTimeoutSeconds: 5
+    origin: 'https://badersur-v2.appspot.com',
+    networkTimeoutSeconds: 10
   });
 
   global.toolbox.router.default = global.toolbox.cacheFirst;

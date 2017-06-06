@@ -49,7 +49,8 @@ const isGAE = finalDestination === 'gae';
 
 const extension = isGAE ? '' : '.html';
 const baseUrl = isGAE ?
-  'https://badersur-push.appspot.com' : 'https://badersur.github.io'
+  'https://bader-sur.appspot.com' : 'https://badersur.github.io';
+const trackingID = isGAE ? 'UA-93913692-3' : 'UA-93913692-1';
 
 const sitemapUrls = [
   '/ar/',
@@ -218,12 +219,12 @@ gulp.task('html', () => {
         isGAE,
         baseUrl,
         isTravis,
+        trackingID,
 
         me: aboutMe,
         projects: projects.projects,
         providers: courses.providers,
-        currentYear: (new Date()).getFullYear(),
-        trackingID: isGAE ? 'UA-93913692-2' : 'UA-93913692-1',
+        currentYear: (new Date()).getFullYear()
       }
     }))
     .pipe($.useref({

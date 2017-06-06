@@ -56,7 +56,7 @@ Once you have verified that your system can run WSK, check out the
 
 
 [1]: https://badersur.github.io
-[2]: https://badersur-push.appspot.com
+[2]: https://bader-sur.appspot.com
 [3]: https://github.com/google/material-design-lite
 [4]: https://github.com/gulpjs/gulp
 [5]: https://github.com/babel/babel
