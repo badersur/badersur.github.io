@@ -1,74 +1,110 @@
-# [badersur.github.io][1] [![Build Status](https://travis-ci.org/badersur/badersur.github.io.svg?branch=dev)](https://travis-ci.org/badersur/badersur.github.io)
+# [badersur.github.io][bs-pages] [![Build Status](https://travis-ci.org/badersur/badersur.github.io.svg?branch=dev)](https://travis-ci.org/badersur/badersur.github.io)
 
-This is the source code for [my github pages][1] and the
-[Google App Engine application][2]. It's a Progressive Web Application (PWA)
+This is the source code for [my github pages][bs-pages] and the
+[Google App Engine application][bs-gae]. It's a Progressive Web Application (PWA)
 showing my skills, completed courses, projects and blog posts.
 
 
 ## Features
 
-- Responsive website - using [Material Design Lite][3].
+- Responsive website - using [Material Design Lite][mdl].
 
 - Performance optimization - Images, JavaScript, HTML and CSS are minifed and
- concatenated using [gulp][4].
+ concatenated using [gulp][gulp].
 
-- ES2015 support using [Babel][5].
+- ES2015 support using [Babel][babel].
 
-- Offline support - Thanks to [Service Worker][6] [pre-caching][7]. This is made
- possible by [sw-precache][8].
+- Offline support - Thanks to [Service Worker][sw] pre-caching.
+ This is made possible by [sw-precache][sw-precache].
 
-- Inlined Critical-path CSS using [critical][9].
+- Inlined Critical-path CSS using [critical][critical].
 
 - Static asset revisioning by appending content hash to filenames using
- [gulp-rev][10] and [its brothers](package.json#L31-L33) :)
+ [gulp-rev][gulp-rev] and [its brothers](package.json#L31-L33) :)
 
-- The features of [Google's Web Starter Kit][11] :)
+- The features of [Google's Web Starter Kit][wsk] :)
 
 
-## Quickstart
+## Prerequisites
 
-Download or clone this repository and build on what is included in the `app` directory.
+1. [Node.js][node] and ([npm][npm] or [yarn][yarn]). I suggest using [nvm][nvm]
+ to download Node.js and manage multiple versions of it.
+    - npm is bundled with Node.js but you may want to update it using the
+     command: `npm i npm@latest -g`
+    - I use node 7.10 and npm 5.0.3.
 
-Be sure to look over the [installation docs](docs/install.md) to verify your
-environment is prepared to run WSK.
+2. [gulp-cli][gulp-started]: `npm install --global gulp-cli`
 
-Once you have verified that your system can run WSK, check out the
-[commands](docs/commands.md) available to get started.
+3. [Google Cloud SDK][gcloud] if you want to test the application locally
+ before deploying to Google App Engine.
+
+
+## Usage
+
+1. Clone this repo. using [git][git] or [download it][download].
+    - `git clone https://github.com/badersur/badersur.github.io`
+
+2. Open cmd/terminal and change your current directory to repo.'s directory.
+    - `cd ~/GitHub/badersur/badersur.github.io`
+
+3. Install the dependencies using npm or yarn.
+    - `npm i`
+    - `yarn`
+
+4. If you want to test working with GitHub pages then use gulp as follows:
+    - Run `gulp` to build the app.
+    - Run `gulp serve` to serve it **without** service workers.
+    - Run `gulp serve:dist` to serve it **with** service workers.
+
+5. If you want to test working with Google App Engine then use npm scripts
+ as follows:
+    - Run `npm run serve` to serve it with service workers.
+    - Run `npm run deploy` to deploy to GAE. You'll need to change the app ID!
+    - _You may need to install Python 2_.
+
+6. Run `npm run build` to build the app for GitHub pages and GAE.
 
 
 ## Thanks
 
-- [Google's Web Starter Kit][11]
+- [Google's Web Starter Kit][wsk]
 
-- [gulp-nunjucks-render plugin][12]
+- [gulp-nunjucks-render plugin][nunjucks-render]
 
-- [Jeffrey Way][13]
+- [Jeffrey Way][jeffrey]
 
-- [Ryan Christiani][14]
+- [Ryan Christiani][ryan]
 
-- [Google's lighthouse Chrome extension][15]
+- [Google's lighthouse Chrome extension][lighthouse]
 
-- [Google's PageSpeed Insights][16]
+- [Google's PageSpeed Insights][insights]
 
-- [Travis CI][17]
+- [Travis CI][travis-ci]
 
 - All awesome open source projects :)
 
 
-[1]: https://badersur.github.io
-[2]: https://bader-sur.appspot.com
-[3]: https://github.com/google/material-design-lite
-[4]: https://github.com/gulpjs/gulp
-[5]: https://github.com/babel/babel
-[6]: https://developers.google.com/web/fundamentals/getting-started/primers/service-workers
-[7]: https://github.com/google/web-starter-kit/blob/master/gulpfile.babel.js#L226
-[8]: https://github.com/GoogleChrome/sw-precache
-[9]: https://github.com/addyosmani/critical
-[10]: https://github.com/sindresorhus/gulp-rev
-[11]: https://github.com/google/web-starter-kit
-[12]: https://github.com/carlosl/gulp-nunjucks-render
-[13]: https://laracasts.com/series/es6-cliffsnotes
-[14]: https://www.youtube.com/playlist?list=PL57atfCFqj2h5fpdZD-doGEIs0NZxeJTX
-[15]: https://github.com/GoogleChrome/lighthouse
-[16]: https://developers.google.com/speed/pagespeed/insights/
-[17]: https://travis-ci.org
+[bs-pages]: https://badersur.github.io
+[bs-gae]: https://bader-sur.appspot.com
+[mdl]: https://github.com/google/material-design-lite
+[gulp]: https://github.com/gulpjs/gulp
+[gulp-started]: https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md
+[babel]: https://github.com/babel/babel
+[sw]: https://developers.google.com/web/fundamentals/getting-started/primers/service-workers
+[sw-precache]: https://github.com/GoogleChrome/sw-precache
+[critical]: https://github.com/addyosmani/critical
+[gulp-rev]: https://github.com/sindresorhus/gulp-rev
+[wsk]: https://github.com/google/web-starter-kit
+[nunjucks-render]: https://github.com/carlosl/gulp-nunjucks-render
+[jeffrey]: https://laracasts.com/series/es6-cliffsnotes
+[ryan]: https://www.youtube.com/playlist?list=PL57atfCFqj2h5fpdZD-doGEIs0NZxeJTX
+[lighthouse]: https://github.com/GoogleChrome/lighthouse
+[insights]: https://developers.google.com/speed/pagespeed/insights/
+[travis-ci]: https://travis-ci.org
+[node]: https://nodejs.org/en/
+[npm]: https://www.npmjs.com/
+[yarn]: https://yarnpkg.com/lang/en/
+[nvm]: https://github.com/creationix/nvm
+[gcloud]: https://cloud.google.com/sdk/docs/
+[git]: https://git-scm.com/downloads
+[download]: https://github.com/badersur/badersur.github.io/archive/dev.zip
