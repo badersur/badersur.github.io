@@ -33,10 +33,10 @@ showing my skills, completed courses, projects and blog posts.
      command: `npm i npm@latest -g`
     - I use node 7.10 and npm 5.0.3.
 
-2. [gulp-cli][gulp-started]: `npm install --global gulp-cli`
+2. [gulp-cli][gulp-started]. Run `npm install --global gulp-cli` to install it.
 
 3. [Google Cloud SDK][gcloud] if you want to test the application locally
- before deploying to Google App Engine.
+ before deploying to Google App Engine. _You also may need to install Python 2_. 
 
 
 ## Usage
@@ -60,9 +60,23 @@ showing my skills, completed courses, projects and blog posts.
  as follows:
     - Run `npm run serve` to serve it with service workers.
     - Run `npm run deploy` to deploy to GAE. You'll need to change the app ID!
-    - _You may need to install Python 2_.
 
 6. Run `npm run build` to build the app for GitHub pages and GAE.
+
+
+## Notes
+
+- I add Google Analytics script when building the app on Travis to avoid ruining
+ the data with local testing.
+
+- The [GAE application][bs-gae] has the following features:
+    - Clean URLs (eg. bader-sur.appspot.com/ar/projects).
+    - Server Side Redirection (302 redirect). I'm avoiding 301 redirect because
+     I may want to redirect to somewhere else in the future.
+    - Static assets (images, css & js) are cached for a year.
+
+- You may want to read my post: [Helpful resources and notes for Udacity's web
+ development course][blog-notes] to learn about web development and GAE.
 
 
 ## Thanks
@@ -108,3 +122,4 @@ showing my skills, completed courses, projects and blog posts.
 [gcloud]: https://cloud.google.com/sdk/docs/
 [git]: https://git-scm.com/downloads
 [download]: https://github.com/badersur/badersur.github.io/archive/dev.zip
+[blog-notes]: https://badersur-v2.appspot.com/blog/resources-for-udacitys-web-development-course?readyou=yep
