@@ -7,14 +7,14 @@ showing my skills, completed courses, projects and blog posts.
 
 ## Features
 
-- Responsive website - using [Material Design Lite][mdl].
+- Responsive website using [Material Design Lite][mdl].
 
 - Performance optimization - Images, JavaScript, HTML and CSS are minifed and
  concatenated using [gulp][gulp].
 
 - ES2015 support using [Babel][babel].
 
-- Offline support - Thanks to [Service Worker][sw] pre-caching.
+- Offline support thanks to [Service Worker][sw] pre-caching.
  This is made possible by [sw-precache][sw-precache].
 
 - Inlined Critical-path CSS using [critical][critical].

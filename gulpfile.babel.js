@@ -75,7 +75,7 @@ console.log(`\nBuilding for ${finalDestination}...\n`);
 
 // Lint JavaScript
 gulp.task('lint', () =>
-  gulp.src(['app/scripts/**/*.js', '!app/scripts/vendors/*', '!node_modules/**'])
+  gulp.src(['app/scripts/**/*.js', '!node_modules/**'])
     .pipe($.eslint())
     .pipe($.eslint.format())
     .pipe($.if(!browserSync.active, $.eslint.failAfterError()))
@@ -112,9 +112,10 @@ gulp.task('copy', () => {
     'node_modules/nunjucks/browser/nunjucks.min.js',
     'node_modules/jquery/dist/jquery.min.js'
   ])
-    .pipe(gulp.dest(`${finalDestination}/scripts/vendors`))
-    .pipe(gulp.dest('.tmp/scripts/vendors'))
-    .pipe($.size({ title: 'copy scripts' }));
+    .pipe($.concat('vendors.js'))
+    .pipe(gulp.dest(`${finalDestination}/scripts`))
+    .pipe(gulp.dest('.tmp/scripts'))
+    .pipe($.size({ title: 'copy & concat 3rd party scripts' }));
 });
 
 // Compile and automatically prefix stylesheets
@@ -186,7 +187,7 @@ gulp.task('scripts', () => {
     .pipe($.concat('main.js'))
     .pipe($.uglify())
     // Output files
-    .pipe($.size({ title: 'bundles' }))
+    .pipe($.size({ title: 'main script' }))
     .pipe($.sourcemaps.write('.'))
     .pipe(gulp.dest(`${finalDestination}/scripts`))
     .pipe(gulp.dest('.tmp/scripts'));
