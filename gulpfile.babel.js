@@ -44,10 +44,12 @@ const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
 const md = new MarkdownIt('commonmark');
 
+const isTravis = process.env.TRAVIS || false;
+
 const finalDestination = process.env.ENV_DEST || 'pages';
 const isGAE = finalDestination === 'gae';
 
-const extension = isGAE ? '' : '.html';
+const extension = isTravis ? '' : (isGAE ? '' : '.html');
 const baseUrl = isGAE ?
   'https://bader-sur.appspot.com' : 'https://badersur.github.io';
 const trackingID = isGAE ? 'UA-93913692-3' : 'UA-93913692-1';
@@ -68,8 +70,6 @@ const fullSitemapUrls = sitemapUrls.map(url => {
   }
   return `${baseUrl}${url}${extension}`;
 });
-
-const isTravis = process.env.TRAVIS || false;
 
 console.log(`\nBuilding for ${finalDestination}...\n`);
 
@@ -220,6 +220,7 @@ gulp.task('html', () => {
         isGAE,
         baseUrl,
         isTravis,
+        extension,
         trackingID,
 
         me: aboutMe,

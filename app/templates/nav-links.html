@@ -7,8 +7,8 @@
 {% set alternateLangNavText = "ع" if lang == "en" else "EN" %}
 
 {% set mainNavLink = "/" +  lang + "/" %}
-{% set projectsNavLink = mainNavLink + "projects" + ("" if isGAE else ".html") %}
-{% set coursesNavLink = mainNavLink + "courses" + ("" if isGAE else ".html") %}
+{% set projectsNavLink = mainNavLink + "projects" + extension %}
+{% set coursesNavLink = mainNavLink + "courses" + extension %}
 {% set blogNavLink = "https://badersur-v2.appspot.com/blog" %}
 {% set alternateLangNavLink = alternateLink %}
 

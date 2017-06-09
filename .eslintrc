@@ -33,6 +33,7 @@
         "tabWidth": 2,
         "ignoreUrls": true
       }
-    ]
+    ],
+    "semi": "error"
   }
 }
