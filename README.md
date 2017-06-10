@@ -36,7 +36,8 @@ showing my skills, completed courses, projects and blog posts.
 2. [gulp-cli][gulp-started]. Run `npm install --global gulp-cli` to install it.
 
 3. [Google Cloud SDK][gcloud] if you want to test the application locally
- before deploying to Google App Engine. _You also may need to install Python 2_. 
+ before deploying to Google App Engine.
+    - _You also may need to install Python 2_. 
 
 
 ## Usage
