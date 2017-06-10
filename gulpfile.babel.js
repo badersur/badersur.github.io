@@ -49,7 +49,7 @@ const isTravis = process.env.TRAVIS || false;
 const finalDestination = process.env.ENV_DEST || 'pages';
 const isGAE = finalDestination === 'gae';
 
-const extension = isTravis ? '' : (isGAE ? '' : '.html');
+const extension = (isTravis || isGAE) ? '' : '.html';
 const baseUrl = isGAE ?
   'https://bader-sur.appspot.com' : 'https://badersur.github.io';
 const trackingID = isGAE ? 'UA-93913692-3' : 'UA-93913692-1';
@@ -360,7 +360,7 @@ gulp.task('generate-service-worker', () => {
     verbose: true
   };
 
-  if (isGAE) {
+  if (!extension) {
     swOptions.dynamicUrlToDependencies = {
       '/ar/courses': [`${rootDir}/ar/courses.html`],
       '/ar/projects': [`${rootDir}/ar/projects.html`],
