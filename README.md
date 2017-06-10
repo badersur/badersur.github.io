@@ -70,10 +70,13 @@ showing my skills, completed courses, projects and blog posts.
  the data with local testing.
 
 - The [GAE application][bs-gae] has the following features:
-    - Clean URLs (eg. bader-sur.appspot.com/ar/projects).
     - Server Side Redirection (302 redirect). I'm avoiding 301 redirect because
      I may want to redirect to somewhere else in the future.
-    - Static assets (images, css & js) are cached for a year.
+    - Static assets (images, css & js) are cached for a year using HTTP caching
+     headers.
+    - <del>Clean URLs (eg. bader-sur.appspot.com/ar/projects).</del> _Somehow,
+     HTML pages can be served without the extension `.html` on GitHub Pages!
+     Jekyll magic?!_
 
 - You may want to read my post: [Helpful resources and notes for Udacity's web
  development course][blog-notes] to learn about web development and GAE.
