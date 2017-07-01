@@ -3,7 +3,7 @@ sudo: false
 language: node_js
 node_js: 7.10.0
 cache:
-  yarn: true
+  # yarn: true
   directories:
   - "$HOME/.npm"
   - node_modules
