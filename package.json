@@ -1,6 +1,6 @@
 {
   "name": "badersur.github.io",
-  "version": "3.6.0",
+  "version": "3.6.1",
   "description": "A PWA that shows my skills, projects, blog posts and completed online courses",
   "author": "Bader Nasser Al-Hashmi (@BaderSur)",
   "repository": {
@@ -50,7 +50,7 @@
     "node": ">=6"
   },
   "scripts": {
-    "serve": "ENV_DEST=gae gulp && dev_appserver.py . --port=5555",
+    "serve": "ENV_DEST=gae gulp && dev_appserver.py . --port=5555 --application=bader-sur",
     "deploy": "ENV_DEST=gae gulp && gcloud app deploy --project=bader-sur --verbosity=info",
     "build": "gulp && ENV_DEST=gae gulp",
     "index": "gcloud datastore create-indexes index.yaml --project=bader-sur",
