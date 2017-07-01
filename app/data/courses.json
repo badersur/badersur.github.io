@@ -139,6 +139,24 @@
           "link": "https://www.youtube.com/playlist?list=PLE08A97D36D5A255F"
         }
       ]
+    },
+    {
+      "name": "The Bad Tutorials",
+      "courses": [
+        {
+          "name": "Shell Scripting Tutorial",
+          "link": "https://www.youtube.com/playlist?list=PL7B7FA4E693D8E790"
+        }
+      ]
+    },
+    {
+      "name": "Google",
+      "courses": [
+        {
+          "name": " Google's Python Class",
+          "link": "https://www.youtube.com/playlist?list=PLQHzn5tVCVGA0Dfrs3uKLm-iSiqy5bNM2"
+        }
+      ]
     }
   ]
 }
