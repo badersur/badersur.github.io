@@ -102,6 +102,11 @@ showing my skills, completed courses, projects and blog posts.
 - All awesome open source projects :)
 
 
+## License
+
+MIT © [Bader Nasser Al-Hashmi](https://github.com/BaderSur)
+
+
 [bs-pages]: https://badersur.github.io
 [bs-gae]: https://bader-sur.appspot.com
 [mdl]: https://github.com/google/material-design-lite
