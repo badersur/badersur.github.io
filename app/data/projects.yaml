@@ -46,12 +46,27 @@ projects:
       (RESTful APIs).
     en: |
       A web app hosted on [Google App Engine **Standard**
-      Environment](https://cloud.google.com/appengine/docs/standard) which has a blog,
-      a registration system and **RESTful APIs** in JSON & XML formats.
+      Environment](https://cloud.google.com/appengine/docs/standard) which has
+      a blog, a registration system and **RESTful APIs** in JSON & XML formats.
       It utilizes memcache to have almost zero read from Google Datastore
       in order to speed up data retrieval.
 
   website: https://badersur-v2.appspot.com/?gh-projects
+
+
+- name:
+    ar: مدير فيجوال ستوديو كود
+    en: VSCode-manager
+
+  description:
+    ar: |
+      برنامج صغير لتثبيت برنامج
+      Visual Studio **Code insiders**
+      وتحديثه لأنظمة لينكس.
+    en: |
+      A shell script to install/update Visual Studio **Code insiders** for Linux.
+
+  source: https://github.com/badersur/vscode-manager
 
 
 - name:
@@ -68,7 +83,6 @@ projects:
   source: https://github.com/badersur/chirp
 
 
-
 - name:
     ar: أخبار صور
     en: Sur News
@@ -76,7 +90,7 @@ projects:
   description:
     ar: |
       تطبيق لنظام أندرويد يجلب أخبار وﻻية صُور العُمانية باستعمال مكتبة
-      [jsoup library](https://jsoup.org).
+      [jsoup](https://jsoup.org).
     en: |
       An Android app that fetches local news about Sur using
       [jsoup library](https://jsoup.org).
