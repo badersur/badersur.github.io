@@ -119,9 +119,12 @@ skip_files:
 - ^client-secret\.json\.enc$
 - ^gulpfile\.babel\.js$
 - ^package\.json$
+- ^package-lock\.json$
 - ^README\.md$
+- ^LICENSE$
 
 - ^node_modules
 - ^pages
+- ^app
 - ^\.tmp
 - ^\.vscode
