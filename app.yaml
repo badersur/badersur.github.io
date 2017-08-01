@@ -28,7 +28,7 @@ handlers:
   upload: gae/(.+\.webapp)
   static_files: gae/\1
   mime_type: application/x-web-app-manifest+json
-  expiration: "0s"
+  expiration: "1s"
   secure: always
 
 # Images (cached for a year since URLs contain hashes)
@@ -48,7 +48,7 @@ handlers:
 - url: /sw\.js
   upload: gae/sw\.js
   static_files: gae/sw.js
-  expiration: "0s"
+  expiration: "1s"
   secure: always
 
 - url: /(.+\.(css|js))
