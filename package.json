@@ -1,6 +1,6 @@
 {
   "name": "badersur.github.io",
-  "version": "3.8.0",
+  "version": "3.8.1",
   "description": "A PWA that shows my skills, projects, blog posts and completed online courses",
   "author": "Bader Nasser Al-Hashmi (@BaderSur)",
   "repository": {
@@ -10,8 +10,8 @@
   "devDependencies": {
     "babel-core": "^6.25.0",
     "babel-preset-es2015": "^6.24.1",
-    "browser-sync": "^2.18.12",
-    "critical": "^0.8.4",
+    "browser-sync": "^2.18.13",
+    "critical": "^0.9.0",
     "del": "^3.0.0",
     "eslint-config-google": "^0.9.1",
     "gulp": "^3.9.1",
@@ -27,7 +27,7 @@
     "gulp-load-plugins": "^1.5.0",
     "gulp-newer": "^1.3.0",
     "gulp-nunjucks-render": "^2.2.1",
-    "gulp-rev": "^7.1.2",
+    "gulp-rev": "^8.0.0",
     "gulp-rev-delete-original": "^0.2.3",
     "gulp-rev-format": "^1.0.4",
     "gulp-rev-replace": "^0.4.3",
@@ -37,11 +37,11 @@
     "gulp-uglify": "^3.0.0",
     "gulp-useref": "^3.1.2",
     "jquery": "^3.2.1",
-    "js-yaml": "^3.9.0",
+    "js-yaml": "^3.9.1",
     "markdown-it": "^8.3.1",
     "material-design-lite": "^1.3.0",
     "nunjucks": "^3.0.1",
-    "run-sequence": "^2.0.0",
+    "run-sequence": "^2.1.0",
     "sass-module-importer": "^1.4.0",
     "sw-precache": "^5.2.0",
     "sw-toolbox": "^3.6.0"
