@@ -36,5 +36,7 @@
     networkTimeoutSeconds: 10
   });
 
+  global.toolbox.router.get(/\/sitemap(\.xml)?/, global.toolbox.networkFirst);
+
   global.toolbox.router.default = global.toolbox.cacheFirst;
 })(self);

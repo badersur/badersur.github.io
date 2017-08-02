@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  {% for url in fullSitemapUrls %}
-    <url>
-      <loc>{{ url }}</loc>
-    </url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  {% for lang in languages %}
+    {% for path in paths %}
+      <url>
+        <loc>{{ baseUrl }}/{{ lang }}{{ path }}</loc>
+        {% for lang2 in languages %}
+          <xhtml:link rel="alternate" hreflang="{{ lang2 }}"
+                      href="{{ baseUrl }}/{{ lang2 }}{{ path }}" />
+        {% endfor %}
+        <changefreq>daily</changefreq>
+        <priority>{{ (loop.revindex / loop.length) | toFixed(1) }}</priority>
+      </url>
+    {% endfor %}
   {% endfor %}
 </urlset>

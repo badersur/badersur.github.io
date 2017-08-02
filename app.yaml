@@ -57,6 +57,11 @@ handlers:
   expiration: "365d"
   secure: always
 
+- url: /sitemap
+  upload: gae/sitemap\.xml
+  static_files: gae/sitemap.xml
+  secure: always
+
 - url: /(.+\.(xml|txt|json|map))
   upload: gae/(.+\.(xml|txt|json|map))
   static_files: gae/\1

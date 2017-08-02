@@ -54,22 +54,16 @@ const baseUrl = isGAE ?
   'https://bader-sur.appspot.com' : 'https://badersur.github.io';
 const trackingID = isGAE ? 'UA-93913692-3' : 'UA-93913692-1';
 
-const sitemapUrls = [
-  '/ar/',
-  '/ar/courses',
-  '/ar/projects',
-  '/en/',
-  '/en/courses',
-  '/en/projects'
-];
+const languages = ['ar', 'en'];
+const paths = ['/', '/projects', '/courses'];
 
-const fullSitemapUrls = sitemapUrls.map(url => {
+const manageEnvironment = environment => {
+  environment.addFilter('markdown', str => md.render(str));
 
-  if (['/ar/', '/en/'].includes(url)) {
-    return `${baseUrl}${url}`;
-  }
-  return `${baseUrl}${url}${extension}`;
-});
+  // Credit: https://github.com/mozilla/nunjucks/issues/1000
+  environment.addFilter('toFixed',
+    (num, digits) => parseFloat(num).toFixed(digits));
+};
 
 console.log(`\nBuilding for ${finalDestination}...\n`);
 
@@ -205,10 +199,6 @@ gulp.task('html', () => {
     console.log(e);
   }
 
-  const manageEnvironment = environment => {
-    environment.addFilter('markdown', str => md.render(str));
-  };
-
   return gulp.src(['app/**/*.html', '!app/templates/*'])
     .pipe($.nunjucksRender({
       envOptions: {
@@ -260,9 +250,11 @@ gulp.task('sitemap', () => {
       envOptions: {
         autoescape: false
       },
+      manageEnv: manageEnvironment,
       data: {
+        paths,
         baseUrl,
-        fullSitemapUrls
+        languages
       }
     }))
     .pipe(gulp.dest(finalDestination));
