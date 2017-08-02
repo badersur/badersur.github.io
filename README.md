@@ -78,6 +78,7 @@ showing my skills, completed courses, projects and blog posts.
     - <del>Clean URLs (eg. bader-sur.appspot.com/ar/projects).</del> _Somehow,
      HTML pages can be served without the `.html` extension on GitHub Pages!
      Jekyll magic?!_
+    - Latest bits before pushing the source code to GitHub.
 
 - You may want to read my post: [Helpful resources and notes for Udacity's web
  development course][blog-notes] to learn about web development and GAE.
