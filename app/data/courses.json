@@ -29,12 +29,20 @@
           "link": "https://mva.microsoft.com/en-US/training-courses/using-nodejs-with-visual-studio-code-13920"
         },
         {
-          "name": "Introduction to ASP.NET Core 1.0",
-          "link": "https://mva.microsoft.com/en-US/training-courses/introduction-to-aspnet-core-10-16841"
-        },
-        {
           "name": "Introduction to ASP.NET MVC",
           "link": "https://mva.microsoft.com/en-US/training-courses/introduction-to-aspnet-mvc-8322"
+        },
+        {
+          "name": "Introduction to ASP.NET Core with Visual Studio 2017",
+          "link": "https://mva.microsoft.com/en-US/training-courses/introduction-to-aspnet-core-with-visual-studio-2017-16841"
+        },
+        {
+          "name": "Intermediate ASP.NET Core 1.0",
+          "link": "https://mva.microsoft.com/en-US/training-courses/intermediate-aspnet-core-10-16964"
+        },
+        {
+          "name": "ASP.NET Core 1.0 Cross-Platform",
+          "link": "https://mva.microsoft.com/en-US/training-courses/aspnet-core-10-crossplatform-17039"
         },
         {
           "name": "Querying Microsoft SQL Server 2012 Databases Jump Start",
