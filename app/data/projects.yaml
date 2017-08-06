@@ -34,6 +34,21 @@ projects:
 
 
 - name:
+    ar: مدير بيئة دوت نت
+    en: dotnet-manager
+
+  description:
+    ar: |
+      برنامج صغير لتثبيت برنامج
+      **dotnet-sdk**
+      وتحديثه لأنظمة لينكس.
+    en: |
+      A shell script to install/update **dotnet-sdk** for Linux.
+
+  source: https://github.com/badersur/dotnet-manager
+
+
+- name:
     ar: موقعي الشخصي
     en: Personal web app
 
