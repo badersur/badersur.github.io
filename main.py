@@ -11,12 +11,14 @@ IS_PERMANENT = False
 class HomePage(webapp2.RequestHandler):
 
   def get(self):
+    self.response.headers.add('X-Content-Type-Options', 'nosniff')
     self.redirect('/ar/', permanent=IS_PERMANENT)
 
 
 class Redirector(webapp2.RequestHandler):
 
   def get(self, path):
+    self.response.headers.add('X-Content-Type-Options', 'nosniff')
     self.redirect('/ar/' + path, permanent=IS_PERMANENT)
 
 
@@ -26,12 +28,14 @@ def handle_404(request, response, exception):
   response.write(render(path, {}))
   response.set_status(404)
   response.headers.add('X-UA-Compatible', 'IE=edge')
+  response.headers.add('X-Content-Type-Options', 'nosniff')
 
 
 def handle_500(request, response, exception):
   logging.exception(exception)
   response.write('A server error occurred!')
   response.set_status(500)
+  response.headers.add('X-Content-Type-Options', 'nosniff')
 
 
 app = webapp2.WSGIApplication([
