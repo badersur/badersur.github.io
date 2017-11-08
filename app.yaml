@@ -33,8 +33,17 @@ handlers:
 
 # Images (cached for a year since URLs contain hashes)
 
-- url: /(.+\.(gif|ico|jpe?g|png|svgz?|webp))
-  upload: gae/(.+\.(gif|ico|jpe?g|png|svgz?|webp))
+- url: /(.+\.ico)
+  upload: gae/(.+\.ico)
+  static_files: gae/\1
+  expiration: "365d"
+  secure: always
+  http_headers:
+    Access-Control-Allow-Origin: "*"
+    Content-Type: "image/x-icon"
+
+- url: /(.+\.(gif|jpe?g|png|svgz?|webp))
+  upload: gae/(.+\.(gif|jpe?g|png|svgz?|webp))
   static_files: gae/\1
   expiration: "365d"
   secure: always
@@ -50,17 +59,36 @@ handlers:
   static_files: gae/sw.js
   expiration: "1s"
   secure: always
+  http_headers:
+    Content-Type: "text/javascript; charset=utf-8"
 
-- url: /(.+\.(css|js))
-  upload: gae/(.+\.(css|js))
+- url: /(.+\.js)
+  upload: gae/(.+\.js)
   static_files: gae/\1
   expiration: "365d"
   secure: always
+  http_headers:
+    Content-Type: "text/javascript; charset=utf-8"
+
+- url: /(.+\.css)
+  upload: gae/(.+\.css)
+  static_files: gae/\1
+  expiration: "365d"
+  secure: always
+  http_headers:
+    Content-Type: "text/css; charset=utf-8"
 
 - url: /sitemap
   upload: gae/sitemap\.xml
   static_files: gae/sitemap.xml
   secure: always
+
+- url: /manifest\.json
+  upload: gae/manifest\.json
+  static_files: gae/manifest.json
+  secure: always
+  http_headers:
+    Content-Type: "application/manifest+json; charset=utf-8"
 
 - url: /(.+\.(xml|txt|json|map))
   upload: gae/(.+\.(xml|txt|json|map))
@@ -84,6 +112,7 @@ handlers:
     # the specification: http://www.w3.org/TR/CSP11/). Also, to make things easier,
     # you can use an online CSP header generator such as: http://cspisawesome.com/.
     # Content-Security-Policy: "script-src 'self'; object-src 'self'"
+    Content-Type: "text/html; charset=utf-8"
 
 # Pretty links for courses & projects
 
@@ -95,6 +124,7 @@ handlers:
   http_headers:
     X-UA-Compatible: "IE=edge"
     # Content-Security-Policy: "script-src 'self'; object-src 'self'"
+    Content-Type: "text/html; charset=utf-8"
 
 # Homepages for /ar/ & /en/
 
@@ -106,6 +136,7 @@ handlers:
   http_headers:
     X-UA-Compatible: "IE=edge"
     # Content-Security-Policy: "script-src 'self'; object-src 'self'"
+    Content-Type: "text/html; charset=utf-8"
 
 # Redirecting & handling errors: 404 & 500
 
