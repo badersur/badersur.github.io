@@ -83,9 +83,9 @@ handlers:
   static_files: gae/sitemap.xml
   secure: always
 
-- url: /manifest\.json
-  upload: gae/manifest\.json
-  static_files: gae/manifest.json
+- url: /manifest\.webmanifest
+  upload: gae/manifest\.webmanifest
+  static_files: gae/manifest.webmanifest
   secure: always
   http_headers:
     Content-Type: "application/manifest+json; charset=utf-8"

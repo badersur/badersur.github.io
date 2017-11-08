@@ -261,7 +261,6 @@ gulp.task('serve', ['html', 'scripts', 'styles', 'copy'], () => {
 
   gulp.watch([
     'app/**/*.{html,yaml,json}',
-    '!app/manifest.json'
   ], ['html', reload]);
   gulp.watch(['app/styles/**/*.{scss,css}'], ['styles', reload]);
   gulp.watch(['app/scripts/**/*.js'], ['lint', 'scripts', reload]);
@@ -324,7 +323,7 @@ gulp.task('generate-service-worker', () => {
       `${rootDir}/styles/**/*.css`,
       `${rootDir}/{ar,en}/*.html`,
       `${rootDir}/index.html`,
-      `${rootDir}/manifest.json`
+      `${rootDir}/manifest.webmanifest`
     ],
     // Translates a static file path to the relative URL that it's served from.
     // This is '/' rather than path.sep because the paths returned from
@@ -384,7 +383,7 @@ gulp.task('replace', ['build'], () => {
   ])
     .pipe($.revReplace({
       manifest: manifest,
-      replaceInExtensions: ['.html', '.json', '.webapp']
+      replaceInExtensions: ['.html', '.webmanifest', '.webapp']
     }))
     .pipe(gulp.dest(finalDestination));
 });
