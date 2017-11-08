@@ -32,6 +32,8 @@ handlers:
   secure: always
   http_headers:
     X-Content-Type-Options: "nosniff"
+    Strict-Transport-Security: "max-age=10886400; includeSubDomains"
+
 # Images (cached for a year since URLs contain hashes)
 
 - url: /(.+\.ico)
@@ -43,6 +45,7 @@ handlers:
     Access-Control-Allow-Origin: "*"
     Content-Type: "image/x-icon"
     X-Content-Type-Options: "nosniff"
+    Strict-Transport-Security: "max-age=10886400; includeSubDomains"
 
 - url: /(.+\.(gif|jpe?g|png|svgz?|webp))
   upload: gae/(.+\.(gif|jpe?g|png|svgz?|webp))
@@ -54,6 +57,7 @@ handlers:
     # You can also replace "*" with a specific host, e.g. https://example.org
     Access-Control-Allow-Origin: "*"
     X-Content-Type-Options: "nosniff"
+    Strict-Transport-Security: "max-age=10886400; includeSubDomains"
 
 # CSS, Javascript, text and other file types
 
@@ -65,6 +69,7 @@ handlers:
   http_headers:
     Content-Type: "text/javascript; charset=utf-8"
     X-Content-Type-Options: "nosniff"
+    Strict-Transport-Security: "max-age=10886400; includeSubDomains"
 
 - url: /(.+\.js)
   upload: gae/(.+\.js)
@@ -74,6 +79,7 @@ handlers:
   http_headers:
     Content-Type: "text/javascript; charset=utf-8"
     X-Content-Type-Options: "nosniff"
+    Strict-Transport-Security: "max-age=10886400; includeSubDomains"
 
 - url: /(.+\.css)
   upload: gae/(.+\.css)
@@ -83,6 +89,7 @@ handlers:
   http_headers:
     Content-Type: "text/css; charset=utf-8"
     X-Content-Type-Options: "nosniff"
+    Strict-Transport-Security: "max-age=10886400; includeSubDomains"
 
 - url: /sitemap
   upload: gae/sitemap\.xml
@@ -90,6 +97,7 @@ handlers:
   secure: always
   http_headers:
     X-Content-Type-Options: "nosniff"
+    Strict-Transport-Security: "max-age=10886400; includeSubDomains"
 
 - url: /manifest\.webmanifest
   upload: gae/manifest\.webmanifest
@@ -98,6 +106,7 @@ handlers:
   http_headers:
     Content-Type: "application/manifest+json; charset=utf-8"
     X-Content-Type-Options: "nosniff"
+    Strict-Transport-Security: "max-age=10886400; includeSubDomains"
 
 - url: /(.+\.(xml|txt|json|map))
   upload: gae/(.+\.(xml|txt|json|map))
@@ -105,6 +114,7 @@ handlers:
   secure: always
   http_headers:
     X-Content-Type-Options: "nosniff"
+    Strict-Transport-Security: "max-age=10886400; includeSubDomains"
 
 # HTML pages
 
@@ -125,6 +135,7 @@ handlers:
     # Content-Security-Policy: "script-src 'self'; object-src 'self'"
     Content-Type: "text/html; charset=utf-8"
     X-Content-Type-Options: "nosniff"
+    Strict-Transport-Security: "max-age=10886400; includeSubDomains"
 
 # Pretty links for courses & projects
 
@@ -138,6 +149,7 @@ handlers:
     # Content-Security-Policy: "script-src 'self'; object-src 'self'"
     Content-Type: "text/html; charset=utf-8"
     X-Content-Type-Options: "nosniff"
+    Strict-Transport-Security: "max-age=10886400; includeSubDomains"
 
 # Homepages for /ar/ & /en/
 
@@ -151,6 +163,7 @@ handlers:
     # Content-Security-Policy: "script-src 'self'; object-src 'self'"
     Content-Type: "text/html; charset=utf-8"
     X-Content-Type-Options: "nosniff"
+    Strict-Transport-Security: "max-age=10886400; includeSubDomains"
 
 # Redirecting & handling errors: 404 & 500
 
