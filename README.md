@@ -31,7 +31,7 @@ showing my skills, completed courses, projects and blog posts.
  to download Node.js and manage multiple versions of it.
     - npm is bundled with Node.js but you may want to update it using the
      command: `npm i npm@latest -g`
-    - I use node 7.10.1 and npm 5.4.1.
+    - I use node 7.10.1 and npm 5.5.1.
 
 2. [gulp-cli][gulp-started]. Run `npm install --global gulp-cli` to install it.
 
