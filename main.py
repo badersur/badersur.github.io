@@ -25,6 +25,7 @@ def handle_404(request, response, exception):
   path = os.path.join(os.path.dirname(__file__), 'gae/404.html')
   response.write(render(path, {}))
   response.set_status(404)
+  response.headers.add('X-UA-Compatible', 'IE=edge')
 
 
 def handle_500(request, response, exception):
