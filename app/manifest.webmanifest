@@ -1,23 +1,28 @@
 {
   "name": "Bader's personal web app",
   "short_name": "BaderSur",
-  "icons": [{
-        "src": "images/touch/icon-128x128.png",
-        "sizes": "128x128",
-        "type": "image/png"
-      }, {
-        "src": "images/touch/apple-touch-icon.png",
-        "sizes": "152x152",
-        "type": "image/png"
-      }, {
-        "src": "images/touch/ms-touch-icon-144x144-precomposed.png",
-        "sizes": "144x144",
-        "type": "image/png"
-      }, {
-        "src": "images/touch/chrome-touch-icon-192x192.png",
-        "sizes": "192x192",
-        "type": "image/png"
-      }],
+  "icons": [
+      {
+          "src": "/images/logo-192x192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+      },
+      {
+          "src": "/images/logo-256x256.png",
+          "sizes": "256x256",
+          "type": "image/png"
+      },
+      {
+          "src": "/images/logo-384x384.png",
+          "sizes": "384x384",
+          "type": "image/png"
+      },
+      {
+          "src": "/images/logo-512x512.png",
+          "sizes": "512x512",
+          "type": "image/png"
+      }
+  ],
   "start_url": "/ar/index.html?homescreen=1",
   "display": "standalone",
   "background_color": "#3E4EB8",

@@ -58,7 +58,7 @@ gulp.task('lint', () =>
 
 // Optimize images
 gulp.task('images', () =>
-  gulp.src('app/images/**/*')
+  gulp.src('app/images/**/*{png,svg}')
     .pipe($.cache($.imagemin({
       progressive: true,
       interlaced: true
