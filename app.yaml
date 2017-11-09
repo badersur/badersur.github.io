@@ -30,11 +30,25 @@ handlers:
   mime_type: application/x-web-app-manifest+json
   expiration: "1s"
   secure: always
+  http_headers:
+    X-Content-Type-Options: "nosniff"
+    Strict-Transport-Security: "max-age=10886400; includeSubDomains"
 
 # Images (cached for a year since URLs contain hashes)
 
-- url: /(.+\.(gif|ico|jpe?g|png|svgz?|webp))
-  upload: gae/(.+\.(gif|ico|jpe?g|png|svgz?|webp))
+- url: /(.+\.ico)
+  upload: gae/(.+\.ico)
+  static_files: gae/\1
+  expiration: "365d"
+  secure: always
+  http_headers:
+    Access-Control-Allow-Origin: "*"
+    Content-Type: "image/x-icon"
+    X-Content-Type-Options: "nosniff"
+    Strict-Transport-Security: "max-age=10886400; includeSubDomains"
+
+- url: /(.+\.(gif|jpe?g|png|svgz?|webp))
+  upload: gae/(.+\.(gif|jpe?g|png|svgz?|webp))
   static_files: gae/\1
   expiration: "365d"
   secure: always
@@ -42,6 +56,8 @@ handlers:
     # Allow cross-origin access to web fonts and images
     # You can also replace "*" with a specific host, e.g. https://example.org
     Access-Control-Allow-Origin: "*"
+    X-Content-Type-Options: "nosniff"
+    Strict-Transport-Security: "max-age=10886400; includeSubDomains"
 
 # CSS, Javascript, text and other file types
 
@@ -50,22 +66,55 @@ handlers:
   static_files: gae/sw.js
   expiration: "1s"
   secure: always
+  http_headers:
+    Content-Type: "text/javascript; charset=utf-8"
+    X-Content-Type-Options: "nosniff"
+    Strict-Transport-Security: "max-age=10886400; includeSubDomains"
 
-- url: /(.+\.(css|js))
-  upload: gae/(.+\.(css|js))
+- url: /(.+\.js)
+  upload: gae/(.+\.js)
   static_files: gae/\1
   expiration: "365d"
   secure: always
+  http_headers:
+    Content-Type: "text/javascript; charset=utf-8"
+    X-Content-Type-Options: "nosniff"
+    Strict-Transport-Security: "max-age=10886400; includeSubDomains"
+
+- url: /(.+\.css)
+  upload: gae/(.+\.css)
+  static_files: gae/\1
+  expiration: "365d"
+  secure: always
+  http_headers:
+    Content-Type: "text/css; charset=utf-8"
+    X-Content-Type-Options: "nosniff"
+    Strict-Transport-Security: "max-age=10886400; includeSubDomains"
 
 - url: /sitemap
   upload: gae/sitemap\.xml
   static_files: gae/sitemap.xml
   secure: always
+  http_headers:
+    X-Content-Type-Options: "nosniff"
+    Strict-Transport-Security: "max-age=10886400; includeSubDomains"
+
+- url: /manifest\.webmanifest
+  upload: gae/manifest\.webmanifest
+  static_files: gae/manifest.webmanifest
+  secure: always
+  http_headers:
+    Content-Type: "application/manifest+json; charset=utf-8"
+    X-Content-Type-Options: "nosniff"
+    Strict-Transport-Security: "max-age=10886400; includeSubDomains"
 
 - url: /(.+\.(xml|txt|json|map))
   upload: gae/(.+\.(xml|txt|json|map))
   static_files: gae/\1
   secure: always
+  http_headers:
+    X-Content-Type-Options: "nosniff"
+    Strict-Transport-Security: "max-age=10886400; includeSubDomains"
 
 # HTML pages
 
@@ -84,6 +133,9 @@ handlers:
     # the specification: http://www.w3.org/TR/CSP11/). Also, to make things easier,
     # you can use an online CSP header generator such as: http://cspisawesome.com/.
     # Content-Security-Policy: "script-src 'self'; object-src 'self'"
+    Content-Type: "text/html; charset=utf-8"
+    X-Content-Type-Options: "nosniff"
+    Strict-Transport-Security: "max-age=10886400; includeSubDomains"
 
 # Pretty links for courses & projects
 
@@ -95,6 +147,9 @@ handlers:
   http_headers:
     X-UA-Compatible: "IE=edge"
     # Content-Security-Policy: "script-src 'self'; object-src 'self'"
+    Content-Type: "text/html; charset=utf-8"
+    X-Content-Type-Options: "nosniff"
+    Strict-Transport-Security: "max-age=10886400; includeSubDomains"
 
 # Homepages for /ar/ & /en/
 
@@ -106,6 +161,9 @@ handlers:
   http_headers:
     X-UA-Compatible: "IE=edge"
     # Content-Security-Policy: "script-src 'self'; object-src 'self'"
+    Content-Type: "text/html; charset=utf-8"
+    X-Content-Type-Options: "nosniff"
+    Strict-Transport-Security: "max-age=10886400; includeSubDomains"
 
 # Redirecting & handling errors: 404 & 500
 
