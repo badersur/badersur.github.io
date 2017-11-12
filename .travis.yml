@@ -1,7 +1,7 @@
 dist: trusty
 sudo: false
 language: node_js
-node_js: 7.10.1
+node_js: 9.1.0
 cache:
   directories:
   - "$HOME/.npm"
