@@ -97,6 +97,7 @@ handlers:
   secure: always
   http_headers:
     X-Content-Type-Options: "nosniff"
+    Content-Type: "text/xml; charset=utf-8"
     Strict-Transport-Security: "max-age=10886400; includeSubDomains"
 
 - url: /manifest\.webmanifest
