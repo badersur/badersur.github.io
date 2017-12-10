@@ -45,7 +45,7 @@
                     'service worker became redundant.');
 
                 default:
-                // Ignore
+                  // Ignore
               }
             };
           }
@@ -59,11 +59,17 @@
   if ($postsTemplate.length) {
     let $postsSection = $('.section--center').last();
     let $errorTemplate = $('#error-template').html();
-    let env = nunjucks.configure({ autoescape: true });
+    let env = nunjucks.configure({
+      autoescape: true
+    });
 
     env.addFilter('localeDate', dateString => {
       let date = new Date(dateString);
-      let dateFormatterOptions = { day: 'numeric', month: 'long', year: 'numeric' };
+      let dateFormatterOptions = {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric'
+      };
       let dateLocales = (lang === 'ar') ? 'ar-EG-u-nu-arab-ca-islamic' : 'en-GB';
       let shortDate = new Intl.DateTimeFormat(
         dateLocales, dateFormatterOptions).format(date);
@@ -71,16 +77,20 @@
       return shortDate;
     });
 
-    let blogUrl = isLocalhost ?
-      '/data/blog.json' : 'https://badersur-v2.appspot.com/blog.json';
+    let blogUrl = isLocalhost ? `/data/apis/${lang}.json` :
+      `https://bader-nasser.appspot.com/apis/${lang}/`;
 
-    $.ajax(blogUrl, { timeout: 10000 })
+    $.ajax(blogUrl, {
+        timeout: 10000
+      })
       .done(data => {
         $postsSection.after(env.renderString($postsTemplate, {
           posts: data.posts.slice(0, 2),
           lang
         }));
       })
-      .fail(() => $postsSection.after(env.renderString($errorTemplate, { lang })));
+      .fail(() => $postsSection.after(env.renderString($errorTemplate, {
+        lang
+      })));
   }
 })();
