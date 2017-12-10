@@ -1,18 +1,25 @@
 {
   "name": "badersur.github.io",
-  "version": "3.18.0",
+  "version": "3.18.1",
   "license": "MIT",
   "description": "A PWA that shows my skills, projects, blog posts and completed online courses",
-  "author": "Bader Nasser Al-Hashmi (@BaderSur)",
+  "author": "Bader Nasser Al-Hashmi",
   "repository": {
     "type": "git",
     "url": "https://github.com/badersur/badersur.github.io"
+  },
+  "scripts": {
+    "serve": "ENV_DEST=gae gulp && dev_appserver.py . --port=5555 --application=bader-sur",
+    "deploy": "ENV_DEST=gae gulp && gcloud app deploy --project=bader-sur --verbosity=info",
+    "build": "gulp && ENV_DEST=gae gulp",
+    "index": "gcloud datastore create-indexes index.yaml --project=bader-sur",
+    "cleanup": "gcloud datastore cleanup-indexes index.yaml --project=bader-sur"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
     "browser-sync": "^2.18.13",
-    "critical": "^1.0.0",
+    "critical": "^1.1.0",
     "del": "^3.0.0",
     "eslint-config-google": "^0.9.1",
     "gulp": "github:gulpjs/gulp#4.0",
@@ -47,17 +54,7 @@
     "sw-precache": "^5.2.0",
     "sw-toolbox": "^3.6.0"
   },
-  "engines": {
-    "node": ">=6"
-  },
-  "scripts": {
-    "serve": "ENV_DEST=gae gulp && dev_appserver.py . --port=5555 --application=bader-sur",
-    "deploy": "ENV_DEST=gae gulp && gcloud app deploy --project=bader-sur --verbosity=info",
-    "build": "gulp && ENV_DEST=gae gulp",
-    "index": "gcloud datastore create-indexes index.yaml --project=bader-sur",
-    "cleanup": "gcloud datastore cleanup-indexes index.yaml --project=bader-sur"
-  },
   "dependencies": {
-    "ajv": "^5.5.0"
+    "ajv": "^5.5.1"
   }
 }

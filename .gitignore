@@ -1,11 +1,11 @@
-node_modules
-pages
-gae
-.tmp
-.publish
+node_modules/
+pages/
+gae/
+.tmp/
+.publish/
 
 *.py[cod]
 *.log
 
-client-secret.json
-todos
+/client-secret.json
+/todos
