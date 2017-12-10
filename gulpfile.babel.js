@@ -73,7 +73,7 @@ gulp.task('copy', () => {
       title: 'copy root'
     }));
 
-  gulp.src('./app/data/*')
+  gulp.src('./app/data/**/*')
     .pipe(gulp.dest(`${finalDestination}/data`))
     .pipe($.size({
       title: 'copy data'
@@ -415,7 +415,7 @@ gulp.task('default', gulp.series(
 ));
 
 // Build and serve the output from the dist build
-gulp.task('serve:dist', gulp.series('default', () =>
+gulp.task('serve:dist', gulp.series('default', () => {
   browserSync({
     notify: false,
     logPrefix: 'WSK',
@@ -429,5 +429,16 @@ gulp.task('serve:dist', gulp.series('default', () =>
     port: 3001,
     // don't open any URL automatically
     open: false
-  })
-));
+  });
+
+  gulp.watch([
+    './app/**/*.{html,yaml,json}',
+    './app/styles/**/*.{scss,css}',
+    './app/scripts/**/*.js',
+    './app/images/**/*'
+  ], gulp.series('default', reload));
+  // gulp.watch('./app/styles/**/*.{scss,css}', gulp.series('styles', reload));
+  // gulp.watch('./app/scripts/**/*.js', gulp.series('lint', 'scripts', reload));
+  gulp.watch('./app/*.{xml,txt}', gulp.series('sitemap'));
+  // gulp.watch('./app/images/**/*', reload);
+}));
