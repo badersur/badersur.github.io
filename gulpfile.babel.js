@@ -33,8 +33,7 @@ const finalDestination = process.env.ENV_DEST || 'pages';
 const isGAE = finalDestination === 'gae';
 
 const extension = (isTravis || isGAE) ? '' : '.html';
-const baseUrl = isGAE ?
-  'https://bader-sur.appspot.com' : 'https://badersur.github.io';
+const baseUrl = 'https://bader-sur.appspot.com';
 const trackingID = isGAE ? 'UA-93913692-3' : 'UA-93913692-1';
 
 const languages = ['ar', 'en'];
