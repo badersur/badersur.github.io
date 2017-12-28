@@ -379,13 +379,6 @@ gulp.task('generate-service-worker', () => {
   return swPrecache.write(filepath, swOptions);
 });
 
-// Minify service worker.
-gulp.task('minify-service-worker', () =>
-  gulp.src(`./${finalDestination}/sw.js`)
-  .pipe($.uglify())
-  .pipe(gulp.dest(finalDestination))
-);
-
 // Rewrite occurences of filenames which have been renamed by gulp-rev
 gulp.task('replace', () => {
   const manifest = gulp.src(`./${finalDestination}/rev-manifest.json`);
@@ -409,7 +402,6 @@ gulp.task('default', gulp.series(
   'copy-sw-scripts',
   'revision',
   'generate-service-worker',
-  'minify-service-worker',
   'replace'
 ));
 
