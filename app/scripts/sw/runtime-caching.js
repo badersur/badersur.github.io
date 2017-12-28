@@ -12,12 +12,12 @@
     origin: /\.(?:googleapis|gstatic)\.com$/
   });
 
-  global.toolbox.router.get('/blog.json', global.toolbox.networkFirst, {
-    origin: 'https://badersur-v2.appspot.com',
+  global.toolbox.router.get(/^\/apis\/(ar|en)\/?$/, global.toolbox.networkFirst, {
+    origin: 'https://bader-nasser.appspot.com',
     networkTimeoutSeconds: 10
   });
 
   global.toolbox.router.get(/\/sitemap(\.xml)?/, global.toolbox.networkFirst);
 
-  global.toolbox.router.default = global.toolbox.cacheFirst;
+  global.toolbox.router.default = global.toolbox.networkFirst;
 })(self);
