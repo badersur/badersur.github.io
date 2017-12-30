@@ -15,7 +15,7 @@ showing my skills, completed courses, projects and blog posts.
 - ES2015 support using [Babel][babel].
 
 - Offline support thanks to [Service Worker][sw] pre-caching.
- This is made possible by [sw-precache][sw-precache].
+ This is made possible by [Workbox][workbox].
 
 - Inlined Critical-path CSS using [critical][critical].
 
@@ -54,12 +54,12 @@ showing my skills, completed courses, projects and blog posts.
 
 4. If you want to test working with GitHub pages then use gulp as follows:
     - Run `gulp` to build the app.
-    - Run `gulp serve` to serve it **without** service workers.
-    - Run `gulp serve:dist` to serve it **with** service workers.
+    - Run `gulp serve` to serve it **without** the service worker.
+    - Run `gulp serve:dist` to serve it **with** the service worker.
 
 5. If you want to test working with Google App Engine then use npm scripts
  as follows:
-    - Run `npm run serve` to serve it with service workers.
+    - Run `npm run serve` to serve it **with** the service worker.
     - Run `npm run deploy` to deploy to GAE. You'll need to change the app ID!
 
 6. Run `npm run build` to build the app for GitHub pages and GAE.
@@ -115,7 +115,7 @@ MIT © [Bader Nasser Al-Hashmi](https://github.com/BaderSur)
 [gulp-started]: https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md
 [babel]: https://github.com/babel/babel
 [sw]: https://developers.google.com/web/fundamentals/getting-started/primers/service-workers
-[sw-precache]: https://github.com/GoogleChrome/sw-precache
+[workbox]: https://developers.google.com/web/tools/workbox/
 [critical]: https://github.com/addyosmani/critical
 [gulp-rev]: https://github.com/sindresorhus/gulp-rev
 [wsk]: https://github.com/google/web-starter-kit
