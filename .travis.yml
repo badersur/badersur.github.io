@@ -1,17 +1,13 @@
 dist: trusty
 sudo: false
 language: node_js
-node_js: 9
-cache:
-  directories:
-  - "$HOME/.npm"
-  - node_modules
 
 before_install:
 - openssl aes-256-cbc -K $encrypted_1e2bbe134f98_key -iv $encrypted_1e2bbe134f98_iv
   -in client-secret.json.enc -out client-secret.json -d
-# - if ! $(npm -v | grep -q '^5'); then npm i -g npm@5; fi
-- npm i -g gulp-cli@1.4.0
+# - if ! $(npm -v | grep -q '^6'); then npm i -g npm@6; fi
+# - npm i -g npm@6
+- npm i -g gulp-cli
 
 script: npm run build
 

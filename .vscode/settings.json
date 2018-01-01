@@ -1,7 +1,7 @@
 // Place your settings in this file to overwrite default and user settings.
 {
   "files.exclude": {
-    "**/.tmp": true,
+    ".tmp": true,
     "**/.gitattributes": true,
     "**/yarn.lock": true
   }

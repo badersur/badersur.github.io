@@ -1,69 +1,103 @@
-/* eslint-env browser */
+// credit: https://github.com/philipwalton/webpack-esnext-boilerplate/blob/master/app/scripts/main.js
+import 'babel-polyfill';
+import 'material-design-lite';
 
-(function(global) {
-  'use strict';
+class MyApp {
+  constructor() {
+    this.postsTemplate = '';
+    this.errorTemplate = '';
+    this.postsTemplateElement = document.getElementById('posts-template');
+    this.errorTemplateElement = document.getElementById('error-template');
+    this.lang = window.location.pathname.includes('/ar') ? 'ar' : 'en';
+    this.footer = document.querySelector('footer');
+    this.isLocalhost = Boolean(window.location.hostname === 'localhost' ||
+      // [::1] is the IPv6 localhost address.
+      window.location.hostname === '[::1]' ||
+      // 127.0.0.1/8 is considered localhost for IPv4.
+      window.location.hostname.match(
+        /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/
+      )
+    );
+    this.blogUrl = this.isLocalhost ? `/data/apis/${this.lang}.json` :
+      `https://bader-nasser.appspot.com/apis/${this.lang}/`;
 
-  // Check to make sure service workers are supported in the current browser,
-  // and that the current page is accessed from a secure origin. Using a
-  // service worker from an insecure origin will trigger JS console errors. See
-  // http://www.chromium.org/Home/chromium-security/prefer-secure-origins-for-powerful-new-features
-  const isLocalhost = Boolean(window.location.hostname === 'localhost' ||
-    // [::1] is the IPv6 localhost address.
-    window.location.hostname === '[::1]' ||
-    // 127.0.0.1/8 is considered localhost for IPv4.
-    window.location.hostname.match(
-      /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/
-    )
-  );
+    if (this.postsTemplateElement) {
+      this.postsTemplate = this.postsTemplateElement.innerHTML;
+    }
+    if (this.errorTemplate) {
+      this.errorTemplate = this.errorTemplateElement.innerHTML;
+    }
 
-  if ('serviceWorker' in navigator) {
-    // Delay service worker registration until after the page has loaded
-    // during the initial visit to achieve the best first-visit experience
-    // Credit: https://developers.google.com/web/tools/workbox/guides/service-worker-checklist
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/sw.js')
-        .catch(e => console.error('Error during service worker registration:', e));
-    });
+    if (this.postsTemplate || this.errorTemplate) {
+      this.addPosts();
+    }
+
+    if ('serviceWorker' in navigator) {
+      console.log('Service worker is supported!');
+      // Delay service worker registration until after the page has loaded
+      // during the initial visit to achieve the best first-visit experience
+      // Credit: https://developers.google.com/web/tools/workbox/guides/service-worker-checklist
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then(() => console.log('Service worker registered!'))
+          .catch(e => console.error('Error during service worker registration:', e));
+      });
+    } else {
+      console.log('Service worker is **not** supported!!!');
+    }
   }
 
-  let lang = window.location.pathname.includes('/ar') ? 'ar' : 'en';
-  let $postsTemplate = $('#posts-template').html();
+  async addPosts() {
+    const nunjucksEnv = await this.getNunjucksEnv();
 
-  if ($postsTemplate.length) {
-    let $postsSection = $('.section--center').last();
-    let $errorTemplate = $('#error-template').html();
-    let env = nunjucks.configure({
-      autoescape: true
-    });
+    fetch(this.blogUrl)
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw new Error('Network response was not ok.');
+      })
+      .then(jsonResponse => {
+        const postsMarkup = nunjucksEnv.renderString(this.postsTemplate, {
+          posts: jsonResponse.posts.slice(0, 2),
+          lang: this.lang
+        });
+        this.insertHTML(postsMarkup);
+      })
+      .catch((error) => {
+        console.log('Fetch failed!', error);
+        const errorMarkup = nunjucksEnv.renderString(this.errorTemplate, {
+          lang: this.lang
+        });
+        this.insertHTML(errorMarkup);
+      });
+  }
 
-    env.addFilter('localeDate', dateString => {
-      let date = new Date(dateString);
-      let dateFormatterOptions = {
+  async getNunjucksEnv() {
+    const nunjucks = await import(/* webpackChunkName: "nunjucks" */ 'nunjucks');
+    const env = nunjucks.configure({ autoescape: true });
+    env.addFilter('localeDate', (dateString) => {
+      const date = new Date(dateString);
+      const dateFormatterOptions = {
         day: 'numeric',
         month: 'long',
         year: 'numeric'
       };
-      let dateLocales = (lang === 'ar') ? 'ar-EG-u-nu-arab-ca-islamic' : 'en-GB';
-      let shortDate = new Intl.DateTimeFormat(
+      const dateLocales = (this.lang === 'ar') ? 'ar-EG-u-nu-arab-ca-islamic' : 'en-GB';
+      const shortDate = new Intl.DateTimeFormat(
         dateLocales, dateFormatterOptions).format(date);
 
       return shortDate;
     });
 
-    let blogUrl = isLocalhost ? `/data/apis/${lang}.json` :
-      `https://bader-nasser.appspot.com/apis/${lang}/`;
-
-    $.ajax(blogUrl, {
-        timeout: 10000
-      })
-      .done(data => {
-        $postsSection.after(env.renderString($postsTemplate, {
-          posts: data.posts.slice(0, 2),
-          lang
-        }));
-      })
-      .fail(() => $postsSection.after(env.renderString($errorTemplate, {
-        lang
-      })));
+    return env;
   }
-})();
+
+  insertHTML(markup) {
+    requestAnimationFrame(() => {
+      this.footer.insertAdjacentHTML('beforebegin', markup);
+    });
+  }
+}
+
+new MyApp();

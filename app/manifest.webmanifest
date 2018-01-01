@@ -3,8 +3,8 @@
   "short_name": "BaderSur",
   "icons": [
       {
-          "src": "/images/logo-192x192.png",
-          "sizes": "192x192",
+          "src": "/images/logo-128x128.png",
+          "sizes": "128x128",
           "type": "image/png"
       },
       {

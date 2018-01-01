@@ -1,17 +1,7 @@
-{% if mainScripts %}
-  <!-- build:js /scripts/vendors.js defer -->
-  <script src="/scripts/jquery.min.js" defer></script>
-  <script src="/scripts/nunjucks.min.js" defer></script>
-{% endif %}
-
-  <!-- build:js /scripts/main.js defer -->
-  <script src="../../node_modules/material-design-lite/src/mdlComponentHandler.js"></script>
-  <script src="../../node_modules/material-design-lite/src/layout/layout.js"></script>
-  <script src="../scripts/main.js"></script>
-  <!-- endbuild -->
+<script nomodule defer src="/scripts/runtime.es5.js" ></script>
+<script nomodule defer src="/scripts/main-legacy.es5.js" ></script>
 
 {% if isTravis %}
-  <!-- Google Analytics -->
   <script>
     (function (i, s, o, g, r, a, m) {
       i['GoogleAnalyticsObject'] = r;
@@ -19,7 +9,7 @@
         (i[r].q = i[r].q || []).push(arguments)
       }, i[r].l = 1 * new Date();
       a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0];
+      m = s.getElementsByTagName(o)[0];
       a.async = 1;
       a.src = g;
       m.parentNode.insertBefore(a, m)

@@ -1,24 +1,20 @@
 'use strict';
 
-// You can read more about the new JavaScript features here:
-// https://babeljs.io/docs/learn-es2015/
+const gulp = require('gulp');
+const webpack = require('webpack');
+const gulpWebpack = require('webpack-stream');
+const webpackConfigs = require('./webpack.config.js');
+const path = require('path');
+const del = require('del'); // rm -rf
+const browserSync = require('browser-sync');
+const gulpLoadPlugins = require('gulp-load-plugins');
+const moduleImporter = require('sass-module-importer');
+const MarkdownIt = require('markdown-it');
+const workbox = require('workbox-build');
 
-import gulp from 'gulp';
-import del from 'del';
-import browserSync from 'browser-sync';
-import gulpLoadPlugins from 'gulp-load-plugins';
-import moduleImporter from 'sass-module-importer';
-import MarkdownIt from 'markdown-it';
-import workbox from 'workbox-build';
-import {
-  readFileSync as fsRead
-} from 'fs';
-import {
-  safeLoad as yamlSafeLoad
-} from 'js-yaml';
-import {
-  stream as critical
-} from 'critical';
+const fsRead = require('fs').readFileSync;
+const yamlSafeLoad = require('js-yaml').safeLoad;
+const critical = require('critical').stream;
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
@@ -26,7 +22,7 @@ const md = new MarkdownIt('commonmark');
 
 const isTravis = process.env.TRAVIS || false;
 
-const finalDestination = process.env.ENV_DEST || 'pages';
+const finalDestination = process.env.DEST || 'pages';
 const isGAE = finalDestination === 'gae';
 
 const extension = (isTravis || isGAE) ? '' : '.html';
@@ -38,7 +34,6 @@ const paths = ['/', '/projects', '/courses'];
 
 const manageEnvironment = environment => {
   environment.addFilter('markdown', str => md.render(str));
-
   // Credit: https://github.com/mozilla/nunjucks/issues/1000
   environment.addFilter('toFixed',
     (num, digits) => parseFloat(num).toFixed(digits));
@@ -47,58 +42,41 @@ const manageEnvironment = environment => {
 console.log(`\nBuilding for ${finalDestination}...\n`);
 
 // Clean output directory
-gulp.task('clean', () => del([
-  '.tmp',
-  `${finalDestination}/*`,
-  `!${finalDestination}/.git`
-], {
-  dot: true
-}));
+gulp.task('clean', () => {
+  return del([
+    '.tmp',
+    `${finalDestination}/*`,
+    `!${finalDestination}/.git`,
+  ], { dot: true });
+});
 
 // Copy files
 gulp.task('copy', () => {
   gulp.src([
-      './app/*',
-      '!./app/*.html',
-      '!./app/robots.txt',
-      '!./app/sitemap.xml',
-      '!./app/templates'
-    ])
+    './app/*',
+    '!./app/*.html',
+    '!./app/robots.txt',
+    '!./app/sitemap.xml',
+    '!./app/templates',
+  ])
     .pipe(gulp.dest(finalDestination))
-    .pipe($.size({
-      title: 'copy root'
-    }));
+    .pipe($.size({ title: 'copy root' }));
 
-  gulp.src('./app/data/**/*')
+  return gulp.src('./app/data/**/*')
     .pipe(gulp.dest(`${finalDestination}/data`))
-    .pipe($.size({
-      title: 'copy data'
-    }));
-
-  return gulp.src([
-      './node_modules/nunjucks/browser/nunjucks.min.js',
-      './node_modules/jquery/dist/jquery.min.js'
-    ])
-    .pipe($.concat('vendors.js'))
-    .pipe(gulp.dest(`${finalDestination}/scripts`))
-    .pipe(gulp.dest('.tmp/scripts'))
-    .pipe($.size({
-      title: 'copy & concat 3rd party scripts'
-    }));
+    .pipe($.size({ title: 'copy data' }));
 });
 
 // Optimize images
-gulp.task('images', () =>
-  gulp.src('./app/images/**/*{png,svg}')
-  .pipe($.cache($.imagemin({
-    progressive: true,
-    interlaced: true
-  })))
-  .pipe(gulp.dest(`${finalDestination}/images`))
-  .pipe($.size({
-    title: 'images'
-  }))
-);
+gulp.task('images', () => {
+  return gulp.src('./app/images/**/*{png,svg}')
+    .pipe($.cache($.imagemin({
+      progressive: true,
+      interlaced: true
+    })))
+    .pipe(gulp.dest(`${finalDestination}/images`))
+    .pipe($.size({ title: 'images' }));
+});
 
 // Compile and automatically prefix stylesheets
 gulp.task('styles', () => {
@@ -113,7 +91,6 @@ gulp.task('styles', () => {
     'android >= 4.4',
     'bb >= 10'
   ];
-
   // For best performance, don't add Sass partials to `gulp.src`
   return gulp.src('./app/styles/main.scss')
     .pipe($.newer('.tmp/styles'))
@@ -126,51 +103,44 @@ gulp.task('styles', () => {
     .pipe(gulp.dest('.tmp/styles'))
     // Concatenate and minify styles
     .pipe($.if('*.css', $.cssnano()))
-    .pipe($.size({
-      title: 'styles'
-    }))
+    .pipe($.size({ title: 'styles' }))
     .pipe($.sourcemaps.write('./'))
     .pipe(gulp.dest(`${finalDestination}/styles`))
     .pipe(gulp.dest('.tmp/styles'));
 });
 
 // Lint JavaScript
-gulp.task('lint', () =>
-  gulp.src([
+gulp.task('lint', () => {
+  return gulp.src([
     './app/scripts/**/*.js',
     '!node_modules/**'
   ])
-  .pipe($.eslint())
-  .pipe($.eslint.format())
-  .pipe($.if(!browserSync.active, $.eslint.failAfterError()))
-);
+    .pipe($.eslint())
+    .pipe($.eslint.format())
+    .pipe($.if(!browserSync.active, $.eslint.failAfterError()));
+});
 
-// Concatenate and minify JavaScript. Also, transpile ES2015 code to ES5.
-gulp.task('scripts', () =>
-  gulp.src([
-    './node_modules/material-design-lite/src/mdlComponentHandler.js',
-    './node_modules/material-design-lite/src/layout/layout.js',
-    './app/scripts/main.js'
-  ])
-  .pipe($.newer('.tmp/scripts'))
-  .pipe($.sourcemaps.init())
-  .pipe($.babel())
-  .pipe($.sourcemaps.write())
-  .pipe(gulp.dest('.tmp/scripts'))
-  .pipe($.concat('main.js'))
-  .pipe($.uglify())
-  // Output files
-  .pipe($.size({
-    title: 'main script'
-  }))
-  .pipe($.sourcemaps.write('.'))
-  .pipe(gulp.dest(`${finalDestination}/scripts`))
-  .pipe(gulp.dest('.tmp/scripts'))
-);
+const scriptify = (config) => {
+  return gulp.src('./app/scripts/main.js')
+    .pipe(gulpWebpack(config, webpack))
+    .pipe(gulp.dest(`./${finalDestination}/scripts`));
+};
+
+gulp.task('scripts_modern', () => {
+  return scriptify(webpackConfigs[0]);
+});
+
+gulp.task('scripts_legacy', () => {
+  return scriptify(webpackConfigs[1]);
+});
+
+gulp.task('scripts', gulp.series('scripts_modern', 'scripts_legacy'));
 
 // Scan your HTML for assets & optimize them
 gulp.task('html', () => {
-  let projects, courses, aboutMe;
+  let projects;
+  let courses;
+  let aboutMe;
 
   try {
     aboutMe = yamlSafeLoad(fsRead('./app/data/about-me.yaml', 'utf8'));
@@ -181,13 +151,11 @@ gulp.task('html', () => {
   }
 
   return gulp.src([
-      './app/**/*.html',
-      '!./app/templates/*'
-    ])
+    './app/**/*.html',
+    '!./app/templates/*'
+  ])
     .pipe($.nunjucksRender({
-      envOptions: {
-        autoescape: false
-      },
+      envOptions: { autoescape: false },
       manageEnv: manageEnvironment,
       path: './app/templates/',
       data: {
@@ -230,25 +198,23 @@ gulp.task('html', () => {
 });
 
 // Build the sitemap & update robots.txt
-gulp.task('sitemap', () =>
-  gulp.src([
+gulp.task('sitemap', () => {
+  return gulp.src([
     './app/sitemap.xml',
     './app/robots.txt'
   ])
-  .pipe($.nunjucksRender({
-    inheritExtension: true,
-    envOptions: {
-      autoescape: false
-    },
-    manageEnv: manageEnvironment,
-    data: {
-      paths,
-      baseUrl,
-      languages
-    }
-  }))
-  .pipe(gulp.dest(finalDestination))
-);
+    .pipe($.nunjucksRender({
+      inheritExtension: true,
+      envOptions: { autoescape: false },
+      manageEnv: manageEnvironment,
+      data: {
+        paths,
+        baseUrl,
+        languages
+      }
+    }))
+    .pipe(gulp.dest(finalDestination));
+});
 
 // Watch files for changes & reload
 gulp.task('serve', gulp.series(
@@ -265,7 +231,7 @@ gulp.task('serve', gulp.series(
       // Note: this uses an unsigned certificate which on first access
       //       will present a certificate warning in the browser.
       // https: true,
-      server: ['.tmp', 'app'],
+      server: [finalDestination, 'app'],
       port: 3000,
       // don't open any URL automatically
       open: false
@@ -280,44 +246,43 @@ gulp.task('serve', gulp.series(
 ));
 
 // Generate & Inline Critical-path CSS
-gulp.task('critical', () =>
-  gulp.src([
+gulp.task('critical', () => {
+  return gulp.src([
     `${finalDestination}/**/*.html`,
     `!${finalDestination}/index.html`,
     `!${finalDestination}/courses.html`,
     `!${finalDestination}/projects.html`
   ])
-  .pipe(critical({
-    base: `${finalDestination}/`,
-    inline: true,
-    minify: true,
-    css: [`${finalDestination}/styles/main.css`],
-    // 5 minutes
-    timeout: 5 * 60 * 1000
-  }))
-  .on('error', err => console.log(err.message))
-  .pipe(gulp.dest(finalDestination))
-);
+    .pipe(critical({
+      base: `${finalDestination}/`,
+      inline: true,
+      minify: true,
+      css: [`${finalDestination}/styles/main.css`],
+      // 5 minutes
+      timeout: 5 * 60 * 1000
+    }))
+    .on('error', err => console.log(err.message))
+    .pipe(gulp.dest(finalDestination));
+});
 
 // Append content hash to filenames
-gulp.task('revision', () =>
-  gulp.src([
+gulp.task('revision', () => {
+  return gulp.src([
     `${finalDestination}/**/*.css`,
     `${finalDestination}/**/*.js`,
+    `!${finalDestination}/scripts/vendors-*`,
     `!${finalDestination}/sw.js`,
     `${finalDestination}/**/*.png`,
     `${finalDestination}/**/*.svg`,
     `${finalDestination}/**/*.ico`
   ])
-  .pipe($.rev())
-  .pipe($.revFormat({
-    prefix: '.'
-  }))
-  .pipe($.revDeleteOriginal())
-  .pipe(gulp.dest(finalDestination))
-  .pipe($.rev.manifest())
-  .pipe(gulp.dest(finalDestination))
-);
+    .pipe($.rev())
+    .pipe($.revFormat({ prefix: '.' }))
+    .pipe($.revDeleteOriginal())
+    .pipe(gulp.dest(finalDestination))
+    .pipe($.rev.manifest())
+    .pipe(gulp.dest(finalDestination));
+});
 
 // Generate a service worker file that will provide offline functionality for
 // local resources and runtime caching.
@@ -326,38 +291,44 @@ gulp.task('generate-service-worker', () => {
     globDirectory: finalDestination,
     globPatterns: [
       '{ar,en}/*.html',
-      '**/*.{js,css}',
+      '**/*.css',
       '**/github-mark*.png',
       '**/hamburger*.svg',
       '*.webmanifest'
     ],
     ignoreUrlParametersMatching: [/./],
-    swDest: `${finalDestination}/sw.js`,
+    swDest: path.join(finalDestination, 'sw.js'),
     dontCacheBustUrlsMatching: /\.\w{10}\./,
     cacheId: `BaderSur-${finalDestination}`,
     clientsClaim: true,
     skipWaiting: true,
     directoryIndex: 'index.html',
-    runtimeCaching: [{
+    runtimeCaching: [
+      {
         urlPattern: new RegExp('^https://fonts.(?:googleapis|gstatic).com/(.*)'),
         handler: 'cacheFirst',
         options: {
           cacheName: 'google-fonts',
-          cacheExpiration: {
-            maxEntries: 10,
-          },
+          expiration: { maxEntries: 10 },
           cacheableResponse: {
             statuses: [0, 200]
           }
         },
-      }, {
+      },
+      {
         urlPattern: /\.(?:png|gif|jpg)$/,
         handler: 'cacheFirst',
         options: {
           cacheName: 'images',
-          cacheExpiration: {
-            maxEntries: 10
-          }
+          expiration: { maxEntries: 10 }
+        },
+      },
+      {
+        urlPattern: /\.js$/,
+        handler: 'cacheFirst',
+        options: {
+          cacheName: 'scripts',
+          expiration: { maxEntries: 10 }
         },
       },
       {
@@ -365,9 +336,7 @@ gulp.task('generate-service-worker', () => {
         handler: 'staleWhileRevalidate',
         options: {
           cacheName: 'posts',
-          cacheExpiration: {
-            maxEntries: 10
-          }
+          expiration: { maxEntries: 10 }
         },
       }
     ]
@@ -392,9 +361,9 @@ gulp.task('replace', () => {
   const manifest = gulp.src(`./${finalDestination}/rev-manifest.json`);
 
   return gulp.src([
-      `${finalDestination}/**/*.html`,
-      `${finalDestination}/manifest.*`
-    ])
+    `${finalDestination}/**/*.html`,
+    `${finalDestination}/manifest.*`
+  ])
     .pipe($.revReplace({
       manifest: manifest,
       replaceInExtensions: ['.html', '.webmanifest', '.webapp']
