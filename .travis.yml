@@ -25,6 +25,6 @@ deploy:
   skip_cleanup: true
   keyfile: client-secret.json
   project: bader-sur
-  default: true
+  version: travis-build
   verbosity: info
   on: dev

@@ -61,6 +61,8 @@ showing my skills, completed courses, projects and blog posts.
  as follows:
     - Run `npm run serve` to serve it **with** the service worker.
     - Run `npm run deploy` to deploy to GAE. You'll need to change the app ID!
+    - Run `npm run stage` to also deploy to GAE but changes won't affect the
+     default version! Visit: [https://staging-dot-bader-sur.appspot.com][staging].
 
 6. Run `npm run build` to build the app for GitHub pages and GAE.
 
@@ -133,3 +135,4 @@ MIT © [Bader Nasser Al-Hashmi](https://github.com/BaderSur)
 [git]: https://git-scm.com/downloads
 [download]: https://github.com/badersur/badersur.github.io/archive/dev.zip
 [blog-notes]: https://badersur-v2.appspot.com/blog/resources-for-udacitys-web-development-course?readyou=yep
+[staging]: https://staging-dot-bader-sur.appspot.com

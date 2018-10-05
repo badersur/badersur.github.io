@@ -3,6 +3,8 @@
   "files.exclude": {
     ".tmp": true,
     "**/.gitattributes": true,
-    "**/yarn.lock": true
+    "**/yarn.lock": true,
+    "**/package-lock.json": true,
+    "**/*.pyc": true
   }
 }

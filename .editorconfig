@@ -14,3 +14,6 @@ trim_trailing_whitespace = false
 
 [{.nvmrc,.eslintrc}]
 insert_final_newline = false
+
+[*.py]
+indent_size = 4

@@ -19,6 +19,8 @@ automatic_scaling:
 libraries:
 - name: webapp2
   version: "2.5.2"
+- name: jinja2
+  version: "2.6"
 
 handlers:
 
@@ -28,7 +30,8 @@ handlers:
   upload: gae/(.+\.webapp)
   static_files: gae/\1
   mime_type: application/x-web-app-manifest+json
-  expiration: "1s"
+  # sets "Cache-Control" and "Expires" HTTP headers!
+  expiration: "30s"
   secure: always
   http_headers:
     X-Content-Type-Options: "nosniff"
@@ -42,8 +45,10 @@ handlers:
   expiration: "365d"
   secure: always
   http_headers:
-    Access-Control-Allow-Origin: "*"
     Content-Type: "image/x-icon"
+    # Allow cross-origin access to web fonts and images
+    # You can also replace "*" with a specific host, e.g. https://example.org
+    Access-Control-Allow-Origin: "*"
     X-Content-Type-Options: "nosniff"
     Strict-Transport-Security: "max-age=10886400; includeSubDomains"
 
@@ -53,8 +58,6 @@ handlers:
   expiration: "365d"
   secure: always
   http_headers:
-    # Allow cross-origin access to web fonts and images
-    # You can also replace "*" with a specific host, e.g. https://example.org
     Access-Control-Allow-Origin: "*"
     X-Content-Type-Options: "nosniff"
     Strict-Transport-Security: "max-age=10886400; includeSubDomains"
@@ -64,11 +67,11 @@ handlers:
 - url: /sw\.js
   upload: gae/sw\.js
   static_files: gae/sw.js
-  expiration: "1s"
+  expiration: "30s"
   secure: always
   http_headers:
-    Content-Type: "text/javascript; charset=utf-8"
     X-Content-Type-Options: "nosniff"
+    Content-Type: "text/javascript; charset=utf-8"
     Strict-Transport-Security: "max-age=10886400; includeSubDomains"
 
 - url: /(.+\.js)
@@ -77,8 +80,8 @@ handlers:
   expiration: "365d"
   secure: always
   http_headers:
-    Content-Type: "text/javascript; charset=utf-8"
     X-Content-Type-Options: "nosniff"
+    Content-Type: "text/javascript; charset=utf-8"
     Strict-Transport-Security: "max-age=10886400; includeSubDomains"
 
 - url: /(.+\.css)
@@ -87,8 +90,8 @@ handlers:
   expiration: "365d"
   secure: always
   http_headers:
-    Content-Type: "text/css; charset=utf-8"
     X-Content-Type-Options: "nosniff"
+    Content-Type: "text/css; charset=utf-8"
     Strict-Transport-Security: "max-age=10886400; includeSubDomains"
 
 - url: /sitemap
@@ -105,8 +108,8 @@ handlers:
   static_files: gae/manifest.webmanifest
   secure: always
   http_headers:
-    Content-Type: "application/manifest+json; charset=utf-8"
     X-Content-Type-Options: "nosniff"
+    Content-Type: "application/manifest+json; charset=utf-8"
     Strict-Transport-Security: "max-age=10886400; includeSubDomains"
 
 - url: /(.+\.(xml|txt|json|map))
@@ -117,60 +120,71 @@ handlers:
     X-Content-Type-Options: "nosniff"
     Strict-Transport-Security: "max-age=10886400; includeSubDomains"
 
-# HTML pages
+# Homepages for /ar/ & /en/
 
-- url: /(.+\.html)
-  upload: gae/(.+\.html)
-  static_files: gae/\1
-  application_readable: true
+- url: /(ar|en)(?:/|/index\.html)?
+  upload: gae/(.+)/index\.html
+  static_files: gae/\1/index.html
   secure: always
   http_headers:
-    # Force Internet Explorer to render pages in the highest available
-    # mode in the various cases when it may not.
-    # https://hsivonen.fi/doctype/#ie8
+    X-Frame-Options: "deny"
     X-UA-Compatible: "IE=edge"
-    # For more details on how to craft a reasonable policy for your site, read:
-    # http://www.html5rocks.com/en/tutorials/security/content-security-policy/ (or
-    # the specification: http://www.w3.org/TR/CSP11/). Also, to make things easier,
-    # you can use an online CSP header generator such as: http://cspisawesome.com/.
-    # Content-Security-Policy: "script-src 'self'; object-src 'self'"
-    Content-Type: "text/html; charset=utf-8"
+    X-Xss-Protection: "1; mode=block"
     X-Content-Type-Options: "nosniff"
+    Content-Type: "text/html; charset=utf-8"
     Strict-Transport-Security: "max-age=10886400; includeSubDomains"
+    # see: https://developers.google.com/web/fundamentals/security/csp/
+    # or online CSP header generator such as: http://cspisawesome.com/
+    # or https://httpsecurityreport.com/best_practice.html
+    Content-Security-Policy: >-
+      default-src 'self';
+      font-src https://fonts.gstatic.com;
+      img-src 'self' https://www.google-analytics.com;
+      connect-src 'self' https://bader-nasser.appspot.com;
+      style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+      script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.google-analytics.com;
+
 
 # Pretty links for courses & projects
 
-- url: /((ar|en)/(courses|projects))/?
+- url: /((ar|en)/(courses|projects))(:?/|\.html)?
   upload: gae/(.+)\.html
   static_files: gae/\1.html
   application_readable: true
   secure: always
   http_headers:
+    X-Frame-Options: "deny"
     X-UA-Compatible: "IE=edge"
-    # Content-Security-Policy: "script-src 'self'; object-src 'self'"
-    Content-Type: "text/html; charset=utf-8"
+    X-Xss-Protection: "1; mode=block"
     X-Content-Type-Options: "nosniff"
+    Content-Type: "text/html; charset=utf-8"
     Strict-Transport-Security: "max-age=10886400; includeSubDomains"
+    Content-Security-Policy: >-
+      default-src 'self';
+      font-src https://fonts.gstatic.com;
+      img-src 'self' https://www.google-analytics.com;
+      style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+      script-src 'self' 'unsafe-inline' https://www.google-analytics.com;
 
-# Homepages for /ar/ & /en/
+# Google verification HTML page
 
-- url: /(ar|en)/?
-  upload: gae/(.+)/index\.html
-  static_files: gae/\1/index.html
-  application_readable: true
+- url: /google334d7caabe96fad5\.html
+  upload: gae/google334d7caabe96fad5\.html
+  static_files: gae/google334d7caabe96fad5.html
   secure: always
   http_headers:
+    X-Frame-Options: "deny"
     X-UA-Compatible: "IE=edge"
-    # Content-Security-Policy: "script-src 'self'; object-src 'self'"
-    Content-Type: "text/html; charset=utf-8"
+    X-Xss-Protection: "1; mode=block"
     X-Content-Type-Options: "nosniff"
+    Content-Type: "text/html; charset=utf-8"
+    Content-Security-Policy: "default-src 'none';"
     Strict-Transport-Security: "max-age=10886400; includeSubDomains"
 
 # Redirecting & handling errors: 404 & 500
 
 - url: /.*
   script: main.app
-  secure: always
 
 skip_files:
 - ^(.*/)?#.*#$
@@ -181,14 +195,18 @@ skip_files:
 - ^(.*/)?.*\.bak$
 
 - ^client-secret\.json\.enc$
-- ^gulpfile\.babel\.js$
-- ^package\.json$
-- ^package-lock\.json$
+- ^gulpfile.*\.js$
+- ^package.*\.json$
 - ^README\.md$
 - ^LICENSE$
+- ^webpack\.config\.js$
 
 - ^node_modules
 - ^pages
 - ^app
 - ^\.tmp
 - ^\.vscode
+
+- gae/(.*/)?.*\.yaml$
+- gae/(index|courses|projects)\.html
+- gae/rev-manifest\.json

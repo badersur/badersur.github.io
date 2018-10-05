@@ -1,6 +1,6 @@
 {
   "name": "badersur.github.io",
-  "version": "3.24.0",
+  "version": "3.25.0",
   "license": "MIT",
   "description": "A PWA that shows my skills, projects, blog posts and completed online courses",
   "author": "Bader Nasser Al-Hashmi",
@@ -10,7 +10,8 @@
   },
   "scripts": {
     "serve": "npm run build_gae && dev_appserver.py . --port=5555 --application=bader-sur",
-    "deploy": "npm run build_gae && gcloud app deploy --project=bader-sur --verbosity=info",
+    "deploy": "cross-env TRAVIS=1 npm run build_gae && gcloud app deploy --project=bader-sur --verbosity=info --version=brave",
+    "stage": "npm run build_gae && gcloud app deploy --project=bader-sur --verbosity=info --version=staging --no-promote",
     "build": "npm run build_gae && npm run build_pages",
     "build_gae": "cross-env NODE_ENV=production DEST=gae gulp",
     "build_pages": "cross-env NODE_ENV=production gulp",
@@ -20,12 +21,12 @@
   "devDependencies": {
     "ajv": "^6.5.4",
     "babel-core": "^6.26.3",
-    "babel-eslint": "^10.0.0",
+    "babel-eslint": "^10.0.1",
     "babel-loader": "^7.1.5",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.7.0",
-    "browser-sync": "^2.24.7",
+    "browser-sync": "^2.26.0",
     "critical": "^1.3.4",
     "cross-env": "^5.2.0",
     "del": "^3.0.0",
@@ -60,6 +61,6 @@
     "webpack": "^4.20.2",
     "webpack-stream": "^5.1.1",
     "whatwg-fetch": "^3.0.0",
-    "workbox-build": "^3.6.1"
+    "workbox-build": "^3.6.2"
   }
 }
