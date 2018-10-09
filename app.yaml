@@ -35,7 +35,7 @@ handlers:
   secure: always
   http_headers:
     X-Content-Type-Options: "nosniff"
-    Strict-Transport-Security: "max-age=10886400; includeSubDomains"
+    Strict-Transport-Security: "max-age=31536000"
 
 # Images (cached for a year since URLs contain hashes)
 
@@ -50,7 +50,7 @@ handlers:
     # You can also replace "*" with a specific host, e.g. https://example.org
     Access-Control-Allow-Origin: "*"
     X-Content-Type-Options: "nosniff"
-    Strict-Transport-Security: "max-age=10886400; includeSubDomains"
+    Strict-Transport-Security: "max-age=31536000"
 
 - url: /(.+\.(gif|jpe?g|png|svgz?|webp))
   upload: gae/(.+\.(gif|jpe?g|png|svgz?|webp))
@@ -60,7 +60,7 @@ handlers:
   http_headers:
     Access-Control-Allow-Origin: "*"
     X-Content-Type-Options: "nosniff"
-    Strict-Transport-Security: "max-age=10886400; includeSubDomains"
+    Strict-Transport-Security: "max-age=31536000"
 
 # CSS, Javascript, text and other file types
 
@@ -71,8 +71,8 @@ handlers:
   secure: always
   http_headers:
     X-Content-Type-Options: "nosniff"
+    Strict-Transport-Security: "max-age=31536000"
     Content-Type: "text/javascript; charset=utf-8"
-    Strict-Transport-Security: "max-age=10886400; includeSubDomains"
 
 - url: /(.+\.js)
   upload: gae/(.+\.js)
@@ -81,8 +81,8 @@ handlers:
   secure: always
   http_headers:
     X-Content-Type-Options: "nosniff"
+    Strict-Transport-Security: "max-age=31536000"
     Content-Type: "text/javascript; charset=utf-8"
-    Strict-Transport-Security: "max-age=10886400; includeSubDomains"
 
 - url: /(.+\.css)
   upload: gae/(.+\.css)
@@ -92,7 +92,7 @@ handlers:
   http_headers:
     X-Content-Type-Options: "nosniff"
     Content-Type: "text/css; charset=utf-8"
-    Strict-Transport-Security: "max-age=10886400; includeSubDomains"
+    Strict-Transport-Security: "max-age=31536000"
 
 - url: /sitemap
   upload: gae/sitemap\.xml
@@ -101,7 +101,7 @@ handlers:
   http_headers:
     X-Content-Type-Options: "nosniff"
     Content-Type: "text/xml; charset=utf-8"
-    Strict-Transport-Security: "max-age=10886400; includeSubDomains"
+    Strict-Transport-Security: "max-age=31536000"
 
 - url: /manifest\.webmanifest
   upload: gae/manifest\.webmanifest
@@ -109,8 +109,8 @@ handlers:
   secure: always
   http_headers:
     X-Content-Type-Options: "nosniff"
+    Strict-Transport-Security: "max-age=31536000"
     Content-Type: "application/manifest+json; charset=utf-8"
-    Strict-Transport-Security: "max-age=10886400; includeSubDomains"
 
 - url: /(.+\.(xml|txt|json|map))
   upload: gae/(.+\.(xml|txt|json|map))
@@ -118,7 +118,7 @@ handlers:
   secure: always
   http_headers:
     X-Content-Type-Options: "nosniff"
-    Strict-Transport-Security: "max-age=10886400; includeSubDomains"
+    Strict-Transport-Security: "max-age=31536000"
 
 # Homepages for /ar/ & /en/
 
@@ -132,7 +132,7 @@ handlers:
     X-Xss-Protection: "1; mode=block"
     X-Content-Type-Options: "nosniff"
     Content-Type: "text/html; charset=utf-8"
-    Strict-Transport-Security: "max-age=10886400; includeSubDomains"
+    Strict-Transport-Security: "max-age=31536000"
     # see: https://developers.google.com/web/fundamentals/security/csp/
     # or online CSP header generator such as: http://cspisawesome.com/
     # or https://httpsecurityreport.com/best_practice.html
@@ -158,7 +158,7 @@ handlers:
     X-Xss-Protection: "1; mode=block"
     X-Content-Type-Options: "nosniff"
     Content-Type: "text/html; charset=utf-8"
-    Strict-Transport-Security: "max-age=10886400; includeSubDomains"
+    Strict-Transport-Security: "max-age=31536000"
     Content-Security-Policy: >-
       default-src 'self';
       font-src https://fonts.gstatic.com;
@@ -178,8 +178,8 @@ handlers:
     X-Xss-Protection: "1; mode=block"
     X-Content-Type-Options: "nosniff"
     Content-Type: "text/html; charset=utf-8"
+    Strict-Transport-Security: "max-age=31536000"
     Content-Security-Policy: "default-src 'none';"
-    Strict-Transport-Security: "max-age=10886400; includeSubDomains"
 
 # Redirecting & handling errors: 404 & 500
 

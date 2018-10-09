@@ -21,8 +21,8 @@ def add_headers(response, ua_compat=False, csp=False):
     response.headers.add('X-Frame-Options', 'deny')
     response.headers.add('X-Xss-Protection', '1; mode=block')
     response.headers.add('X-Content-Type-Options', 'nosniff')
-    response.headers.add('Strict-Transport-Security',
-                         'max-age=10886400; includeSubDomains')
+    response.headers.add('Strict-Transport-Security', 'max-age=31536000')
+
     if ua_compat:
         response.headers.add('X-UA-Compatible', 'IE=edge')
     if csp:
