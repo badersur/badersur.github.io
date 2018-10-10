@@ -32,10 +32,10 @@ def add_headers(response, ua_compat=False, csp=False):
             "base-uri 'none';" +
             "object-src 'none';" +
             "default-src 'none';" +
-            "font-src https://fonts.gstatic.com;"
+            "font-src https://fonts.gstatic.com;" +
             "img-src 'self' https://www.google-analytics.com;" +
             "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;" +
-            "script-src 'self' 'unsafe-inline' https://www.google-analytics.com;" +
+            "script-src 'self' 'unsafe-inline' https://www.google-analytics.com;"
         )
 
 
