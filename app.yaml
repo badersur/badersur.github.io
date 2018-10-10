@@ -136,14 +136,16 @@ handlers:
     # see: https://developers.google.com/web/fundamentals/security/csp/
     # or online CSP header generator such as: http://cspisawesome.com/
     # or https://httpsecurityreport.com/best_practice.html
+    # or https://csp-evaluator.withgoogle.com/
     Content-Security-Policy: >-
-      default-src 'self';
+      base-uri 'none';
+      object-src 'none';
+      default-src 'none';
       font-src https://fonts.gstatic.com;
       img-src 'self' https://www.google-analytics.com;
       connect-src 'self' https://bader-nasser.appspot.com;
       style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
       script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.google-analytics.com;
-
 
 # Pretty links for courses & projects
 
@@ -160,7 +162,9 @@ handlers:
     Content-Type: "text/html; charset=utf-8"
     Strict-Transport-Security: "max-age=31536000"
     Content-Security-Policy: >-
-      default-src 'self';
+      base-uri 'none';
+      object-src 'none';
+      default-src 'none';
       font-src https://fonts.gstatic.com;
       img-src 'self' https://www.google-analytics.com;
       style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
@@ -179,7 +183,7 @@ handlers:
     X-Content-Type-Options: "nosniff"
     Content-Type: "text/html; charset=utf-8"
     Strict-Transport-Security: "max-age=31536000"
-    Content-Security-Policy: "default-src 'none';"
+    Content-Security-Policy: "base-uri 'none'; object-src 'none'; default-src 'none';"
 
 # Redirecting & handling errors: 404 & 500
 

@@ -29,11 +29,13 @@ def add_headers(response, ua_compat=False, csp=False):
         response.headers.add(
             'Content-Security-Policy',
 
-            "default-src 'self';" +
-            "script-src 'self' 'unsafe-inline' https://www.google-analytics.com;" +
-            "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;" +
-            "img-src 'self' https://www.google-analytics.com;" +
+            "base-uri 'none';" +
+            "object-src 'none';" +
+            "default-src 'none';" +
             "font-src https://fonts.gstatic.com;"
+            "img-src 'self' https://www.google-analytics.com;" +
+            "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;" +
+            "script-src 'self' 'unsafe-inline' https://www.google-analytics.com;" +
         )
 
 
