@@ -5,11 +5,29 @@ language: node_js
 before_install:
 - openssl aes-256-cbc -K $encrypted_1e2bbe134f98_key -iv $encrypted_1e2bbe134f98_iv
   -in client-secret.json.enc -out client-secret.json -d
-# - if ! $(npm -v | grep -q '^6'); then npm i -g npm@6; fi
-# - npm i -g npm@6
 - npm i -g gulp-cli
 
-script: npm run build
+install: npm ci
+
+# keep the npm cache around to speed up installs
+cache:
+  directories:
+  - "$HOME/.npm"
+
+# credit: https://github.com/travis-ci/travis-ci/issues/738#issuecomment-214710901
+before_script:
+- API_CHECK="https://appengine.google.com/api/updatecheck"
+# Idea from https://blog.bekt.net/p/gae-sdk/
+- export SDK_VERSION=$(curl -s $API_CHECK | awk -F '\"' '/release/ {print $2}')
+- SDK_URL=https://storage.googleapis.com/appengine-sdks/featured/google_appengine_$SDK_VERSION.zip
+- wget $SDK_URL -nv
+- unzip -q google_appengine_$SDK_VERSION.zip
+- export GOOGLE_CLOUD_SDK="$PWD/google_appengine"
+
+script:
+- npm run build
+- rm -rf "${GOOGLE_CLOUD_SDK}"
+- rm -rf "${GOOGLE_CLOUD_SDK}_${SDK_VERSION}.zip"
 
 deploy:
 - provider: pages

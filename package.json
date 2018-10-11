@@ -1,6 +1,6 @@
 {
   "name": "badersur.github.io",
-  "version": "3.27.1",
+  "version": "3.28.0",
   "license": "MIT",
   "description": "A PWA that shows my skills, projects, blog posts and completed online courses",
   "author": "Bader Nasser Al-Hashmi",
@@ -9,11 +9,15 @@
     "url": "https://github.com/badersur/badersur.github.io"
   },
   "scripts": {
+    "postinstall": "pip install -r requirements.txt --user",
+    "test": "python runner.py \"$GOOGLE_CLOUD_SDK\"",
+    "git_push": "npm run test && git push",
     "serve": "npm run build_gae && dev_appserver.py . --port=5555 --application=bader-sur",
     "deploy": "cross-env TRAVIS=1 npm run build_gae && gcloud app deploy --project=bader-sur --verbosity=info --version=brave",
     "stage": "npm run build_gae && gcloud app deploy --project=bader-sur --verbosity=info --version=staging --no-promote",
     "build": "npm run build_gae && npm run build_pages",
     "build_gae": "cross-env NODE_ENV=production DEST=gae gulp",
+    "postbuild_gae": "npm run test",
     "build_pages": "cross-env NODE_ENV=production gulp",
     "index": "gcloud datastore indexes create index.yaml --project=bader-sur",
     "cleanup": "gcloud datastore indexes cleanup index.yaml --project=bader-sur"

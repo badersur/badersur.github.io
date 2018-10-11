@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 import os
 import logging
 
@@ -5,7 +8,7 @@ import webapp2
 import jinja2
 
 IS_PERMANENT = False
-IS_DEV_ENV = os.environ.get('SERVER_SOFTWARE', '').startswith('Dev')
+IS_DEV_ENV = os.environ.get('SERVER_SOFTWARE', 'Dev').startswith('Dev')
 
 TEMPLATE_DIR = os.path.join(os.path.dirname(__file__), 'gae')
 JINJA_ENV = jinja2.Environment(loader=jinja2.FileSystemLoader(TEMPLATE_DIR),
@@ -29,21 +32,21 @@ def add_headers(response, ua_compat=False, csp=False):
         response.headers.add(
             'Content-Security-Policy',
 
-            "base-uri 'none';" +
-            "object-src 'none';" +
-            "default-src 'none';" +
-            "font-src https://fonts.gstatic.com;" +
-            "img-src 'self' https://www.google-analytics.com;" +
-            "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;" +
+            "base-uri 'none'; "
+            "object-src 'none'; "
+            "default-src 'none'; "
+            "font-src https://fonts.gstatic.com; "
+            "img-src 'self' https://www.google-analytics.com; "
+            "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; "
             "script-src 'self' 'unsafe-inline' https://www.google-analytics.com;"
         )
 
 
 def get_uri(request, path='self'):
-    if path != 'self':
-        uri = path
-    else:
+    if path == 'self':
         uri = request.path
+    else:
+        uri = path
     server_name = request.server_name
     if not IS_DEV_ENV:
         uri = 'https://' + server_name + uri
@@ -78,7 +81,6 @@ def go2https(request, response):
 def handle_404(request, response, exception):
     if shoud_go2https(request):
         return go2https(request, response)
-    logging.exception(exception)
     response.set_status(404)
     add_headers(response, ua_compat=True, csp=True)
     error_page = render_file('404.html')

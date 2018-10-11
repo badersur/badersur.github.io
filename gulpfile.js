@@ -24,6 +24,7 @@ const isTravis = process.env.TRAVIS || false;
 
 const finalDestination = process.env.DEST || 'pages';
 const isGAE = finalDestination === 'gae';
+const mode = process.env.NODE_ENV || 'development';
 
 const extension = (isTravis || isGAE) ? '' : '.html';
 const baseUrl = 'https://bader-sur.appspot.com';
@@ -39,7 +40,7 @@ const manageEnvironment = environment => {
     (num, digits) => parseFloat(num).toFixed(digits));
 };
 
-console.log(`\nBuilding for ${finalDestination}...\n`);
+console.log(`\nBuilding for "${finalDestination}" in "${mode}" mode...\n`);
 
 // Clean output directory
 gulp.task('clean', () => {
