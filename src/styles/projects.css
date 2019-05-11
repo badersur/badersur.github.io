@@ -1,0 +1,50 @@
+.Projects-list {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.Project {
+  display: flex;
+  flex-basis: 31%;
+  margin-bottom: 2rem;
+  flex-direction: column;
+}
+
+.Project-description {
+  flex: 1;
+}
+
+.Project-link {
+  color: #fff;
+  display: block;
+  padding: 0.5rem;
+  text-align: center;
+  justify-self: flex-end;
+  background-color: rebeccapurple;
+}
+
+@media (max-width: 910px) {
+  .Project {
+    flex-basis: 48%;
+  }
+}
+
+@media (max-width: 630px) {
+  .Project {
+    flex-basis: 100%;
+  }
+}
+
+@supports (display: grid) {
+  .Projects-list {
+    display: grid;
+    grid-gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+
+  .Project {
+    margin: 0;
+  }
+}

@@ -1,0 +1,134 @@
+%YAML 1.2
+---
+
+- name:
+    ar: نشرة الطقس
+    en: Sunshine
+
+  description:
+    ar: |
+      تطبيق لنظام أندرويد يستعمل بيانات موقع
+      [OpenWeatherMap](https://openweathermap.org/API)
+      لعرض توقعات الطقس خلال الأسبوعين القادمين.
+    en: |
+      An Android app that utilizes [OpenWeatherMap's
+      API](https://openweathermap.org/API) to show a 14-day weather forcast.
+
+  link: https://play.google.com/store/apps/details?id=om.mooniat.sunshine
+  linkType: download
+
+
+- name:
+    ar: عنكبوت الإنترنت
+    en: Web crawler
+
+  description:
+    ar: |
+      برنامج صغير لصنع محرك بحث باستخدام خوارزمية جوجل
+      (**PageRank**).
+    en: A script to crawl the web using Google's **PageRank** algorithm.
+
+  link: https://github.com/badersur/webcrawler
+  linkType: source
+
+
+- name:
+    ar: مدير بيئة دوت نت
+    en: dotnet-manager
+
+  description:
+    ar: |
+      برنامج صغير لتثبيت برنامج
+      **dotnet-sdk**
+      وتحديثه لأنظمة لينكس.
+    en: |
+      A shell script to install/update **dotnet-sdk** for Linux.
+
+  link: https://github.com/badersur/dotnet-manager
+  linkType: source
+
+
+- name:
+    ar: مدونة شخصية
+    en: Personal blog
+
+  description:
+    ar: |
+      مدونة باستعمال لغة بايثون و[قواعد بيانات جوجل
+      ](https://cloud.google.com/datastore/).
+    en: |
+      A blog with RESTful APIs hosted on Google App Engine **Standard**
+      Environment using Python and [Google Cloud
+      Datastore](https://cloud.google.com/datastore/).
+
+  link: https://badersur-v2.appspot.com/?gh-projects
+  linkType: website
+
+
+- name:
+    ar: مدير فيجوال ستوديو كود
+    en: VSCode-manager
+
+  description:
+    ar: |
+      برنامج صغير لتثبيت برنامج
+      Visual Studio **Code insiders**
+      وتحديثه لأنظمة لينكس.
+    en: |
+      A shell script to install/update Visual Studio **Code insiders** for Linux.
+
+  link: https://github.com/badersur/vscode-manager
+  linkType: source
+
+
+- name:
+    ar: غرِّد
+    en: Chirp
+
+  description:
+    ar: |
+      نسخة بسيطة عن موقع التغريد تويتر باستعمال
+      MongoDB
+      و
+      Express
+      و
+      Angular
+      و
+      Node.js.
+    en: |
+      A Twitter clone using the **MEAN stack** (MongoDB, Express, Angular & Node.js).
+
+  link: https://github.com/badersur/chirp
+  linkType: source
+
+
+- name:
+    ar: أخبار صور
+    en: Sur News
+
+  description:
+    ar: |
+      تطبيق لنظام أندرويد يجلب أخبار وﻻية صُور العُمانية باستعمال مكتبة
+      [jsoup](https://jsoup.org).
+    en: |
+      An Android app that fetches local news about Sur using
+      [jsoup library](https://jsoup.org).
+
+  link: https://play.google.com/store/apps/details?id=om.mooniat.surnews
+  linkType: download
+
+
+- name:
+    ar: المحاكي
+    en: mimic
+
+  description:
+    ar: |
+      إطار عمل برمجي يستخدم واجهة
+      [WSGI](http://docs.webob.org/en/latest/do-it-yourself.html).
+    en: |
+      A web framework that implements the
+      [WSGI interface](http://docs.webob.org/en/latest/do-it-yourself.html).
+
+  link: https://github.com/badersur/mimic
+  linkType: source
