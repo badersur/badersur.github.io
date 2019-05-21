@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'gatsby';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
@@ -65,15 +66,15 @@ const Footer = ({ siteTitle, lang, pageLink }) => {
 
             {/* credit: https://stackoverflow.com/a/10805292 */}
             <span title={switchSiteLangMsg.replace(/\r?\n|\r/, '')}>
-              <a
-                href={otherPageLink}
+              <Link
+                to={otherPageLink}
                 hrefLang={otherLang}
                 lang={otherLang}
                 dir={otherDir}
                 className="Footer-lang-switcher"
               >
                 {otherLangText}
-              </a>
+              </Link>
             </span>
           </div>
         </div>
