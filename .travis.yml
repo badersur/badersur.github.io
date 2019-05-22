@@ -1,5 +1,6 @@
 dist: xenial
 language: node_js
+cache: yarn
 
 branches:
   # blocklist
