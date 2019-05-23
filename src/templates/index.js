@@ -3,43 +3,21 @@ import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import { Parser, HtmlRenderer } from 'commonmark';
 
-// credid:
-// https://github.com/rockchalkwushock/codybrunner.me/blob/8c662cb7939eb5795559caccd180ba85e46f3f28/src/components/commons/Icon.js#L5
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faGithub,
-  faTwitter,
-  faTelegram,
-} from '@fortawesome/free-brands-svg-icons';
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
-
 import SEO from '../components/seo';
 import Skill from '../components/skill';
 import Layout from '../components/layout';
+import {
+  EmailIcon,
+  GithubIcon,
+  TelegramIcon,
+  TwitterIcon,
+} from '../components/icons';
 
 import '../styles/index.css';
-
-library.add(faGithub, faTwitter, faTelegram, faEnvelope);
 
 const mdReader = new Parser();
 // @ts-ignore
 const mdWriter = new HtmlRenderer({ softbreak: ' ' });
-
-const getIcon = key => {
-  switch (key) {
-    case 'email':
-      return faEnvelope;
-    case 'twitter':
-      return faTwitter;
-    case 'telegram':
-      return faTelegram;
-    case 'github':
-      return faGithub;
-    default:
-      return faEnvelope;
-  }
-};
 
 /**
  * @param {import('..').IndexTemplateProps} props
@@ -67,38 +45,12 @@ const IndexTemplate = ({ data, pageContext }) => {
       // @ts-ignore
       contact: { [lang]: contactMsg },
     },
+    links: { email, github, telegram, twitter },
   } = miscYamlNode;
   const parsedGreetingMsg = mdReader.parse(greetingMsg);
   const greetingMsgInHtml = mdWriter.render(parsedGreetingMsg);
-  // @ts-ignore
-  // eslint-disable-next-line prefer-destructuring
-  const contactLinks = miscYamlNode.links;
 
   const allSkillsYamlEdges = data.allSkillsYaml.edges;
-
-  const links = [];
-  // eslint-disable-next-line no-restricted-syntax
-  for (const key in contactLinks) {
-    // eslint-disable-next-line no-prototype-builtins
-    if (contactLinks.hasOwnProperty(key)) {
-      let link = contactLinks[key];
-      if (key === 'email') {
-        link = `mailto:${link}`;
-      }
-      const icon = getIcon(key);
-      links.push(
-        <a href={link} className="Contact-link" lang="en" dir="ltr">
-          <FontAwesomeIcon
-            icon={icon}
-            size="2x"
-            title={`${key} icon`}
-            className="Font-awesome-icon"
-            fixedWidth
-          />
-        </a>
-      );
-    }
-  }
 
   return (
     <Layout lang={lang} pageLink={pageLink}>
@@ -126,7 +78,23 @@ const IndexTemplate = ({ data, pageContext }) => {
       <section className="Board">
         <h2>{contact}</h2>
         <p>{contactMsg}</p>
-        <div className="Contact-links">{links}</div>
+        <div className="Contact-links" lang="en" dir="ltr">
+          <a href={`mailto:${email}`} className="Contact-link">
+            <EmailIcon />
+          </a>
+
+          <a href={github} className="Contact-link">
+            <GithubIcon />
+          </a>
+
+          <a href={twitter} className="Contact-link">
+            <TwitterIcon />
+          </a>
+
+          <a href={telegram} className="Contact-link">
+            <TelegramIcon />
+          </a>
+        </div>
       </section>
     </Layout>
   );

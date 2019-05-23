@@ -1,15 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import { GithubIcon } from './icons';
 
 // @ts-ignore
 import pkg from '../../package';
 import { useMiscYamlData } from '../hooks/use-misc-data';
-
-library.add(faGithub);
 
 /**
  * @param {number | Date} date
@@ -55,13 +51,7 @@ const Footer = ({ siteTitle, lang, pageLink }) => {
 
           <div className="Footer-links">
             <a href={repoLink} lang="en" dir="ltr">
-              <FontAwesomeIcon
-                icon={faGithub}
-                size="2x"
-                title="github icon"
-                className="Font-awesome-icon"
-                fixedWidth
-              />
+              <GithubIcon />
             </a>
 
             {/* credit: https://stackoverflow.com/a/10805292 */}
