@@ -792,7 +792,7 @@ html[dir=rtl] .Nav-item:last-of-type {
 
 html[dir=rtl] .Footer-links > * {
   float: right;
-  margin-left: 0 0 0 1rem;
+  margin: 0 0 0 1rem;
 }
 
 .Footer-lang-switcher {
