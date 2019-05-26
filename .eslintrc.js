@@ -1,5 +1,9 @@
 // credit: https://github.com/wesbos/eslint-config-wesbos/blob/master/.eslintrc.js
 module.exports = {
+  // https://gatsbyjs.org/docs/eslint/
+  globals: {
+    __PATH_PREFIX__: true,
+  },
   "extends": [
     "airbnb",
     "prettier",
