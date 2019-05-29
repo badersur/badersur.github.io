@@ -1,29 +1,22 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 
 import SEO from '../components/seo';
 import Layout from '../components/layout';
+import { ProjectsTemplateProps } from '..';
 import Project from '../components/project';
 
 import '../styles/projects.css';
 
-/**
- * Projects template
- *
- * @param {import('..').ProjectsTemplateProps} props
- */
-const ProjectsTemplate = ({ data, pageContext }) => {
+const ProjectsTemplate = ({ data, pageContext }: ProjectsTemplateProps) => {
   const { lang } = pageContext;
   const pageLink = '/projects/';
   const projectsNode = data.allMiscYaml.edges[0].node;
   const {
     headings: {
-      // @ts-ignore
       projects: { [lang]: projects },
     },
     messages: {
-      // @ts-ignore
       projectsDescription: { [lang]: projectsDescription },
     },
   } = projectsNode;
@@ -50,13 +43,6 @@ const ProjectsTemplate = ({ data, pageContext }) => {
       </section>
     </Layout>
   );
-};
-
-ProjectsTemplate.propTypes = {
-  pageContext: PropTypes.shape({
-    lang: PropTypes.string.isRequired,
-  }).isRequired,
-  data: PropTypes.any.isRequired,
 };
 
 export const query = graphql`

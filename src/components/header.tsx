@@ -1,17 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 
+import { HeaderProps } from '..';
 import { useMiscYamlData } from '../hooks/use-misc-data';
 
-const Header = ({ siteTitle, lang }) => {
+const Header = ({ siteTitle, lang }: HeaderProps) => {
   const {
     headings: {
-      // @ts-ignore
       overview: { [lang]: overview },
-      // @ts-ignore
       projects: { [lang]: projects },
-      // @ts-ignore
       blog: { [lang]: blog },
     },
   } = useMiscYamlData();
@@ -43,11 +40,6 @@ const Header = ({ siteTitle, lang }) => {
       </div>
     </header>
   );
-};
-
-Header.propTypes = {
-  lang: PropTypes.string.isRequired,
-  siteTitle: PropTypes.string.isRequired,
 };
 
 export default Header;

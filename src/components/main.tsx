@@ -1,14 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-const Main = ({ children }) => (
+import { MainProps } from '..';
+
+const Main = ({ children }: MainProps) => (
   <main className="Main">
     <div className="Content-wrapper">{children}</div>
   </main>
 );
-
-Main.propTypes = {
-  children: PropTypes.node.isRequired,
-};
 
 export default Main;

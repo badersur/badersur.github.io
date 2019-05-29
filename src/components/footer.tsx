@@ -1,23 +1,23 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import { GithubIcon } from './icons';
 
 // @ts-ignore
 import pkg from '../../package';
+import { FooterProps } from '..';
 import { useMiscYamlData } from '../hooks/use-misc-data';
 
-/**
- * @param {number | Date} date
- * @param {string} lang
- */
-const getFormattedYear = (date, lang) => {
+const getFormattedYear = (date: number | Date, lang: string) => {
   const dateOptions = { year: 'numeric' };
   const dateLocales = lang === 'ar' ? 'ar-OM-u-nu-arab-ca-islamic' : 'en-OM';
   return new Intl.DateTimeFormat(dateLocales, dateOptions).format(date);
 };
 
-const Footer = ({ siteTitle, lang, pageLink }) => {
+const Footer = ({ siteTitle, lang, pageLink }: FooterProps) => {
+  if (!pageLink) {
+    pageLink = '/';
+  }
+
   const {
     repository: { url: repoLink },
   } = pkg;
@@ -32,11 +32,9 @@ const Footer = ({ siteTitle, lang, pageLink }) => {
 
   const {
     headings: {
-      // @ts-ignore
       otherLang: { [lang]: otherLangText },
     },
     messages: {
-      // @ts-ignore
       switchSiteLang: { [lang]: switchSiteLangMsg },
     },
   } = useMiscYamlData();
@@ -71,16 +69,6 @@ const Footer = ({ siteTitle, lang, pageLink }) => {
       </div>
     </footer>
   );
-};
-
-Footer.propTypes = {
-  lang: PropTypes.string.isRequired,
-  pageLink: PropTypes.string,
-  siteTitle: PropTypes.string.isRequired,
-};
-
-Footer.defaultProps = {
-  pageLink: '/',
 };
 
 export default Footer;

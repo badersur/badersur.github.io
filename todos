@@ -1,6 +1,8 @@
-Logo
-GAE
+docker
+tslint
 netlify
+GAE
+Logo
 Arabic & web fonts
 animations
 lint with https://webhint.io
@@ -11,7 +13,6 @@ Add contributions to projects
 about page
 support older browsers?!
 tests
-typescript
 tweak styles and use grid
 use other styling techniques?!!
 remove default gatsby styles

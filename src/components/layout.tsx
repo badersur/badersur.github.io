@@ -6,18 +6,17 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
 
-import Header from './header';
 import Main from './main';
+import Header from './header';
 import Footer from './footer';
+import { LayoutProps } from '..';
 import { useSiteMetadata } from '../hooks/use-site-metadata';
 
 import '../styles/layout.css';
 
-const Layout = ({ children, lang, pageLink }) => {
+const Layout = ({ children, lang, pageLink = '' }: LayoutProps) => {
   const {
-    // @ts-ignore
     title: { [lang]: siteTitle },
   } = useSiteMetadata();
 
@@ -28,12 +27,6 @@ const Layout = ({ children, lang, pageLink }) => {
       <Footer siteTitle={siteTitle} lang={lang} pageLink={pageLink} />
     </div>
   );
-};
-
-Layout.propTypes = {
-  lang: PropTypes.string.isRequired,
-  pageLink: PropTypes.string,
-  children: PropTypes.node.isRequired,
 };
 
 export default Layout;

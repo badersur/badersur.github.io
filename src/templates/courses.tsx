@@ -1,19 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 
-import Layout from '../components/layout';
-import CourseProvider from '../components/course-provider';
 import SEO from '../components/seo';
+import Layout from '../components/layout';
+import { CoursesTemplateProps } from '..';
+import CourseProvider from '../components/course-provider';
 
 import '../styles/courses.css';
 
-/**
- * Courses template
- *
- * @param {import('..').CoursesTemplateProps} props
- */
-const CoursesTemplate = ({ data }) => {
+const CoursesTemplate = ({ data }: CoursesTemplateProps) => {
   const lang = 'en';
   const pageLink = '/courses/';
   const miscYamlNode = data.allMiscYaml.edges[0].node;
@@ -38,10 +33,6 @@ const CoursesTemplate = ({ data }) => {
       </section>
     </Layout>
   );
-};
-
-CoursesTemplate.propTypes = {
-  data: PropTypes.any.isRequired,
 };
 
 export const query = graphql`

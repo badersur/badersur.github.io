@@ -6,16 +6,18 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 
+import { SEOProps } from '..';
 import { useSiteMetadata } from '../hooks/use-site-metadata';
 
-const SEO = ({ title, description, lang, multiLangs, noIndex, pageLink }) => {
+const SEO = ({
+  title, description = '', lang = 'en',
+  multiLangs = false, noIndex = false, pageLink = ''
+}: SEOProps) => {
   const dir = lang === 'ar' ? 'rtl' : 'ltr';
   const otherLang = lang === 'ar' ? 'en' : 'ar';
   const {
-    // @ts-ignore
     title: { [lang]: siteTitle },
     siteUrl,
     twitter,
@@ -53,23 +55,6 @@ const SEO = ({ title, description, lang, multiLangs, noIndex, pageLink }) => {
       ) : null}
     </Helmet>
   );
-};
-
-SEO.propTypes = {
-  lang: PropTypes.string,
-  multiLangs: PropTypes.bool,
-  noIndex: PropTypes.bool,
-  pageLink: PropTypes.string,
-  description: PropTypes.string,
-  title: PropTypes.string.isRequired,
-};
-
-SEO.defaultProps = {
-  lang: 'en',
-  multiLangs: false,
-  noIndex: false,
-  pageLink: '',
-  description: '',
 };
 
 export default SEO;

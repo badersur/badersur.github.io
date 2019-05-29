@@ -1,4 +1,4 @@
-# [badersur.github.io][bs-pages] v4 [![Build Status](https://travis-ci.org/badersur/badersur.github.io.svg?branch=dev)](https://travis-ci.org/badersur/badersur.github.io)
+# [badersur.github.io][bs-pages] v5 [![Build Status](https://travis-ci.org/badersur/badersur.github.io.svg?branch=dev)](https://travis-ci.org/badersur/badersur.github.io)
 
 This is the source code for [my github pages][bs-pages]. It's a Progressive Web
 Application (PWA) showing my skills, completed courses, projects and blog posts
@@ -11,7 +11,7 @@ using [React][react] and [Gatsby][gatsby].
 
 - Performance optimization - Images, JavaScript, HTML and CSS are minifed.
 
-- Using modern JavaScript features.
+- Using modern JavaScript/TypeScript features.
 
 - Offline support thanks to [Service Worker][sw] and `gatsby-plugin-offline`.
 

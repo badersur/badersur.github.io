@@ -1,18 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 
-import Layout from '../components/layout';
 import SEO from '../components/seo';
+import Layout from '../components/layout';
+import { NotFoundTemplateProps } from '..';
 
 import '../styles/404.css';
 
-/**
- * Error page template
- *
- * @param {import('..').NotFoundTemplateProps} props
- */
-const NotFoundTemplate = ({ data, pageContext }) => {
+const NotFoundTemplate = ({ data, pageContext }: NotFoundTemplateProps) => {
   const { lang, multiLangs } = pageContext;
   const otherLang = lang === 'ar' ? 'en' : 'ar';
   const otherDir = otherLang === 'ar' ? 'rtl' : 'ltr';
@@ -46,14 +41,6 @@ const NotFoundTemplate = ({ data, pageContext }) => {
       </section>
     </Layout>
   );
-};
-
-NotFoundTemplate.propTypes = {
-  pageContext: PropTypes.shape({
-    lang: PropTypes.string.isRequired,
-    multiLangs: PropTypes.bool,
-  }).isRequired,
-  data: PropTypes.any.isRequired,
 };
 
 export const query = graphql`

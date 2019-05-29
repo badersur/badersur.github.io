@@ -1,3 +1,6 @@
+type SupportedLangs = 'ar' | 'en';
+type LinkType = 'download' | 'source' | 'website';
+
 export interface MultiLangs {
   ar: string;
   en: string;
@@ -43,7 +46,7 @@ export interface SkillNode {
 
 export interface SkillProps {
   data: SkillNode;
-  lang: string;
+  lang: SupportedLangs;
 }
 
 export interface CourseNode {
@@ -69,16 +72,16 @@ export interface ProjectNode {
   name: MultiLangs;
   description: MultiLangs;
   link: string;
-  linkType: string;
+  linkType: LinkType;
 }
 
 export interface ProjectProps {
   data: ProjectNode;
-  lang: string;
+  lang: SupportedLangs;
 }
 
 export interface PageContext {
-  lang: string;
+  lang: SupportedLangs;
   multiLangs?: boolean;
 }
 
@@ -126,6 +129,49 @@ export interface NotFoundTemplateProps {
     allMiscYaml: AllMiscYaml;
   };
   pageContext: PageContext;
+}
+
+export interface LayoutProps {
+  lang: SupportedLangs;
+  pageLink?: string;
+  children: any;
+}
+
+export interface MainProps {
+  children: any;
+}
+
+export interface IconProps {
+  name: string;
+}
+
+export interface HeaderProps {
+  lang: SupportedLangs;
+  siteTitle: string;
+}
+
+export interface SEOProps {
+  title: string;
+  lang?: SupportedLangs;
+  multiLangs?: boolean;
+  noIndex?: boolean;
+  pageLink?: string;
+  description?: string;
+}
+
+export interface FooterProps {
+  lang: SupportedLangs;
+  pageLink: string;
+  siteTitle: string;
+}
+
+interface HTMLProps {
+  htmlAttributes: object;
+  headComponents: [];
+  bodyAttributes: object;
+  preBodyComponents: [];
+  body: string;
+  postBodyComponents: [];
 }
 
 export interface SiteMetadata {

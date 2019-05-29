@@ -1,6 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-
 // credid:
 // https://github.com/rockchalkwushock/codybrunner.me/blob/8c662cb7939eb5795559caccd180ba85e46f3f28/src/components/commons/Icon.js#L5
 import {
@@ -8,13 +6,15 @@ import {
   faTwitter,
   faTelegram,
 } from '@fortawesome/free-brands-svg-icons';
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import { IconProps } from '..';
 
 library.add(faGithub, faTwitter, faTelegram, faEnvelope);
 
-const getIcon = name => {
+const getIcon = (name: string) => {
   switch (name) {
     case 'email':
       return faEnvelope;
@@ -29,7 +29,7 @@ const getIcon = name => {
   }
 };
 
-const Icon = ({ name }) => (
+const Icon = ({ name }: IconProps) => (
   <FontAwesomeIcon
     size="2x"
     fixedWidth
@@ -38,10 +38,6 @@ const Icon = ({ name }) => (
     className="Font-awesome-icon"
   />
 );
-
-Icon.propTypes = {
-  name: PropTypes.string.isRequired,
-};
 
 export const EmailIcon = () => <Icon name="email" />;
 export const TwitterIcon = () => <Icon name="twitter" />;

@@ -1,11 +1,8 @@
 import { useStaticQuery, graphql } from 'gatsby';
 
-/**
- * A hook to get misc yaml data
- *
- * @returns {import('..').MiscNode} misc yaml nodes
- */
-export const useMiscYamlData = () => {
+import { MiscNode } from '..';
+
+export const useMiscYamlData = (): MiscNode => {
   const {
     allMiscYaml: { edges },
   } = useStaticQuery(

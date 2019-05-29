@@ -15,6 +15,14 @@ module.exports = {
     'gatsby-transformer-yaml',
     'gatsby-plugin-catch-links',
     {
+      resolve: 'gatsby-plugin-typescript',
+      options: {
+        isTSX: true,
+        allExtensions: true,
+        // jsxPragma: 'jsx', // defaults to "React"
+      },
+    },
+    {
       resolve: 'gatsby-source-filesystem',
       options: {
         path: `${__dirname}/src/data`,

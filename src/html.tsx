@@ -1,9 +1,7 @@
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable jsx-a11y/html-has-lang */
 import React from 'react';
-import PropTypes from 'prop-types';
+import { HTMLProps } from '.';
 
-const HTML = props => (
+const HTML = (props: HTMLProps) => (
   <html {...props.htmlAttributes}>
     <head>
       <meta charSet="utf-8" />
@@ -29,14 +27,5 @@ const HTML = props => (
     </body>
   </html>
 );
-
-HTML.propTypes = {
-  htmlAttributes: PropTypes.object,
-  headComponents: PropTypes.array,
-  bodyAttributes: PropTypes.object,
-  preBodyComponents: PropTypes.array,
-  body: PropTypes.string,
-  postBodyComponents: PropTypes.array,
-};
 
 export default HTML;

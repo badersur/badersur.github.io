@@ -1,10 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import { Parser, HtmlRenderer } from 'commonmark';
 
 import SEO from '../components/seo';
 import Skill from '../components/skill';
+import { IndexTemplateProps } from '..';
 import Layout from '../components/layout';
 import {
   EmailIcon,
@@ -19,30 +19,20 @@ const mdReader = new Parser();
 // @ts-ignore
 const mdWriter = new HtmlRenderer({ softbreak: ' ' });
 
-/**
- * @param {import('..').IndexTemplateProps} props
- */
-const IndexTemplate = ({ data, pageContext }) => {
+const IndexTemplate = ({ data, pageContext }: IndexTemplateProps) => {
   const { lang } = pageContext;
   const pageLink = '/';
   const miscYamlNode = data.allMiscYaml.edges[0].node;
   const {
     headings: {
-      // @ts-ignore
       overview: { [lang]: overview },
-      // @ts-ignore
       greeting: { [lang]: greeting },
-      // @ts-ignore
       skills: { [lang]: skills },
-      // @ts-ignore
       contact: { [lang]: contact },
     },
     messages: {
-      // @ts-ignore
       indexDescription: { [lang]: indexDescription },
-      // @ts-ignore
       greeting: { [lang]: greetingMsg },
-      // @ts-ignore
       contact: { [lang]: contactMsg },
     },
     links: { email, github, telegram, twitter },
@@ -98,13 +88,6 @@ const IndexTemplate = ({ data, pageContext }) => {
       </section>
     </Layout>
   );
-};
-
-IndexTemplate.propTypes = {
-  pageContext: PropTypes.shape({
-    lang: PropTypes.string.isRequired,
-  }).isRequired,
-  data: PropTypes.any.isRequired,
 };
 
 export const query = graphql`
