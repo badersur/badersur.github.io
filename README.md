@@ -27,6 +27,8 @@ using [React][react] and [Gatsby][gatsby].
      command: `npm i npm@latest -g`
   - I use node 12 and npm 6.
 
+Or use [Docker][docker]!
+
 
 ## Usage
 
@@ -36,11 +38,15 @@ using [React][react] and [Gatsby][gatsby].
 2. Open cmd/terminal and change your current directory to repo.'s directory.
     - `cd badersur.github.io`
 
-3. Install the dependencies using npm or yarn.
+3. Using Docker, just run `npm run develop:docker` (which will build an image
+  and will run a development version of the site! Unfortunately, I dunno how to
+  setup Docker for both production and development yet :/)
+
+4. Or, install the dependencies using npm or yarn.
     - `npm i`
     - `yarn`
 
-4. Test the app locally using the commands:
+5. And test the app locally using the commands:
     - `npm run develop` and visit the development version of the app
       at: http://localhost:8000/en/
     - `npm run build` to have a production-ready version of the app.
@@ -107,3 +113,4 @@ MIT © [Bader Nasser Al-Hashmi](https://github.com/BaderSur)
 [traversy]: https://www.youtube.com/channel/UC29ju8bIPH5as8OGnQzwJyA
 [crash-courses]: https://www.youtube.com/playlist?list=PLillGF-RfqbYeckUaD1z6nviTp31GLTH8
 [vanilla-js]: https://www.youtube.com/playlist?list=PLillGF-RfqbbnEGy3ROiLWk7JMCuSyQtX
+[docker]: https://docs.docker.com/install/
