@@ -2,7 +2,7 @@
   "name": "badersur.github.io",
   "private": true,
   "description": "A simple Progressive Web App using React and Gatsby",
-  "version": "5.2.0",
+  "version": "5.2.1",
   "author": "Bader Nasser <BaderSur@gmail.com>",
   "license": "MIT",
   "scripts": {

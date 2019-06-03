@@ -38,15 +38,23 @@ Or use [Docker][docker]!
 2. Open cmd/terminal and change your current directory to repo.'s directory.
     - `cd badersur.github.io`
 
-3. Using Docker, just run `npm run develop:docker` (which will build an image
-  and will run a development version of the site! Unfortunately, I dunno how to
-  setup Docker for both production and development yet :/)
+3. Using Docker, and **if you have node installed**, then just run
+  `npm run develop:docker` (which will take some time to build an image and will
+  run a development version of the site! Unfortunately, I dunno how to setup
+  Docker for both production and development yet :/) and visit the link shown in
+  the screen.
+
+    **In case you don't have node installed**, run:
+    1. `docker build -t badersur.github.io .`
+    2. `docker run --rm -it -p 8000:8000/tcp badersur.github.io:latest`
+
+    and you may need to add `sudo` before the `docker` commands!
 
 4. Or, install the dependencies using npm or yarn.
     - `npm i`
     - `yarn`
 
-5. And test the app locally using the commands:
+    And test the app locally using the commands:
     - `npm run develop` and visit the development version of the app
       at: http://localhost:8000/en/
     - `npm run build` to have a production-ready version of the app.
