@@ -2,7 +2,7 @@
   "name": "badersur.github.io",
   "private": true,
   "description": "A simple Progressive Web App using React and Gatsby",
-  "version": "5.2.1",
+  "version": "5.3.0",
   "author": "Bader Nasser <BaderSur@gmail.com>",
   "license": "MIT",
   "scripts": {
@@ -13,6 +13,8 @@
     "develop:docker": "docker run --rm -it -p 8000:8000/tcp badersur.github.io:latest",
     "start": "gatsby develop",
     "serve": "gatsby serve",
+    "preserve:prod": "tsc --noEmit && gatsby build",
+    "serve:prod": "gatsby serve",
     "lint": "eslint .",
     "fmt": "eslint . --fix",
     "type-check": "tsc --noEmit",
@@ -27,12 +29,12 @@
     "url": "https://github.com/badersur/badersur.github.io/issues"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.18",
-    "@fortawesome/free-brands-svg-icons": "^5.8.2",
-    "@fortawesome/free-solid-svg-icons": "^5.8.2",
+    "@fortawesome/fontawesome-svg-core": "^1.2.19",
+    "@fortawesome/free-brands-svg-icons": "^5.9.0",
+    "@fortawesome/free-solid-svg-icons": "^5.9.0",
     "@fortawesome/react-fontawesome": "^0.1.4",
     "commonmark": "^0.29.0",
-    "gatsby": "^2.8.2",
+    "gatsby": "^2.8.6",
     "gatsby-image": "^2.1.1",
     "gatsby-plugin-catch-links": "^2.0.15",
     "gatsby-plugin-google-analytics": "^2.0.20",
@@ -52,7 +54,7 @@
   "devDependencies": {
     "@babel/core": "^7.0.0-0",
     "@types/commonmark": "^0.27.3",
-    "@types/node": "^12.0.4",
+    "@types/node": "^12.0.7",
     "@types/react": "^16.8.18",
     "@types/react-dom": "^16.8.4",
     "@types/react-helmet": "^5.0.8",
@@ -67,7 +69,7 @@
     "eslint-plugin-react": "^7.13.0",
     "eslint-plugin-react-hooks": "^1.6.0",
     "graphql": "^14.3.1",
-    "prettier": "^1.17.1",
+    "prettier": "^1.18.2",
     "typescript": "^3.4.5"
   }
 }
