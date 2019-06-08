@@ -1,4 +1,7 @@
-# [badersur.github.io][bs-pages] v5 [![Build Status](https://travis-ci.org/badersur/badersur.github.io.svg?branch=dev)](https://travis-ci.org/badersur/badersur.github.io)
+# [badersur.github.io][bs-pages] v5
+
+[![Build Status](https://travis-ci.org/badersur/badersur.github.io.svg?branch=dev)](https://travis-ci.org/badersur/badersur.github.io)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/dd3c8289-3da3-441a-a8d2-1d3a003fbf49/deploy-status)](https://badersur.netlify.com/)
 
 This is the source code for [my github pages][bs-pages]. It's a Progressive Web
 Application (PWA) showing my skills, completed courses, projects and blog posts
@@ -54,16 +57,29 @@ Or use [Docker][docker]!
     - `npm i`
     - `yarn`
 
-    And test the app locally using the commands:
+    then, either test the app locally using the commands:
     - `npm run develop` and visit the development version of the app
       at: http://localhost:8000/en/
     - `npm run build` to have a production-ready version of the app.
     - `npm run serve` and open the production version
       at: http://localhost:9000/en/
 
+    or, install [Netlify CLI][netlify-cli] with `npm install netlify-cli -g`
+    and run `netlify dev` to serve the production version of the app!
+    and visit the link shown in the screen...
+
 You may want to read my post: [Helpful resources and notes for Udacity's web
 development course][blog-notes] to learn about web development and
 Google App Engine.
+
+
+## Deploy to Netlify
+
+Test deploying to Netlify with my app as a template, for free!
+
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)][deploy]
+
+_[What happens when you click 'Deploy to Netlify'?][deploy-info]_
 
 
 ## Thanks
@@ -87,6 +103,8 @@ Google App Engine.
 - [Google's lighthouse project][lighthouse]
 
 - [Travis CI][travis-ci]
+
+- [Netlify][netlify]
 
 - All awesome open source projects :)
 
@@ -122,3 +140,7 @@ MIT © [Bader Nasser Al-Hashmi](https://github.com/BaderSur)
 [crash-courses]: https://www.youtube.com/playlist?list=PLillGF-RfqbYeckUaD1z6nviTp31GLTH8
 [vanilla-js]: https://www.youtube.com/playlist?list=PLillGF-RfqbbnEGy3ROiLWk7JMCuSyQtX
 [docker]: https://docs.docker.com/install/
+[netlify-cli]: https://www.netlify.com/docs/cli/
+[deploy]: https://app.netlify.com/start/deploy?repository=https://github.com/badersur/badersur.github.io
+[deploy-info]: https://templates.netlify.com/#about-deploy-to-netlify
+[netlify]: https://www.netlify.com/
