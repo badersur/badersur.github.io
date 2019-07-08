@@ -2,9 +2,8 @@ import React from 'react';
 import { Link } from 'gatsby';
 import { GithubIcon } from './icons';
 
-// @ts-ignore
-import pkg from '../../package';
-import { FooterProps } from '..';
+import pkg from '../../package.json';
+import { FooterProps } from '../types';
 import { useMiscYamlData } from '../hooks/use-misc-data';
 
 const getFormattedYear = (date: number | Date, lang: string) => {

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { MainProps } from '..';
+import { MainProps } from '../types';
 
 const Main = ({ children }: MainProps) => (
   <main className="Main">

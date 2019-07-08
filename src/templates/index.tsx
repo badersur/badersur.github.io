@@ -4,7 +4,7 @@ import { Parser, HtmlRenderer } from 'commonmark';
 
 import SEO from '../components/seo';
 import Skill from '../components/skill';
-import { IndexTemplateProps } from '..';
+import { IndexTemplateProps } from '../types';
 import Layout from '../components/layout';
 import {
   EmailIcon,

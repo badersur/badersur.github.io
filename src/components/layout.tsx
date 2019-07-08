@@ -10,7 +10,7 @@ import React from 'react';
 import Main from './main';
 import Header from './header';
 import Footer from './footer';
-import { LayoutProps } from '..';
+import { LayoutProps } from '../types';
 import { useSiteMetadata } from '../hooks/use-site-metadata';
 
 import '../styles/layout.css';

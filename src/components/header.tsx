@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
 
-import { HeaderProps } from '..';
+import { HeaderProps } from '../types';
 import { useMiscYamlData } from '../hooks/use-misc-data';
 
 const Header = ({ siteTitle, lang }: HeaderProps) => {

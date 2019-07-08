@@ -8,7 +8,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
-import { SEOProps } from '..';
+import { SEOProps } from '../types';
 import { useSiteMetadata } from '../hooks/use-site-metadata';
 
 const SEO = ({
@@ -28,31 +28,26 @@ const SEO = ({
   return (
     <Helmet title={title} titleTemplate={`%s | ${siteTitle}`}>
       <html lang={lang} dir={dir} />
-      {pageLink ? <link rel="canonical" hrefLang={lang} href={url} /> : null}
-      {multiLangs ? <link rel="alternate" hrefLang={lang} href={url} /> : null}
-      {multiLangs ? (
-        <link rel="alternate" hrefLang={otherLang} href={otherUrl} />
-      ) : null}
+      {pageLink && <link rel="canonical" hrefLang={lang} href={url} />}
+      {multiLangs && <link rel="alternate" hrefLang={lang} href={url} />}
+      {multiLangs &&
+        <link rel="alternate" hrefLang={otherLang} href={otherUrl} />}
 
-      {noIndex ? <meta name="robots" content="noindex" /> : null}
-      {description ? <meta name="description" content={description} /> : null}
+      {noIndex && <meta name="robots" content="noindex" />}
+      {description && <meta name="description" content={description} />}
 
       <meta property="og:url" content={pageLink ? url : siteUrl} />
       <meta property="og:locale" content={lang} />
       <meta property="og:title" content={title} />
       <meta property="og:type" content="website" />
       <meta property="og:site_name" content={title} />
-      {description ? (
-        <meta property="og:description" content={description} />
-      ) : null}
+      {description && <meta property="og:description" content={description} />}
 
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:site:id" content={twitter} />
       <meta name="twitter:creator" content={twitter} />
-      {description ? (
-        <meta name="twitter:description" content={description} />
-      ) : null}
+      {description && <meta name="twitter:description" content={description} />}
     </Helmet>
   );
 };

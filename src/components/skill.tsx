@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { SkillProps } from '..';
+import { SkillProps } from '../types';
 
 const Skill = ({ lang, data }: SkillProps) => {
   const {

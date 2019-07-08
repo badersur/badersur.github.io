@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Course from './course';
-import { CourseProviderProps } from '..';
+import { CourseProviderProps } from '../types';
 
 const CourseProvider = ({ data }: CourseProviderProps) => {
   const { profile, provider, courses } = data;

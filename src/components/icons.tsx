@@ -10,7 +10,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { IconProps } from '..';
+import { IconProps } from '../types';
 
 library.add(faGithub, faTwitter, faTelegram, faEnvelope);
 

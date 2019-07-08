@@ -1,7 +1,7 @@
 import React from 'react';
 import { Parser, HtmlRenderer } from 'commonmark';
 
-import { ProjectProps } from '..';
+import { ProjectProps } from '../types';
 import { useMiscYamlData } from '../hooks/use-misc-data';
 
 const mdReader = new Parser();

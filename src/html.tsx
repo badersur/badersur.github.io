@@ -1,5 +1,5 @@
 import React from 'react';
-import { HTMLProps } from '.';
+import { HTMLProps } from './types';
 
 const HTML = (props: HTMLProps) => (
   <html {...props.htmlAttributes}>

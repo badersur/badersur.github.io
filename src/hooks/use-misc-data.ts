@@ -1,6 +1,6 @@
 import { useStaticQuery, graphql } from 'gatsby';
 
-import { MiscNode } from '..';
+import { MiscNode } from '../types';
 
 export const useMiscYamlData = (): MiscNode => {
   const {

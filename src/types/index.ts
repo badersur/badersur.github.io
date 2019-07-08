@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 type SupportedLangs = 'ar' | 'en';
 type LinkType = 'download' | 'source' | 'website';
 
@@ -134,11 +136,11 @@ export interface NotFoundTemplateProps {
 export interface LayoutProps {
   lang: SupportedLangs;
   pageLink?: string;
-  children: any;
+  children: ReactNode;
 }
 
 export interface MainProps {
-  children: any;
+  children: ReactNode;
 }
 
 export interface IconProps {
@@ -165,7 +167,7 @@ export interface FooterProps {
   siteTitle: string;
 }
 
-interface HTMLProps {
+export interface HTMLProps {
   htmlAttributes: object;
   headComponents: [];
   bodyAttributes: object;

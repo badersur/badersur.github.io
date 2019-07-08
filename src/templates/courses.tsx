@@ -3,7 +3,7 @@ import { graphql } from 'gatsby';
 
 import SEO from '../components/seo';
 import Layout from '../components/layout';
-import { CoursesTemplateProps } from '..';
+import { CoursesTemplateProps } from '../types';
 import CourseProvider from '../components/course-provider';
 
 import '../styles/courses.css';
