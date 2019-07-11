@@ -1,10 +1,9 @@
-/en/* /en/404.html 404
-/ar/* /ar/404.html 404
+/           /ar/                  302!     Language=ar
+/           /en/                  302!
 
-# if the url doesn't exist such as `/blabla/`,
-# I wanna show arabic version of the error page if user's language is arabic
-# and show english version if user's language is english
-# and the default multi-language version (en & ar) otherwise
-# but the following rules don't work! any ideas?
-# /*      /en/404.html  404  !Language=en
-# /*      /ar/404.html  404  !Language=ar
+
+/ar/*       /ar/404.html          404
+/en/*       /en/404.html          404
+
+/*          /ar/404.html          404      Language=ar
+/*          /en/404.html          404
