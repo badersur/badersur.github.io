@@ -6,45 +6,56 @@
 
 const path = require('path');
 
-exports.createPages = ({ actions }) => {
-  const { createPage } = actions;
+/** @type {import('gatsby').GatsbyNode} */
+const gatsbyNode = {
+  createPages({ actions }) {
+    const { createPage } = actions;
 
-  ['ar', 'en'].forEach(lang => {
-    createPage({
-      path: `${lang}/`,
-      component: path.resolve('./src/templates/index.tsx'),
-      context: { lang },
-    });
+    const indexTemplate = path.resolve('./src/templates/index.tsx');
+    const projectsTemplate = path.resolve('./src/templates/projects.tsx');
+    const coursesTemplate = path.resolve('./src/templates/courses.tsx');
+    const errorTemplate = path.resolve('./src/templates/404.tsx');
 
-    createPage({
-      path: `${lang}/projects/`,
-      component: path.resolve('./src/templates/projects.tsx'),
-      context: { lang },
-    });
-
-    createPage({
-      path: `${lang}/404.html`,
-      component: path.resolve('./src/templates/404.tsx'),
-      context: { lang },
-    });
-
-    if (lang === 'en') {
+    ['ar', 'en'].forEach(lang => {
       createPage({
-        path: 'index.html',
-        component: path.resolve('./src/templates/index.tsx'),
+        path: `/${lang}/`,
+        component: indexTemplate,
         context: { lang },
       });
 
       createPage({
-        path: `${lang}/courses/`,
-        component: path.resolve('./src/templates/courses.tsx'),
+        path: `/${lang}/projects/`,
+        component: projectsTemplate,
+        context: { lang },
       });
 
       createPage({
-        path: '404.html',
-        component: path.resolve('./src/templates/404.tsx'),
-        context: { lang, multiLangs: true },
+        path: `/${lang}/404.html`,
+        component: errorTemplate,
+        context: { lang },
       });
-    }
-  });
+
+      if (lang === 'en') {
+        createPage({
+          path: '/index.html',
+          component: indexTemplate,
+          context: { lang },
+        });
+
+        createPage({
+          path: `/${lang}/courses/`,
+          component: coursesTemplate,
+          context: {},
+        });
+
+        createPage({
+          path: '/404.html',
+          component: errorTemplate,
+          context: { lang, multiLangs: true },
+        });
+      }
+    });
+  },
 };
+
+module.exports = gatsbyNode;
