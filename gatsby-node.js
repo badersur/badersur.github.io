@@ -6,17 +6,20 @@
 
 const path = require('path');
 
+const supportedLangs = ['en', 'ar'];
+const defaultLang = 'en';
+
 /** @type {import('gatsby').GatsbyNode} */
 const gatsbyNode = {
   createPages({ actions }) {
-    const { createPage } = actions;
+    const { createPage, createRedirect } = actions;
 
     const indexTemplate = path.resolve('./src/templates/index.tsx');
     const projectsTemplate = path.resolve('./src/templates/projects.tsx');
     const coursesTemplate = path.resolve('./src/templates/courses.tsx');
     const errorTemplate = path.resolve('./src/templates/404.tsx');
 
-    ['ar', 'en'].forEach(lang => {
+    supportedLangs.forEach(lang => {
       createPage({
         path: `/${lang}/`,
         component: indexTemplate,
@@ -35,7 +38,7 @@ const gatsbyNode = {
         context: { lang },
       });
 
-      if (lang === 'en') {
+      if (lang === defaultLang) {
         createPage({
           path: '/index.html',
           component: indexTemplate,
@@ -54,6 +57,18 @@ const gatsbyNode = {
           context: { lang, multiLangs: true },
         });
       }
+    });
+
+    createRedirect({
+      fromPath: '/',
+      toPath: `/${defaultLang}/`,
+      redirectInBrowser: true,
+    });
+
+    createRedirect({
+      fromPath: '/index.html',
+      toPath: `/${defaultLang}/`,
+      redirectInBrowser: true,
     });
   },
 };
