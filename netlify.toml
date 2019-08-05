@@ -1,12 +1,12 @@
 [build]
-  command = "yarn run build"
-  publish = "public"
+    command = "yarn run build"
+    publish = "public"
 
 # https://github.com/netlify/netlify-dev-plugin#project-detection
 [dev]
-  # Command to start gatsby's server
-  command = "yarn run serve"
-  # Port that the dev server will be listening on
-  port = 9000
-  # required because i use a _redirect file
-  publish = "public"
+    # Command to start gatsby's server
+    command = "yarn run serve"
+    # Port that the dev server will be listening on
+    port = 9000
+    # required because i use a _redirect file
+    publish = "public"

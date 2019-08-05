@@ -1,12 +1,34 @@
+// credits:
+// https://github.com/nodejs/nodejs.dev/blob/master/tsconfig.json
+// https://github.com/a-tarasyuk/webpack-typescript-babel/blob/master/tsconfig.json
 {
-  "compilerOptions": {
-    "target": "es5",
-    "module": "commonjs",
-    "jsx": "react",
-    "resolveJsonModule": true,
-    "rootDir": "./src",
-    "strict": true,
-    "esModuleInterop": true,
-    "suppressImplicitAnyIndexErrors": true,
-  }
+    "compilerOptions": {
+        "target": "esnext",
+        "module": "esnext",
+        "jsx": "react",
+        "resolveJsonModule": true,
+        "moduleResolution": "node",
+        "rootDir": "./src",
+        "strict": true,
+        "esModuleInterop": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "forceConsistentCasingInFileNames": true,
+        "noImplicitReturns": true,
+        "strictFunctionTypes": true,
+        "noUnusedLocals": true,
+        "pretty": true,
+        "allowSyntheticDefaultImports": true,
+        "downlevelIteration": true,
+        "noFallthroughCasesInSwitch": true,
+        "noUnusedParameters": true,
+        "noImplicitAny": true,
+    },
+    "include": [
+        "src/**/*"
+    ],
+    "exclude": [
+        "node_modules",
+        "public",
+        ".cache"
+    ]
 }

@@ -9,80 +9,80 @@ import Project from '../components/project';
 import '../styles/projects.css';
 
 const ProjectsTemplate = ({ data, pageContext }: ProjectsTemplateProps) => {
-  const { lang } = pageContext;
-  const pageLink = '/projects/';
-  const projectsNode = data.allMiscYaml.edges[0].node;
-  const {
-    headings: {
-      projects: { [lang]: projects },
-    },
-    messages: {
-      projectsDescription: { [lang]: projectsDescription },
-    },
-  } = projectsNode;
-  const projectsYamlEdges = data.allProjectsYaml.edges;
+    const { lang } = pageContext;
+    const pageLink = '/projects/';
+    const projectsNode = data.allMiscYaml.edges[0].node;
+    const {
+        headings: {
+            projects: { [lang]: projects },
+        },
+        messages: {
+            projectsDescription: { [lang]: projectsDescription },
+        },
+    } = projectsNode;
+    const projectsYamlEdges = data.allProjectsYaml.edges;
 
-  return (
-    <Layout lang={lang} pageLink={pageLink}>
-      <SEO
-        lang={lang}
-        multiLangs
-        pageLink={pageLink}
-        title={projects}
-        description={projectsDescription}
-      />
+    return (
+        <Layout lang={lang} pageLink={pageLink}>
+            <SEO
+                lang={lang}
+                multiLangs
+                pageLink={pageLink}
+                title={projects}
+                description={projectsDescription}
+            />
 
-      <section className="Projects">
-        <h1>{projects}</h1>
+            <section className="Projects">
+                <h1>{projects}</h1>
 
-        <div className="Projects-list">
-          {projectsYamlEdges.map(({ node: project }) => (
-            <Project lang={lang} data={project} />
-          ))}
-        </div>
-      </section>
-    </Layout>
-  );
+                <div className="Projects-list">
+                    {projectsYamlEdges.map(({ node: project }) => (
+                        <Project lang={lang} data={project} />
+                    ))}
+                </div>
+            </section>
+        </Layout>
+    );
 };
 
 export const query = graphql`
-  query {
-    allMiscYaml {
-      edges {
-        node {
-          headings {
-            projects {
-              ar
-              en
+    query {
+        allMiscYaml {
+            edges {
+                node {
+                    headings {
+                        projects {
+                            ar
+                            en
+                        }
+                    }
+                    messages {
+                        projectsDescription {
+                            ar
+                            en
+                        }
+                    }
+                }
             }
-          }
-          messages {
-            projectsDescription {
-              ar
-              en
-            }
-          }
         }
-      }
-    }
 
-    allProjectsYaml {
-      edges {
-        node {
-          name {
-            ar
-            en
-          }
-          description {
-            ar
-            en
-          }
-          link
-          linkType
+        allProjectsYaml {
+            edges {
+                node {
+                    name {
+                        ar
+                        en
+                    }
+                    description {
+                        ar
+                        en
+                    }
+                    link
+                    linkType
+                }
+            }
         }
-      }
     }
-  }
 `;
 
 export default ProjectsTemplate;

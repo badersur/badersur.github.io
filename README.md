@@ -7,57 +7,60 @@ This is the source code for [my github pages][bs-pages]. It's a Progressive Web
 Application (PWA) showing my skills, completed courses, projects and blog posts
 using [React][react] and [Gatsby][gatsby].
 
-
 ## Features
 
-- Responsive design using vanilla CSS (Flexbox and Grid).
+-   Responsive design using vanilla CSS (Flexbox and Grid).
 
-- Performance optimization - Images, JavaScript, HTML and CSS are minifed.
+-   Performance optimization - Images, JavaScript, HTML and CSS are minifed.
 
-- Using modern JavaScript/TypeScript features.
+-   Using modern JavaScript/TypeScript features.
 
-- Offline support thanks to [Service Worker][sw] and `gatsby-plugin-offline`.
+-   Offline support thanks to [Service Worker][sw] and `gatsby-plugin-offline`.
 
-- Static asset revisioning by appending content hash to filenames for
- better caching.
-
+-   Static asset revisioning by appending content hash to filenames for
+    better caching.
 
 ## Prerequisites
 
 [Node.js][node] and ([npm][npm] or [yarn][yarn]). I suggest using [nvm][nvm]
- to download Node.js and manage multiple versions of it.
-  - npm is bundled with Node.js but you may want to update it using the
-     command: `npm i npm@latest -g`
-  - I use node 12 and npm 6.
+to download Node.js and manage multiple versions of it.
+
+-   npm is bundled with Node.js but you may want to update it using the command:
+    `npm i npm@latest -g`
+-   I use node 12 and npm 6.
 
 Or use [Docker][docker]!
-
 
 ## Usage
 
 1. Clone this repo. using [git][git] or [download it][download].
+
     - `git clone https://github.com/badersur/badersur.github.io`
 
 2. Open cmd/terminal and change your current directory to repo.'s directory.
+
     - `cd badersur.github.io`
 
 3. Using Docker, and **if you have node installed**, then just run
-  `npm run develop:docker` (which will take some time to build an image and will
-  run a development version of the site! Unfortunately, I dunno how to setup
-  Docker for both production and development yet :/) and visit the link shown in
-  the screen.
+   `npm run develop:docker` (which will take some time to build an image and
+   will run a development version of the site! Unfortunately, I dunno how to
+   setup Docker for both production and development yet :/) and visit the link
+   shown in the screen.
 
     **In case you don't have node installed**, run:
+
     1. `docker build -t badersur.github.io .`
     2. `docker run --rm -it -p 8000:8000/tcp badersur.github.io:latest`
 
     and you may need to add `sudo` before the `docker` commands!
 
 4. Or, install the dependencies using npm or yarn.
+
     - `npm i`
     - `yarn`
 
     then, either test the app locally using the commands:
+
     - `npm run develop` and visit the development version of the app
       at: http://localhost:8000/en/
     - `npm run build` to have a production-ready version of the app.
@@ -72,7 +75,6 @@ You may want to read my post: [Helpful resources and notes for Udacity's web
 development course][blog-notes] to learn about web development and
 Google App Engine.
 
-
 ## Deploy to Netlify
 
 Test deploying to Netlify with my app as a template, for free!
@@ -81,38 +83,37 @@ Test deploying to Netlify with my app as a template, for free!
 
 _[What happens when you click 'Deploy to Netlify'?][deploy-info]_
 
-
 ## Thanks
 
-- [React][react] and [Gatsby][gatsby] for their awesome projects
+-   [React][react] and [Gatsby][gatsby] for their awesome projects
 
-- [Jen Simmons][jen] and her amazing [Layout Land YouTube channel][layout-land]
-  especially her mind-blowing [Resilient CSS series][resilient-css]
+-   [Jen Simmons][jen] and her amazing [Layout Land YouTube channel][layout-land]
+    especially her mind-blowing [Resilient CSS series][resilient-css]
 
-- [Wes Bos][wes] and his great projects and courses especially:
-    - [What The Flexbox?! Course][wut-da-flex]
-    - [`eslint-config-wesbos`][eslint-wes]
-    - [dotfiles repo.][dotfiles]
-    - [JavaScript30 Course][js30]
+-   [Wes Bos][wes] and his great projects and courses especially:
 
-- [Traversy Media YouTube Channel][traversy] and their fantastic courses
-  especially:
-    - [Web Development Crash Courses][crash-courses]
-    - [Vanilla JavaScript Playlist][vanilla-js]
+    -   [What The Flexbox?! Course][wut-da-flex]
+    -   [`eslint-config-wesbos`][eslint-wes]
+    -   [dotfiles repo.][dotfiles]
+    -   [JavaScript30 Course][js30]
 
-- [Google's lighthouse project][lighthouse]
+-   [Traversy Media YouTube Channel][traversy] and their fantastic courses
+    especially:
 
-- [Travis CI][travis-ci]
+    -   [Web Development Crash Courses][crash-courses]
+    -   [Vanilla JavaScript Playlist][vanilla-js]
 
-- [Netlify][netlify]
+-   [Google's lighthouse project][lighthouse]
 
-- All awesome open source projects :)
+-   [Travis CI][travis-ci]
 
+-   [Netlify][netlify]
+
+-   All awesome open source projects :)
 
 ## License
 
 MIT © [Bader Nasser Al-Hashmi](https://github.com/BaderSur)
-
 
 [bs-pages]: https://badersur.github.io
 [sw]: https://developers.google.com/web/fundamentals/getting-started/primers/service-workers
