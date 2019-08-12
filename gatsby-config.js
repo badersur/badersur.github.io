@@ -2,6 +2,7 @@
 
 const PORT = process.env.NODE_ENV === 'development' ? 8000 : 9000;
 const siteUrl = process.env.siteUrl || `http://localhost:${PORT}`;
+const trackingId = process.env.trackingId || '';
 
 module.exports = {
     siteMetadata: {
@@ -48,7 +49,7 @@ module.exports = {
         {
             resolve: 'gatsby-plugin-google-analytics',
             options: {
-                trackingId: 'UA-93913692-1',
+                trackingId,
                 head: false,
                 anonymize: true,
                 respectDNT: true,

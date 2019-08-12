@@ -16,7 +16,7 @@ install:
 
 script:
     - yarn outdated || echo "Building!..."
-    - siteUrl=https://badersur.github.io yarn run build
+    - yarn run build
 
 deploy:
     -   provider: pages

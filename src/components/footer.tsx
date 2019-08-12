@@ -39,11 +39,11 @@ const Footer = ({ siteTitle, lang, pageLink }: FooterProps) => {
             <div className="Content-wrapper">
                 <div className="Footer-items">
                     <p className="Footer-text">
-                        {siteTitle}
+                        {`${siteTitle} `}
                         &copy;
-                        {repoCreationYear}
+                        {` ${repoCreationYear} `}
                         &mdash;
-                        {currentYear}
+                        {` ${currentYear}`}
                     </p>
 
                     <div className="Footer-links">
