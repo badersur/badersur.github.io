@@ -6,6 +6,7 @@
         "target": "esnext",
         "module": "esnext",
         "jsx": "react",
+        "allowJs": true,
         "resolveJsonModule": true,
         "moduleResolution": "node",
         "rootDir": "./src",
@@ -24,7 +25,8 @@
         "noImplicitAny": true,
     },
     "include": [
-        "src/**/*"
+        "src/**/*",
+        "gatsby-*.js"
     ],
     "exclude": [
         "node_modules",

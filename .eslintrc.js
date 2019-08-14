@@ -15,12 +15,12 @@ module.exports = {
     },
     extends: [
         'eslint:recommended',
-        'plugin:react/recommended',
         'airbnb',
 
         'plugin:import/typescript',
         'plugin:@typescript-eslint/eslint-recommended',
         'plugin:@typescript-eslint/recommended',
+        'plugin:@typescript-eslint/recommended-requiring-type-checking',
 
         'prettier',
         'prettier/react',
@@ -73,7 +73,13 @@ module.exports = {
         ],
 
         '@typescript-eslint/indent': ['error', 4],
-        '@typescript-eslint/array-type': ['error', 'array-simple'],
+        '@typescript-eslint/array-type': [
+            'error',
+            {
+                default: 'array-simple',
+            },
+        ],
         '@typescript-eslint/explicit-function-return-type': 'off',
+        '@typescript-eslint/restrict-plus-operands': 'error',
     },
 };
