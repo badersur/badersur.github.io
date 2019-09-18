@@ -1,11 +1,16 @@
 # [badersur.github.io][bs-pages] v5
 
-[![Build Status](https://travis-ci.org/badersur/badersur.github.io.svg?branch=dev)](https://travis-ci.org/badersur/badersur.github.io)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/dd3c8289-3da3-441a-a8d2-1d3a003fbf49/deploy-status)](https://badersur.netlify.com/)
+[![Travis Status][travis-status-img]][travis-status]
+[![Netlify Status][netlify-status-img]][netlify-status]
 
 This is the source code for [my github pages][bs-pages]. It's a Progressive Web
 Application (PWA) showing my skills, completed courses, projects and blog posts
 using [React][react] and [Gatsby][gatsby].
+
+## Links
+
+-   [badersur.github.io][bs-pages] (built by [Travis CI][travis-ci])
+-   [badersur.netlify.com][bs-netlify] (built by [Netlify][netlify]'s continuous deployment)
 
 ## Features
 
@@ -147,3 +152,8 @@ MIT © [Bader Nasser Al-Hashmi](https://github.com/BaderSur)
 [deploy]: https://app.netlify.com/start/deploy?repository=https://github.com/badersur/badersur.github.io
 [deploy-info]: https://templates.netlify.com/#about-deploy-to-netlify
 [netlify]: https://www.netlify.com/
+[travis-status-img]: https://travis-ci.org/badersur/badersur.github.io.svg?branch=dev
+[travis-status]: https://travis-ci.org/badersur/badersur.github.io
+[netlify-status-img]: https://api.netlify.com/api/v1/badges/dd3c8289-3da3-441a-a8d2-1d3a003fbf49/deploy-status
+[netlify-status]: https://app.netlify.com/sites/badersur/deploys
+[bs-netlify]: https://badersur.netlify.com
