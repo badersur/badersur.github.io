@@ -32,7 +32,7 @@ to download Node.js and manage multiple versions of it.
 
 -   npm is bundled with Node.js but you may want to update it using the command:
     `npm i npm@latest -g`
--   I use node 12 and npm 6.
+-   I use node 13 and npm 6.
 
 Or use [Docker][docker]!
 

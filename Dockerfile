@@ -2,7 +2,7 @@
 # https://nodejs.org/en/docs/guides/nodejs-docker-webapp/
 # http://bitjudo.com/blog/2014/03/13/building-efficient-dockerfiles-node-dot-js/
 
-FROM node:12
+FROM node:13
 
 LABEL MAINTAINER="Bader Nasser Al-Hashmi"
 
