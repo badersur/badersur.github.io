@@ -1,46 +1,42 @@
 %YAML 1.2
 ---
+- text:
+      ar: |
+          تطوير تطبيقات المواقع
+          (PWAs)
+      en: Building progressive web applications (PWAs)
 
--   text:
-        ar: |
-            تطوير تطبيقات المواقع
-            (PWAs)
-        en: Building progressive web applications (PWAs)
+  techList:
+      - TypeScript
+      - ES2015+
+      - React
 
-    techList:
-        - TypeScript
-        - ES2015+
-        - React
+- text:
+      ar: |
+          تصميم قواعد البيانات والتعامل معها
+      en: Designing and manipulating databases
 
+  techList:
+      - MS SQL Server
+      - Google Cloud Datastore
 
--   text:
-        ar: |
-            تصميم قواعد البيانات والتعامل معها
-        en: Designing and manipulating databases
+- text:
+      ar: |
+          صنع تطبيقات لنظام أندرويد
+      en: Building native Android applications
 
-    techList:
-        - MS SQL Server
-        - Google Cloud Datastore
+  techList:
+      - Java
+      - Dart
+      - flutter
 
+- text:
+      ar: |
+          تطوير واجهات الإنترنت البرمجية
+          (APIs)
+      en: Creating RESTful APIs
 
--   text:
-        ar: |
-            صنع تطبيقات لنظام أندرويد
-        en: Building native Android applications
-
-    techList:
-        - Java
-        - Dart
-        - flutter
-
-
--   text:
-        ar: |
-            تطوير واجهات الإنترنت البرمجية
-            (APIs)
-        en: Creating RESTful APIs
-
-    techList:
-        - Express.js
-        - ASP.NET
-        - webapp2
+  techList:
+      - Express.js
+      - ASP.NET
+      - webapp2

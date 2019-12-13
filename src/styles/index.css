@@ -24,7 +24,7 @@
     background-image: linear-gradient(to top right, rebeccapurple, #054096);
 }
 
-html[dir=rtl] .Skill-list-item {
+html[dir='rtl'] .Skill-list-item {
     margin: 0 0 0.5rem 0.5rem;
 }
 
@@ -44,13 +44,13 @@ html[dir=rtl] .Skill-list-item {
         grid-gap: 1rem;
         grid-auto-flow: row;
         /* align-items: baseline; */
-        grid-template-areas: "a a";
+        grid-template-areas: 'a a';
         grid-auto-columns: max-content;
         /* grid-template-columns: repeat(auto-fit, minmax(auto, 1fr)); */
     }
 
     .Skill-list-item,
-    html[dir=rtl] .Skill-list-item {
+    html[dir='rtl'] .Skill-list-item {
         margin: 0;
     }
 }

@@ -133,22 +133,22 @@ button,
 select {
     text-transform: none;
 }
-[type="reset"],
-[type="submit"],
+[type='reset'],
+[type='submit'],
 button,
-html [type="button"] {
+html [type='button'] {
     -webkit-appearance: button;
 }
-[type="button"]::-moz-focus-inner,
-[type="reset"]::-moz-focus-inner,
-[type="submit"]::-moz-focus-inner,
+[type='button']::-moz-focus-inner,
+[type='reset']::-moz-focus-inner,
+[type='submit']::-moz-focus-inner,
 button::-moz-focus-inner {
     border-style: none;
     padding: 0;
 }
-[type="button"]:-moz-focusring,
-[type="reset"]:-moz-focusring,
-[type="submit"]:-moz-focusring,
+[type='button']:-moz-focusring,
+[type='reset']:-moz-focusring,
+[type='submit']:-moz-focusring,
 button:-moz-focusring {
     outline: 1px dotted ButtonText;
 }
@@ -168,21 +168,21 @@ legend {
 textarea {
     overflow: auto;
 }
-[type="checkbox"],
-[type="radio"] {
+[type='checkbox'],
+[type='radio'] {
     box-sizing: border-box;
     padding: 0;
 }
-[type="number"]::-webkit-inner-spin-button,
-[type="number"]::-webkit-outer-spin-button {
+[type='number']::-webkit-inner-spin-button,
+[type='number']::-webkit-outer-spin-button {
     height: auto;
 }
-[type="search"] {
+[type='search'] {
     -webkit-appearance: textfield;
     outline-offset: -2px;
 }
-[type="search"]::-webkit-search-cancel-button,
-[type="search"]::-webkit-search-decoration {
+[type='search']::-webkit-search-cancel-button,
+[type='search']::-webkit-search-decoration {
     -webkit-appearance: none;
 }
 ::-webkit-input-placeholder {
@@ -213,10 +213,10 @@ body {
     font-weight: normal;
     word-wrap: break-word;
     font-kerning: normal;
-    -moz-font-feature-settings: "kern", "liga", "clig", "calt";
-    -ms-font-feature-settings: "kern", "liga", "clig", "calt";
-    -webkit-font-feature-settings: "kern", "liga", "clig", "calt";
-    font-feature-settings: "kern", "liga", "clig", "calt";
+    -moz-font-feature-settings: 'kern', 'liga', 'clig', 'calt';
+    -ms-font-feature-settings: 'kern', 'liga', 'clig', 'calt';
+    -webkit-font-feature-settings: 'kern', 'liga', 'clig', 'calt';
+    font-feature-settings: 'kern', 'liga', 'clig', 'calt';
 }
 img {
     max-width: 100%;
@@ -240,7 +240,7 @@ h1 {
     margin-bottom: 1.45rem;
     color: inherit;
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+        Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     font-weight: bold;
     text-rendering: optimizeLegibility;
     font-size: 2.25rem;
@@ -257,7 +257,7 @@ h2 {
     margin-bottom: 1.45rem;
     color: inherit;
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+        Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     font-weight: bold;
     text-rendering: optimizeLegibility;
     font-size: 1.62671rem;
@@ -274,7 +274,7 @@ h3 {
     margin-bottom: 1.45rem;
     color: inherit;
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+        Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     font-weight: bold;
     text-rendering: optimizeLegibility;
     font-size: 1.38316rem;
@@ -291,7 +291,7 @@ h4 {
     margin-bottom: 1.45rem;
     color: inherit;
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+        Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     font-weight: bold;
     text-rendering: optimizeLegibility;
     font-size: 1rem;
@@ -308,7 +308,7 @@ h5 {
     margin-bottom: 1.45rem;
     color: inherit;
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+        Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     font-weight: bold;
     text-rendering: optimizeLegibility;
     font-size: 0.85028rem;
@@ -325,7 +325,7 @@ h6 {
     margin-bottom: 1.45rem;
     color: inherit;
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+        Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     font-weight: bold;
     text-rendering: optimizeLegibility;
     font-size: 0.78405rem;
@@ -580,10 +580,10 @@ td,
 th {
     text-align: left;
     border-bottom: 1px solid hsla(0, 0%, 0%, 0.12);
-    font-feature-settings: "tnum";
-    -moz-font-feature-settings: "tnum";
-    -ms-font-feature-settings: "tnum";
-    -webkit-font-feature-settings: "tnum";
+    font-feature-settings: 'tnum';
+    -moz-font-feature-settings: 'tnum';
+    -ms-font-feature-settings: 'tnum';
+    -webkit-font-feature-settings: 'tnum';
     padding-left: 0.96667rem;
     padding-right: 0.96667rem;
     padding-top: 0.725rem;
@@ -601,8 +601,8 @@ tt,
 code {
     background-color: hsla(0, 0%, 0%, 0.04);
     border-radius: 3px;
-    font-family: "SFMono-Regular", Consolas, "Roboto Mono", "Droid Sans Mono",
-    "Liberation Mono", Menlo, Courier, monospace;
+    font-family: 'SFMono-Regular', Consolas, 'Roboto Mono', 'Droid Sans Mono',
+        'Liberation Mono', Menlo, Courier, monospace;
     padding: 0;
     padding-top: 0.2em;
     padding-bottom: 0.2em;
@@ -616,13 +616,13 @@ code:after,
 tt:before,
 tt:after {
     letter-spacing: -0.2em;
-    content: " ";
+    content: ' ';
 }
 pre code:before,
 pre code:after,
 pre tt:before,
 pre tt:after {
-    content: "";
+    content: '';
 }
 @media only screen and (max-width: 480px) {
     html {
@@ -636,7 +636,7 @@ pre tt:after {
     display: none;
 }
 
-html[lang=ar] * {
+html[lang='ar'] * {
     font-family: sans-serif, serif;
 }
 
@@ -691,7 +691,7 @@ section {
     float: left;
 }
 
-html[dir=rtl] .Nav-bar-header {
+html[dir='rtl'] .Nav-bar-header {
     float: right;
 }
 
@@ -712,7 +712,7 @@ html[dir=rtl] .Nav-bar-header {
     justify-content: flex-end;
 }
 
-html[dir=rtl] .Nav-bar-items {
+html[dir='rtl'] .Nav-bar-items {
     float: left;
 }
 
@@ -724,13 +724,13 @@ html[dir=rtl] .Nav-bar-items {
     margin: 0 0.5rem 0 0;
 }
 
-html[dir=rtl] .Nav-item {
+html[dir='rtl'] .Nav-item {
     float: right;
     margin: 0 0 0 0.5rem;
 }
 
 .Nav-item:last-of-type,
-html[dir=rtl] .Nav-item:last-of-type {
+html[dir='rtl'] .Nav-item:last-of-type {
     margin: 0;
 }
 
@@ -754,9 +754,8 @@ html[dir=rtl] .Nav-item:last-of-type {
     padding: 1rem;
     background: #fff;
     border-radius: 0.5rem;
-    box-shadow: 0 2px 2px 0    rgba(0,0,0,.14),
-    0 3px 1px -2px rgba(0,0,0,.2),
-    0 1px 5px 0    rgba(0,0,0,.12);
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+        0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
 }
 
 .Footer {
@@ -790,7 +789,7 @@ html[dir=rtl] .Nav-item:last-of-type {
     margin: 0 1rem 0 0;
 }
 
-html[dir=rtl] .Footer-links > * {
+html[dir='rtl'] .Footer-links > * {
     float: right;
     margin: 0 0 0 1rem;
 }
@@ -818,7 +817,7 @@ html[dir=rtl] .Footer-links > * {
     }
 
     .Nav-bar-items,
-    html[dir=rtl] .Nav-bar-items {
+    html[dir='rtl'] .Nav-bar-items {
         float: none;
         justify-content: flex-start;
     }
@@ -828,12 +827,12 @@ html[dir=rtl] .Footer-links > * {
         margin: 0 0.5rem 0.5rem 0;
     }
 
-    html[dir=rtl] .Nav-item {
+    html[dir='rtl'] .Nav-item {
         margin: 0 0 0.5rem 0.5rem;
     }
 
     .Nav-item:last-child,
-    html[dir=rtl] .Nav-item:last-child {
+    html[dir='rtl'] .Nav-item:last-child {
         margin: 0 0 0.5rem;
     }
 }

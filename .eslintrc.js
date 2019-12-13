@@ -17,6 +17,8 @@ module.exports = {
         'eslint:recommended',
         'airbnb',
 
+        'plugin:import/errors',
+        'plugin:import/warnings',
         'plugin:import/typescript',
         'plugin:@typescript-eslint/eslint-recommended',
         'plugin:@typescript-eslint/recommended',
@@ -81,5 +83,13 @@ module.exports = {
         ],
         '@typescript-eslint/explicit-function-return-type': 'off',
         '@typescript-eslint/restrict-plus-operands': 'error',
+
+        'import/extensions': [
+            'error',
+            'never',
+            {
+                json: 'always',
+            },
+        ],
     },
 };

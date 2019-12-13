@@ -22,15 +22,8 @@
         "downlevelIteration": true,
         "noFallthroughCasesInSwitch": true,
         "noUnusedParameters": true,
-        "noImplicitAny": true,
+        "noImplicitAny": true
     },
-    "include": [
-        "src/**/*",
-        "gatsby-*.js"
-    ],
-    "exclude": [
-        "node_modules",
-        "public",
-        ".cache"
-    ]
+    "include": ["src/**/*", "gatsby-*.js"],
+    "exclude": ["node_modules", "public", ".cache"]
 }

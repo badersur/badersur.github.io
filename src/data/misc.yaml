@@ -1,106 +1,103 @@
 %YAML 1.2
 ---
+- headings:
+      overview:
+          ar: |
+              النبذة
+          en: Overview
 
--   headings:
-        overview:
-            ar: |
-                النبذة
-            en: Overview
+      projects:
+          ar: |
+              المشاريع
+          en: Projects
 
-        projects:
-            ar: |
-                المشاريع
-            en: Projects
+      blog:
+          ar: |
+              المدونة
+          en: Blog
 
-        blog:
-            ar: |
-                المدونة
-            en: Blog
+      greeting:
+          ar: |
+              السلام عليكم
+          en: Welcome
 
-        greeting:
-            ar: |
-                السلام عليكم
-            en: Welcome
+      skills:
+          ar: |
+              المهارات
+          en: Skills
 
-        skills:
-            ar: |
-                المهارات
-            en: Skills
+      contact:
+          ar: |
+              تواصل معي
+          en: Contact
 
-        contact:
-            ar: |
-                تواصل معي
-            en: Contact
+      notFound:
+          ar: |
+              الصفحة غير موجودة
+          en: Not found
 
-        notFound:
-            ar: |
-                الصفحة غير موجودة
-            en: Not found
+      otherLang:
+          ar: EN
+          en: |
+              ع
 
-        otherLang:
-            ar: EN
-            en: |
-                ع
+      download:
+          ar: |
+              حمّل
+          en: Download
 
-        download:
-            ar: |
-                حمّل
-            en: Download
+      source:
+          ar: |
+              تصفح المشروع
+          en: View Source
 
-        source:
-            ar: |
-                تصفح المشروع
-            en: View Source
+      website:
+          ar: |
+              زُر الموقع
+          en: Visit
 
-        website:
-            ar: |
-                زُر الموقع
-            en: Visit
+  messages:
+      indexDescription:
+          ar: |
+              نبذة عن بدر الهاشمي مثل مهاراته التي قد تساعده في السيطرة على العالم!
+          en: Information about @BaderSur like his skills which may help him
+              to conquer this world!
 
+      projectsDescription:
+          ar: |
+              قائمة ببعض المشاريع التي أنهيتها.
+          en: Some projects that @BaderSur has done so far.
 
-    messages:
-        indexDescription:
-            ar: |
-                نبذة عن بدر الهاشمي مثل مهاراته التي قد تساعده في السيطرة على العالم!
-            en: Information about @BaderSur like his skills which may help him
-                to conquer this world!
+      coursesDescription:
+          en: Most of the online courses that @BaderSur has completed!
 
-        projectsDescription:
-            ar: |
-                قائمة ببعض المشاريع التي أنهيتها.
-            en: Some projects that @BaderSur has done so far.
+      greeting:
+          ar: |
+              أهلا وسهلا بك في موقعي. أنا بدر بن ناصر الهاشمي، [مطور تطبيقات
+              ](/ar/projects/)
+              و[مساهمٌ في المشاريع المفتوحة المصدر
+              ](https://github.com/BaderSur).
+          en: Hi and welcome to my website! My name is Bader Nasser Al-Hashmi.
+              I'm a [software engineer](/en/projects/) and an
+              [open source contributor](https://github.com/BaderSur).
 
-        coursesDescription:
-            en: Most of the online courses that @BaderSur has completed!
+      contact:
+          ar: |
+              تواصل معي للعمل معا أو للتناقش في بعض الأمور التقنية.
+          en: Feel free to contact me for job offers or to discuss technical stuff.
 
-        greeting:
-            ar: |
-                أهلا وسهلا بك في موقعي. أنا بدر بن ناصر الهاشمي، [مطور تطبيقات
-                ](/ar/projects/)
-                و[مساهمٌ في المشاريع المفتوحة المصدر
-                ](https://github.com/BaderSur).
-            en: Hi and welcome to my website! My name is Bader Nasser Al-Hashmi.
-                I'm a [software engineer](/en/projects/) and an
-                [open source contributor](https://github.com/BaderSur).
+      notFound:
+          ar: |
+              لقد وصلت إلى صفحة غير موجودة... مع الأسف.
+          en: You just hit a route that doesn't exist... the sadness.
 
-        contact:
-            ar: |
-                تواصل معي للعمل معا أو للتناقش في بعض الأمور التقنية.
-            en: Feel free to contact me for job offers or to discuss technical stuff.
+      switchSiteLang:
+          ar: |
+              انتقل إلى النسخة الإنجليزية
+          en: Switch to the Arabic version
 
-        notFound:
-            ar: |
-                لقد وصلت إلى صفحة غير موجودة... مع الأسف.
-            en: You just hit a route that doesn't exist... the sadness.
-
-        switchSiteLang:
-            ar: |
-                انتقل إلى النسخة الإنجليزية
-            en: Switch to the Arabic version
-
-
-    links:
-        email: BaderSur[at]gmail
-        twitter: https://twitter.com/BaderSur
-        telegram: https://telegram.me/BaderSur
-        github: https://github.com/BaderSur
+  links:
+      email: BaderSur[at]gmail
+      twitter: https://twitter.com/BaderSur
+      telegram: https://telegram.me/BaderSur
+      github: https://github.com/BaderSur
