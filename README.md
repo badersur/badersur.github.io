@@ -10,7 +10,9 @@ using [React][react] and [Gatsby][gatsby].
 ## Links
 
 -   [badersur.github.io][bs-pages] (built by [Travis CI][travis-ci])
--   [badersur.netlify.com][bs-netlify] (built by [Netlify][netlify]'s continuous deployment)
+
+-   [badersur.netlify.com][bs-netlify] (built by [Netlify][netlify]'s
+    continuous deployment)
 
 ## Features
 
@@ -27,14 +29,13 @@ using [React][react] and [Gatsby][gatsby].
 
 ## Prerequisites
 
-[Node.js][node] and ([npm][npm] or [yarn][yarn]). I suggest using [nvm][nvm]
-to download Node.js and manage multiple versions of it.
+-   [Node.js][node] and ([npm][npm] or [yarn][yarn]).
 
--   npm is bundled with Node.js but you may want to update it using the command:
-    `npm i npm@latest -g`
--   I use node 13 and npm 6.
+    I suggest using [nvm][nvm] to download Node.js and manage multiple versions
+    of it. `npm` is bundled with Node.js but you may want to update it using the
+    command: `npm i npm@latest -g`
 
-Or use [Docker][docker]!
+-   Or just use [Docker][docker]!
 
 ## Usage
 
@@ -42,41 +43,57 @@ Or use [Docker][docker]!
 
 2. Clone the repo. using [git][git] (or [download it][download]).
 
-    - `git clone https://github.com/badersur/badersur.github.io`
+    `git clone https://github.com/badersur/badersur.github.io`
 
 3. Change your current directory to repo.'s directory.
 
-    - `cd badersur.github.io`
+    `cd badersur.github.io`
 
-4. Using Docker, and **if you have node installed**, then just run
-   `npm run develop:docker` (which will take some time to build an image and
-   will run a development version of the site! Unfortunately, I dunno how to
-   setup Docker for both production and development yet :/) and visit the link
-   shown in the screen.
+4. Either use Docker or node package managers (npm / yarn):
 
-    **In case you don't have node installed**, run:
+    - Using Docker, and **if you have node installed**, then just run:
 
-    1. `docker build -t badersur.github.io .`
-    2. `docker run --rm -it -p 8000:8000/tcp badersur.github.io:latest`
+        - `npm run develop:docker` and visit http://localhost:8000/ to run the
+          development version of the site.
+        - `npm run serve:docker` and visit http://localhost:9000/ to run the
+          production version.
 
-    and you may need to add `sudo` before the `docker` commands!
+        **In case you don't have node installed**, run:
 
-5. Or, install the dependencies using npm or yarn.
+        - for the development version:
 
-    - `npm i`
-    - `yarn`
+            1. `docker-compose build` to _build_ it.
+            2. `docker-compose up` to run it.
 
-    then, either use the commands:
+        - for the production version:
 
-    - `npm run develop` and visit the development version of the app
-      at: http://localhost:8000/en/
-    - `npm run build` to have a production-ready version of the app.
-    - `npm run serve` and open the production version
-      at: http://localhost:9000/en/
+            1. `docker build -t bs-app .` to _build_ it.
+            2. `docker run --rm --detach --publish 9000:9000 bs-app`
 
-    or, install [Netlify CLI][netlify-cli] with `npm install netlify-cli -g`
-    and run `netlify dev` to serve the production version of the app!
-    and visit the link shown in the screen...
+        Note: you may need to add `sudo` before the `docker` commands!
+
+    - Using package managers:
+
+        1. Install the dependencies using npm or yarn.
+
+            - `npm i`
+            - `yarn`
+
+        2. Either use npm scripts or [Netlify CLI][netlify-cli]:
+
+            - using npm scripts, run:
+
+                - `npm run develop` and visit the development version of the app
+                  at: http://localhost:8000/en/
+                - `npm run build` to have a production-ready version of the app.
+                - `npm run serve` and open the production version
+                  at: http://localhost:9000/en/
+
+            - using [Netlify CLI][netlify-cli], run:
+
+                1. `npm install netlify-cli -g`
+                2. `netlify dev` to serve the production version of the app
+                   and visit the link shown in the screen...
 
 You may want to read my post: [Helpful resources and notes for Udacity's web
 development course][blog-notes] to learn about web development and

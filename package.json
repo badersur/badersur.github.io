@@ -2,7 +2,7 @@
     "name": "badersur.github.io",
     "private": true,
     "description": "A simple Progressive Web App using React and Gatsby",
-    "version": "5.12.0",
+    "version": "5.13.0",
     "author": "Bader Nasser <BaderSur@gmail.com>",
     "license": "MIT",
     "scripts": {
@@ -17,12 +17,15 @@
         "postbuild": "echo \"\nSitemap: ${siteUrl}/sitemap.xml\" >> public/robots.txt",
         "predevelop": "run-s prebuild",
         "develop": "gatsby develop",
-        "build:docker": "docker build -t badersur.github.io .",
-        "predevelop:docker": "run-s build:docker",
-        "develop:docker": "docker run --rm -it -p 8000:8000/tcp badersur.github.io:latest",
+        "predevelop:docker": "docker-compose build",
+        "develop:docker": "docker-compose up",
         "start": "gatsby develop",
         "preserve": "run-s build",
         "serve": "gatsby serve",
+        "preserve:docker": "docker build -t bs-app .",
+        "serve:docker": "docker run --rm --detach --publish 9000:9000 bs-app",
+        "prebash:docker": "docker build -t bs-app .",
+        "bash:docker": "docker-compose run --rm app bash",
         "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
     },
     "repository": {

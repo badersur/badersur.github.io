@@ -1,4 +1,9 @@
+.dockerignore
+.git
+.cache
+.vscode
+docker-compose*.yml
+Dockerfile
 node_modules
 npm-debug.log
-.cache
 public
