@@ -2,7 +2,7 @@
     "name": "badersur.github.io",
     "private": true,
     "description": "A simple Progressive Web App using React and Gatsby",
-    "version": "5.14.1",
+    "version": "5.15.0",
     "author": "Bader Nasser <BaderSur@gmail.com>",
     "license": "MIT",
     "scripts": {
@@ -10,8 +10,10 @@
         "clean": "gatsby clean",
         "lint:prettier": "prettier -c '**/*.{html,json,yml,yaml,css,md}'",
         "lint:eslint": "eslint . --ext .js,.jsx,.ts,.tsx",
-        "lint": "run-s lint:*",
-        "fmt": "run-s \"lint:prettier -- --write\" \"lint:eslint -- --fix\"",
+        "lint": "run-p lint:*",
+        "fmt:prettier": "run-s \"lint:prettier -- --write\"",
+        "fmt:eslint": "run-s \"lint:eslint -- --fix\"",
+        "fmt": "run-p fmt:*",
         "prebuild": "run-s type-check lint clean",
         "build": "gatsby build",
         "postbuild": "echo \"\nSitemap: ${siteUrl}/sitemap.xml\" >> public/robots.txt",
@@ -24,6 +26,7 @@
         "serve": "gatsby serve",
         "preserve:docker": "docker build -t bs-app .",
         "serve:docker": "docker run --rm --detach --publish 9000:9000 bs-app",
+        "serve:only": "gatsby serve",
         "prebash:docker": "docker build -t bs-app .",
         "bash:docker": "docker-compose run --rm app bash",
         "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
@@ -78,6 +81,7 @@
         "graphql": "^14.6.0",
         "npm-run-all": "^4.1.5",
         "prettier": "^1.19.1",
+        "ts-node": "^8.6.2",
         "typescript": "^3.7.5"
     }
 }

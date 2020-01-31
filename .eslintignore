@@ -5,3 +5,5 @@ public/*
 # !public/index.js
 
 .cache/*
+
+gatsby-config.js
