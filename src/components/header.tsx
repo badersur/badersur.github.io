@@ -13,7 +13,7 @@ const Header = ({ siteTitle, lang }: HeaderProps) => {
         },
     } = useMiscYamlData();
 
-    const blogUrl = `https://bader-nasser.appspot.com/${lang}/`;
+    const blogUrl = `https://bader-nasser.netlify.app/${lang}/`;
 
     return (
         <header className="Header">

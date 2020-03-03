@@ -149,7 +149,7 @@ MIT © [Bader Nasser Al-Hashmi](https://github.com/BaderSur)
 [nvm]: https://github.com/creationix/nvm
 [git]: https://git-scm.com/downloads
 [download]: https://github.com/badersur/badersur.github.io/archive/dev.zip
-[blog-notes]: https://bader-nasser.appspot.com/en/resources-for-udacity-web-development-course?source=gh-readme
+[blog-notes]: https://bader-nasser.netlify.app/en/resources-for-udacity-web-development-course/?src=gh-readme
 [react]: https://reactjs.org/
 [gatsby]: https://www.gatsbyjs.org/
 [gatsby-starter]: https://github.com/gatsbyjs/gatsby-starter-default
