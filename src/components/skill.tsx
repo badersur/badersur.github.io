@@ -13,7 +13,7 @@ const Skill = ({ lang, data }: SkillProps) => {
             <p>{text}</p>
 
             <ul className="Skill-list">
-                {techList.map(tech => (
+                {techList.map((tech) => (
                     <li className="Skill-list-item" lang="en" dir="ltr">
                         {tech}
                     </li>

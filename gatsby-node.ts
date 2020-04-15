@@ -17,7 +17,7 @@ const createPages: GatsbyNode['createPages'] = ({ actions }) => {
     const coursesTemplate = path.resolve('./src/templates/courses.tsx');
     const errorTemplate = path.resolve('./src/templates/404.tsx');
 
-    supportedLangs.forEach(lang => {
+    supportedLangs.forEach((lang) => {
         createPage({
             path: `/${lang}/`,
             component: indexTemplate,

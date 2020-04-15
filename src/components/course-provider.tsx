@@ -14,7 +14,7 @@ const CourseProvider = ({ data }: CourseProviderProps) => {
             </h2>
 
             <div className="Courses-list">
-                {courses.map(course => (
+                {courses.map((course) => (
                     <Course data={course} />
                 ))}
             </div>
