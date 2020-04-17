@@ -2,10 +2,11 @@
     "name": "badersur.github.io",
     "private": true,
     "description": "A simple Progressive Web App using React and Gatsby",
-    "version": "5.17.0",
+    "version": "5.18.0",
     "author": "Bader Nasser <BaderSur@gmail.com>",
     "license": "MIT",
     "scripts": {
+        "i": "npm i",
         "type-check": "tsc --noEmit",
         "clean": "gatsby clean",
         "lint:prettier": "prettier -c '**/*.{html,json,yml,yaml,css,md}'",
@@ -29,7 +30,10 @@
         "serve:only": "gatsby serve",
         "prebash:docker": "docker build -t bs-app .",
         "bash:docker": "docker-compose run --rm app bash",
-        "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
+        "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
+        "check": "run-s i type-check fmt",
+        "git-amend": "git commit --all --amend --no-edit --date=\"$(date)\"",
+        "amend": "cross-env HUSKY_SKIP_HOOKS=1 run-s git-amend"
     },
     "repository": {
         "type": "git",
@@ -70,6 +74,7 @@
         "@types/react-helmet": "^5.0.15",
         "@typescript-eslint/eslint-plugin": "^2.27.0",
         "@typescript-eslint/parser": "^2.27.0",
+        "cross-env": "^7.0.2",
         "eslint": "^6.8.0",
         "eslint-config-airbnb": "^18.1.0",
         "eslint-config-prettier": "^6.10.1",
@@ -79,9 +84,15 @@
         "eslint-plugin-react": "^7.19.0",
         "eslint-plugin-react-hooks": "^2.5.1",
         "graphql": "^14.6.0",
+        "husky": "^4.2.5",
         "npm-run-all": "^4.1.5",
         "prettier": "^2.0.4",
         "ts-node": "^8.8.2",
         "typescript": "^3.8.3"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "run-s check"
+        }
     }
 }
