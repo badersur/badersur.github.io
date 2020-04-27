@@ -4,7 +4,7 @@
 # http://bitjudo.com/blog/2014/03/13/building-efficient-dockerfiles-node-dot-js/
 # https://dev.to/stoutlabs/my-docker-setup-for-gatsbyjs-and-nextjs-5gao
 
-FROM node:13 AS development
+FROM node:14 AS development
 USER node
 ADD package.json /tmp/package.json
 ADD package-lock.json /tmp/package-lock.json
@@ -15,7 +15,7 @@ WORKDIR /home/node/bs-app
 ADD . /home/node/bs-app
 
 
-FROM node:13-slim AS production
+FROM node:14-slim AS production
 LABEL MAINTAINER="Bader Nasser Al-Hashmi"
 USER node
 RUN mkdir -p /home/node/bs-app && chown node:node /home/node/bs-app
