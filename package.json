@@ -2,20 +2,20 @@
     "name": "badersur.github.io",
     "private": true,
     "description": "A simple Progressive Web App using React and Gatsby",
-    "version": "5.19.1",
+    "version": "5.20.0",
     "author": "Bader Nasser <BaderSur@gmail.com>",
     "license": "MIT",
     "scripts": {
-        "i": "npm i",
-        "type-check": "tsc --noEmit",
         "clean": "gatsby clean",
+        "type-check": "tsc --noEmit",
         "lint:prettier": "prettier -c '**/*.{html,json,yml,yaml,css,md}'",
         "lint:eslint": "eslint . --ext .js,.jsx,.ts,.tsx",
-        "lint": "run-p lint:*",
+        "lint": "run-s lint:*",
         "fmt:prettier": "run-s \"lint:prettier -- --write\"",
         "fmt:eslint": "run-s \"lint:eslint -- --fix\"",
-        "fmt": "run-p fmt:*",
-        "prebuild": "run-s type-check lint clean",
+        "fmt": "run-s fmt:*",
+        "test": "run-s type-check lint",
+        "prebuild": "run-s test clean",
         "build": "gatsby build",
         "postbuild": "echo \"\nSitemap: ${siteUrl}/sitemap.xml\" >> public/robots.txt",
         "predevelop": "run-s prebuild",
@@ -30,10 +30,10 @@
         "serve:only": "gatsby serve",
         "prebash:docker": "docker build -t bs-app .",
         "bash:docker": "docker-compose run --rm app bash",
-        "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
-        "check": "run-s i type-check fmt",
-        "git-amend": "git commit --all --amend --no-edit --date=\"$(date)\"",
-        "amend": "cross-env HUSKY_SKIP_HOOKS=1 run-s git-amend"
+        "amend": "git commit --amend --no-edit --date=\"$(date)\"",
+        "amend-all": "run-s \"amend -- --all\"",
+        "amend-q": "cross-env HUSKY_SKIP_HOOKS=1 run-s amend",
+        "amend-all-q": "cross-env HUSKY_SKIP_HOOKS=1 run-s amend-all"
     },
     "repository": {
         "type": "git",
@@ -74,7 +74,6 @@
         "@types/react-helmet": "^5.0.16",
         "@typescript-eslint/eslint-plugin": "^2.34.0",
         "@typescript-eslint/parser": "^2.34.0",
-        "acorn": "^6.4.1",
         "cross-env": "^7.0.2",
         "eslint": "^6.8.0",
         "eslint-config-airbnb": "^18.2.0",
@@ -84,7 +83,6 @@
         "eslint-plugin-prettier": "^3.1.4",
         "eslint-plugin-react": "^7.20.6",
         "eslint-plugin-react-hooks": "^2.5.1",
-        "graphql": "^14.7.0",
         "husky": "^4.3.0",
         "npm-run-all": "^4.1.5",
         "prettier": "^2.1.1",
@@ -93,7 +91,7 @@
     },
     "husky": {
         "hooks": {
-            "pre-commit": "run-s check"
+            "pre-commit": "run-s build"
         }
     }
 }
