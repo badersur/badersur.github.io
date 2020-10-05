@@ -1,16 +1,16 @@
 version: '3.7'
 
 services:
-    app:
-        build:
-            context: .
-            target: development
-        command: npx gatsby develop -H 0.0.0.0
-        ports:
-            - '8000:8000'
-        volumes:
-            - .:/home/node/bs-app
-            - app_node_modules:/home/node/bs-app/node_modules
+  app:
+    build:
+      context: .
+      target: development
+    command: npx gatsby develop -H 0.0.0.0
+    ports:
+      - '8000:8000'
+    volumes:
+      - .:/home/node/bs-app
+      - app_node_modules:/home/node/bs-app/node_modules
 
 volumes:
-    app_node_modules:
+  app_node_modules:

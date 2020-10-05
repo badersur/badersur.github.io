@@ -1,67 +1,67 @@
 .Course-provider {
-    margin: 0 0 2rem;
+	margin: 0 0 2rem;
 }
 
 .Course-provider:first-of-type .Courses-list {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: space-between;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	justify-content: space-between;
 }
 
 .Course {
-    flex-basis: 22%;
-    text-align: center;
-    margin: 0 2rem 2rem 0;
-    display: inline-block;
-    flex-direction: column;
-    justify-content: center;
+	flex-basis: 22%;
+	text-align: center;
+	margin: 0 2rem 2rem 0;
+	display: inline-block;
+	flex-direction: column;
+	justify-content: center;
 }
 
 .Course-provider:first-of-type .Course {
-    display: flex;
+	display: flex;
 }
 
 .hidden {
-    display: none;
+	display: none;
 }
 
 @media (max-width: 870px) {
-    .Course {
-        flex-basis: 31%;
-    }
+	.Course {
+		flex-basis: 31%;
+	}
 }
 
 @media (max-width: 630px) {
-    .Course {
-        flex-basis: 47%;
-    }
+	.Course {
+		flex-basis: 47%;
+	}
 }
 
 @media (max-width: 515px) {
-    .Course {
-        flex-basis: 100%;
-    }
+	.Course {
+		flex-basis: 100%;
+	}
 }
 
 @supports (display: flex) {
-    .Course-provider:first-of-type .Course {
-        margin: 0 0 2rem;
-    }
+	.Course-provider:first-of-type .Course {
+		margin: 0 0 2rem;
+	}
 }
 
 @supports (display: grid) {
-    .Course-provider:first-of-type {
-        margin: 0 0 4rem;
-    }
+	.Course-provider:first-of-type {
+		margin: 0 0 4rem;
+	}
 
-    .Course-provider:first-of-type .Courses-list {
-        display: grid;
-        grid-gap: 2rem;
-        grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
-    }
+	.Course-provider:first-of-type .Courses-list {
+		display: grid;
+		grid-gap: 2rem;
+		grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+	}
 
-    .Course-provider:first-of-type .Course {
-        margin: 0;
-    }
+	.Course-provider:first-of-type .Course {
+		margin: 0;
+	}
 }

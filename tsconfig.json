@@ -2,28 +2,28 @@
 // https://github.com/nodejs/nodejs.dev/blob/master/tsconfig.json
 // https://github.com/a-tarasyuk/webpack-typescript-babel/blob/master/tsconfig.json
 {
-    "compilerOptions": {
-        "target": "ESNext",
-        "module": "CommonJS",
-        "jsx": "react",
-        "allowJs": true,
-        "checkJs": true,
-        "resolveJsonModule": true,
-        "moduleResolution": "node",
-        "esModuleInterop": true,
-        "allowSyntheticDefaultImports": true,
-        "pretty": true,
-        "forceConsistentCasingInFileNames": true,
-        "downlevelIteration": true,
-        "strictFunctionTypes": true,
-        "strict": true,
-        "noUnusedLocals": true,
-        "noUnusedParameters": true,
-        "noImplicitReturns": true,
-        "noImplicitAny": true,
-        "noFallthroughCasesInSwitch": true,
-        "noEmit": true
-    },
-    "include": ["gatsby-config.js", "gatsby-*.ts", "src/**/*"],
-    "exclude": ["node_modules", "public", ".cache"]
+	"compilerOptions": {
+		"target": "ESNext",
+		"module": "CommonJS",
+		"jsx": "react",
+		"allowJs": true,
+		"checkJs": true,
+		"resolveJsonModule": true,
+		"moduleResolution": "node",
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
+		"pretty": true,
+		"forceConsistentCasingInFileNames": true,
+		"downlevelIteration": true,
+		"strictFunctionTypes": true,
+		"strict": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"noImplicitReturns": true,
+		"noImplicitAny": true,
+		"noFallthroughCasesInSwitch": true,
+		"noEmit": true
+	},
+	"include": ["gatsby-config.js", "gatsby-*.ts", "src/**/*"],
+	"exclude": ["node_modules", "public", ".cache"]
 }

@@ -2,25 +2,25 @@ dist: xenial
 language: node_js
 
 branches:
-    # safelist
-    only:
-        - dev
+  # safelist
+  only:
+    - dev
 
 install:
-    - rm package-lock.json
-    - npm i
+  - rm package-lock.json
+  - npm i
 
 script:
-    - npm outdated || echo "Building!..."
-    - npm run build
+  - npm outdated || echo "Building!..."
+  - npm run build
 
 deploy:
-    - provider: pages
-      skip_cleanup: true
-      github_token: '$GITHUB_TOKEN'
-      target_branch: master
-      local_dir: public
-      email: badersur@gmail.com
-      name: Bader Nasser
-      on:
-          branch: dev
+  - provider: pages
+    skip_cleanup: true
+    github_token: '$GITHUB_TOKEN'
+    target_branch: master
+    local_dir: public
+    email: badersur@gmail.com
+    name: Bader Nasser
+    on:
+      branch: dev

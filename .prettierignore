@@ -1,2 +1,9 @@
 .cache
 public
+
+package-lock.json
+
+**/*.js
+**/*.jsx
+**/*.ts
+**/*.tsx

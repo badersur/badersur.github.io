@@ -1,12 +1,12 @@
-import { useStaticQuery, graphql } from 'gatsby';
+import {useStaticQuery, graphql} from 'gatsby';
 
-import { MiscNode } from '../types';
+import {MiscNode} from '../types';
 
 const useMiscYamlData = (): MiscNode => {
-    const {
-        allMiscYaml: { edges },
-    } = useStaticQuery(
-        graphql`
+	const {
+		allMiscYaml: {edges}
+	} = useStaticQuery(
+		graphql`
             query MiscYamlQuery {
                 allMiscYaml {
                     edges {
@@ -96,9 +96,9 @@ const useMiscYamlData = (): MiscNode => {
                     }
                 }
             }
-        `,
-    );
-    return edges[0].node;
+        `
+	);
+	return edges[0].node;
 };
 
 export default useMiscYamlData;

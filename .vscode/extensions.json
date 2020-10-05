@@ -1,0 +1,8 @@
+{
+	"recommendations": [
+		"EditorConfig.EditorConfig",
+		"samverschueren.linter-xo",
+		"stylelint.vscode-stylelint"
+	],
+	"unwantedRecommendations": []
+}

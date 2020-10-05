@@ -1,9 +1,0 @@
-# /node_modules/* and /bower_components/* in the project root are ignored by default
-
-# Ignore generated files in the public folder except public/index.js
-public/*
-# !public/index.js
-
-.cache/*
-
-gatsby-config.js

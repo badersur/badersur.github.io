@@ -1,97 +1,170 @@
 {
-    "name": "badersur.github.io",
-    "private": true,
-    "description": "A simple Progressive Web App using React and Gatsby",
-    "version": "5.20.0",
-    "author": "Bader Nasser <BaderSur@gmail.com>",
-    "license": "MIT",
-    "scripts": {
-        "clean": "gatsby clean",
-        "type-check": "tsc --noEmit",
-        "lint:prettier": "prettier -c '**/*.{html,json,yml,yaml,css,md}'",
-        "lint:eslint": "eslint . --ext .js,.jsx,.ts,.tsx",
-        "lint": "run-s lint:*",
-        "fmt:prettier": "run-s \"lint:prettier -- --write\"",
-        "fmt:eslint": "run-s \"lint:eslint -- --fix\"",
-        "fmt": "run-s fmt:*",
-        "test": "run-s type-check lint",
-        "prebuild": "run-s test clean",
-        "build": "gatsby build",
-        "postbuild": "echo \"\nSitemap: ${siteUrl}/sitemap.xml\" >> public/robots.txt",
-        "predevelop": "run-s prebuild",
-        "develop": "gatsby develop",
-        "predevelop:docker": "docker-compose build",
-        "develop:docker": "docker-compose up",
-        "start": "gatsby develop",
-        "preserve": "run-s build",
-        "serve": "gatsby serve",
-        "preserve:docker": "docker build -t bs-app .",
-        "serve:docker": "docker run --rm --detach --publish 9000:9000 bs-app",
-        "serve:only": "gatsby serve",
-        "prebash:docker": "docker build -t bs-app .",
-        "bash:docker": "docker-compose run --rm app bash",
-        "amend": "git commit --amend --no-edit --date=\"$(date)\"",
-        "amend-all": "run-s \"amend -- --all\"",
-        "amend-q": "cross-env HUSKY_SKIP_HOOKS=1 run-s amend",
-        "amend-all-q": "cross-env HUSKY_SKIP_HOOKS=1 run-s amend-all"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/badersur/badersur.github.io"
-    },
-    "bugs": {
-        "url": "https://github.com/badersur/badersur.github.io/issues"
-    },
-    "dependencies": {
-        "@fortawesome/fontawesome-svg-core": "^1.2.30",
-        "@fortawesome/free-brands-svg-icons": "^5.14.0",
-        "@fortawesome/free-solid-svg-icons": "^5.14.0",
-        "@fortawesome/react-fontawesome": "^0.1.11",
-        "commonmark": "^0.29.2",
-        "gatsby": "^2.24.57",
-        "gatsby-image": "^2.4.17",
-        "gatsby-plugin-catch-links": "^2.3.11",
-        "gatsby-plugin-google-analytics": "^2.3.13",
-        "gatsby-plugin-manifest": "^2.4.28",
-        "gatsby-plugin-offline": "^3.2.27",
-        "gatsby-plugin-react-helmet": "^3.3.10",
-        "gatsby-plugin-sharp": "^2.6.35",
-        "gatsby-plugin-sitemap": "^2.4.12",
-        "gatsby-plugin-typescript": "^2.4.19",
-        "gatsby-source-filesystem": "^2.3.29",
-        "gatsby-transformer-sharp": "^2.5.14",
-        "gatsby-transformer-yaml": "^2.4.11",
-        "react": "^16.13.1",
-        "react-dom": "^16.13.1",
-        "react-helmet": "^5.2.1"
-    },
-    "devDependencies": {
-        "@babel/core": "^7.11.6",
-        "@types/commonmark": "^0.27.4",
-        "@types/node": "^13.13.19",
-        "@types/react": "^16.9.49",
-        "@types/react-dom": "^16.9.8",
-        "@types/react-helmet": "^5.0.16",
-        "@typescript-eslint/eslint-plugin": "^2.34.0",
-        "@typescript-eslint/parser": "^2.34.0",
-        "cross-env": "^7.0.2",
-        "eslint": "^6.8.0",
-        "eslint-config-airbnb": "^18.2.0",
-        "eslint-config-prettier": "^6.11.0",
-        "eslint-plugin-import": "^2.22.0",
-        "eslint-plugin-jsx-a11y": "^6.3.1",
-        "eslint-plugin-prettier": "^3.1.4",
-        "eslint-plugin-react": "^7.20.6",
-        "eslint-plugin-react-hooks": "^2.5.1",
-        "husky": "^4.3.0",
-        "npm-run-all": "^4.1.5",
-        "prettier": "^2.1.1",
-        "ts-node": "^8.10.2",
-        "typescript": "^3.9.7"
-    },
-    "husky": {
-        "hooks": {
-            "pre-commit": "run-s build"
-        }
-    }
+	"name": "badersur.github.io",
+	"description": "A personal web app using React, Gatsby & TypeScript",
+	"private": true,
+	"version": "5.21.0",
+	"author": {
+		"name": "Bader Nasser Al-Hashmi",
+		"email": "BaderSur@gmail.com",
+		"url": "https://badersur.github.io"
+	},
+	"license": "MIT",
+	"engines": {
+		"node": ">=12"
+	},
+	"scripts": {
+		"clean": "gatsby clean",
+		"type-check": "tsc --noEmit",
+		"lint:prettier": "prettier -c .",
+		"lint:scripts": "xo",
+		"lint": "run-s lint:*",
+		"fmt:prettier": "prettier --write .",
+		"fmt:scripts": "xo --fix",
+		"fmt": "run-s fmt:*",
+		"test": "run-s type-check lint",
+		"prebuild": "run-s test clean",
+		"build": "gatsby build",
+		"postbuild": "echo \"\nSitemap: ${siteUrl}/sitemap.xml\" >> public/robots.txt",
+		"predevelop": "run-s prebuild",
+		"develop": "gatsby develop",
+		"predevelop:docker": "docker-compose build",
+		"develop:docker": "docker-compose up",
+		"start": "gatsby develop",
+		"preserve": "run-s build",
+		"serve": "gatsby serve",
+		"preserve:docker": "docker build -t bs-app .",
+		"serve:docker": "docker run --rm --detach --publish 9000:9000 bs-app",
+		"serve:only": "gatsby serve",
+		"prebash:docker": "docker build -t bs-app .",
+		"bash:docker": "docker-compose run --rm app bash",
+		"amend": "git commit --amend --no-edit --date=\"$(date)\"",
+		"amend-all": "run-s \"amend -- --all\"",
+		"amend-q": "cross-env HUSKY_SKIP_HOOKS=1 run-s amend",
+		"amend-all-q": "cross-env HUSKY_SKIP_HOOKS=1 run-s amend-all"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/badersur/badersur.github.io.git"
+	},
+	"bugs": "https://github.com/badersur/badersur.github.io/issues",
+	"dependencies": {
+		"@fortawesome/fontawesome-svg-core": "^1.2.30",
+		"@fortawesome/free-brands-svg-icons": "^5.14.0",
+		"@fortawesome/free-solid-svg-icons": "^5.14.0",
+		"@fortawesome/react-fontawesome": "^0.1.11",
+		"commonmark": "^0.29.2",
+		"gatsby": "^2.24.57",
+		"gatsby-image": "^2.4.17",
+		"gatsby-plugin-catch-links": "^2.3.11",
+		"gatsby-plugin-google-analytics": "^2.3.13",
+		"gatsby-plugin-manifest": "^2.4.28",
+		"gatsby-plugin-offline": "^3.2.27",
+		"gatsby-plugin-react-helmet": "^3.3.10",
+		"gatsby-plugin-sharp": "^2.6.35",
+		"gatsby-plugin-sitemap": "^2.4.12",
+		"gatsby-plugin-typescript": "^2.4.19",
+		"gatsby-source-filesystem": "^2.3.29",
+		"gatsby-transformer-sharp": "^2.5.14",
+		"gatsby-transformer-yaml": "^2.4.11",
+		"react": "^16.13.1",
+		"react-dom": "^16.13.1",
+		"react-helmet": "^5.2.1"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.11.6",
+		"@types/commonmark": "^0.27.4",
+		"@types/node": "^13.13.19",
+		"@types/react": "^16.9.49",
+		"@types/react-dom": "^16.9.8",
+		"@types/react-helmet": "^5.0.16",
+		"@typescript-eslint/eslint-plugin": "^4.3.0",
+		"@typescript-eslint/parser": "^4.3.0",
+		"cross-env": "^7.0.2",
+		"eslint-config-xo": "^0.32.1",
+		"eslint-config-xo-react": "^0.23.0",
+		"eslint-config-xo-typescript": "^0.33.0",
+		"eslint-plugin-jsx-a11y": "^6.3.1",
+		"eslint-plugin-react": "^7.21.3",
+		"eslint-plugin-react-hooks": "^4.1.2",
+		"husky": "^4.3.0",
+		"npm-run-all": "^4.1.5",
+		"prettier": "^2.1.1",
+		"ts-node": "^8.10.2",
+		"typescript": "^3.9.7",
+		"xo": "^0.33.1"
+	},
+	"optionalDependencies": {
+		"@mdx-js/react": "^1.6.18",
+		"eslint": "^7.10.0",
+		"ink": "^3.0.7",
+		"react-refresh": "^0.8.3"
+	},
+	"xo": {
+		"envs": [
+			"es2020",
+			"node",
+			"browser"
+		],
+		"extends": [
+			"xo-react",
+			"plugin:jsx-a11y/recommended",
+			"plugin:jsx-a11y/strict"
+		],
+		"plugins": [
+			"jsx-a11y"
+		],
+		"globals": [
+			"__PATH_PREFIX__"
+		],
+		"rules": {
+			"capitalized-comments": "off",
+			"import/no-unassigned-import": "warn",
+			"@typescript-eslint/no-unused-vars": "warn",
+			"react/jsx-key": "warn",
+			"react/no-danger": "warn",
+			"react/jsx-pascal-case": [
+				"error",
+				{
+					"allowAllCaps": false,
+					"ignore": [
+						"SEO"
+					]
+				}
+			]
+		},
+		"overrides": [
+			{
+				"files": "**/*.js",
+				"rules": {
+					"@typescript-eslint/no-unused-vars": "off"
+				}
+			}
+		]
+	},
+	"prettier": {
+		"semi": true,
+		"tabWidth": 4,
+		"useTabs": true,
+		"printWidth": 80,
+		"endOfLine": "lf",
+		"singleQuote": true,
+		"trailingComma": "none",
+		"overrides": [
+			{
+				"files": [
+					"*.yml",
+					"*.yaml"
+				],
+				"options": {
+					"useTabs": false,
+					"tabWidth": 2
+				}
+			}
+		]
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "run-s build"
+		}
+	}
 }
