@@ -5,8 +5,8 @@ import {HTMLProps} from './types';
 const HTML = (props: HTMLProps) => (
 	<html {...props.htmlAttributes}>
 		<head>
-			<meta charSet="utf-8"/>
-			<meta httpEquiv="x-ua-compatible" content="ie=edge"/>
+			<meta charSet="utf-8" />
+			<meta httpEquiv="x-ua-compatible" content="ie=edge" />
 			<meta
 				name="viewport"
 				content="width=device-width, initial-scale=1, shrink-to-fit=no"

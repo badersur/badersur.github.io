@@ -53,14 +53,14 @@ const IndexTemplate = ({data, pageContext}: IndexTemplateProps) => {
 
 			<section className="Board">
 				<h1>{greeting}</h1>
-				<div dangerouslySetInnerHTML={{__html: greetingMessageInHtml}}/>
+				<div dangerouslySetInnerHTML={{__html: greetingMessageInHtml}} />
 			</section>
 
 			<section className="Board">
 				<h2>{skills}</h2>
 
 				{allSkillsYamlEdges.map(({node: skill}) => (
-					<Skill lang={lang} data={skill}/>
+					<Skill lang={lang} data={skill} />
 				))}
 			</section>
 
@@ -69,19 +69,19 @@ const IndexTemplate = ({data, pageContext}: IndexTemplateProps) => {
 				<p>{contactMessage}</p>
 				<div className="Contact-links" lang="en" dir="ltr">
 					<a href={`mailto:${email}`} className="Contact-link">
-						<EmailIcon/>
+						<EmailIcon />
 					</a>
 
 					<a href={github} className="Contact-link">
-						<GithubIcon/>
+						<GithubIcon />
 					</a>
 
 					<a href={twitter} className="Contact-link">
-						<TwitterIcon/>
+						<TwitterIcon />
 					</a>
 
 					<a href={telegram} className="Contact-link">
-						<TelegramIcon/>
+						<TelegramIcon />
 					</a>
 				</div>
 			</section>

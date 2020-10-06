@@ -48,7 +48,7 @@ const Footer = ({siteTitle, lang, pageLink}: FooterProps) => {
 
 					<div className="Footer-links">
 						<a href={repoLink} lang="en" dir="ltr">
-							<GithubIcon/>
+							<GithubIcon />
 						</a>
 
 						{/* credit: https://stackoverflow.com/a/10805292 */}

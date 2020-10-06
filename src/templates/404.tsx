@@ -24,7 +24,7 @@ const NotFoundTemplate = ({data, pageContext}: NotFoundTemplateProps) => {
 
 	return (
 		<Layout lang={lang}>
-			<SEO noIndex title={notFoundInCurrentLang} lang={lang}/>
+			<SEO noIndex title={notFoundInCurrentLang} lang={lang} />
 
 			<section className="Error-messages">
 				<div className="Error-message Board">

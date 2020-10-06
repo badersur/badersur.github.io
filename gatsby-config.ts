@@ -9,7 +9,7 @@ const configs: GatsbyConfig = {
 	siteMetadata: {
 		siteUrl,
 		twitter: '@BaderSur',
-		title: {
+		siteTitle: {
 			ar: 'بدر العفية',
 			en: 'BaderSur'
 		}

@@ -28,7 +28,7 @@ const CoursesTemplate = ({data}: CoursesTemplateProps) => {
 				<h1>Completed Online Courses</h1>
 
 				{courseProvidersYamlEdges.map(({node: courseProvider}) => (
-					<CourseProvider data={courseProvider}/>
+					<CourseProvider data={courseProvider} />
 				))}
 			</section>
 		</Layout>

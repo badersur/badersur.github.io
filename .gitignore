@@ -65,8 +65,10 @@ public
 yarn-error.log
 .pnp/
 .pnp.js
-yarn.lock
+
 # Yarn Integrity file
 .yarn-integrity
 
 /client-secret.json
+
+/package-lock.json

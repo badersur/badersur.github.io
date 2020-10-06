@@ -1,14 +1,7 @@
 // credit: https://www.gatsbyjs.org/docs/use-static-query/#composing-custom-usestaticquery-hooks
 import {useStaticQuery, graphql} from 'gatsby';
 
-interface SiteMetadata {
-	siteUrl: string;
-	twitter: string;
-	title: {
-		ar: string;
-		en: string;
-	};
-}
+import {SiteMetadata} from '../types';
 
 /**
  * A hook to get site metadata from gatsby-config.js
@@ -23,7 +16,7 @@ const useSiteMetadata = (): SiteMetadata => {
                     siteMetadata {
                         siteUrl
                         twitter
-                        title {
+                        siteTitle {
                             ar
                             en
                         }

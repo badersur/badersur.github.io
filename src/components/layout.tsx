@@ -17,14 +17,14 @@ import '../styles/layout.css';
 
 const Layout = ({children, lang, pageLink = ''}: LayoutProps) => {
 	const {
-		title: {[lang]: siteTitle}
+		siteTitle: {[lang]: siteTitle}
 	} = useSiteMetadata();
 
 	return (
 		<div className="App-wrapper">
-			<Header siteTitle={siteTitle} lang={lang}/>
+			<Header siteTitle={siteTitle} lang={lang} />
 			<Main>{children}</Main>
-			<Footer siteTitle={siteTitle} lang={lang} pageLink={pageLink}/>
+			<Footer siteTitle={siteTitle} lang={lang} pageLink={pageLink} />
 		</div>
 	);
 };

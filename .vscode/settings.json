@@ -14,7 +14,8 @@
 		"node_modules": true,
 		"public": true,
 		"package-lock.json": true,
-		"client-secret.json.enc": true
+		"client-secret.json.enc": true,
+		"yarn.lock": true
 	},
 	"xo.enable": true,
 	"xo.format.enable": true

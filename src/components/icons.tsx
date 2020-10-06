@@ -39,7 +39,7 @@ const Icon = ({name}: IconProps) => (
 	/>
 );
 
-export const EmailIcon = () => <Icon name="email"/>;
-export const TwitterIcon = () => <Icon name="twitter"/>;
-export const TelegramIcon = () => <Icon name="telegram"/>;
-export const GithubIcon = () => <Icon name="github"/>;
+export const EmailIcon = () => <Icon name="email" />;
+export const TwitterIcon = () => <Icon name="twitter" />;
+export const TelegramIcon = () => <Icon name="telegram" />;
+export const GithubIcon = () => <Icon name="github" />;

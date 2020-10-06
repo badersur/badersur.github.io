@@ -179,5 +179,5 @@ export interface HTMLProps {
 export interface SiteMetadata {
 	siteUrl: string;
 	twitter: string;
-	title: MultiLangs;
+	siteTitle: MultiLangs;
 }

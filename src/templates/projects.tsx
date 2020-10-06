@@ -37,7 +37,7 @@ const ProjectsTemplate = ({data, pageContext}: ProjectsTemplateProps) => {
 
 				<div className="Projects-list">
 					{projectsYamlEdges.map(({node: project}) => (
-						<Project lang={lang} data={project}/>
+						<Project lang={lang} data={project} />
 					))}
 				</div>
 			</section>

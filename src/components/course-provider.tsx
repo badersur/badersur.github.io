@@ -15,7 +15,7 @@ const CourseProvider = ({data}: CourseProviderProps) => {
 
 			<div className="Courses-list">
 				{courses.map(course => (
-					<Course data={course}/>
+					<Course data={course} />
 				))}
 			</div>
 		</div>

@@ -11,7 +11,7 @@ using [React][react] and [Gatsby][gatsby].
 
 -   [badersur.github.io][bs-pages] (built by [Travis CI][travis-ci])
 
--   [badersur.netlify.com][bs-netlify] (built by [Netlify][netlify]'s
+-   [badersur.netlify.app][bs-netlify] (built by [Netlify][netlify]'s
     continuous deployment)
 
 ## Features
@@ -170,7 +170,7 @@ MIT © [Bader Nasser Al-Hashmi](https://github.com/BaderSur)
 [deploy-info]: https://templates.netlify.com/#about-deploy-to-netlify
 [netlify]: https://www.netlify.com/
 [travis-status-img]: https://travis-ci.org/badersur/badersur.github.io.svg?branch=dev
-[travis-status]: https://travis-ci.org/badersur/badersur.github.io
+[travis-status]: https://travis-ci.org/github/badersur/badersur.github.io
 [netlify-status-img]: https://api.netlify.com/api/v1/badges/dd3c8289-3da3-441a-a8d2-1d3a003fbf49/deploy-status
 [netlify-status]: https://app.netlify.com/sites/badersur/deploys
-[bs-netlify]: https://badersur.netlify.com
+[bs-netlify]: https://badersur.netlify.app

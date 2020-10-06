@@ -1,18 +1,26 @@
-dist: xenial
+# Using Ubuntu 20.04
+dist: focal
 language: node_js
+# latest stable Node.js release
+node_js: node
 
 branches:
   # safelist
   only:
     - dev
 
+cache:
+  directories:
+    - node_modules
+    - $HOME/.cache/yarn
+
 install:
-  - rm package-lock.json
-  - npm i
+  # - rm yarn.lock
+  - yarn
+  - yarn upgrade --latest
 
 script:
-  - npm outdated || echo "Building!..."
-  - npm run build
+  - yarn build
 
 deploy:
   - provider: pages
