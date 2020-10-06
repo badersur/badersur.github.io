@@ -2,7 +2,7 @@
 	"name": "badersur.github.io",
 	"description": "A personal web app using React, Gatsby & TypeScript",
 	"private": true,
-	"version": "5.21.0",
+	"version": "5.22.0",
 	"author": {
 		"name": "Bader Nasser Al-Hashmi",
 		"email": "BaderSur@gmail.com",
@@ -17,9 +17,11 @@
 		"type-check": "tsc --noEmit",
 		"lint:prettier": "prettier -c .",
 		"lint:scripts": "xo",
+		"lint:styles": "stylelint .",
 		"lint": "run-s lint:*",
 		"fmt:prettier": "prettier --write .",
 		"fmt:scripts": "xo --fix",
+		"fmt:styles": "stylelint . --fix",
 		"fmt": "run-s fmt:*",
 		"test": "run-s type-check lint",
 		"prebuild": "run-s test clean",
@@ -89,6 +91,9 @@
 		"husky": "^4.3.0",
 		"npm-run-all": "^4.1.5",
 		"prettier": "^2.1.1",
+		"stylelint": "^13.7.2",
+		"stylelint-config-standard": "^20.0.0",
+		"stylelint-config-xo": "^0.20.0",
 		"ts-node": "^8.10.2",
 		"typescript": "^3.9.7",
 		"xo": "^0.33.1"
@@ -160,6 +165,12 @@
 					"tabWidth": 2
 				}
 			}
+		]
+	},
+	"stylelint": {
+		"extends": [
+			"stylelint-config-standard",
+			"stylelint-config-xo"
 		]
 	},
 	"husky": {

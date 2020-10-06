@@ -1,6 +1,6 @@
 .Skill {
 	padding: 1.45rem 0;
-	border-bottom: 1px dashed gray;
+	border-bottom: 1px dashed #808080;
 }
 
 .Skill:first-of-type {
@@ -21,7 +21,7 @@
 	background: #054096;
 	border-radius: 0.75rem;
 	margin: 0 0.5rem 0.5rem 0;
-	background-image: linear-gradient(to top right, rebeccapurple, #054096);
+	background-image: linear-gradient(to top right, #639, #054096);
 }
 
 html[dir='rtl'] .Skill-list-item {
@@ -43,9 +43,11 @@ html[dir='rtl'] .Skill-list-item {
 		display: grid;
 		grid-gap: 1rem;
 		grid-auto-flow: row;
+
 		/* align-items: baseline; */
 		grid-template-areas: 'a a';
 		grid-auto-columns: max-content;
+
 		/* grid-template-columns: repeat(auto-fit, minmax(auto, 1fr)); */
 	}
 

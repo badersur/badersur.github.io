@@ -1,7 +1,6 @@
 .Projects-list {
 	display: flex;
-	flex-wrap: wrap;
-	flex-direction: row;
+	flex-flow: row wrap;
 	justify-content: space-between;
 }
 
@@ -22,7 +21,7 @@
 	padding: 0.5rem;
 	text-align: center;
 	justify-self: flex-end;
-	background-color: rebeccapurple;
+	background-color: #639;
 }
 
 @media (max-width: 910px) {
