@@ -3,7 +3,7 @@ import {GatsbyConfig} from 'gatsby';
 
 const PORT = process.env.NODE_ENV === 'development' ? 8000 : 9000;
 const siteUrl = process.env.siteUrl ?? `http://localhost:${PORT}`;
-const trackingId = process.env.trackingId ?? '';
+const trackingId = process.env.trackingId ?? 'xyz';
 
 const configs: GatsbyConfig = {
 	siteMetadata: {

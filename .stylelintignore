@@ -2,12 +2,13 @@ node_modules/
 .cache/
 public/
 
+todos
 LICENSE
-client-secret.json.enc
 **/*.yml
 **/*.yaml
 **/*.toml
 **/*.json
-todos
+**/*.json.enc
 **/_redirects
 **/*.png
+**/*.log
