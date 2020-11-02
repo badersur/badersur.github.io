@@ -2,7 +2,7 @@
 	"name": "badersur.github.io",
 	"description": "A personal web app using React, Gatsby & TypeScript",
 	"private": true,
-	"version": "5.24.0",
+	"version": "5.25.0",
 	"author": {
 		"name": "Bader Nasser Al-Hashmi",
 		"email": "BaderSur@gmail.com",
@@ -63,6 +63,7 @@
 		"gatsby-plugin-google-analytics": "^2.4.0",
 		"gatsby-plugin-manifest": "^2.5.0",
 		"gatsby-plugin-offline": "^3.3.0",
+		"gatsby-plugin-postcss": "^3.0.4",
 		"gatsby-plugin-react-helmet": "^3.3.14",
 		"gatsby-plugin-sharp": "^2.7.0",
 		"gatsby-plugin-sitemap": "^2.5.0",
@@ -70,6 +71,8 @@
 		"gatsby-source-filesystem": "^2.4.0",
 		"gatsby-transformer-sharp": "^2.5.21",
 		"gatsby-transformer-yaml": "^2.4.15",
+		"postcss": "^8.1.4",
+		"postcss-preset-env": "^6.7.0",
 		"react": "^17.0.1",
 		"react-dom": "^17.0.1",
 		"react-helmet": "^6.1.0"
@@ -78,6 +81,7 @@
 		"@babel/core": "^7.12.3",
 		"@types/commonmark": "^0.27.4",
 		"@types/node": "^14.14.6",
+		"@types/postcss-preset-env": "^6.7.0",
 		"@types/react": "^16.9.55",
 		"@types/react-dom": "^16.9.9",
 		"@types/react-helmet": "^6.1.0",

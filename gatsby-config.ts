@@ -1,5 +1,7 @@
 import path from 'path';
+
 import {GatsbyConfig} from 'gatsby';
+import postcssPresetEnv from 'postcss-preset-env';
 
 const PORT = process.env.NODE_ENV === 'development' ? 8000 : 9000;
 const siteUrl = process.env.siteUrl ?? `http://localhost:${PORT}`;
@@ -37,6 +39,16 @@ const configs: GatsbyConfig = {
 			options: {
 				name: 'images',
 				path: path.join(__dirname, 'src', 'images')
+			}
+		},
+		{
+			resolve: 'gatsby-plugin-postcss',
+			options: {
+				postCssPlugins: [
+					postcssPresetEnv({
+						stage: 0
+					})
+				]
 			}
 		},
 		'gatsby-transformer-sharp',
