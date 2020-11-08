@@ -2,7 +2,7 @@
 	"name": "badersur.github.io",
 	"description": "A personal web app using React, Gatsby & TypeScript",
 	"private": true,
-	"version": "5.25.0",
+	"version": "5.25.1",
 	"author": {
 		"name": "Bader Nasser Al-Hashmi",
 		"email": "BaderSur@gmail.com",
@@ -11,7 +11,7 @@
 	"license": "MIT",
 	"engines": {
 		"node": ">=12",
-		"yarn": ">=1.22.0"
+		"yarn": ">=1.13.0"
 	},
 	"scripts": {
 		"clean": "gatsby clean",
