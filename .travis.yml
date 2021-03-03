@@ -14,10 +14,10 @@ cache:
     - node_modules
     - $HOME/.cache/yarn
 
-install:
-  # - rm yarn.lock
-  - yarn
-  - yarn upgrade --latest
+#install:
+#  # - rm yarn.lock
+#  - yarn
+#  - yarn upgrade --latest
 
 script:
   - yarn build

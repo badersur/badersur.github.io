@@ -88,19 +88,19 @@ export interface PageContext {
 }
 
 export interface AllCourseProvidersYaml {
-	edges: Array<{ node: CourseProvidersNode }>;
+	edges: Array<{node: CourseProvidersNode}>;
 }
 
 export interface AllMiscYaml {
-	edges: Array<{ node: MiscNode }>;
+	edges: Array<{node: MiscNode}>;
 }
 
 export interface AllProjectsYaml {
-	edges: Array<{ node: ProjectNode }>;
+	edges: Array<{node: ProjectNode}>;
 }
 
 export interface AllSkillsYaml {
-	edges: Array<{ node: SkillNode }>;
+	edges: Array<{node: SkillNode}>;
 }
 
 export interface CoursesTemplateProps {
@@ -169,11 +169,11 @@ export interface FooterProps {
 
 export interface HTMLProps {
 	htmlAttributes: Record<string, unknown>;
-	headComponents: [];
+	headComponents: any[];
 	bodyAttributes: Record<string, unknown>;
-	preBodyComponents: [];
+	preBodyComponents: any[];
 	body: string;
-	postBodyComponents: [];
+	postBodyComponents: any[];
 }
 
 export interface SiteMetadata {

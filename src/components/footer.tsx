@@ -7,8 +7,9 @@ import {FooterProps} from '../types';
 import useMiscYamlData from '../hooks/use-misc-data';
 
 const getFormattedYear = (date: number | Date, lang: string) => {
-	const dateOptions = {year: 'numeric'};
+	const dateOptions: Intl.DateTimeFormatOptions = {year: 'numeric'};
 	const dateLocales = lang === 'ar' ? 'ar-OM-u-nu-arab-ca-islamic' : 'en-OM';
+
 	return new Intl.DateTimeFormat(dateLocales, dateOptions).format(date);
 };
 
