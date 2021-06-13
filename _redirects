@@ -1,0 +1,9 @@
+/           /ar/                  302!     Language=ar
+/           /en/                  302!
+
+
+/ar/*       /ar/404.html          404
+/en/*       /en/404.html          404
+
+/*          /ar/404.html          404      Language=ar
+/*          /en/404.html          404
